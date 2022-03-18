@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>blog_2 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Colab이란?  Colaboratory&amp;#40;줄여서 ‘Colab’이라고 함&amp;#41;을 통해 브라우저 내에서 Python 스크립트를 작성하고 실행할 수 있습니다.   구성이 필요하지 않음 GPU 무료 액세스 간편한 공유  학생이든, 데이터 과학자든, AI 연구원이든 Colab으로 업무를 더욱 간편하게 처리할 수 있습니다. Colab 소개 영">
+<meta property="og:type" content="article">
+<meta property="og:title" content="blog_2">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/03/17/colab_intro.ipynb/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="Colab이란?  Colaboratory&amp;#40;줄여서 ‘Colab’이라고 함&amp;#41;을 통해 브라우저 내에서 Python 스크립트를 작성하고 실행할 수 있습니다.   구성이 필요하지 않음 GPU 무료 액세스 간편한 공유  학생이든, 데이터 과학자든, AI 연구원이든 Colab으로 업무를 더욱 간편하게 처리할 수 있습니다. Colab 소개 영">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/colab_intro.ipynb/output_7_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/img/new.png">
+<meta property="article:published_time" content="2022-03-17T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-18T07:12:17.659Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woobinhwang.github.io/Images/colab_intro.ipynb/output_7_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-colab_intro.ipynb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/17/colab_intro.ipynb/" class="article-date">
+  <time class="dt-published" datetime="2022-03-17T00:00:00.000Z" itemprop="datePublished">2022-03-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      blog_2
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1>Colab이란?</h1>
+
+<p>Colaboratory&amp;#40;줄여서 ‘Colab’이라고 함&amp;#41;을 통해 브라우저 내에서 Python 스크립트를 작성하고 실행할 수 있습니다. </p>
+<ul>
+<li>구성이 필요하지 않음</li>
+<li>GPU 무료 액세스</li>
+<li>간편한 공유</li>
+</ul>
+<p><strong>학생</strong>이든, <strong>데이터 과학자</strong>든, <strong>AI 연구원</strong>이든 Colab으로 업무를 더욱 간편하게 처리할 수 있습니다. <a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=inN8seMm7UI">Colab 소개 영상</a>에서 자세한 내용을 확인하거나 아래에서 시작해 보세요.</p>
+<h2 id="시작하기"><a href="#시작하기" class="headerlink" title="시작하기"></a><strong>시작하기</strong></h2><p>지금 읽고 계신 문서는 정적 웹페이지가 아니라 코드를 작성하고 실행할 수 있는 대화형 환경인 <strong>Colab 메모장</strong>입니다.</p>
+<p>예를 들어 다음은 값을 계산하여 변수로 저장하고 결과를 출력하는 간단한 Python 스크립트가 포함된 <strong>코드 셀</strong>입니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seconds_in_a_day = <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span></span><br><span class="line">seconds_in_a_day</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>86400
+</code></pre>
+<p>위 셀의 코드를 실행하려면 셀을 클릭하여 선택한 후 코드 왼쪽의 실행 버튼을 누르거나 단축키 ‘Command&#x2F;Ctrl+Enter’를 사용하세요. 셀을 클릭하면 코드 수정을 바로 시작할 수 있습니다.</p>
+<p>특정 셀에서 정의한 변수를 나중에 다른 셀에서 사용할 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">seconds_in_a_week = <span class="number">7</span> * seconds_in_a_day</span><br><span class="line">seconds_in_a_week</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>604800
+</code></pre>
+<p>Colab 메모장을 사용하면 <strong>실행 코드</strong>와 <strong>서식 있는 텍스트</strong>를 <strong>이미지</strong>, <strong>HTML</strong>, <strong>LaTeX</strong> 등과 함께 하나의 문서로 통합할 수 있습니다. Colab 메모장을 만들면 Google Drive 계정에 저장됩니다. Colab 메모장을 간편하게 공유하여 동료나 친구들이 댓글을 달거나 수정하도록 할 수 있습니다. 자세히 알아보려면 <a href="/notebooks/basic_features_overview.ipynb">Colab 개요</a>를 참조하세요. 새 Colab 메모장을 만들려면 위의 파일 메뉴를 사용하거나 다음 링크로 이동하세요. <a target="_blank" rel="noopener" href="http://colab.research.google.com#create=true">새 Colab 메모장 만들기</a></p>
+<p>Colab 메모장은 Colab에서 호스팅하는 Jupyter 메모장입니다. Jupyter 프로젝트에 관해 자세히 알아보려면 <a target="_blank" rel="noopener" href="https://www.jupyter.org">jupyter.org</a>를 참조하세요.</p>
+<h2 id="데이터-과학"><a href="#데이터-과학" class="headerlink" title="데이터 과학"></a>데이터 과학</h2><p>Colab을 통해 인기 있는 Python 라이브러리를 최대한 활용하여 데이터를 분석하고 시각화할 수 있습니다. 아래 코드 셀에서는 <strong>Numpy</strong>를 사용하여 임의의 데이터를 생성하고 <strong>매트플롯립</strong>으로 이를 시각화합니다. 셀을 클릭하면 코드 수정을 바로 시작할 수 있습니다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">ys = <span class="number">200</span> + np.random.randn(<span class="number">100</span>)</span><br><span class="line">x = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(ys))]</span><br><span class="line"></span><br><span class="line">plt.plot(x, ys, <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">plt.fill_between(x, ys, <span class="number">195</span>, where=(ys &gt; <span class="number">195</span>), facecolor=<span class="string">&#x27;g&#x27;</span>, alpha=<span class="number">0.6</span>)</span><br><span class="line"></span><br><span class="line">plt.title(<span class="string">&quot;Sample Visualization&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/colab_intro.ipynb/output_7_0.png" alt="png"></p>
+<p>Google Drive 계정에서 스프레드시트를 비롯한 데이터를 Colab 메모장으로 가져오거나 GitHub 등의 여러 다른 소스에서 데이터를 가져올 수 있습니다. Colab을 데이터 과학에 활용하는 방법과 데이터 가져오기에 관해 자세히 알아보려면 <a href="#working-with-data">데이터 사용하기</a> 아래 링크를 참조하세요.</p>
+<h2 id="머신러닝"><a href="#머신러닝" class="headerlink" title="머신러닝"></a>머신러닝</h2><p>Colab을 사용하면 <a target="_blank" rel="noopener" href="https://colab.research.google.com/github/tensorflow/docs/blob/master/site/en/tutorials/quickstart/beginner.ipynb">코드 몇 줄</a>만으로 이미지 데이터세트를 가져오고, 이 데이터세트로 이미지 분류기를 학습시키며, 모델을 평가할 수 있습니다. Colab 메모장은 Google 클라우드 서버에서 코드를 실행하므로 사용 중인 컴퓨터의 성능과 관계없이 <a href="#using-accelerated-hardware">GPU 및 TPU</a>를 포함한 Google 하드웨어의 성능을 활용할 수 있습니다. 브라우저만 있으면 사용 가능합니다.</p>
+<p>Colab은 다음과 같은 분야의 머신러닝 커뮤니티에서 널리 쓰이고 있습니다.</p>
+<ul>
+<li>TensorFlow 시작하기</li>
+<li>신경망 개발 및 학습시키기</li>
+<li>TPU로 실험하기</li>
+<li>AI 연구 보급하기</li>
+<li>튜토리얼 만들기</li>
+</ul>
+<p>머신러닝 적용 사례를 보여 주는 Colab 메모장 샘플을 확인하려면 아래 <a href="#machine-learning-examples">머신러닝 예시</a>를 참조하세요.</p>
+<h2 id="추가-리소스"><a href="#추가-리소스" class="headerlink" title="추가 리소스"></a>추가 리소스</h2><h3 id="Colab에서-메모장-사용하기"><a href="#Colab에서-메모장-사용하기" class="headerlink" title="Colab에서 메모장 사용하기"></a>Colab에서 메모장 사용하기</h3><ul>
+<li><a href="/notebooks/basic_features_overview.ipynb">Colaboratory 개요</a></li>
+<li><a href="/notebooks/markdown_guide.ipynb">Markdown 가이드</a></li>
+<li><a href="/notebooks/snippets/importing_libraries.ipynb">라이브러리 가져오기 및 종속 항목 설치하기</a></li>
+<li><a target="_blank" rel="noopener" href="https://colab.research.google.com/github/googlecolab/colabtools/blob/main/notebooks/colab-github-demo.ipynb">GitHub에서 노트 저장 및 로드하기</a></li>
+<li><a href="/notebooks/forms.ipynb">대화형 양식</a></li>
+<li><a href="/notebooks/widgets.ipynb">대화형 위젯</a></li>
+<li><img src="/img/new.png" height="20px" align="left" hspace="4px" alt="New"></img><br> <a href="/notebooks/tensorflow_version.ipynb">Colab의 TensorFlow 2</a></li>
+</ul>
+<p><a name="working-with-data"></a></p>
+<h3 id="데이터로-작업하기"><a href="#데이터로-작업하기" class="headerlink" title="데이터로 작업하기"></a>데이터로 작업하기</h3><ul>
+<li><a href="/notebooks/io.ipynb">데이터 로드: 드라이브, 스프레드시트, Google Cloud Storage</a> </li>
+<li><a href="/notebooks/charts.ipynb">차트: 데이터 시각화하기</a></li>
+<li><a href="/notebooks/bigquery.ipynb">BigQuery 시작하기</a></li>
+</ul>
+<h3 id="머신러닝-단기집중과정"><a href="#머신러닝-단기집중과정" class="headerlink" title="머신러닝 단기집중과정"></a>머신러닝 단기집중과정</h3><p>다음은 Google 온라인 머신러닝 과정에서 가져온 일부 메모장입니다. <a target="_blank" rel="noopener" href="https://developers.google.com/machine-learning/crash-course/">전체 과정 웹사이트</a>에서 자세한 내용을 확인하세요.</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/pandas_dataframe_ultraquick_tutorial.ipynb">Pandas DataFrame 소개</a></li>
+<li><a target="_blank" rel="noopener" href="https://colab.research.google.com/github/google/eng-edu/blob/main/ml/cc/exercises/linear_regression_with_synthetic_data.ipynb">합성 데이터를 사용하는 tf.keras 선형 회귀</a></li>
+</ul>
+<p><a name="using-accelerated-hardware"></a></p>
+<h3 id="가속-하드웨어-사용하기"><a href="#가속-하드웨어-사용하기" class="headerlink" title="가속 하드웨어 사용하기"></a>가속 하드웨어 사용하기</h3><ul>
+<li><a href="/notebooks/gpu.ipynb">GPU를 사용한 TensorFlow</a></li>
+<li><a href="/notebooks/tpu.ipynb">TPU를 사용한 TensorFlow</a></li>
+</ul>
+<p><a name="machine-learning-examples"></a></p>
+<h3 id="추천-예시"><a href="#추천-예시" class="headerlink" title="추천 예시"></a>추천 예시</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://colab.research.google.com/github/NVIDIA/NeMo/blob/stable/tutorials/VoiceSwapSample.ipynb">NeMo Voice Swap</a>: Nvidia의 NeMo 대화형 AI 툴킷을 사용하여 오디오 파일의 음성을 컴퓨터에서 생성된 음성으로 변환하세요.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tensorflow.org/hub/tutorials/tf2_image_retraining">이미지 분류기 재훈련</a>: 사전에 훈련된 이미지 분류기를 기반으로 꽃을 분류하기 위한 Keras 모델을 구축합니다.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tensorflow.org/hub/tutorials/tf2_text_classification">텍스트 분류</a>: IMDB 영화 리뷰를 <em>긍정적인 리뷰</em> 또는 <em>부정적인 리뷰</em>로 분류합니다.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tensorflow.org/hub/tutorials/tf2_arbitrary_image_stylization">스타일 트랜스퍼</a>: 딥 러닝을 사용하여 이미지 간에 스타일을 전이시킵니다.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tensorflow.org/hub/tutorials/retrieval_with_tf_hub_universal_encoder_qa">Multilingual Universal Sentence Encoder Q&amp;A</a>: 머신러닝 모델을 사용하여 SQuAD 데이터 세트의 질문에 답변합니다.</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tensorflow.org/hub/tutorials/tweening_conv3d">동영상 보간 유형</a>: 동영상에서 첫 프레임과 마지막 프레임 사이에 발생한 내용을 예측합니다.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/17/colab_intro.ipynb/" data-id="cl0w339s90000t0nh275r48xr" data-title="blog_2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/17/blog2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          blog_2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/16/gg/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">r_blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/18/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/17/blog2/">blog_2</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/17/colab_intro.ipynb/">blog_2</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/16/gg/">r_blog</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/15/0315_statistics/">분석방법</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
