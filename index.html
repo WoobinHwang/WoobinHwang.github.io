@@ -71,6 +71,393 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-0322_basic_grammar_prac_3" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/22/0322_basic_grammar_prac_3/" class="article-date">
+  <time class="dt-published" datetime="2022-03-22T00:00:00.000Z" itemprop="datePublished">2022-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/22/0322_basic_grammar_prac_3/">파이썬 기초문법 연습3</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="클래스를-만드는-목적"><a href="#클래스를-만드는-목적" class="headerlink" title="클래스를 만드는 목적"></a>클래스를 만드는 목적</h1><ul>
+<li>코드의 간결화!<ul>
+<li>코드를 재사용!</li>
+</ul>
+</li>
+<li>여러 라이브러리를 사용 –&gt; 클래스로 구현이 됨<ul>
+<li>list 클래스, str 클래스</li>
+<li>객체로 씀</li>
+<li>변수명으로 정의!</li>
+</ul>
+</li>
+<li>여러 클래스들이 모여서 하나의 라이브러리가 됨.<ul>
+<li>장고 &#x2F; 웹개발 &#x2F; 머신러닝 &#x2F; 시각화 &#x2F; 데이터 전처리</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># class attribute </span></span><br><span class="line">  country = <span class="string">&quot;korean&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">#instance attribute</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">    self.name = name</span><br><span class="line">    self.age = age</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  kim = Person(<span class="string">&quot;Kim&quot;</span>, <span class="number">27</span>)</span><br><span class="line">  Lee = Person(<span class="string">&quot;Lee&quot;</span>, <span class="number">25</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># access class attribute</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Kim은 &#123;&#125;&quot;</span>.<span class="built_in">format</span>(kim.__class__.country))</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Lee는 &#123;&#125;&quot;</span>.<span class="built_in">format</span>(Lee.__class__.country))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Kim은 korean
+Lee는 korean
+</code></pre>
+<h2 id="instance-메서드-생성"><a href="#instance-메서드-생성" class="headerlink" title="instance 메서드 생성"></a>instance 메서드 생성</h2><ul>
+<li>list.append(), list.extend()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># class attribute</span></span><br><span class="line">  country = <span class="string">&quot;korean&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># instance attribute</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">    self.name = name</span><br><span class="line">    self.age = age</span><br><span class="line"></span><br><span class="line">  <span class="comment"># instance method 정의</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">sining</span>(<span class="params">self, songtitle, sales</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&#123;&#125; 판매량 &#123;&#125; 된 &#123;&#125;을 노래합니다.&quot;</span>.<span class="built_in">format</span>(self.name, sales, songtitle)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  Kim = Person(<span class="string">&quot;Kim&quot;</span>, <span class="number">27</span>)</span><br><span class="line">  Lee = Person(<span class="string">&quot;Lee&quot;</span>, <span class="number">25</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># access class attribute</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Kim은 &#123;&#125;&quot;</span>.<span class="built_in">format</span>(kim.__class__.country))</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;Lee는 &#123;&#125;&quot;</span>.<span class="built_in">format</span>(Lee.__class__.country))</span><br><span class="line"></span><br><span class="line">  <span class="comment"># call instance method</span></span><br><span class="line">  <span class="built_in">print</span>(Kim.sining(<span class="string">&quot;좋은 날&quot;</span>, <span class="number">10</span>))</span><br><span class="line">  <span class="built_in">print</span>(Lee.sining(<span class="string">&quot;나쁜 날&quot;</span>, <span class="number">99</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>Kim은 korean
+Lee는 korean
+Kim 판매량 10 된 좋은 날을 노래합니다.
+Lee 판매량 99 된 나쁜 날을 노래합니다.
+</code></pre>
+<h2 id="클래스-상속"><a href="#클래스-상속" class="headerlink" title="클래스 상속"></a>클래스 상속</h2><ul>
+<li>ex) 부모님 유산…<ul>
+<li>부모님 집 (냉자고, 세탁기, TV, etc) # instance method, attribute</li>
+<li>사용은 같이 함</li>
+</ul>
+</li>
+<li>돈을 모음<ul>
+<li>개인 노트북 구매(내 방에 구비) # 자식 클래스 instance method, attribute 추가 확장</li>
+<li>노트북은 내 것이지만, 가전제품을 구매해서 확장시켰다!</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Parent</span>:</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># instance attribute</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">    self.name = name</span><br><span class="line">    self.age = age</span><br><span class="line">  </span><br><span class="line">  <span class="comment"># instance method 정의</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">whoAmI</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;I am Parent!!&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">singing</span>(<span class="params">self, songtitle</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&#123;&#125; &#123;&#125;을 노래합니다.&quot;</span>.<span class="built_in">format</span>(self.name, songtitle)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">dancing</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;&#123;&#125; 현재 춤을 춥니다.&quot;</span>.<span class="built_in">format</span>(self.name)</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span>(<span class="title class_ inherited__">Parent</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">    <span class="comment"># super() function</span></span><br><span class="line">    <span class="built_in">super</span>().__init__(name, age)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Child Class is ON&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">whoAmI</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;I am Child&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">studying</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;I am Fast Runner&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">   child_kim = Child(<span class="string">&quot;kim&quot;</span>, <span class="number">15</span>)</span><br><span class="line">   parent_kim = Parent(<span class="string">&quot;kim&quot;</span>, <span class="number">45</span>)</span><br><span class="line">   <span class="built_in">print</span>(child_kim.dancing())</span><br><span class="line">   <span class="built_in">print</span>(child_kim.singing(<span class="string">&quot;연애&quot;</span>))</span><br><span class="line">   <span class="comment"># print(parent_kim.studying())</span></span><br><span class="line">   child_kim.whoAmI()</span><br><span class="line">   parent_kim.whoAmI()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Child Class is ON
+kim 현재 춤을 춥니다.
+kim 연애을 노래합니다.
+I am Child
+I am Parent!!
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TV</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># init constructor</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">    self.__maxprice = <span class="number">500</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">sell</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;Selling Price: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(self.__maxprice))</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">setMaxPrice</span>(<span class="params">self, price</span>):</span><br><span class="line">    self.__maxprice = price</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  tv = TV()</span><br><span class="line">  tv.sell()</span><br><span class="line"></span><br><span class="line">  <span class="comment"># change price</span></span><br><span class="line">  <span class="comment"># 안바뀌는 코드의 예시</span></span><br><span class="line">  tv.__maxprice = <span class="number">1000</span></span><br><span class="line">  tv.sell()</span><br><span class="line"></span><br><span class="line">  <span class="comment"># setMaxPrice</span></span><br><span class="line">  <span class="comment"># 값을 바꿀 수 있다?! 외부의 입력값을 업데이트 할 수 있다.</span></span><br><span class="line">  tv.setMaxPrice(<span class="number">1000</span>)</span><br><span class="line">  tv.sell()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Selling Price: 500
+Selling Price: 500
+Selling Price: 1000
+</code></pre>
+<h2 id="클래스-내부에-조건문"><a href="#클래스-내부에-조건문" class="headerlink" title="클래스 내부에 조건문"></a>클래스 내부에 조건문</h2><ul>
+<li>init constructor</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Employee</span>:</span><br><span class="line"></span><br><span class="line">  <span class="comment"># init constructor</span></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, salary</span>):</span><br><span class="line">    self.name = name</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 조건문 추가</span></span><br><span class="line">    <span class="keyword">if</span> salary &gt;= <span class="number">0</span> :</span><br><span class="line">      self.salary = salary</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      self.salary = <span class="number">0</span></span><br><span class="line">      <span class="built_in">print</span>(<span class="string">&quot;급여는 0원이 될 수 없다!. 다시 입력하십시요!&quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">update_salary</span>(<span class="params">self, amount</span>):</span><br><span class="line">    <span class="comment"># self.salary = self.salary+ amount</span></span><br><span class="line">    self.salary += amount</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">weekly_salary</span>(<span class="params">self</span>):</span><br><span class="line">    <span class="keyword">return</span> self.salary / <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  emp01 = Employee(<span class="string">&quot;Woobin&quot;</span>, -<span class="number">50000</span>)</span><br><span class="line">  <span class="built_in">print</span>(emp01.name)</span><br><span class="line">  <span class="built_in">print</span>(emp01.salary)</span><br><span class="line">  emp01.salary = emp01.salary + <span class="number">1500</span></span><br><span class="line">  <span class="built_in">print</span>(emp01.salary)</span><br><span class="line">  emp01.update_salary(<span class="number">3000</span>)</span><br><span class="line">  <span class="built_in">print</span>(emp01.salary)</span><br><span class="line">  week_salary = emp01.weekly_salary()</span><br><span class="line">  <span class="built_in">print</span>(week_salary)</span><br></pre></td></tr></table></figure>
+
+<pre><code>급여는 0원이 될 수 없다!. 다시 입력하십시요!
+Woobin
+0
+</code></pre>
+<h2 id="클래스-Docstring"><a href="#클래스-Docstring" class="headerlink" title="클래스 Docstring"></a>클래스 Docstring</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span>:</span><br><span class="line">  <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">  사람을 표현하는 클래스</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  ...</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  Attributes</span></span><br><span class="line"><span class="string">  -----------</span></span><br><span class="line"><span class="string">  name : str</span></span><br><span class="line"><span class="string">    name of the person</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  age : int</span></span><br><span class="line"><span class="string">    age if the person</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  Methods</span></span><br><span class="line"><span class="string">  --------</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  info(additional=&quot;&quot;): </span></span><br><span class="line"><span class="string">    prints the person&#x27;s name and age</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, name, age</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Constructs all the neccessary attributes for the person object</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ----------</span></span><br><span class="line"><span class="string">    name : str</span></span><br><span class="line"><span class="string">      name of the person</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    age : int</span></span><br><span class="line"><span class="string">      age if the person</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    self.name = name</span><br><span class="line">    self.age = age</span><br><span class="line"></span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">info</span>(<span class="params">self, additional=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    ~~~</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Parameters</span></span><br><span class="line"><span class="string">    ---------</span></span><br><span class="line"><span class="string">      additional = str, optional</span></span><br><span class="line"><span class="string">        more info to be displayed (Default is None)  / A, B, C</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Returns</span></span><br><span class="line"><span class="string">    -------</span></span><br><span class="line"><span class="string">    None</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;My name is <span class="subst">&#123;self.name&#125;</span>. I am <span class="subst">&#123;self.age&#125;</span> years old.&#x27;</span>+ additional)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  Person = Person(<span class="string">&quot;Woobin&quot;</span>, age = <span class="number">27</span>)</span><br><span class="line">  Person.info(<span class="string">&quot;직장은 없음&quot;</span>)</span><br><span class="line">  <span class="built_in">help</span>(Person)</span><br></pre></td></tr></table></figure>
+
+<pre><code>My name is Woobin. I am 27 years old.직장은 없음
+Help on Person in module __main__ object:
+
+class Person(builtins.object)
+ |  Person(name, age)
+ |  
+ |  사람을 표현하는 클래스
+ |  
+ |  ...
+ |  
+ |  Attributes
+ |  -----------
+ |  name : str
+ |    name of the person
+ |  
+ |  age : int
+ |    age if the person
+ |  
+ |  Methods
+ |  --------
+ |  
+ |  info(additional=&quot;&quot;): 
+ |    prints the person&#39;s name and age
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, name, age)
+ |      Constructs all the neccessary attributes for the person object
+ |      
+ |      Parameters
+ |      ----------
+ |      name : str
+ |        name of the person
+ |      
+ |      age : int
+ |        age if the person
+ |  
+ |  info(self, additional=None)
+ |      ~~~
+ |      
+ |      Parameters
+ |      ---------
+ |        additional = str, optional
+ |          more info to be displayed (Default is None)  / A, B, C
+ |      
+ |      
+ |      Returns
+ |      -------
+ |      None
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+</code></pre>
+<ul>
+<li><p>클래스</p>
+<ul>
+<li>객체를 만들어내기 위한 설계도 혹은 틀</li>
+<li>연관되어 있는 변수와 메서드의 집합</li>
+</ul>
+</li>
+<li><p>객체</p>
+<ul>
+<li>소프트웨어 세계에 구현할 대상</li>
+<li>클래스에 선언된 모양 그대로 생성된 실체</li>
+<li>‘클래스의 인스턴스’라고도 부른다</li>
+<li>객체는 모든 인스턴스를 대표하는 포괄적인 의미를 갖는다.</li>
+</ul>
+</li>
+<li><p>인스턴스</p>
+<ul>
+<li>설계도를 바탕으로 소프트웨어 세계에 구현된 구체적인 실체<ul>
+<li>즉, 객체를 소프트웨어에 실체화 하면 그것을 ‘인스턴스’라고 부른다.</li>
+<li>실체화된 인스턴스는 메모리에 할당된다.</li>
+<li>인스턴스는 객체에 포함된다고 볼 수 있다.</li>
+<li>객체는 클래스의 인스턴스이다.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="객체와-인스턴스의-차이"><a href="#객체와-인스턴스의-차이" class="headerlink" title="객체와 인스턴스의 차이"></a>객체와 인스턴스의 차이</h1><p>클래스로 만든 객체를 인스턴스라고도 한다. 그렇다면 객체와 인스턴스의 차이는 무엇일까? 이렇게 생각해 보자. a &#x3D; Cookie() 이렇게 만든 a는 객체이다. 그리고 a 객체는 Cookie의 인스턴스이다. 즉 인스턴스라는 말은 특정 객체(a)가 어떤 클래스(Cookie)의 객체인지를 관계 위주로 설명할 때 사용한다. “a는 인스턴스”보다는 “a는 객체”라는 표현이 어울리며 “a는 Cookie의 객체”보다는 “a는 Cookie의 인스턴스”라는 표현이 훨씬 잘 어울린다.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/22/0322_basic_grammar_prac_3/" data-id="cl11x33jj0000x8nh12ak0fto" data-title="파이썬 기초문법 연습3" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0322_basic_grammar_prac_2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/22/0322_basic_grammar_prac_2/" class="article-date">
+  <time class="dt-published" datetime="2022-03-22T00:00:00.000Z" itemprop="datePublished">2022-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/22/0322_basic_grammar_prac_2/">파이썬 기초문법 연습2</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="기초-문법-리뷰"><a href="#기초-문법-리뷰" class="headerlink" title="기초 문법 리뷰"></a>기초 문법 리뷰</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 리스트</span></span><br><span class="line">book_list = [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>, <span class="string">&quot;C&quot;</span>]</span><br><span class="line"><span class="comment"># append, extend, insert, remove, pop, etc</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 튜플</span></span><br><span class="line">book_tuple = (<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>,, <span class="string">&quot;C&quot;</span>)</span><br><span class="line"><span class="comment"># 수정 삭제가 불가능</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 딕셔너리</span></span><br><span class="line">book_dictionary = &#123;<span class="string">&quot;책 제목&quot;</span> : [<span class="string">&quot;A&quot;</span>, <span class="string">&quot;B&quot;</span>], <span class="string">&quot;출판년도&quot;</span> : [<span class="number">2011</span>, <span class="number">2002</span>]&#125;</span><br><span class="line"><span class="comment">#keys(), values(), items(), get()</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="조건문-amp-반복문"><a href="#조건문-amp-반복문" class="headerlink" title="조건문 &amp; 반복문"></a>조건문 &amp; 반복문</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 조건문</span></span><br><span class="line"><span class="keyword">if</span> <span class="literal">True</span> :</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;코드 실행&quot;</span>)</span><br><span class="line"><span class="keyword">elif</span> <span class="literal">True</span> :</span><br><span class="line">  pirnt(<span class="string">&quot;코드 실행&quot;</span>)</span><br><span class="line"><span class="keyword">else</span> :</span><br><span class="line">  pirnt(<span class="string">&quot;코드 실행&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>코드 실행
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 반복문</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span> (<span class="number">3</span>):</span><br><span class="line">  <span class="built_in">print</span>(i+<span class="number">1</span>, <span class="string">&quot;안녕하세요&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1 안녕하세요
+2 안녕하세요
+3 안녕하세요
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">book_list = [<span class="string">&quot;프로그래밍 R&quot;</span>, <span class="string">&quot;혼자 공부하는 머신러닝&quot;</span>]</span><br><span class="line"><span class="keyword">for</span> book <span class="keyword">in</span> book_list:</span><br><span class="line">  <span class="built_in">print</span>(book)</span><br></pre></td></tr></table></figure>
+
+<pre><code>프로그래밍 R
+혼자 공부하는 머신러닝
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">strings01 = <span class="string">&quot;Hello world&quot;</span></span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> strings01:</span><br><span class="line">  <span class="built_in">print</span>(char)</span><br></pre></td></tr></table></figure>
+
+<pre><code>H
+e
+l
+l
+o
+ 
+w
+o
+r
+l
+d
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num_tuple = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> num_tuple:</span><br><span class="line">  <span class="built_in">print</span>(num)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+3
+4
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">num_dict = &#123;<span class="string">&quot;A&quot;</span>: <span class="number">1</span>, <span class="string">&quot;B&quot;</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">for</span> num <span class="keyword">in</span> num_dict:</span><br><span class="line">  <span class="comment"># print(num)</span></span><br><span class="line">  <span class="built_in">print</span>(num, num_dict[num])</span><br></pre></td></tr></table></figure>
+
+<pre><code>A 1
+B 2
+</code></pre>
+<h1 id="반복문의-필요성"><a href="#반복문의-필요성" class="headerlink" title="반복문의 필요성"></a>반복문의 필요성</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">product = [<span class="string">&quot;요구르트&quot;</span>, <span class="string">&quot;우유&quot;</span>]</span><br><span class="line">price = [<span class="number">1000</span>, <span class="number">1500</span>]</span><br><span class="line">quantities = [<span class="number">5</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">name = product[<span class="number">0</span>]</span><br><span class="line">sales = price[<span class="number">0</span>] * quantities[<span class="number">0</span>]</span><br><span class="line"><span class="built_in">print</span>(name + <span class="string">&quot;의 매출액은 &quot;</span> + <span class="built_in">str</span>(sales) + <span class="string">&quot;원 입니다.&quot;</span>)</span><br><span class="line"></span><br><span class="line">name = product[<span class="number">1</span>]</span><br><span class="line">sales = price[<span class="number">1</span>] * quantities[<span class="number">1</span>]</span><br><span class="line"><span class="built_in">print</span>(name + <span class="string">&quot;의 매출액은 &quot;</span> + <span class="built_in">str</span>(sales) + <span class="string">&quot;원 입니다.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>요구르트의 매출액은 5000원 입니다.
+우유의 매출액은 4500원 입니다.
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">product = [<span class="string">&quot;요구르트&quot;</span>, <span class="string">&quot;우유&quot;</span>]</span><br><span class="line">price = [<span class="number">1000</span>, <span class="number">1500</span>]</span><br><span class="line">quantities = [<span class="number">5</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>) :</span><br><span class="line">  name = product[i]</span><br><span class="line">  sales = price[i] * quantities[i]</span><br><span class="line">  <span class="built_in">print</span>(name + <span class="string">&quot;의 매출액은 &quot;</span>+ <span class="built_in">str</span>(sales) + <span class="string">&quot;원 입니다.&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(product)) :</span><br><span class="line">  name = product[i]</span><br><span class="line">  sales = price[i] * quantities[i]</span><br><span class="line">  <span class="built_in">print</span>(name + <span class="string">&quot;의 매출액은 &quot;</span>+ <span class="built_in">str</span>(sales) + <span class="string">&quot;원 입니다.&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>요구르트의 매출액은 5000원 입니다.
+우유의 매출액은 4500원 입니다.
+요구르트의 매출액은 5000원 입니다.
+우유의 매출액은 4500원 입니다.
+</code></pre>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><ul>
+<li>조건식이 들어간 반복문 </li>
+<li>if) for-loop: 정해진 범위 내에서 작동</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 증가하는 식</span></span><br><span class="line">count = <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> count &lt;= <span class="number">5</span>:</span><br><span class="line">  <span class="built_in">print</span>(count)</span><br><span class="line">  count = count + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;5를 초과했군요...&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>1
+2
+3
+4
+5
+5를 초과했군요...
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 감소하는 식</span></span><br><span class="line">count = <span class="number">3</span></span><br><span class="line"><span class="keyword">while</span> count &gt; <span class="number">0</span>:</span><br><span class="line">  <span class="built_in">print</span>(count)</span><br><span class="line">  count = count - <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;0 미만이군요...&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>3
+2
+1
+0 미만이군요...
+</code></pre>
+<h1 id="사용자-정의-함수-user-Defined-Function"><a href="#사용자-정의-함수-user-Defined-Function" class="headerlink" title="사용자 정의 함수 (user-Defined Function)"></a>사용자 정의 함수 (user-Defined Function)</h1><ul>
+<li>why?</li>
+</ul>
+<h1 id="클래스-class-를-왜-쓸까"><a href="#클래스-class-를-왜-쓸까" class="headerlink" title="클래스(class)를 왜 쓸까"></a>클래스(class)를 왜 쓸까</h1><ul>
+<li>코드의 반복성을 줄이기 위해서 사용!</li>
+</ul>
+<p>if) len() –&gt; 누군가가 만들었고, 우리는 그걸 쓰는거임.</p>
+<ul>
+<li>리스트의 길이 구할 때 씀.</li>
+<li>리스트의 전체 길이를 구하겠다. –&gt; 1회성? 범용성?</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 형식</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">함수명</span>():</span><br><span class="line">  <span class="comment"># 코드 실행</span></span><br><span class="line">  <span class="keyword">return</span> 값</span><br><span class="line"></span><br><span class="line">함수명()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">add</span>(<span class="params">a, b</span>):</span><br><span class="line">  c = a + b</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line">add(<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">abs</span>(<span class="params">a</span>):</span><br><span class="line">  <span class="keyword">if</span> a &lt; <span class="number">0</span>:</span><br><span class="line">    a = -a</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"><span class="built_in">abs</span>(-<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">squared</span>():</span><br><span class="line">  a = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">  a = a * a</span><br><span class="line">  <span class="keyword">return</span> a</span><br><span class="line"><span class="built_in">print</span>(add(<span class="number">1</span>,<span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">abs</span>(-<span class="number">5</span>))</span><br><span class="line"><span class="built_in">print</span>(squared())</span><br></pre></td></tr></table></figure>
+
+<pre><code>3
+5
+3
+9
+</code></pre>
+<p>basic.py로 저장할때 예시</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /user/local/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding : utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">temp</span>(<span class="params">content, letter</span>):</span><br><span class="line">  <span class="string">&quot;&quot;&quot;content안에 있는 문자를 세는 함수</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">  Args:</span></span><br><span class="line"><span class="string">    content(str): 탐색 문자열</span></span><br><span class="line"><span class="string">    letter(str) : 찾을 문자열</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  Return:</span></span><br><span class="line"><span class="string">    int</span></span><br><span class="line"><span class="string">  </span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;함수 테스트&quot;</span>)</span><br><span class="line"></span><br><span class="line">  cnt = <span class="built_in">len</span>([char <span class="keyword">for</span> char <span class="keyword">in</span> content <span class="keyword">if</span> char == letter])</span><br><span class="line">  <span class="keyword">return</span> cnt</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  <span class="comment"># help(temp)</span></span><br><span class="line">  docstring = temp.__doc__</span><br><span class="line">  <span class="built_in">print</span>(docstring)</span><br></pre></td></tr></table></figure>
+
+<pre><code>content안에 있는 문자를 세는 함수
+  
+  Args:
+    content(str): 탐색 문자열
+    letter(str) : 찾을 문자열
+
+  Return:
+    int
+  
+  
+</code></pre>
+<h2 id="리스트-컴프리헨션"><a href="#리스트-컴프리헨션" class="headerlink" title="리스트 컴프리헨션"></a>리스트 컴프리헨션</h2><ul>
+<li>for-loop 반복문을 한줄로 처리</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 풀어서 쓴 것</span></span><br><span class="line">my_list = [[<span class="number">10</span>], [<span class="number">20</span>, <span class="number">30</span>]]</span><br><span class="line"><span class="comment"># 목표 : [10, 20, 30]</span></span><br><span class="line"></span><br><span class="line">flattened_list = []</span><br><span class="line"><span class="keyword">for</span> value_list <span class="keyword">in</span> my_list:</span><br><span class="line">  <span class="keyword">for</span> value <span class="keyword">in</span> value_list:</span><br><span class="line">    flattened_list.append(value)</span><br><span class="line"><span class="built_in">print</span>(flattened_list)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[10, 20, 30]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 한줄로 줄이기</span></span><br><span class="line">my_list = [[<span class="number">10</span>], [<span class="number">20</span>, <span class="number">30</span>]]</span><br><span class="line">flattened_list = [value <span class="keyword">for</span> value_list <span class="keyword">in</span> my_list <span class="keyword">for</span> value <span class="keyword">in</span> value_list]</span><br><span class="line"><span class="built_in">print</span>(flattened_list)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[10, 20, 30]
+</code></pre>
+<h3 id="예시"><a href="#예시" class="headerlink" title="예시"></a>예시</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">letters = []</span><br><span class="line"><span class="keyword">for</span> char <span class="keyword">in</span> <span class="string">&quot;hello world&quot;</span>:</span><br><span class="line">  letters.append(char)</span><br><span class="line"><span class="built_in">print</span>(letters)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;w&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">letters2 = [char <span class="keyword">for</span> char <span class="keyword">in</span> <span class="string">&quot;hello world&quot;</span>]</span><br><span class="line"><span class="built_in">print</span>(letters2)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[&#39;h&#39;, &#39;e&#39;, &#39;l&#39;, &#39;l&#39;, &#39;o&#39;, &#39; &#39;, &#39;w&#39;, &#39;o&#39;, &#39;r&#39;, &#39;l&#39;, &#39;d&#39;]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">value_list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;평균: &quot;</span>+ <span class="built_in">str</span>(<span class="built_in">sum</span>(value_list) / <span class="built_in">len</span>(value_list)))</span><br><span class="line"></span><br><span class="line">midpoint = <span class="built_in">int</span>(<span class="built_in">len</span>(value_list) / <span class="number">2</span>)</span><br><span class="line"><span class="comment"># len(value_list) / 2 == 0 :</span></span><br><span class="line"><span class="built_in">print</span>((value_list[midpoint - <span class="number">1</span>] + value_list[midpoint]))</span><br><span class="line"><span class="built_in">print</span>((value_list[midpoint - <span class="number">1</span>] + value_list[midpoint]) / <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(midpoint)</span><br></pre></td></tr></table></figure>
+
+<pre><code>평균: 3.5
+7
+3.5
+3
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">mean_and_midian</span>(<span class="params">value_list</span>):</span><br><span class="line">  <span class="string">&quot;&quot;&quot;숫자 리스트의 요소들의 평균과 중간값을 구하는 코드를 작성해라</span></span><br><span class="line"><span class="string">  Args:</span></span><br><span class="line"><span class="string">    value_list (iterable of int / float) : A list of int numbers</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  Returns:</span></span><br><span class="line"><span class="string">    tuple(float, float)</span></span><br><span class="line"><span class="string">  &quot;&quot;&quot;</span></span><br><span class="line">  <span class="comment"># 평균</span></span><br><span class="line">  mean = <span class="built_in">sum</span>(value_list) / <span class="built_in">len</span>(value_list)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 중간값</span></span><br><span class="line">  midpoint = <span class="built_in">int</span>(<span class="built_in">len</span>(value_list) / <span class="number">2</span>)</span><br><span class="line">  <span class="keyword">if</span> <span class="built_in">len</span>(value_list) / <span class="number">2</span> == <span class="number">0</span>:</span><br><span class="line">    median = (value_list[midpoint - <span class="number">1</span>] + value_list[midpoint]) / <span class="number">2</span> </span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    median = value_list[midpoint]</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> mean, median</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">  value_list = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">  avg, median = mean_and_midian(value_list)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;avg:&quot;</span>, avg)</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;median&quot;</span>, median)</span><br></pre></td></tr></table></figure>
+
+<pre><code>avg: 2.5714285714285716
+median 2
+</code></pre>
+<h2 id="그-외"><a href="#그-외" class="headerlink" title="그 외"></a>그 외</h2><ul>
+<li>데코레이터, 변수명 immutable, mutable, contex manager</li>
+</ul>
+<h1 id="개별-연습"><a href="#개별-연습" class="headerlink" title="개별 연습"></a>개별 연습</h1><h2 id="팩토리얼-구현하기"><a href="#팩토리얼-구현하기" class="headerlink" title="팩토리얼 구현하기"></a>팩토리얼 구현하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">factorial</span>():</span><br><span class="line">  <span class="built_in">print</span>(<span class="string">&quot;a를 입력하세요&quot;</span>)</span><br><span class="line">  a = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">  <span class="built_in">print</span>(<span class="built_in">type</span>(a))</span><br><span class="line">  result = <span class="number">1</span></span><br><span class="line">  <span class="keyword">for</span> num <span class="keyword">in</span> <span class="built_in">range</span>(a):</span><br><span class="line">    num = num + <span class="number">1</span></span><br><span class="line">    result = result * num</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">factorial()</span><br></pre></td></tr></table></figure>
+
+<pre><code>a를 입력하세요
+3
+&lt;class &#39;int&#39;&gt;
+
+
+
+
+
+6
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/22/0322_basic_grammar_prac_2/" data-id="cl11x33jo0001x8nh0pjsched" data-title="파이썬 기초문법 연습2" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-0321_basic_grammar_prac" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/21/0321_basic_grammar_prac/" class="article-date">
@@ -85,7 +472,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/21/0321_basic_grammar_prac/">파이썬 기초문법 연습</a>
+      <a class="p-name article-title" href="/2022/03/21/0321_basic_grammar_prac/">파이썬 기초문법 연습1</a>
     </h1>
   
 
@@ -421,7 +808,7 @@ a#b#c#d
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/21/0321_basic_grammar_prac/" data-id="cl10hdq770000isnhao11hva7" data-title="파이썬 기초문법 연습" class="article-share-link">Share</a>
+      <a data-url="https://woobinhwang.github.io/2022/03/21/0321_basic_grammar_prac/" data-id="cl10hdq770000isnhao11hva7" data-title="파이썬 기초문법 연습1" class="article-share-link">Share</a>
       
       
       
@@ -986,56 +1373,12 @@ a#b#c#d
 
 
   
-    <article id="post-anaconda_install.md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/10/anaconda_install.md/" class="article-date">
-  <time class="dt-published" datetime="2022-03-10T00:00:00.000Z" itemprop="datePublished">2022-03-10</time>
-</a>
+
+
+  <nav id="page-nav">
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/10/anaconda_install.md/">아나콘다 설치</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="아나콘다-설치"><a href="#아나콘다-설치" class="headerlink" title="아나콘다 설치"></a>아나콘다 설치</h1><h1 id="웹사이트"><a href="#웹사이트" class="headerlink" title="웹사이트"></a>웹사이트</h1><ul>
-<li>주소: <a target="_blank" rel="noopener" href="https://www.**anaconda**.com/products/individual-b#Downloads">https://www.**anaconda**.com/products/individual-b#Downloads</a></li>
-<li>깃허브에서 R_edu 프로젝트를 다운로드 받는다.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> 주소</span><br></pre></td></tr></table></figure>
-
-<p>- </p>
-<ul>
-<li>다운로드 받는다.</li>
-</ul>
-<p><img src="/Images/anaconda_install/Untitled.png" alt="Untitled"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/10/anaconda_install.md/" data-id="cl0w0kcap0000monhf5nv5zpl" data-title="아나콘다 설치" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -1066,7 +1409,15 @@ a#b#c#d
       <ul>
         
           <li>
-            <a href="/2022/03/21/0321_basic_grammar_prac/">파이썬 기초문법 연습</a>
+            <a href="/2022/03/22/0322_basic_grammar_prac_3/">파이썬 기초문법 연습3</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/22/0322_basic_grammar_prac_2/">파이썬 기초문법 연습2</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/21/0321_basic_grammar_prac/">파이썬 기초문법 연습1</a>
           </li>
         
           <li>
@@ -1075,14 +1426,6 @@ a#b#c#d
         
           <li>
             <a href="/2022/03/18/0318_distribute_Github_Upload/">배포 - 깃허브 올리기</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/18/0318_distribute_github_blog/">배포 - 깃허브 블로그(hexo)</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/18/0318_File_Upload(Markdown)/">배포 - 파일 업로드(Markdown 형식)</a>
           </li>
         
       </ul>
