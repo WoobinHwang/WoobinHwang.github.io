@@ -71,9 +71,213 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-colab_intro.ipynb" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-0318_distribute_Github_Upload" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/03/17/colab_intro.ipynb/" class="article-date">
+    <a href="/2022/03/18/0318_distribute_Github_Upload/" class="article-date">
+  <time class="dt-published" datetime="2022-03-18T00:00:00.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/0318_distribute_Github_Upload/">배포 - 깃허브 올리기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="깃헙-올리기"><a href="#깃헙-올리기" class="headerlink" title="깃헙 올리기"></a>깃헙 올리기</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md   (README.md 파일만 올릴 때)</span><br><span class="line">$ git add .   (모든 파일 올릴 때)</span><br><span class="line">$ git commit -m <span class="string">&quot;~~&quot;</span>   (브랜치에 기록)</span><br><span class="line">$ git push  (깃허브에 보내기)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/18/0318_distribute_Github_Upload/" data-id="cl0w5pf4y0000i0nhb2bw4ewb" data-title="배포 - 깃허브 올리기" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0318_distribute_github_blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/18/0318_distribute_github_blog/" class="article-date">
+  <time class="dt-published" datetime="2022-03-18T00:00:00.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/0318_distribute_github_blog/">배포 - 깃허브 블로그(hexo)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="깃허브-블로그-hexo"><a href="#깃허브-블로그-hexo" class="headerlink" title="깃허브 블로그(hexo)"></a>깃허브 블로그(hexo)</h1><p>ex) 는 형식에 맞춰서  재작성, 없으면 그대로 적으면 됨.</p>
+<h2 id="필수-파일-설치"><a href="#필수-파일-설치" class="headerlink" title="필수 파일 설치"></a>필수 파일 설치</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="http://nodejs.org/">nodejs.org</a> 설치  (16.14.1 LTS 사용)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v   로 버전 확인 가능</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://git-scm.com/">git-scm.com</a> 다운로드</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git -version   으로 확인 가능</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo 설치  (npm을 통해서 설치 가능)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="깃허브-설정"><a href="#깃허브-설정" class="headerlink" title="깃허브 설정"></a>깃허브 설정</h2><ul>
+<li><p>Repositories (<strong>이하 Repo</strong>)는 백업용 + 배포용 두가지를 권장</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">배포용 ex)</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;# &lt;폴더명&gt;&quot;</span> &gt;&gt; README.md</span><br><span class="line">$ git init   (git 초기화)</span><br><span class="line">$ git add README.md   (모든 파일 올릴땐 git add .)</span><br><span class="line">$ git commit -m <span class="string">&quot;first commit&quot;</span>   (-m <span class="string">&quot;~~&quot;</span>필수)</span><br><span class="line">$ git branch -M main   (브랜치를 main으로 전환)</span><br><span class="line">$ git remote add origin https://github.com/WoobinHwang/&lt;폴더명&gt;.gitgit push -u origin main   </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>백업용 Repo를 git clone을 통해 적당한 경로로 내려받는다.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ex)  $ git <span class="built_in">clone</span> your_git_repo_address.git</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="블로그-만들기"><a href="#블로그-만들기" class="headerlink" title="블로그 만들기"></a>블로그 만들기</h2><ul>
+<li><p>폴더 만들기</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> &lt;폴더명&gt;   (<span class="built_in">mkdir</span> == make directory)</span><br><span class="line">$ <span class="built_in">cd</span> &lt;폴더명&gt;   (<span class="built_in">cd</span> == 해당 폴더로 접속)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>폴더의 Hexo를 초기화 후 설치</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex)  $ hexo init &lt;폴더명&gt;</span><br><span class="line">ex)  $ <span class="built_in">cd</span> &lt;폴더명&gt;</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-server --save</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>_config.yml 파일 설정</p>
+<ul>
+<li>사이트 정보 수정</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex)</span><br><span class="line">title: 제목을 지어주세요</span><br><span class="line">subtitle: 부제목을 지어주세요</span><br><span class="line">description: description을 지어주세요</span><br><span class="line">author: YourName</span><br></pre></td></tr></table></figure>
+<ul>
+<li>블로그 url 설정</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex)</span><br><span class="line">url: https://유저네임.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>깃허브 연동</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ex)</span><br><span class="line"># Deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/유저네임/유저네임.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="깃허브-hexo-에-배포하기"><a href="#깃허브-hexo-에-배포하기" class="headerlink" title="깃허브(hexo)에 배포하기"></a>깃허브(hexo)에 배포하기</h2><p>- </p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server  (<span class="built_in">local</span>에서 확인)</span><br><span class="line">$ hexo generate  (수정 파일 확인 가능)</span><br><span class="line">$ hexo deploy   (깃헙 , hexo에 업로드)</span><br><span class="line"><span class="comment"># == hexo generate --deploy (두 작업 동시에 가능)</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="테마-적용하기"><a href="#테마-적용하기" class="headerlink" title="테마 적용하기"></a>테마 적용하기</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/#install-npm">https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/#install-npm</a></p>
+</li>
+<li><p>예시 - 이카루스 적용하기</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -S hexo-theme-icarus</span><br><span class="line">$ hexo config theme icarus</span><br><span class="line">$ npm install --save bulma-stylus@0.8.0 hexo-renderer-inferno@^0.1.3</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/18/0318_distribute_github_blog/" data-id="cl0w5pf5i0001i0nh2cv69im0" data-title="배포 - 깃허브 블로그(hexo)" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0318_File_Upload(Markdown)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/18/0318_File_Upload(Markdown)/" class="article-date">
+  <time class="dt-published" datetime="2022-03-18T00:00:00.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/0318_File_Upload(Markdown)/">배포 - 파일 업로드(Markdown 형식)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="파일-업로드-markdown-형식"><a href="#파일-업로드-markdown-형식" class="headerlink" title="파일 업로드(markdown 형식)"></a>파일 업로드(markdown 형식)</h1><h2 id="R-gt-hexo"><a href="#R-gt-hexo" class="headerlink" title="R - &gt; hexo"></a>R - &gt; hexo</h2><ul>
+<li>R 상단 창 예시</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: <span class="string">&quot;title_name&quot;</span></span><br><span class="line">author: <span class="string">&quot;Woobin&quot;</span></span><br><span class="line"><span class="built_in">date</span>: <span class="string">&#x27;2022-mm-dd&#x27;</span></span><br><span class="line">output:</span><br><span class="line">	html_document:</span><br><span class="line">		keep_md: <span class="literal">true</span></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>knit 실행시  &lt;파일명&gt;.md,  &lt;파일명&gt;.html,  &lt;파일명&gt;_files 가 생성됨.</p>
+</li>
+<li><p>source &#x2F; _posts 폴더로 &lt;파일명&gt;.md 파일 옮기기<br>source &#x2F; Images 폴더로 &lt;파일명&gt;_files 폴더 옮기기</p>
+</li>
+<li><p>이미지 파일이 있으면 md 파일에서 주소 설정 필요<br>ex)  &#x2F;Images&#x2F; ~해당 이미지가 있는 주소명까지</p>
+<p>  <img src="/Images/0318_File_Upload(Markdown)/Untitled.png" alt="Untitled"></p>
+</li>
+<li><p>hexo server로 확인해보기</p>
+</li>
+</ul>
+<h2 id="Notion-gt-hexo"><a href="#Notion-gt-hexo" class="headerlink" title="Notion - &gt; hexo"></a>Notion - &gt; hexo</h2><p><img src="/Images/0318_File_Upload(Markdown)/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>노션의 상단 …에서 내보내기 (Markdown형식)</li>
+<li>압축 해제 후<br>source &#x2F; _posts 폴더로 &lt;파일명&gt;.md 파일 옮기기<br>source &#x2F; Images 폴더로 &lt;파일명&gt;_files 폴더 옮기기</li>
+<li>md 파일에서 이미지 파일의 경로가 이상하게 지정되어 있어 바꿔야함.</li>
+</ul>
+<p><img src="/Images/0318_File_Upload(Markdown)/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>Copy Path&#x2F;Reference… 클릭</li>
+</ul>
+<p><img src="/Images/0318_File_Upload(Markdown)/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>Path From Repository Root 선택<br>기본적으로 source는 잡혀있으니까 제외하고 &#x2F;Images&#x2F;~파일명 으로 교체</li>
+<li>hexo server 로 확인</li>
+</ul>
+<h2 id="JupyterLab-gt-hexo"><a href="#JupyterLab-gt-hexo" class="headerlink" title="JupyterLab - &gt; hexo"></a>JupyterLab - &gt; hexo</h2><ul>
+<li>anaconda를 관리자 권한으로 실행</li>
+<li>JupyterLab 실행</li>
+<li>Save and Export Notebook As…  - &gt; Markdown으로 압축 후 바탕화면에서 압축해제</li>
+</ul>
+<p><img src="/Images/0318_File_Upload(Markdown)/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>source &#x2F; _posts 폴더로 &lt;파일명&gt;.md 파일 옮기기<br>source &#x2F; Images 폴더로 &lt;파일명&gt;_files 폴더 옮기기</li>
+<li>이미지 파일이 있으면 md 파일에서 주소 설정 필요<br>ex)  &#x2F;Images&#x2F; ~해당 이미지가 있는 주소명까지</li>
+</ul>
+<p><img src="/Images/0318_File_Upload(Markdown)/Untitled%205.png" alt="Untitled"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/18/0318_File_Upload(Markdown)/" data-id="cl0w5xnrg0002i0nh8hfhcpf9" data-title="배포 - 파일 업로드(Markdown 형식)" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0319_Colab_Intro" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/17/0319_Colab_Intro/" class="article-date">
   <time class="dt-published" datetime="2022-03-17T00:00:00.000Z" itemprop="datePublished">2022-03-17</time>
 </a>
     
@@ -85,7 +289,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/17/colab_intro.ipynb/">Corab_intro</a>
+      <a class="p-name article-title" href="/2022/03/17/0319_Colab_Intro/">Corab_intro</a>
     </h1>
   
 
@@ -182,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/17/colab_intro.ipynb/" data-id="cl0w339s90000t0nh275r48xr" data-title="Corab_intro" class="article-share-link">Share</a>
+      <a data-url="https://woobinhwang.github.io/2022/03/17/0319_Colab_Intro/" data-id="cl14rkptx0003q4nhbgyz7fpu" data-title="Corab_intro" class="article-share-link">Share</a>
       
       
       
@@ -194,127 +398,9 @@
 
 
   
-    <article id="post-0315_statistics" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-0314_report2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/03/15/0315_statistics/" class="article-date">
-  <time class="dt-published" datetime="2022-03-15T00:00:00.000Z" itemprop="datePublished">2022-03-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/15/0315_statistics/">분석방법</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="기술통계"><a href="#기술통계" class="headerlink" title="기술통계"></a>기술통계</h3><ul>
-<li>평균, 최솟값, 최댓값, 중앙값과같이 데이터의 특징을 알려주는 값.</li>
-<li>기술통계(descriptive statistics)라고 함.</li>
-</ul>
-<h3 id="추론통계"><a href="#추론통계" class="headerlink" title="추론통계"></a>추론통계</h3><ul>
-<li>변수간의 관계를 파악, 변수간의 인과관계 또는 새로운 사실 밝혀냄</li>
-<li>평균 차이 검정, 교차분석, 상관관계분석, 회귀분석</li>
-<li>귀무가설: 두 집단의 평균 차이가 없다. (현상황을 유지 할 필요가 있음)</li>
-<li>대립가설: 두 집단의 평균 차이가 있다. (현상황을 바꿀 필요가 있음)</li>
-</ul>
-<h2 id="평균차이검정"><a href="#평균차이검정" class="headerlink" title="평균차이검정"></a>평균차이검정</h2><ul>
-<li>집단별로 평균의 차이가 실제로 있는가 검정</li>
-<li>독립표본 t 검정</li>
-<li>방법1 : t.test(data&#x3D; 데이터세트, 종속변수(비교값)~독립변수(비교대상))</li>
-<li>방법2 : t.test(데이터세트$종속변수(비교값)~데이터세트$독립변수(비교대상))</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">t.test<span class="punctuation">(</span>data <span class="operator">=</span> mpg1<span class="punctuation">,</span> cty<span class="operator">~</span> trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Welch Two Sample t-test</span><br><span class="line">## </span><br><span class="line">## data:  cty by trans</span><br><span class="line">## t = -4.5375, df = 132.32, p-value = 1.263e-05</span><br><span class="line">## alternative hypothesis: true difference in means between group auto and group manual is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  -3.887311 -1.527033</span><br><span class="line">## sample estimates:</span><br><span class="line">##   mean in group auto mean in group manual </span><br><span class="line">##             15.96815             18.67532</span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value &#x3D; 1.263e-05로 0.05보다 작으므로 평균차이가 있는 대립가설을 채택</p>
-<h2 id="교차분석"><a href="#교차분석" class="headerlink" title="교차분석"></a>교차분석</h2><ul>
-<li>범주형 변수로 구성된 집단들의 관련성을 검정하는 통계 분석.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span>  <span class="comment">#trans, drv의 교차분석</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##           4  f  r</span><br><span class="line">##   auto   75 65 17</span><br><span class="line">##   manual 28 41  8</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop.table<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">)</span>  <span class="comment">#auto, manual의 비율분석</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                  4         f         r</span><br><span class="line">##   auto   0.4777070 0.4140127 0.1082803</span><br><span class="line">##   manual 0.3636364 0.5324675 0.1038961</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s Chi-squared test</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$trans and mpg1$drv</span><br><span class="line">## X-squared = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># == chisq.test(table(mpg1$trans, mpg1$drv))</span></span><br><span class="line"><span class="comment"># == summary(table(mpg1$trans, mpg1$drv))  </span></span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value &#x3D; 0.2084로 0.05보다 크므로 귀무가설을 채택</p>
-<h2 id="상관관계분석"><a href="#상관관계분석" class="headerlink" title="상관관계분석"></a>상관관계분석</h2><ul>
-<li>변수간의 상관관계를 알아보는것</li>
-<li>방법 : cor.test(데이터세트$ 비교변수1, 데이터세트$비교변수2)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">cor.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span> mpg1<span class="operator">$</span>hwy<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s product-moment correlation</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$cty and mpg1$hwy</span><br><span class="line">## t = 49.585, df = 232, p-value &lt; 2.2e-16</span><br><span class="line">## alternative hypothesis: true correlation is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  0.9433129 0.9657663</span><br><span class="line">## sample estimates:</span><br><span class="line">##       cor </span><br><span class="line">## 0.9559159</span><br></pre></td></tr></table></figure>
-<p>p-value &lt; 2.2e-16로 0.05보다 작으므로 대립가설을 채택</p>
-<h2 id="회귀분석"><a href="#회귀분석" class="headerlink" title="회귀분석"></a>회귀분석</h2><ul>
-<li>한 변수가 다른 변수에 영향을 주는것</li>
-</ul>
-<h1 id="단순회귀분석"><a href="#단순회귀분석" class="headerlink" title="단순회귀분석"></a>단순회귀분석</h1><ul>
-<li>독립변수가 1개, 종속변수가 1개</li>
-<li>변수는 독립변수와 종속변수가 모두 등간척도 또는 비율척도이어야합니다.</li>
-<li>방법 1 : lm(dat&#x3D; 데이터세트, 종속변수 ~ 독립변수)</li>
-<li>방법 2 : lm(종속변수 ~ 독립변수, data &#x3D; 데이터세트)</li>
-<li>방법 3 : lm(데이터세트$종속변수~ 데이터세트$독립변수)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span>disp<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">## (Intercept)         disp  </span><br><span class="line">##    29.59985     -0.04122</span><br></pre></td></tr></table></figure>
-<p>-&gt; 29.59985 - 0.04122 * disp 라는 식이 도출됨.</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">=</span> lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span>disp<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##     Min      1Q  Median      3Q     Max </span><br><span class="line">## -4.8922 -2.2022 -0.9631  1.6272  7.2305 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.041215   0.004712  -8.747 9.38e-10 ***</span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 3.251 on 30 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 </span><br><span class="line">## F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value: 9.38e-10로 0.05보다 작으므로 회귀모형이 적합<br>-&gt; 회귀식으로 mpg&#x3D; -0.04122 * disp + 29.59985 라는 식이 도출됨.</p>
-<h1 id="다중회귀분석"><a href="#다중회귀분석" class="headerlink" title="다중회귀분석"></a>다중회귀분석</h1><ul>
-<li>종속변수에 영향을 주는 독립변수가 복수일때 분석하는 방식</li>
-<li>방법 1 : lm(data &#x3D; 데이터세트, 종속변수~ 독립변수1 + 독립변수2 + …)</li>
-<li>방법 2 : lm(종족변수~ 독립변수1+ 독립변수2+ … , data &#x3D; 데이터세트)</li>
-<li>방법 3 : lm(데이터세트$종속변수~ 데이터세트$독립변수1+ 데이터세트$독립변수2+ …)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span> disp<span class="operator">+</span> hp<span class="operator">+</span> wt<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">## (Intercept)         disp           hp           wt  </span><br><span class="line">##   37.105505    -0.000937    -0.031157    -3.800891</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># == lm(mpg~ disp+ hp+ wt, data= mtcars)</span></span><br><span class="line"><span class="comment"># ==lm(mtcars$mpg~ mtcars$disp+ mtcars$hp+ mtcars$wt)</span></span><br></pre></td></tr></table></figure>
-<p>-&gt; mpg &#x3D; 37.105505 - (0.000937 * disp) - (0.031157 * hp) - (3.800891 * wt) 라는 다중 회귀식이 도출됨.<br>-&gt; 하지만, summary() 함수로 유의수준을 확인 할 필요가 있음</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">=</span> lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span> disp<span class="operator">+</span> hp<span class="operator">+</span> wt<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##    Min     1Q Median     3Q    Max </span><br><span class="line">## -3.891 -1.640 -0.172  1.061  5.861 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 37.105505   2.110815  17.579  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.000937   0.010350  -0.091  0.92851    </span><br><span class="line">## hp          -0.031157   0.011436  -2.724  0.01097 *  </span><br><span class="line">## wt          -3.800891   1.066191  -3.565  0.00133 ** </span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 2.639 on 28 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.8268,	Adjusted R-squared:  0.8083 </span><br><span class="line">## F-statistic: 44.57 on 3 and 28 DF,  p-value: 8.65e-11</span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value: 8.65e-11로 0.001보다 작으므로 회귀모형이 적합<br>-&gt; disp의 Pr(&gt;|t|)값이 0.92851로 0.05보다 높으므로 <em>유의수준 부적합</em><br>-&gt; mpg는 disp에 영향을 받지 않고 hp, wt의 영향을 받음.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/15/0315_statistics/" data-id="cl0vzchhq0003iwnhb9di4t8z" data-title="분석방법" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-report2" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/14/report2/" class="article-date">
+    <a href="/2022/03/14/0314_report2/" class="article-date">
   <time class="dt-published" datetime="2022-03-14T00:00:00.000Z" itemprop="datePublished">2022-03-14</time>
 </a>
     
@@ -326,7 +412,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/14/report2/">마크다운 연습</a>
+      <a class="p-name article-title" href="/2022/03/14/0314_report2/">마크다운 연습</a>
     </h1>
   
 
@@ -357,7 +443,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/14/report2/" data-id="cl0vzi4x80004iwnhc4x75rsh" data-title="마크다운 연습" class="article-share-link">Share</a>
+      <a data-url="https://woobinhwang.github.io/2022/03/14/0314_report2/" data-id="cl14rlchy0004q4nh63and0in" data-title="마크다운 연습" class="article-share-link">Share</a>
       
       
       
@@ -369,9 +455,9 @@
 
 
   
-    <article id="post-anaconda_install.md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-0318_anaconda_install.md" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2022/03/10/anaconda_install.md/" class="article-date">
+    <a href="/2022/03/10/0318_anaconda_install.md/" class="article-date">
   <time class="dt-published" datetime="2022-03-10T00:00:00.000Z" itemprop="datePublished">2022-03-10</time>
 </a>
     
@@ -383,7 +469,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/10/anaconda_install.md/">아나콘다 설치</a>
+      <a class="p-name article-title" href="/2022/03/10/0318_anaconda_install.md/">아나콘다 설치</a>
     </h1>
   
 
@@ -406,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/10/anaconda_install.md/" data-id="cl0w0kcap0000monhf5nv5zpl" data-title="아나콘다 설치" class="article-share-link">Share</a>
+      <a data-url="https://woobinhwang.github.io/2022/03/10/0318_anaconda_install.md/" data-id="cl14rjy5j0002q4nh501e8dlb" data-title="아나콘다 설치" class="article-share-link">Share</a>
       
       
       
@@ -454,23 +540,23 @@
       <ul>
         
           <li>
+            <a href="/2022/03/24/0324_Pandas_Tutorial_02/">Pandas 연습2</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/24/0324_Visualization_Tutorial_01/">시각화 연습1</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/23/0323_NumPy_01/">Numpy 연습</a>
           </li>
         
           <li>
-            <a href="/2022/03/23/0323_Pandas_tutorial/">Pandas 연습</a>
+            <a href="/2022/03/23/0323_Pandas_tutorial/">Pandas 연습1</a>
           </li>
         
           <li>
             <a href="/2022/03/23/0323_10minutes_pandas/">Pandas-10minutes</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/22/0322_basic_grammar_prac_3/">파이썬 기초문법 연습3</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/22/0322_basic_grammar_prac_2/">파이썬 기초문법 연습2</a>
           </li>
         
       </ul>
