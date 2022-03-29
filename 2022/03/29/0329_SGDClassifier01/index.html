@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>확률적 경사 하강법 01 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="경사 하강법이 쓰인 여러 알고리즘    - (이미지, 택스트) 딥러닝 기초 알고리즘     - 트리 알고리즘 + 경사하강법 융합 &#x3D; 부스팅계열       - LightGBM, Xgboost, Catboost         ex 1등으로 자주 쓰인 알고리즘: LightGBM, Xgboost         - 하이퍼 파라미터의 개수가 80개가 넘음  SGDCl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="확률적 경사 하강법 01">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/03/29/0329_SGDClassifier01/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="경사 하강법이 쓰인 여러 알고리즘    - (이미지, 택스트) 딥러닝 기초 알고리즘     - 트리 알고리즘 + 경사하강법 융합 &#x3D; 부스팅계열       - LightGBM, Xgboost, Catboost         ex 1등으로 자주 쓰인 알고리즘: LightGBM, Xgboost         - 하이퍼 파라미터의 개수가 80개가 넘음  SGDCl">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woobinhwang.github.io/output_14_0.png">
+<meta property="article:published_time" content="2022-03-29T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-29T08:33:15.360Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woobinhwang.github.io/output_14_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0329_SGDClassifier01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/29/0329_SGDClassifier01/" class="article-date">
+  <time class="dt-published" datetime="2022-03-29T00:00:00.000Z" itemprop="datePublished">2022-03-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      확률적 경사 하강법 01
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="경사-하강법이-쓰인-여러-알고리즘"><a href="#경사-하강법이-쓰인-여러-알고리즘" class="headerlink" title="경사 하강법이 쓰인 여러 알고리즘"></a>경사 하강법이 쓰인 여러 알고리즘</h1><pre><code>    - (이미지, 택스트) 딥러닝 기초 알고리즘
+    - 트리 알고리즘 + 경사하강법 융합 = 부스팅계열
+      - LightGBM, Xgboost, Catboost
+        ex 1등으로 자주 쓰인 알고리즘: LightGBM, Xgboost
+        - 하이퍼 파라미터의 개수가 80개가 넘음
+</code></pre>
+<h1 id="SGDClassifier"><a href="#SGDClassifier" class="headerlink" title="SGDClassifier"></a>SGDClassifier</h1><ul>
+<li><p>확률적 경사하강법 분류기</p>
+</li>
+<li><p>1회에 1개의 데이터씩 뽑기: 확률적 경사 하강법</p>
+</li>
+<li><p>1회에 여러개의 데이터씩 뽑기: 미니배치 경사 하강법</p>
+</li>
+<li><p>1회에 모든 데이터를 뽑기: 배치 경사 하강법</p>
+</li>
+<li><p>에포크: 훈련세트를 한번 모두 사용하는 과정</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">fish = pd.read_csv(<span class="string">&quot;https://bit.ly/fish_csv_data&quot;</span>)</span><br><span class="line">fish.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 159 entries, 0 to 158
+Data columns (total 6 columns):
+ #   Column    Non-Null Count  Dtype  
+---  ------    --------------  -----  
+ 0   Species   159 non-null    object 
+ 1   Weight    159 non-null    float64
+ 2   Length    159 non-null    float64
+ 3   Diagonal  159 non-null    float64
+ 4   Height    159 non-null    float64
+ 5   Width     159 non-null    float64
+dtypes: float64(5), object(1)
+memory usage: 7.6+ KB
+</code></pre>
+<ul>
+<li>배열로 변환하는 코드<ul>
+<li>독립변수 &#x3D; fish_input</li>
+<li>종속변수 &#x3D; fish_target</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fish_input = fish[[<span class="string">&quot;Weight&quot;</span>, <span class="string">&quot;Length&quot;</span>, <span class="string">&quot;Diagonal&quot;</span>, <span class="string">&quot;Height&quot;</span>, <span class="string">&quot;Width&quot;</span>]].to_numpy()</span><br><span class="line">fish_target= fish[<span class="string">&quot;Species&quot;</span>].to_numpy()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>훈련세트와 테스트세트로 분리</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    fish_input, fish_target, random_state= <span class="number">42</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape,</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>((119, 5), (40, 5), (119,), (40,))
+</code></pre>
+<ul>
+<li>표준화 처리<ul>
+<li>다시 한번 강조하지만 꼭 훈련 세트로 학습한 통계값으로 테스트 세트도 변환한다.</li>
+<li>키워드: Data Leakage 방지 (나중에 찾아볼것)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss = StandardScaler()</span><br><span class="line">ss.fit(train_input)  <span class="comment"># 변환 전 훈련세트 학습</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ss훈련 데이터만 활용해서 학습이 끝난 상태</span></span><br><span class="line"><span class="comment"># 표준화 처리를 훈련데이터와 테스트데이터에 동시 적용</span></span><br><span class="line">train_scaled = ss.transform(train_input)  <span class="comment"># 변환</span></span><br><span class="line">test_scaled = ss.transform(test_input)  <span class="comment"># 변환</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="모델-학습"><a href="#모델-학습" class="headerlink" title="모델 학습"></a>모델 학습</h1><ul>
+<li>2개의 매개 변수 지정</li>
+<li>loss&#x3D; “log”&#x3D;  로지스틱 손실 함수로 지정</li>
+<li>max_iter &#x3D; 에포크 횟수 지정</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment"># 매개변수 지정</span></span><br><span class="line"><span class="comment"># 하이퍼파라미터 설정</span></span><br><span class="line"><span class="comment"># 매개변수 값을 dictionary 형태로 추가하는 코드 작성 가능</span></span><br><span class="line"><span class="comment"># 입문자들에게는 비추천</span></span><br><span class="line">sc = SGDClassifier(loss=<span class="string">&quot;log&quot;</span>, max_iter= <span class="number">100</span>, random_state= <span class="number">42</span>)</span><br><span class="line">sc.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(sc.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(sc.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8403361344537815
+0.8
+</code></pre>
+<ul>
+<li>적절한 에포크 숫자 찾기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">sc = SGDClassifier(loss= <span class="string">&quot;log&quot;</span>, max_iter=<span class="number">100</span>, tol=<span class="literal">None</span>, random_state= <span class="number">42</span>)</span><br><span class="line">train_score=[]</span><br><span class="line">test_score= []</span><br><span class="line">classes = np.unique(train_target)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="number">300</span>):  <span class="comment"># 에포크값 0 ~ 300  , # &quot;_&quot;도 변수가 될 수 있음</span></span><br><span class="line">  sc.partial_fit(train_scaled, train_target, classes= classes)  <span class="comment"># 훈련</span></span><br><span class="line">  train_score.append(sc.score(train_scaled, train_target))  <span class="comment"># 점수로 나오는 값들을 append()</span></span><br><span class="line">  test_score.append(sc.score(test_scaled, test_target))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_score[:<span class="number">5</span>])</span><br><span class="line"><span class="built_in">print</span>(test_score[:<span class="number">5</span>])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.5294117647058824, 0.6218487394957983, 0.6386554621848739, 0.7310924369747899, 0.7226890756302521]
+[0.65, 0.55, 0.575, 0.7, 0.7]
+</code></pre>
+<ul>
+<li>모형학습 시각화</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(train_score)</span><br><span class="line">ax.plot(test_score)</span><br><span class="line">ax.set_xlabel(<span class="string">&quot;Epoch&quot;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&quot;accuracy&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/output_14_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sc = SGDClassifier(loss=<span class="string">&quot;log&quot;</span>, max_iter=<span class="number">100</span>, tol=<span class="literal">None</span>, random_state=<span class="number">42</span>)  <span class="comment"># 반복횟수 100 , # tol(): 반복을 멈추는 기준</span></span><br><span class="line">sc.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(sc.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(sc.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.957983193277311
+0.925
+</code></pre>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>확률적 경사 하강법: 훈련세트에서 샘플 하나씩 꺼내 손실 함수의 경사를 따라 최적의 모델링을 찾는 알고리즘</li>
+<li>손실함수: 확률적 경사 하강법이 최적화 할 대상<ul>
+<li>ex) 이진분류에는 로지스틱 회귀 손실함수를 사용</li>
+</ul>
+</li>
+<li>에포크: 확률적 경사 하강법에서 전체 샘플을 모두 사용하는 한 번 반복을 의미</li>
+</ul>
+</li>
+<li>Scikit-Learn 패키지<ul>
+<li>SGDClassifier: 확률적 경사 하강법을 사용한 분류모델을 만듬<ul>
+<li>매개변수 loss: 최적화 할 손실함수를 지정. 로지스틱 회귀를 위해서는 log로 지정. [default: hinge](서포트 벡터 머신)</li>
+<li>매개변수 max_iter: 에포크 횟수를 지정 [default: 1000]</li>
+<li>매개변수 tol: 반복을 멈출 조건 [default: 0.001]</li>
+</ul>
+</li>
+<li>SGDRegressor: 확률적 경사 하강법을 사용한 회귀모델을 만듬<ul>
+<li>매개변수 loss: 손실함수를 지정 [default: squared_loss](제곱오차를 나타냄)</li>
+<li>매개변수 max_iter: 에포크 횟수를 지정 [default: 1000]</li>
+<li>매개변수 tol: 반복을 멈출 조건 [default: 0.001]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/29/0329_SGDClassifier01/" data-id="cl1bvqxx90001f0nh6vxlhl4j" data-title="확률적 경사 하강법 01" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/29/0329_LogisticRegression_01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          로지스틱 회귀 01
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/28/0328_Regression_01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">k-최근접 이웃 회귀 01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/29/0329_LogisticRegression_01/">로지스틱 회귀 01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/29/0329_SGDClassifier01/">확률적 경사 하강법 01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/28/0328_Regression_01/">k-최근접 이웃 회귀 01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/28/0328_Regression_02/">k-최근접 이웃 회귀 02</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/28/0328_Regression_03/">k-최근접 이웃 회귀 03</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
