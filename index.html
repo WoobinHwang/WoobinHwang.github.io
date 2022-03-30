@@ -336,7 +336,7 @@
 
 <pre><code>&lt;function matplotlib.pyplot.show&gt;
 </code></pre>
-<p><img src="/output_17_1.png" alt="png"></p>
+<p><img src="/Images/0329_LogisticRegression_01/output_17_1.png" alt="png"></p>
 <pre><code>    시그모이드 함수의 출력이 0.5보다 크면 양성 클래스, 0.5보다 작으면 음성 클래스로 판단
     0.5일때는 라이브러리마다 다르지만 사이킷런은 음성클래스로 판단.
 </code></pre>
@@ -548,7 +548,7 @@ memory usage: 7.6+ KB
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(train_score)</span><br><span class="line">ax.plot(test_score)</span><br><span class="line">ax.set_xlabel(<span class="string">&quot;Epoch&quot;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&quot;accuracy&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_14_0.png" alt="png"></p>
+<p><img src="/Images/0329_SGDClassifier01/output_14_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sc = SGDClassifier(loss=<span class="string">&quot;log&quot;</span>, max_iter=<span class="number">100</span>, tol=<span class="literal">None</span>, random_state=<span class="number">42</span>)  <span class="comment"># 반복횟수 100 , # tol(): 반복을 멈추는 기준</span></span><br><span class="line">sc.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(sc.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(sc.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
 
 <pre><code>0.957983193277311
