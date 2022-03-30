@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>앙상블_학습_01 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="트리의 앙상블 LightGBM ( 중요 ) GBM –&gt; XGBoost –&gt; LightGBM 참고1. 모델 개발 속도가 빨라졌나? 참고2. 모델의 성능이 좋아졌나?   TabNet (2019) 딥러닝  컨셉    랜덤 포레스트(Forest) 결정 트리 나무를 500갸 심기 최종적인 결정은 투표 방식 나무 1 : 양성 나무 2 : 음성 나무 3 :">
+<meta property="og:type" content="article">
+<meta property="og:title" content="앙상블_학습_01">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/03/30/0330_Ensemble_Learning01/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="트리의 앙상블 LightGBM ( 중요 ) GBM –&gt; XGBoost –&gt; LightGBM 참고1. 모델 개발 속도가 빨라졌나? 참고2. 모델의 성능이 좋아졌나?   TabNet (2019) 딥러닝  컨셉    랜덤 포레스트(Forest) 결정 트리 나무를 500갸 심기 최종적인 결정은 투표 방식 나무 1 : 양성 나무 2 : 음성 나무 3 :">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-03-30T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-30T11:29:24.498Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0330_Ensemble_Learning01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/30/0330_Ensemble_Learning01/" class="article-date">
+  <time class="dt-published" datetime="2022-03-30T00:00:00.000Z" itemprop="datePublished">2022-03-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      앙상블_학습_01
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="트리의-앙상블"><a href="#트리의-앙상블" class="headerlink" title="트리의 앙상블"></a>트리의 앙상블</h1><ul>
+<li>LightGBM ( 중요 )<ul>
+<li>GBM –&gt; XGBoost –&gt; LightGBM</li>
+<li>참고1. 모델 개발 속도가 빨라졌나?</li>
+<li>참고2. 모델의 성능이 좋아졌나?</li>
+</ul>
+</li>
+<li>TabNet (2019)<ul>
+<li>딥러닝  컨셉</li>
+</ul>
+</li>
+</ul>
+<h2 id="랜덤-포레스트-Forest"><a href="#랜덤-포레스트-Forest" class="headerlink" title="랜덤 포레스트(Forest)"></a>랜덤 포레스트(Forest)</h2><ul>
+<li>결정 트리 나무를 500갸 심기</li>
+<li>최종적인 결정은 투표 방식<ul>
+<li>나무 1 : 양성</li>
+<li>나무 2 : 음성</li>
+<li>나무 3 : 양성</li>
+<li>…</li>
+<li>나무 n : 양성</li>
+<li>최종 판단 : 양성입니다!</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">wine = pd.read_csv(<span class="string">&#x27;https://bit.ly/wine_csv_data&#x27;</span>)</span><br><span class="line"></span><br><span class="line">data = wine[[<span class="string">&#x27;alcohol&#x27;</span>, <span class="string">&#x27;sugar&#x27;</span>, <span class="string">&#x27;pH&#x27;</span>]].to_numpy()</span><br><span class="line">target = wine[<span class="string">&#x27;class&#x27;</span>].to_numpy()</span><br><span class="line"></span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(data, </span><br><span class="line">                                                                      target, </span><br><span class="line">                                                                      test_size=<span class="number">0.2</span>, </span><br><span class="line">                                                                      random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>267p<ul>
+<li>cross_validate() 교차 검증 수행</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line">rf = RandomForestClassifier(n_jobs= -<span class="number">1</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">scores= cross_validate(rf, train_input, train_target,</span><br><span class="line">                      return_train_score= <span class="literal">True</span>, n_jobs= -<span class="number">1</span>)  <span class="comment"># return_train_score: 훈련세트의 점수도 같이 반환됨.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9973541965122431 0.8905151032797809
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rf.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(rf.feature_importances_)</span><br><span class="line"><span class="comment"># feature_importances_: 하나의 특성에 과도하게 집중하지 않고 좀 더 많은 특성이 훈련에 기여</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.23167441 0.50039841 0.26792718]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rf= RandomForestClassifier(oob_score= <span class="literal">True</span>, n_jobs= -<span class="number">1</span>, random_state= <span class="number">42</span>)</span><br><span class="line">rf.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(rf.oob_score_)</span><br><span class="line"><span class="comment"># oob샘플: 훈련세트에 중복을 허용하여 푸트스트랩 샘플을 만들때 포함되지 않고 남는 샘플 (=검증 세트의 역할)</span></span><br><span class="line"><span class="comment"># oob_score_: 검증 점수와 비슷한 값을 얻을 수 있음</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8934000384837406
+</code></pre>
+<h1 id="그레이디언트-부스팅"><a href="#그레이디언트-부스팅" class="headerlink" title="그레이디언트 부스팅"></a>그레이디언트 부스팅</h1><ul>
+<li>이전트리의 오차를 보완하는 방식으로 사용</li>
+<li>깊이가 얕은 트리를 사용</li>
+<li>학습률 매개변수로 속도를 조절</li>
+<li>단점: 속도가 느림.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier <span class="comment"># 깊이가 얕은 결정 트리를 사용</span></span><br><span class="line">gb = GradientBoostingClassifier(random_state= <span class="number">42</span>)</span><br><span class="line">scores= cross_validate(gb, train_input, train_target,</span><br><span class="line">                      return_train_score= <span class="literal">True</span>, n_jobs= -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8881086892152563 0.8720430147331015
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gb = GradientBoostingClassifier(n_estimators= <span class="number">500</span>, learning_rate= <span class="number">0.2</span>, random_state= <span class="number">42</span>)</span><br><span class="line">scores= cross_validate(gb, train_input, train_target,</span><br><span class="line">                      return_train_score= <span class="literal">True</span>, n_jobs= -<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;train_score&#x27;</span>]), np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9464595437171814 0.8780082549788999
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gb.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(gb.feature_importances_)</span><br><span class="line"><span class="comment">#  랜덤포레스트보다 일부 특성(당도)에 더 집중하는게 보임.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[0.15872278 0.68010884 0.16116839]
+</code></pre>
+<ul>
+<li>흐름<ul>
+<li>데이터 전처리&#x2F; 시각화</li>
+<li>기본 모형으로 전체 흐름을 설계</li>
+<li>여러모형으로 비교 대조</li>
+<li>교차 검증, 하이퍼 파라미터 성능 비교</li>
+<li>…</li>
+<li>1등하는 그날까지…??</li>
+</ul>
+</li>
+</ul>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>앙상블 학습: 더 좋은 예측 결과를 만들기 위해 여러 개의 모델을 훈련하는 머신러닝 알고리즘을 말함.</li>
+<li>랜덤 포레스트: 대표적인 결정트리ㅇ 기반의 앙상블 학습 방법으로 부트스트랩 샘플을 사용하고 랜덤하게 일부 특성을 선택하여 트리를 만드는것이 특징</li>
+<li>엑스트라 트리: 랜덤포레스트와 비슷하게 결정 트리를 사용하여 앙상블 모델을 만들지만 부트스트랩 샘플을 사용하지 않음.</li>
+<li>그레이디언트 부스팅: 결정트리를 연속적으로 추가하여 손실 함수를 최소화 하는 앙상블 방법</li>
+<li>히스토그램 기반 그레이디언트 부스팅: 그레이디언트 부스팅의 속도를 개선했으ㅜ며, 안정적인 결과와 높은 성능으로 매우 인기가 높음.</li>
+</ul>
+</li>
+<li>Scikit-learn<ul>
+<li>RandomForestClassifier: 랜덤 포레스트 분류 클래스<ul>
+<li>매개변수 n_estimators: 앙상블을 구성할 트리의 개수를 지정 [defalt: 100]</li>
+<li>매개변수 criterion: 불순도를 지정 [defalt: gini]</li>
+<li>max_depth: 트리가 성장할 최대 깊이를 지정 [defalt: None]</li>
+<li>min_samples_split: 노드를 나누기 위한 최소 샘플 개수 [defalt: 2]</li>
+<li>메게변수 max_features: 최적의 분할을 위해 탐색할 특성의 개수를 지정 [defalt: auto](특성 개수의 제곱근)</li>
+<li>매개변수 bootstrap: 부트스트랩 샘플을 사용할지 지정 [defalt: True]</li>
+<li>oob_score: OOB샘플을 사용하여 훈련한 모델을 평가할지 지정 [defalt: False]</li>
+<li>매개변수 n_jobs: 병렬 실행에 사용할 CPU코어 수를 지정 [defalt: 1](-1로 지정하면 시스템에 있는 모든 코어를 사용)</li>
+<li>GrandientBoostingClassifier: 그레이디언트 부스팅 분류 클래스</li>
+<li>매개변수 loss: 손실 함수를 지정 [defalt: deviance]</li>
+<li>매개변수 learning_rate: 트리가 앙상블에 기여하는 정도를 조절 [defalt: 0.1]</li>
+<li>매개변수 n_estimators: 부스팅 단계를 수행하는 트리의 개수</li>
+<li>매개변수 subsample: 사용할 훈련 세트의 샘플 비율을 지정 [defalt: 1]</li>
+<li>매개변수 max_depth: 개별 회귀 트리의 최대 깊이 [defalt: 3]</li>
+</ul>
+</li>
+<li>HistGradientBoostingClassifier: 히스토그램 기반 그레이디언트 부스팅 분류 클래스<ul>
+<li>매개변수 learning_rate: 학습률 또는 감쇠율 [defalt: 0.1]</li>
+<li>max_iter: 부스팅 단계를 수행하는 트리의 개수 [defalt: 100]</li>
+<li>max_bins: 입력 데이터를 나눌 구간의 개수. [defalt: 255]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/30/0330_Ensemble_Learning01/" data-id="cl1dhk3xa0002hknha9d4gut9" data-title="앙상블_학습_01" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/30/0330_Decision_Tree_01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          결정_트리_01
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/29/0329_LogisticRegression_01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">로지스틱 회귀 01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/30/0330_Cross_Validation01/">교차검증과_랜덤서치_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/30/0330_Decision_Tree_01/">결정_트리_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/30/0330_Ensemble_Learning01/">앙상블_학습_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/29/0329_LogisticRegression_01/">로지스틱 회귀 01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/29/0329_SGDClassifier01/">확률적 경사 하강법 01</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
