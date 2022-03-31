@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>K-평균_01 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="K-평균 각각의 픽셀값 (3차원 -&gt; 1차원 배열) 평균 구함  픽셀의 평균값을 활용해서 사과, 바나나, 파인애플에 근사한 이미지를 추출하는 것   어떻게 평균값을 구할 수 있을까?  K-평균 알고리즘(K-Means) 알고리즘 평균값 &#x3D; Cluster Center &#x3D; Centroid    1!wget https:&#x2F;&#x2F;bit.ly&#x2F;fru">
+<meta property="og:type" content="article">
+<meta property="og:title" content="K-평균_01">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/03/31/0331_K_Means_01/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="K-평균 각각의 픽셀값 (3차원 -&gt; 1차원 배열) 평균 구함  픽셀의 평균값을 활용해서 사과, 바나나, 파인애플에 근사한 이미지를 추출하는 것   어떻게 평균값을 구할 수 있을까?  K-평균 알고리즘(K-Means) 알고리즘 평균값 &#x3D; Cluster Center &#x3D; Centroid    1!wget https:&#x2F;&#x2F;bit.ly&#x2F;fru">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_K_Means_01/output_14_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_K_Means_01/output_16_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_K_Means_01/output_19_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_K_Means_01/output_22_0.png">
+<meta property="article:published_time" content="2022-03-31T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-31T11:16:17.377Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woobinhwang.github.io/Images/0331_K_Means_01/output_14_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0331_K_Means_01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/31/0331_K_Means_01/" class="article-date">
+  <time class="dt-published" datetime="2022-03-31T00:00:00.000Z" itemprop="datePublished">2022-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      K-평균_01
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="K-평균"><a href="#K-평균" class="headerlink" title="K-평균"></a>K-평균</h1><ul>
+<li><p>각각의 픽셀값 (3차원 -&gt; 1차원 배열) 평균 구함</p>
+<ul>
+<li>픽셀의 평균값을 활용해서 사과, 바나나, 파인애플에 근사한 이미지를 추출하는 것</li>
+</ul>
+</li>
+<li><p>어떻게 평균값을 구할 수 있을까?</p>
+<ul>
+<li>K-평균 알고리즘(K-Means) 알고리즘</li>
+<li>평균값 &#x3D; Cluster Center &#x3D; Centroid</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!wget https://bit.ly/fruits_300_data -O fruits_300.npy</span><br></pre></td></tr></table></figure>
+
+<pre><code>--2022-03-31 02:14:27--  https://bit.ly/fruits_300_data
+Resolving bit.ly (bit.ly)... 67.199.248.11, 67.199.248.10
+Connecting to bit.ly (bit.ly)|67.199.248.11|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/rickiepark/hg-mldl/raw/master/fruits_300.npy [following]
+--2022-03-31 02:14:27--  https://github.com/rickiepark/hg-mldl/raw/master/fruits_300.npy
+Resolving github.com (github.com)... 140.82.114.3
+Connecting to github.com (github.com)|140.82.114.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/rickiepark/hg-mldl/master/fruits_300.npy [following]
+--2022-03-31 02:14:28--  https://raw.githubusercontent.com/rickiepark/hg-mldl/master/fruits_300.npy
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3000128 (2.9M) [application/octet-stream]
+Saving to: ‘fruits_300.npy’
+
+fruits_300.npy      100%[===================&gt;]   2.86M  --.-KB/s    in 0.07s   
+
+2022-03-31 02:14:28 (43.0 MB/s) - ‘fruits_300.npy’ saved [3000128/3000128]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fruits = np.load(<span class="string">&#x27;fruits_300.npy&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(fruits.shape)</span><br><span class="line"><span class="built_in">print</span>(fruits.ndim)  <span class="comment"># ndim: n차원인지 알아냄</span></span><br><span class="line"><span class="comment"># print(fruits[:5])</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(300, 100, 100)
+3
+</code></pre>
+<ul>
+<li>3차원 (샘플개수, 넓이, 높이)</li>
+<li>2차원 (샘플개수, 넓이* 높이)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fruits_2d = fruits.reshape(-<span class="number">1</span>, <span class="number">100</span>* <span class="number">100</span>)</span><br><span class="line">fruits_2d.shape</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>(300, 10000)
+</code></pre>
+<ul>
+<li>K-평균 알고리즘 활용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line">km = KMeans(n_clusters= <span class="number">3</span>, random_state= <span class="number">42</span>)</span><br><span class="line">km.fit(fruits_2d)</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>KMeans(n_clusters=3, random_state=42)
+</code></pre>
+<ul>
+<li>모형학습 후, labels 확인</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(km.labels_)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[2 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2
+ 2 2 2 2 2 0 2 0 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 2 0 0 2 2 2 2 2 2 2 2 0 2
+ 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 0 2 2 2 2 2 2 2 2 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ 1 1 1 1]
+</code></pre>
+<ul>
+<li>직접 샘플의 개수 확인</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(np.unique(km.labels_, return_counts= <span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>(array([0, 1, 2], dtype=int32), array([111,  98,  91]))
+</code></pre>
+<ul>
+<li>그래프를 그려본다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">draw_fruits</span>(<span class="params">arr, ratio=<span class="number">1</span></span>):</span><br><span class="line">    n = <span class="built_in">len</span>(arr)    <span class="comment"># n은 샘플 개수입니다</span></span><br><span class="line">    <span class="comment"># 한 줄에 10개씩 이미지를 그립니다. 샘플 개수를 10으로 나누어 전체 행 개수를 계산합니다. </span></span><br><span class="line">    rows = <span class="built_in">int</span>(np.ceil(n/<span class="number">10</span>))</span><br><span class="line">    <span class="comment"># 행이 1개 이면 열 개수는 샘플 개수입니다. 그렇지 않으면 10개입니다.</span></span><br><span class="line">    cols = n <span class="keyword">if</span> rows &lt; <span class="number">2</span> <span class="keyword">else</span> <span class="number">10</span></span><br><span class="line">    fig, axs = plt.subplots(rows, cols, </span><br><span class="line">                            figsize=(cols*ratio, rows*ratio), squeeze=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(rows):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(cols):</span><br><span class="line">            <span class="keyword">if</span> i*<span class="number">10</span> + j &lt; n:    <span class="comment"># n 개까지만 그립니다.</span></span><br><span class="line">                axs[i, j].imshow(arr[i*<span class="number">10</span> + j], cmap=<span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">            axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">    plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">draw_fruits(fruits[km.labels_ == <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_K_Means_01/output_14_0.png" alt="png"></p>
+<h1 id="크러스터-중심"><a href="#크러스터-중심" class="headerlink" title="크러스터 중심"></a>크러스터 중심</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">draw_fruits(km.cluster_centers_.reshape(-<span class="number">1</span>, <span class="number">100</span>, <span class="number">100</span>), ratio= <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_K_Means_01/output_16_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(km.transform(fruits_2d[<span class="number">100</span>:<span class="number">101</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[3393.8136117  8837.37750892 5267.70439881]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(km.predict(fruits_2d[<span class="number">100</span>:<span class="number">101</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[0]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">draw_fruits(fruits[<span class="number">100</span>:<span class="number">101</span>])</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_K_Means_01/output_19_0.png" alt="png"></p>
+<h1 id="최적의-K-찾기"><a href="#최적의-K-찾기" class="headerlink" title="최적의 K 찾기"></a>최적의 K 찾기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># inertia= []</span></span><br><span class="line"><span class="comment"># for k in range(2,7):</span></span><br><span class="line"><span class="comment">#   km= KMeans(n_clusters= k, random_state= 42)</span></span><br><span class="line"><span class="comment">#   km.fit(fruits_2d)</span></span><br><span class="line"><span class="comment">#   inertia.append(km.inertia_)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(range(2,7), inertia)</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">inertia= []</span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,<span class="number">7</span>):</span><br><span class="line">  km= KMeans(n_clusters= k, random_state= <span class="number">42</span>)</span><br><span class="line">  km.fit(fruits_2d)</span><br><span class="line">  inertia.append(km.inertia_)</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.plot(<span class="built_in">range</span>(<span class="number">2</span>,<span class="number">7</span>), inertia)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_K_Means_01/output_22_0.png" alt="png"></p>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>K-평균: 처음에 랜덤하게 클러스터 중심을 정하고 클러스터를 만듬. 그 후에 클러스터의 중심을 이동하고 다시 클러스터를 만드는 식으로 반복해서 최적의 클러스터를 구성하는 알고리즘.</li>
+<li>클러스터 중심: K-평균 알고리즘이 만든 클러스터에 속한 샘플의 특성 평균값. 센트로이드라고도 부름</li>
+<li>엘보우 방법: 최적의 클러스터 개수를 정하는 방법 중 하나</li>
+</ul>
+</li>
+<li>Scikit-Learn 패키지<ul>
+<li>KMeans: K-평균 알고리즘 클래스<ul>
+<li>n_clusters: 클러스터 개수를 지정. [default: 8]</li>
+<li>n_init: 반복 횟수를 지정. [default: 10]</li>
+<li>max_iter: K-평균 알고리즘의 한 번 실행에서 최적의 센트로이드를 찾기 위해 반복 할 수 있는 최대 횟수. [default: 200]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/31/0331_K_Means_01/" data-id="cl1ewiwzw0002d0nhgzdzcf01" data-title="K-평균_01" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/31/0331_Unsupervised_Learning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          비지도_학습_01
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/30/0330_Cross_Validation01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">교차검증과_랜덤서치_01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/31/0331_Principar_Component_Analysis_01/">주성분_분석_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_Unsupervised_Learning/">비지도_학습_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_K_Means_01/">K-평균_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/30/0330_Cross_Validation01/">교차검증과_랜덤서치_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/30/0330_Decision_Tree_01/">결정_트리_01</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

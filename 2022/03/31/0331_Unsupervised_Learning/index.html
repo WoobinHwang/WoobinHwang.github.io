@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>비지도_학습_01 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="비지도 학습 vs 지도학습 종속변수 &#x3D; 타겟 비짇 학습은 종속변수 및 타겟이 없음 분류 다중분류 전제조건이 (다양한 유형) 데이터가 많아야 함 딥러닝과 연관이 됨 (자연어 처리, 이미지)    데이터 불러오기1!wget https:&#x2F;&#x2F;bit.ly&#x2F;fruits_300_data -O fruits_300.npy  --2022-03-31 01:10:43-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="비지도_학습_01">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/03/31/0331_Unsupervised_Learning/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="비지도 학습 vs 지도학습 종속변수 &#x3D; 타겟 비짇 학습은 종속변수 및 타겟이 없음 분류 다중분류 전제조건이 (다양한 유형) 데이터가 많아야 함 딥러닝과 연관이 됨 (자연어 처리, 이미지)    데이터 불러오기1!wget https:&#x2F;&#x2F;bit.ly&#x2F;fruits_300_data -O fruits_300.npy  --2022-03-31 01:10:43-">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_8_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_9_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_11_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_18_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_19_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_20_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_22_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_26_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_27_0.png">
+<meta property="article:published_time" content="2022-03-31T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-31T11:16:17.385Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woobinhwang.github.io/Images/0331_Unsupervised_Learning/output_8_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0331_Unsupervised_Learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/31/0331_Unsupervised_Learning/" class="article-date">
+  <time class="dt-published" datetime="2022-03-31T00:00:00.000Z" itemprop="datePublished">2022-03-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      비지도_학습_01
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="비지도-학습"><a href="#비지도-학습" class="headerlink" title="비지도 학습"></a>비지도 학습</h1><ul>
+<li>vs 지도학습</li>
+<li>종속변수 &#x3D; 타겟</li>
+<li>비짇 학습은 종속변수 및 타겟이 없음</li>
+<li>분류<ul>
+<li>다중분류</li>
+<li>전제조건이 (다양한 유형) 데이터가 많아야 함</li>
+<li>딥러닝과 연관이 됨 (자연어 처리, 이미지)</li>
+</ul>
+</li>
+</ul>
+<h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">!wget https://bit.ly/fruits_300_data -O fruits_300.npy</span><br></pre></td></tr></table></figure>
+
+<pre><code>--2022-03-31 01:10:43--  https://bit.ly/fruits_300_data
+Resolving bit.ly (bit.ly)... 67.199.248.11, 67.199.248.10
+Connecting to bit.ly (bit.ly)|67.199.248.11|:443... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://github.com/rickiepark/hg-mldl/raw/master/fruits_300.npy [following]
+--2022-03-31 01:10:43--  https://github.com/rickiepark/hg-mldl/raw/master/fruits_300.npy
+Resolving github.com (github.com)... 140.82.112.3
+Connecting to github.com (github.com)|140.82.112.3|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/rickiepark/hg-mldl/master/fruits_300.npy [following]
+--2022-03-31 01:10:43--  https://raw.githubusercontent.com/rickiepark/hg-mldl/master/fruits_300.npy
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 3000128 (2.9M) [application/octet-stream]
+Saving to: ‘fruits_300.npy’
+
+fruits_300.npy      100%[===================&gt;]   2.86M  --.-KB/s    in 0.01s   
+
+2022-03-31 01:10:43 (210 MB/s) - ‘fruits_300.npy’ saved [3000128/3000128]
+</code></pre>
+<ul>
+<li>numpy 파일을 불러옴</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fruits = np.load(<span class="string">&#x27;fruits_300.npy&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(fruits.shape)</span><br><span class="line"><span class="built_in">print</span>(fruits.ndim)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(300, 100, 100)
+3
+</code></pre>
+<ul>
+<li>첫번째 차원 &#x3D; 샘플의 개수</li>
+<li>두번째 차원 &#x3D; 이미지 높이</li>
+<li>세번째 차원 &#x3D; 이미지 넓이</li>
+<li>이미지 크기 100 * 100</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fruits[<span class="number">0</span>, <span class="number">0</span>, :]</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([  1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
+         1,   1,   1,   2,   1,   2,   2,   2,   2,   2,   2,   1,   1,
+         1,   1,   1,   1,   1,   1,   2,   3,   2,   1,   2,   1,   1,
+         1,   1,   2,   1,   3,   2,   1,   3,   1,   4,   1,   2,   5,
+         5,   5,  19, 148, 192, 117,  28,   1,   1,   2,   1,   4,   1,
+         1,   3,   1,   1,   1,   1,   1,   2,   2,   1,   1,   1,   1,
+         1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,   1,
+         1,   1,   1,   1,   1,   1,   1,   1,   1], dtype=uint8)
+</code></pre>
+<ul>
+<li>이미지 시각화<ul>
+<li>흑백사진을 담고 있다.</li>
+<li>0 ~ 255까지의 정수값을 가진다.<ul>
+<li>0에 가까우면 검게 나타남</li>
+<li>255에 가까우면 밝게 나타남</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plt.imshow(fruits[<span class="number">0</span>], cmap= <span class="string">&#x27;gray&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>/Images/0331_Unsupervised_Learning
+</code></pre>
+<p><img src="/Images/0331_Unsupervised_Learning/output_8_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmap = &#x27;gray_r&#x27; 일 경우 반대로 나타남</span></span><br><span class="line">plt.imshow(fruits[<span class="number">0</span>], cmap= <span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_9_0.png" alt="png"></p>
+<ul>
+<li>여러 이미지 시각화</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line">axs[<span class="number">0</span>].imshow(fruits[<span class="number">100</span>], cmap= <span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">axs[<span class="number">1</span>].imshow(fruits[<span class="number">200</span>], cmap= <span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_11_0.png" alt="png"></p>
+<h1 id="픽셀값-분석"><a href="#픽셀값-분석" class="headerlink" title="픽셀값 분석"></a>픽셀값 분석</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apple = fruits[<span class="number">0</span>: <span class="number">100</span>].reshape(-<span class="number">1</span>, <span class="number">100</span> * <span class="number">100</span>)</span><br><span class="line">pineapple = fruits[<span class="number">100</span>: <span class="number">200</span>].reshape(-<span class="number">1</span>, <span class="number">100</span> * <span class="number">100</span>)</span><br><span class="line">banana = fruits[<span class="number">200</span>: <span class="number">300</span>].reshape(-<span class="number">1</span>, <span class="number">100</span> * <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(apple.shape, banana.shape, pineapple.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(100, 10000) (100, 10000) (100, 10000)
+</code></pre>
+<ul>
+<li><p>axis &#x3D; 0 vs axis &#x3D; 1 차이 확인(p,293)</p>
+</li>
+<li><p>각 이미지에 대한 픽셀 평균값 비교</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># axis= 1  : 행 기준</span></span><br><span class="line"><span class="built_in">print</span>(apple.mean(axis= <span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[ 88.3346  97.9249  87.3709  98.3703  92.8705  82.6439  94.4244  95.5999
+  90.681   81.6226  87.0578  95.0745  93.8416  87.017   97.5078  87.2019
+  88.9827 100.9158  92.7823 100.9184 104.9854  88.674   99.5643  97.2495
+  94.1179  92.1935  95.1671  93.3322 102.8967  94.6695  90.5285  89.0744
+  97.7641  97.2938 100.7564  90.5236 100.2542  85.8452  96.4615  97.1492
+  90.711  102.3193  87.1629  89.8751  86.7327  86.3991  95.2865  89.1709
+  96.8163  91.6604  96.1065  99.6829  94.9718  87.4812  89.2596  89.5268
+  93.799   97.3983  87.151   97.825  103.22    94.4239  83.6657  83.5159
+ 102.8453  87.0379  91.2742 100.4848  93.8388  90.8568  97.4616  97.5022
+  82.446   87.1789  96.9206  90.3135  90.565   97.6538  98.0919  93.6252
+  87.3867  84.7073  89.1135  86.7646  88.7301  86.643   96.7323  97.2604
+  81.9424  87.1687  97.2066  83.4712  95.9781  91.8096  98.4086 100.7823
+ 101.556  100.7027  91.6098  88.8976]
+</code></pre>
+<ul>
+<li>각 과일에 대한 히스토그램</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line"><span class="comment"># ax.hist(np.mean(apple, axis= 1), alpha= 0.8)</span></span><br><span class="line"><span class="comment"># ax.hist(np.mean(banana, axis= 1), alpha= 0.8)</span></span><br><span class="line"><span class="comment"># ax.hist(np.mean(pineapple, axis= 1), alpha= 0.8)</span></span><br><span class="line"></span><br><span class="line">ax.hist(apple.mean(axis= <span class="number">1</span>), alpha= <span class="number">0.8</span>)</span><br><span class="line">ax.hist(pineapple.mean(axis= <span class="number">1</span>), alpha= <span class="number">0.8</span>)</span><br><span class="line">ax.hist(banana.mean(axis= <span class="number">1</span>), alpha= <span class="number">0.8</span>)</span><br><span class="line"><span class="comment"># ax.hist(np.mean(apple, axis= 0), alpha= 0.8)</span></span><br><span class="line"><span class="comment"># ax.hist(np.mean(banana, axis= 0), alpha= 0.8)</span></span><br><span class="line"><span class="comment"># ax.hist(np.mean(pineapple, axis= 0), alpha= 0.8)</span></span><br><span class="line"></span><br><span class="line">ax.legend([<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;pineapple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_18_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">fig, ax = plt.subplots()</span><br><span class="line"><span class="comment"># ax.hist(np.mean(apple, axis= 1), alpha= 0.8)</span></span><br><span class="line"><span class="comment"># ax.hist(np.mean(banana, axis= 1), alpha= 0.8)</span></span><br><span class="line"><span class="comment"># ax.hist(np.mean(pineapple, axis= 1), alpha= 0.8)</span></span><br><span class="line"></span><br><span class="line">ax.hist(np.mean(apple, axis= <span class="number">0</span>), alpha= <span class="number">0.8</span>)</span><br><span class="line">ax.hist(np.mean(banana, axis= <span class="number">0</span>), alpha= <span class="number">0.8</span>)</span><br><span class="line">ax.hist(np.mean(pineapple, axis= <span class="number">0</span>), alpha= <span class="number">0.8</span>)</span><br><span class="line"></span><br><span class="line">ax.legend([<span class="string">&#x27;apple&#x27;</span>, <span class="string">&#x27;pineapple&#x27;</span>, <span class="string">&#x27;banana&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_19_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">1</span>, <span class="number">3</span>, figsize= (<span class="number">20</span>, <span class="number">5</span>))</span><br><span class="line">axs[<span class="number">0</span>].bar(<span class="built_in">range</span>(<span class="number">10000</span>), np.mean(apple, axis= <span class="number">0</span>))</span><br><span class="line">axs[<span class="number">1</span>].bar(<span class="built_in">range</span>(<span class="number">10000</span>), np.mean(pineapple, axis= <span class="number">0</span>))</span><br><span class="line">axs[<span class="number">2</span>].bar(<span class="built_in">range</span>(<span class="number">10000</span>), np.mean(banana, axis= <span class="number">0</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_20_0.png" alt="png"></p>
+<ul>
+<li>대표 이미지</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apple_mean = np.mean(apple, axis= <span class="number">0</span>).reshape(<span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">pineapple_mean = np.mean(pineapple, axis= <span class="number">0</span>).reshape(<span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line">banana_mean = np.mean(banana, axis= <span class="number">0</span>).reshape(<span class="number">100</span>, <span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">fig, axs = plt.subplots(<span class="number">1</span>, <span class="number">3</span>, figsize= (<span class="number">20</span>, <span class="number">5</span>))</span><br><span class="line">axs[<span class="number">0</span>].imshow(apple_mean, cmap= <span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">axs[<span class="number">1</span>].imshow(pineapple_mean, cmap= <span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">axs[<span class="number">2</span>].imshow(banana_mean, cmap= <span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line"><span class="comment"># axs[3].imshow(apple_mean, cmap= &#x27;gray_r&#x27;)</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_22_0.png" alt="png"></p>
+<h1 id="평균값과-가까운-사진-고르기"><a href="#평균값과-가까운-사진-고르기" class="headerlink" title="평균값과 가까운 사진 고르기"></a>평균값과 가까운 사진 고르기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">abs_diff = np.<span class="built_in">abs</span>(fruits- apple_mean)</span><br><span class="line">abs_mean = np.mean(abs_diff, axis=(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(abs_mean.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(300,)
+</code></pre>
+<ul>
+<li>오차의 값이 가장 작은 순서대로 100개를 골라본다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apple_index = np.argsort(abs_mean)[:<span class="number">100</span>]</span><br><span class="line">fig, axs= plt.subplots(<span class="number">10</span>, <span class="number">10</span>, figsize= (<span class="number">10</span>, <span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">  <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">    axs[i, j].imshow(fruits[apple_index[i*<span class="number">10</span> + j]], cmap= <span class="string">&#x27;gray_r&#x27;</span>)  <span class="comment"># imshow(): 크기에 맞게 이미지 출력</span></span><br><span class="line">    axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)  <span class="comment"># 축 지우기</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_26_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">2</span>, <span class="number">3</span>, figsize=(<span class="number">6</span>, <span class="number">4</span>))</span><br><span class="line"><span class="comment"># axs[0].imshow(apple_mean, cmap= &#x27;gray_r&#x27;) </span></span><br><span class="line"><span class="comment"># axs[1].imshow(pineapple_mean, cmap= &#x27;gray_r&#x27;)</span></span><br><span class="line"><span class="comment"># axs[2].imshow(banana_mean, cmap= &#x27;gray_r&#x27;)</span></span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># fig, axs = plt.subplots()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0331_Unsupervised_Learning/output_27_0.png" alt="png"></p>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>비지도 학습: 머신러닝의 한 종류로 훈련 데이터에 타깃이 없음. 타깃이 없기 때문에 외부의 도움 없이 스스로 유용한 무언가를 학습해야함.</li>
+<li>히스토그램: 구간별로 값이 발생한 빈도를 그래프로 표시</li>
+<li>군집: 비슷한 샘플끼리 하나의 그룹으로 모으는 대표적인 비지도 학습 작업</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/31/0331_Unsupervised_Learning/" data-id="cl1ewiwzv0001d0nhfboydkj9" data-title="비지도_학습_01" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/03/31/0331_Principar_Component_Analysis_01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          주성분_분석_01
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/03/31/0331_K_Means_01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">K-평균_01</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/31/0331_Principar_Component_Analysis_01/">주성분_분석_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_Unsupervised_Learning/">비지도_학습_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_K_Means_01/">K-평균_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/30/0330_Cross_Validation01/">교차검증과_랜덤서치_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/30/0330_Decision_Tree_01/">결정_트리_01</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
