@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>인공_신경망 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="패션 MNIST딥러닝 라이브러리 텐서플로 : https:&#x2F;&#x2F;www.tensorflow.org&#x2F; 2016년 텐서플로 1 버전 vs 텐서플로 2 버전 문법적으로 매우 다름 산업용   파이토치 : https:&#x2F;&#x2F;pytorch.org&#x2F; 연구용    12import tensorflowprint(tensorflow.__version__)  2.8.0  데이터 불러오기">
+<meta property="og:type" content="article">
+<meta property="og:title" content="인공_신경망">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/04/04/0404_Artificial_Neural_Network/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="패션 MNIST딥러닝 라이브러리 텐서플로 : https:&#x2F;&#x2F;www.tensorflow.org&#x2F; 2016년 텐서플로 1 버전 vs 텐서플로 2 버전 문법적으로 매우 다름 산업용   파이토치 : https:&#x2F;&#x2F;pytorch.org&#x2F; 연구용    12import tensorflowprint(tensorflow.__version__)  2.8.0  데이터 불러오기">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0404_Artificial_Neural_Network/output_8_0.png">
+<meta property="article:published_time" content="2022-04-04T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-04T11:13:54.917Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woobinhwang.github.io/Images/0404_Artificial_Neural_Network/output_8_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0404_Artificial_Neural_Network" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/04/0404_Artificial_Neural_Network/" class="article-date">
+  <time class="dt-published" datetime="2022-04-04T00:00:00.000Z" itemprop="datePublished">2022-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      인공_신경망
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="패션-MNIST"><a href="#패션-MNIST" class="headerlink" title="패션 MNIST"></a>패션 MNIST</h1><h1 id="딥러닝-라이브러리"><a href="#딥러닝-라이브러리" class="headerlink" title="딥러닝 라이브러리"></a>딥러닝 라이브러리</h1><ul>
+<li>텐서플로 : <a target="_blank" rel="noopener" href="https://www.tensorflow.org/">https://www.tensorflow.org/</a><ul>
+<li>2016년 텐서플로 1 버전 vs 텐서플로 2 버전</li>
+<li>문법적으로 매우 다름</li>
+<li>산업용</li>
+</ul>
+</li>
+<li>파이토치 : <a target="_blank" rel="noopener" href="https://pytorch.org/">https://pytorch.org/</a><ul>
+<li>연구용</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow</span><br><span class="line"><span class="built_in">print</span>(tensorflow.__version__)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2.8.0
+</code></pre>
+<h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line">(train_input, train_target), (test_input, test_target) = keras.datasets.fashion_mnist.load_data()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>데이터 확인<ul>
+<li>60000개 이미지, 이미지 크기는 28 * 28</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(train_input.shape, train_target.shape)</span><br><span class="line"><span class="built_in">print</span>(test_input.shape, test_target.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 28, 28) (60000,)
+(10000, 28, 28) (10000,)
+</code></pre>
+<ul>
+<li>이미지 시각화</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, axs= plt.subplots(<span class="number">1</span>, <span class="number">10</span>, figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">  axs[i].imshow(train_input[i], cmap=<span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">  axs[i].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0404_Artificial_Neural_Network/output_8_0.png" alt="png"></p>
+<ul>
+<li>타겟값 리스트</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>([train_target[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[9, 0, 0, 3, 0, 2, 7, 2, 5, 5]
+</code></pre>
+<ul>
+<li>실제 타겟값의 값을 확인</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.unique(train_target, return_counts= <span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8), array([6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000]))
+</code></pre>
+<h1 id="로지스틱-회귀로-패션-아이템-분류하기"><a href="#로지스틱-회귀로-패션-아이템-분류하기" class="headerlink" title="로지스틱 회귀로 패션 아이템 분류하기"></a>로지스틱 회귀로 패션 아이템 분류하기</h1><ul>
+<li>경사하강법(기울기)</li>
+<li>전제조건: 각 컬럼의 데이터셋 동일 (표준화)</li>
+<li>why 255? : 각 픽셀의 값 0 ~ 255 사이의 정숫값을 가진다.</li>
+<li>0 ~ 1 사이의 값으로 정규화 시킴</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_scaled = train_input/ <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1차원 배열로 만들기</span></span><br><span class="line">train_scaled = train_scaled.reshape(-<span class="number">1</span>, <span class="number">28</span>* <span class="number">28</span>)</span><br><span class="line"><span class="built_in">print</span>(train_scaled.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 784)
+</code></pre>
+<h2 id="모델-만들기"><a href="#모델-만들기" class="headerlink" title="모델 만들기"></a>모델 만들기</h2><ul>
+<li>비정형데이터에 선형모델 또는 비선형 모델을 적용시키는것이 합리적인가??<ul>
+<li>결론: 아니다!</li>
+<li>다른 대안은 있는가??: 인공신경망!</li>
+</ul>
+</li>
+<li>정형데이터에 인공신경망 및 딥러닝 모델을 적용시키는 것이 합리적인가<ul>
+<li>결론: 아니다!</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDClassifier</span><br><span class="line"></span><br><span class="line">sc = SGDClassifier(loss=<span class="string">&#x27;log&#x27;</span>, max_iter=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">scores = cross_validate(sc, train_scaled, train_target, n_jobs=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8195666666666668
+</code></pre>
+<h2 id="인공신경망-모델-적용"><a href="#인공신경망-모델-적용" class="headerlink" title="인공신경망 모델 적용"></a>인공신경망 모델 적용</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">train_scaled, val_scaled, train_target, val_target = train_test_split(</span><br><span class="line">    train_scaled, train_target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_scaled.shape, train_target.shape)</span><br><span class="line"><span class="built_in">print</span>(val_scaled.shape, val_target.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 784) (48000,)
+(12000, 784) (12000,)
+</code></pre>
+<ul>
+<li><p>밀집하게 연결되어 있는것을 완전 연결층</p>
+<ul>
+<li>fully connected layer</li>
+</ul>
+</li>
+<li><p>p.354</p>
+<ul>
+<li>이진분류 시그모이드 함수(로지스틱 회귀)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dense = keras.layers.Dense(<span class="number">10</span>, activation= <span class="string">&#x27;softmax&#x27;</span>, input_shape=(<span class="number">784</span>, ))</span><br><span class="line">model = keras.Sequential(dense)</span><br><span class="line">model.<span class="built_in">compile</span>(loss= <span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics= <span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">model.fit(train_scaled, train_target, epochs= <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Epoch 1/5
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.6102 - accuracy: 0.7926
+Epoch 2/5
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.4791 - accuracy: 0.8392
+Epoch 3/5
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.4554 - accuracy: 0.8481
+Epoch 4/5
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.4453 - accuracy: 0.8519
+Epoch 5/5
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.4363 - accuracy: 0.8558
+
+
+
+
+
+&lt;keras.callbacks.History at 0x7f04ab0dcc50&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.evaluate(val_scaled, val_target)</span><br></pre></td></tr></table></figure>
+
+<pre><code>375/375 [==============================] - 1s 3ms/step - loss: 0.4559 - accuracy: 0.8462
+
+
+
+
+
+[0.45591267943382263, 0.8462499976158142]
+</code></pre>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>인공신경망: 생물학적 뉴런에서 영감을 받아 만든 머신러닝 알고리즘. 인공신경망 알고리즘을 종종 딥러닝이라고 부름.</li>
+<li>텐서플로: 구글이 만든 딥러닝 라이브러리. 케라스를 사용하면 간단한 모델에서 아주 복잡한 모델까지 손쉽게 만들 수 있다.</li>
+<li>밀집층: 가장 간단한 인공 신경망의 층</li>
+<li>원-핫 인코딩: 정숫값을 배열에서 해당 정수 위치의 원소만 1이고 나머지는 모두 0으로 변환</li>
+</ul>
+</li>
+<li>TensorFlow 패키지<ul>
+<li>Dense: 신경망에서 가장 기본 층인 밀집층을 만드는 클래스</li>
+<li>Sequential: 케라스에서 신경망 모델을 만드는 클래스</li>
+<li>Compile(): 모델 객체를 만든 후 훈련하기 전에 사용할 손실 함수와 측정 지표 등을 지정하는 메서드</li>
+<li>fit(): 모델을 훈련하는 메서드</li>
+<li>evaluate(): 모델 성능을 평가하는 메서드</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/04/04/0404_Artificial_Neural_Network/" data-id="cl1km1j0d0000pwnh8gh4go09" data-title="인공_신경망" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/04/0404_Deep_Neural_Network/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">심층_신경망</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/04/0404_Artificial_Neural_Network/">인공_신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/04/0404_Deep_Neural_Network/">심층_신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_Principar_Component_Analysis_01/">주성분_분석_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_Unsupervised_Learning/">비지도_학습_01</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_K_Means_01/">K-평균_01</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

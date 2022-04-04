@@ -71,6 +71,352 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-0404_Artificial_Neural_Network" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/04/0404_Artificial_Neural_Network/" class="article-date">
+  <time class="dt-published" datetime="2022-04-04T00:00:00.000Z" itemprop="datePublished">2022-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/04/0404_Artificial_Neural_Network/">인공_신경망</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="패션-MNIST"><a href="#패션-MNIST" class="headerlink" title="패션 MNIST"></a>패션 MNIST</h1><h1 id="딥러닝-라이브러리"><a href="#딥러닝-라이브러리" class="headerlink" title="딥러닝 라이브러리"></a>딥러닝 라이브러리</h1><ul>
+<li>텐서플로 : <a target="_blank" rel="noopener" href="https://www.tensorflow.org/">https://www.tensorflow.org/</a><ul>
+<li>2016년 텐서플로 1 버전 vs 텐서플로 2 버전</li>
+<li>문법적으로 매우 다름</li>
+<li>산업용</li>
+</ul>
+</li>
+<li>파이토치 : <a target="_blank" rel="noopener" href="https://pytorch.org/">https://pytorch.org/</a><ul>
+<li>연구용</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow</span><br><span class="line"><span class="built_in">print</span>(tensorflow.__version__)</span><br></pre></td></tr></table></figure>
+
+<pre><code>2.8.0
+</code></pre>
+<h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line">(train_input, train_target), (test_input, test_target) = keras.datasets.fashion_mnist.load_data()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>데이터 확인<ul>
+<li>60000개 이미지, 이미지 크기는 28 * 28</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(train_input.shape, train_target.shape)</span><br><span class="line"><span class="built_in">print</span>(test_input.shape, test_target.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 28, 28) (60000,)
+(10000, 28, 28) (10000,)
+</code></pre>
+<ul>
+<li>이미지 시각화</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, axs= plt.subplots(<span class="number">1</span>, <span class="number">10</span>, figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>):</span><br><span class="line">  axs[i].imshow(train_input[i], cmap=<span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">  axs[i].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0404_Artificial_Neural_Network/output_8_0.png" alt="png"></p>
+<ul>
+<li>타겟값 리스트</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>([train_target[i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)])</span><br></pre></td></tr></table></figure>
+
+<pre><code>[9, 0, 0, 3, 0, 2, 7, 2, 5, 5]
+</code></pre>
+<ul>
+<li>실제 타겟값의 값을 확인</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="built_in">print</span>(np.unique(train_target, return_counts= <span class="literal">True</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>(array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], dtype=uint8), array([6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000, 6000]))
+</code></pre>
+<h1 id="로지스틱-회귀로-패션-아이템-분류하기"><a href="#로지스틱-회귀로-패션-아이템-분류하기" class="headerlink" title="로지스틱 회귀로 패션 아이템 분류하기"></a>로지스틱 회귀로 패션 아이템 분류하기</h1><ul>
+<li>경사하강법(기울기)</li>
+<li>전제조건: 각 컬럼의 데이터셋 동일 (표준화)</li>
+<li>why 255? : 각 픽셀의 값 0 ~ 255 사이의 정숫값을 가진다.</li>
+<li>0 ~ 1 사이의 값으로 정규화 시킴</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_scaled = train_input/ <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 1차원 배열로 만들기</span></span><br><span class="line">train_scaled = train_scaled.reshape(-<span class="number">1</span>, <span class="number">28</span>* <span class="number">28</span>)</span><br><span class="line"><span class="built_in">print</span>(train_scaled.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(60000, 784)
+</code></pre>
+<h2 id="모델-만들기"><a href="#모델-만들기" class="headerlink" title="모델 만들기"></a>모델 만들기</h2><ul>
+<li>비정형데이터에 선형모델 또는 비선형 모델을 적용시키는것이 합리적인가??<ul>
+<li>결론: 아니다!</li>
+<li>다른 대안은 있는가??: 인공신경망!</li>
+</ul>
+</li>
+<li>정형데이터에 인공신경망 및 딥러닝 모델을 적용시키는 것이 합리적인가<ul>
+<li>결론: 아니다!</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_validate</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> SGDClassifier</span><br><span class="line"></span><br><span class="line">sc = SGDClassifier(loss=<span class="string">&#x27;log&#x27;</span>, max_iter=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line">scores = cross_validate(sc, train_scaled, train_target, n_jobs=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(scores[<span class="string">&#x27;test_score&#x27;</span>]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.8195666666666668
+</code></pre>
+<h2 id="인공신경망-모델-적용"><a href="#인공신경망-모델-적용" class="headerlink" title="인공신경망 모델 적용"></a>인공신경망 모델 적용</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">train_scaled, val_scaled, train_target, val_target = train_test_split(</span><br><span class="line">    train_scaled, train_target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_scaled.shape, train_target.shape)</span><br><span class="line"><span class="built_in">print</span>(val_scaled.shape, val_target.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(48000, 784) (48000,)
+(12000, 784) (12000,)
+</code></pre>
+<ul>
+<li><p>밀집하게 연결되어 있는것을 완전 연결층</p>
+<ul>
+<li>fully connected layer</li>
+</ul>
+</li>
+<li><p>p.354</p>
+<ul>
+<li>이진분류 시그모이드 함수(로지스틱 회귀)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">dense = keras.layers.Dense(<span class="number">10</span>, activation= <span class="string">&#x27;softmax&#x27;</span>, input_shape=(<span class="number">784</span>, ))</span><br><span class="line">model = keras.Sequential(dense)</span><br><span class="line">model.<span class="built_in">compile</span>(loss= <span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics= <span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">model.fit(train_scaled, train_target, epochs= <span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Epoch 1/5
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.6102 - accuracy: 0.7926
+Epoch 2/5
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.4791 - accuracy: 0.8392
+Epoch 3/5
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.4554 - accuracy: 0.8481
+Epoch 4/5
+1500/1500 [==============================] - 2s 1ms/step - loss: 0.4453 - accuracy: 0.8519
+Epoch 5/5
+1500/1500 [==============================] - 2s 2ms/step - loss: 0.4363 - accuracy: 0.8558
+
+
+
+
+
+&lt;keras.callbacks.History at 0x7f04ab0dcc50&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.evaluate(val_scaled, val_target)</span><br></pre></td></tr></table></figure>
+
+<pre><code>375/375 [==============================] - 1s 3ms/step - loss: 0.4559 - accuracy: 0.8462
+
+
+
+
+
+[0.45591267943382263, 0.8462499976158142]
+</code></pre>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>인공신경망: 생물학적 뉴런에서 영감을 받아 만든 머신러닝 알고리즘. 인공신경망 알고리즘을 종종 딥러닝이라고 부름.</li>
+<li>텐서플로: 구글이 만든 딥러닝 라이브러리. 케라스를 사용하면 간단한 모델에서 아주 복잡한 모델까지 손쉽게 만들 수 있다.</li>
+<li>밀집층: 가장 간단한 인공 신경망의 층</li>
+<li>원-핫 인코딩: 정숫값을 배열에서 해당 정수 위치의 원소만 1이고 나머지는 모두 0으로 변환</li>
+</ul>
+</li>
+<li>TensorFlow 패키지<ul>
+<li>Dense: 신경망에서 가장 기본 층인 밀집층을 만드는 클래스</li>
+<li>Sequential: 케라스에서 신경망 모델을 만드는 클래스</li>
+<li>Compile(): 모델 객체를 만든 후 훈련하기 전에 사용할 손실 함수와 측정 지표 등을 지정하는 메서드</li>
+<li>fit(): 모델을 훈련하는 메서드</li>
+<li>evaluate(): 모델 성능을 평가하는 메서드</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/04/04/0404_Artificial_Neural_Network/" data-id="cl1km1j0d0000pwnh8gh4go09" data-title="인공_신경망" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0404_Deep_Neural_Network" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/04/0404_Deep_Neural_Network/" class="article-date">
+  <time class="dt-published" datetime="2022-04-04T00:00:00.000Z" itemprop="datePublished">2022-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/04/04/0404_Deep_Neural_Network/">심층_신경망</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="심증-신경망"><a href="#심증-신경망" class="headerlink" title="심증 신경망"></a>심증 신경망</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"></span><br><span class="line">(train_input, train_target), (test_input, test_target) = keras.datasets.fashion_mnist.load_data()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
+32768/29515 [=================================] - 0s 0us/step
+40960/29515 [=========================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
+26427392/26421880 [==============================] - 0s 0us/step
+26435584/26421880 [==============================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz
+16384/5148 [===============================================================================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz
+4423680/4422102 [==============================] - 0s 0us/step
+4431872/4422102 [==============================] - 0s 0us/step
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">train_scaled = train_input / <span class="number">255.0</span></span><br><span class="line">train_scaled = train_scaled.reshape(-<span class="number">1</span>, <span class="number">28</span>*<span class="number">28</span>)</span><br><span class="line"></span><br><span class="line">train_scaled, val_scaled, train_target, val_target = train_test_split(</span><br><span class="line">    train_scaled, train_target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>입력값 및 출력값 층 만들기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dense1 = keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>, input_shape=(<span class="number">784</span>,))</span><br><span class="line">dense2 = keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h1 id="심층-신경망"><a href="#심층-신경망" class="headerlink" title="심층 신경망"></a>심층 신경망</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = keras.Sequential([dense1, dense2])</span><br><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_2&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 100)               78500     
+                                                                 
+ dense_1 (Dense)             (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 79,510
+Trainable params: 79,510
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+<h1 id="층을-추가하는-다른-방법"><a href="#층을-추가하는-다른-방법" class="headerlink" title="층을 추가하는 다른 방법"></a>층을 추가하는 다른 방법</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">model = keras.Sequential([</span><br><span class="line">    keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>, input_shape=(<span class="number">784</span>,), name=<span class="string">&#x27;hidden&#x27;</span>),</span><br><span class="line">    keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>, name=<span class="string">&#x27;output&#x27;</span>)</span><br><span class="line">], name=<span class="string">&#x27;패션 MNIST 모델&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;패션 MNIST 모델&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ hidden (Dense)              (None, 100)               78500     
+                                                                 
+ output (Dense)              (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 79,510
+Trainable params: 79,510
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model = keras.Sequential()</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>, input_shape=(<span class="number">784</span>,)))</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_3&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_2 (Dense)             (None, 100)               78500     
+                                                                 
+ dense_3 (Dense)             (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 79,510
+Trainable params: 79,510
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">compile</span>(loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">model.fit(train_scaled, train_target, epochs=<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Epoch 1/5
+1500/1500 [==============================] - 4s 2ms/step - loss: 0.5633 - accuracy: 0.8074
+Epoch 2/5
+1500/1500 [==============================] - 4s 2ms/step - loss: 0.4069 - accuracy: 0.8523
+Epoch 3/5
+1500/1500 [==============================] - 4s 2ms/step - loss: 0.3724 - accuracy: 0.8647
+Epoch 4/5
+1500/1500 [==============================] - 4s 2ms/step - loss: 0.3506 - accuracy: 0.8730
+Epoch 5/5
+1500/1500 [==============================] - 4s 2ms/step - loss: 0.3327 - accuracy: 0.8788
+
+
+
+
+
+&lt;keras.callbacks.History at 0x7eff51aa6550&gt;
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">model = keras.Sequential()</span><br><span class="line">model.add(keras.layers.Flatten(input_shape=(<span class="number">28</span>, <span class="number">28</span>)))</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential_5&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ flatten_1 (Flatten)         (None, 784)               0         
+                                                                 
+ dense_4 (Dense)             (None, 100)               78500     
+                                                                 
+ dense_5 (Dense)             (None, 10)                1010      
+                                                                 
+=================================================================
+Total params: 79,510
+Trainable params: 79,510
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li>심층 신경망: 2개 이상의 층을 포함한 신경망. 종종 다층 인공 신경망, 심층 신경망, 딥러닝을 같은 의미로 사용</li>
+<li>렐루 함수: 이미지 분류 모데의 은닉층을 많이 사용하는 활성화 함수</li>
+<li>옵티마이저: 신경망의 가중치와 절편을 학습하기 위한 알고리즘 또는 방법</li>
+</ul>
+</li>
+<li>TensorFlow 패키지<ul>
+<li>add(): 케라스 모델에 층을 추가하는 메서드</li>
+<li>summary(): 케라스 모델의 정보를 출력</li>
+<li>SGD: 기본 경사 하강법 옵티마이저 클래스</li>
+<li>Adagrad: Adagrad 옵티마이저 클래스</li>
+<li>RMSprop: RMSprop옵티마이저 클래스</li>
+<li>Adam: Adam옵티마이저 클래스</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/04/04/0404_Deep_Neural_Network/" data-id="cl1km1rbd0001pwnh9ypc2bp1" data-title="심층_신경망" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-0331_Principar_Component_Analysis_01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/31/0331_Principar_Component_Analysis_01/" class="article-date">
@@ -2233,376 +2579,6 @@ memory usage: 7.6+ KB
 
 
   
-    <article id="post-0328_Regression_01" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/28/0328_Regression_01/" class="article-date">
-  <time class="dt-published" datetime="2022-03-28T00:00:00.000Z" itemprop="datePublished">2022-03-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/28/0328_Regression_01/">k-최근접 이웃 회귀 01</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="k-최근접-이웃-회귀-Regression"><a href="#k-최근접-이웃-회귀-Regression" class="headerlink" title="k-최근접 이웃 회귀(Regression)"></a>k-최근접 이웃 회귀(Regression)</h1><ul>
-<li>중요도: 하 (그냥 넘어갈것)</li>
-</ul>
-<h1 id="데이터-준비"><a href="#데이터-준비" class="headerlink" title="데이터 준비"></a>데이터 준비</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">perch_length = np.array(</span><br><span class="line">    [<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, </span><br><span class="line">     <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, </span><br><span class="line">     <span class="number">22.5</span>, <span class="number">22.7</span>, <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, </span><br><span class="line">     <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">     <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, </span><br><span class="line">     <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>, <span class="number">44.0</span>]</span><br><span class="line">     )</span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
-
-<h1 id="시각화"><a href="#시각화" class="headerlink" title="시각화"></a>시각화</h1><ul>
-<li>객체지향으로 변경할것</li>
-<li>fig, ax &#x3D; plt.subplots()</li>
-<li>ax.scatter(Xdata, Ydata)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(perch_length, perch_weight)</span><br><span class="line">ax.set_xlabel(<span class="string">&quot;length&quot;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&quot;weight&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0328_Regression_01/output_4_0.png" alt="png"></p>
-<h1 id="훈련-데이터-테스트-데이터셋-분리"><a href="#훈련-데이터-테스트-데이터셋-분리" class="headerlink" title="훈련 데이터 테스트 데이터셋 분리"></a>훈련 데이터 테스트 데이터셋 분리</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    perch_length, perch_weight, random_state = <span class="number">42</span></span><br><span class="line">)</span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>((42,), (14,), (42,), (14,))
-</code></pre>
-<ul>
-<li>reshape() 사용하여 2차원 배열로 바꿈</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_input= train_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">test_input= test_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_input.shape, test_input.shape)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(42, 1) (14, 1)
-</code></pre>
-<h1 id="결정계수-R-2"><a href="#결정계수-R-2" class="headerlink" title="결정계수 R^2"></a>결정계수 R^2</h1><ul>
-<li>모델이 얼마만큼 정확한가<ul>
-<li>99.3%</li>
-</ul>
-</li>
-<li>절댓값은 아님 &#x3D;&#x3D;&gt; 상대적인 값임</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 클래스 불러오기</span></span><br><span class="line">knr = KNeighborsRegressor()</span><br><span class="line"></span><br><span class="line"><span class="comment">#  모형학습</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 테스트 점수 확인</span></span><br><span class="line">knr.score(test_input, test_target)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>0.992809406101064
-</code></pre>
-<h1 id="MAE"><a href="#MAE" class="headerlink" title="MAE"></a>MAE</h1><ul>
-<li>타깃과 얘측의 절댓값 오차를 평균하여 반환</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line"><span class="comment"># 예측 데이터 만들기</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line">test_prediction</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>array([  60. ,   79.6,  248. ,  122. ,  136. ,  847. ,  311.4,  183.4,
-        847. ,  113. , 1010. ,   60. ,  248. ,  248. ])
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"><span class="built_in">print</span>(mae)</span><br><span class="line"><span class="comment"># 평균적으로 19g정도 다름</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>19.157142857142862
-</code></pre>
-<h1 id="과대적합-vs-과소적합"><a href="#과대적합-vs-과소적합" class="headerlink" title="과대적합 vs 과소적합"></a>과대적합 vs 과소적합</h1><ul>
-<li>공통점: 머신러닝 모형이 실제 테스트 시 잘 예측을 못함.</li>
-<li>차이점:<ul>
-<li>과대적합: 훈련데이터에는 예측 잘함, 테스트데이터에서는 예측을 잘 못함.<ul>
-<li>처리하기 곤란.</li>
-</ul>
-</li>
-<li>과소적합: 훈련데이터에서는 예측을 못하고, 테스트데이터에서는 예측을 잘하거나 or 둘 다 예측을 잘 못함.<ul>
-<li>데이터양이 적거나, 모델을 너무 간단하게 만듬</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 훈련 데이터 점수 확인</span></span><br><span class="line">knr.score(train_input, train_target)  <span class="comment"># 0.97정도 나옴</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>0.9698823289099254
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Default 5를 3으로 변경</span></span><br><span class="line"><span class="comment"># 머신러닝 모형을 변경</span></span><br><span class="line">knr.n_neighbors = <span class="number">3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델을 다시 훈련</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(knr.score(train_input, train_target))  <span class="comment"># 0.98정도 나옴</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9804899950518966
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.score(test_input, test_target))  <span class="comment"># 0.97</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9746459963987609
-</code></pre>
-<ul>
-<li>MAE구하기</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 예측 데이터 만들기</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"><span class="comment"># test_prediction</span></span><br><span class="line"><span class="built_in">print</span>(mae)  <span class="comment"># 35.4정도 나옴</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>35.42380952380951
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 머신러닝 모형을 변경</span></span><br><span class="line">knr.n_neighbors = <span class="number">7</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 모델을 다시 훈련</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br><span class="line"><span class="built_in">print</span>(knr.score(train_input, train_target))  <span class="comment"># </span></span><br><span class="line"><span class="built_in">print</span>(knr.score(test_input, test_target))  <span class="comment"># </span></span><br></pre></td></tr></table></figure>
-
-<pre><code>0.9761170732051527
-0.9781383949643516
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 예측 데이터 만들기</span></span><br><span class="line">test_prediction = knr.predict(test_input)</span><br><span class="line">mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line"><span class="built_in">print</span>(mae)  <span class="comment"># </span></span><br></pre></td></tr></table></figure>
-
-<pre><code>32.512244897959185
-</code></pre>
-<h1 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h1><ul>
-<li>k그룹을 5로 했을때 R2는 0.98 mae는 19정도 였음</li>
-<li>k그룹을 3으로 했을때 R2는 0.97 mae는 35.4정도 였음</li>
-<li>k그룹을 7로 했을때 R2는 0.98 mae는 32.5정도 였음</li>
-</ul>
-<h1 id="내맘대로-코딩"><a href="#내맘대로-코딩" class="headerlink" title="내맘대로 코딩"></a>내맘대로 코딩</h1><ul>
-<li>R^2와 mae의 값을 찾기</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">TEST = np.arange(<span class="number">1</span>, <span class="number">10</span>)</span><br><span class="line"><span class="comment"># float R0 = 0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> TEST:</span><br><span class="line">  knr.n_neighbors = i</span><br><span class="line">  knr.fit(train_input, train_target)</span><br><span class="line">  <span class="built_in">print</span>(knr.score(test_input, test_target))</span><br><span class="line"></span><br><span class="line">  R2= knr.score(test_input, test_target)</span><br><span class="line">  test_prediction = knr.predict(test_input)</span><br><span class="line">  mae = mean_absolute_error(test_target, test_prediction)</span><br><span class="line">  <span class="built_in">print</span>(mae, i)</span><br><span class="line">  </span><br></pre></td></tr></table></figure>
-
-<pre><code>0.991309195814175
-22.685714285714287 1
-0.9725010241788556
-35.292857142857144 2
-0.9746459963987609
-35.42380952380951 3
-0.9840231023848637
-28.38214285714286 4
-0.992809406101064
-19.157142857142862 5
-0.9855001139899048
-28.388095238095243 6
-0.9781383949643516
-32.512244897959185 7
-0.9780541148735824
-34.88214285714286 8
-0.9692647749722698
-43.987301587301594 9
-</code></pre>
-<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
-<li>키워드<ul>
-<li>회귀: 임의의 수치를 예측하는 문제</li>
-<li>k-최근접 이웃 회귀: 가장 가까운 이웃 샘플을 찾고 그 샘플들의 평균으로 예측</li>
-<li>결정계수(R²)대표적인 회귀문제의 성능 측정 도구. 1에 가까울수록 좋고 0에 가까울수록 나쁜 모델임</li>
-<li>과대적합: 훈련데이터에는 예측 잘함, 테스트데이터에서는 예측을 잘 못함</li>
-<li>과소적합: 훈련데이터에서는 예측을 못하고, 테스트데이터에서는 예측을 잘하거나 or 둘 다 예측을 잘 못함</li>
-</ul>
-</li>
-<li>Scikit-learn 패키지<ul>
-<li>KNeighborsRegressor: k-최근접 이웃 회귀 모델을 만드는 사이킷런 클래스. n_neighbors 매개변수를 지정함. [default: 5]</li>
-<li>mean_absolute_error(A, B): 회귀모델의 평균 절댓값 오차를 계산. A는 타깃, B는 예측값. 타깃과 예측을 뺀 값을 제곱한 다음 전체 샘플에 대해 평균한 값을 반환함.</li>
-</ul>
-</li>
-<li>Numpy 패키지<ul>
-<li>reshape(): 배열의 크기를 바꾸는 메서드. -1은 적용 가능한 정수를 자동으로 찾아주는 역할</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/28/0328_Regression_01/" data-id="cl1as2bdh0000dknh7v3acmhs" data-title="k-최근접 이웃 회귀 01" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-0328_Regression_02" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/28/0328_Regression_02/" class="article-date">
-  <time class="dt-published" datetime="2022-03-28T00:00:00.000Z" itemprop="datePublished">2022-03-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/28/0328_Regression_02/">k-최근접 이웃 회귀 02</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="선형회귀"><a href="#선형회귀" class="headerlink" title="선형회귀"></a>선형회귀</h1><h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">perch_length = np.array(</span><br><span class="line">    [<span class="number">8.4</span>, <span class="number">13.7</span>, <span class="number">15.0</span>, <span class="number">16.2</span>, <span class="number">17.4</span>, <span class="number">18.0</span>, <span class="number">18.7</span>, <span class="number">19.0</span>, <span class="number">19.6</span>, <span class="number">20.0</span>, </span><br><span class="line">     <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.0</span>, <span class="number">21.3</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.0</span>, <span class="number">22.5</span>, </span><br><span class="line">     <span class="number">22.5</span>, <span class="number">22.7</span>, <span class="number">23.0</span>, <span class="number">23.5</span>, <span class="number">24.0</span>, <span class="number">24.0</span>, <span class="number">24.6</span>, <span class="number">25.0</span>, <span class="number">25.6</span>, <span class="number">26.5</span>, </span><br><span class="line">     <span class="number">27.3</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">27.5</span>, <span class="number">28.0</span>, <span class="number">28.7</span>, <span class="number">30.0</span>, <span class="number">32.8</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">     <span class="number">36.5</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">37.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">39.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, <span class="number">40.0</span>, </span><br><span class="line">     <span class="number">40.0</span>, <span class="number">42.0</span>, <span class="number">43.0</span>, <span class="number">43.0</span>, <span class="number">43.5</span>, <span class="number">44.0</span>]</span><br><span class="line">     )</span><br><span class="line">perch_weight = np.array(</span><br><span class="line">    [<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, </span><br><span class="line">     <span class="number">110.0</span>, <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, </span><br><span class="line">     <span class="number">130.0</span>, <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, </span><br><span class="line">     <span class="number">197.0</span>, <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, </span><br><span class="line">     <span class="number">514.0</span>, <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, </span><br><span class="line">     <span class="number">820.0</span>, <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, </span><br><span class="line">     <span class="number">1000.0</span>, <span class="number">1000.0</span>]</span><br><span class="line">     )</span><br></pre></td></tr></table></figure>
-
-<h1 id="훈련-데이터-테스트-데이터셋-분리"><a href="#훈련-데이터-테스트-데이터셋-분리" class="headerlink" title="훈련 데이터 테스트 데이터셋 분리"></a>훈련 데이터 테스트 데이터셋 분리</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(</span><br><span class="line">    perch_length, perch_weight, random_state = <span class="number">42</span></span><br><span class="line">)</span><br><span class="line">train_input.shape, test_input.shape, train_target.shape, test_target.shape</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>((42,), (14,), (42,), (14,))
-</code></pre>
-<ul>
-<li>reshape() 사용하여 2차원 배열로 바꿈</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_input= train_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">test_input= test_input.reshape(-<span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_input.shape, test_input.shape)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(42, 1) (14, 1)
-</code></pre>
-<h1 id="모델만들기"><a href="#모델만들기" class="headerlink" title="모델만들기"></a>모델만들기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsRegressor</span><br><span class="line"></span><br><span class="line"><span class="comment"># 클래스 불러오기</span></span><br><span class="line">knr = KNeighborsRegressor(n_neighbors=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#  모형학습</span></span><br><span class="line">knr.fit(train_input, train_target)</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>KNeighborsRegressor(n_neighbors=3)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(knr.predict([[<span class="number">50</span>]]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1033.33333333]
-</code></pre>
-<h1 id="시각화"><a href="#시각화" class="headerlink" title="시각화"></a>시각화</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # 원본</span></span><br><span class="line"><span class="comment"># import matplotlib.pyplot as plt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 50cm 농어의 이웃을 구하기</span></span><br><span class="line"><span class="comment"># distances, indexes= knr.kneighbors([[50]])</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 훈련세트의 산점도를 그리기</span></span><br><span class="line"><span class="comment"># plt.scatter(train_input, train_target)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 훈련 세트 중에서 이웃 샘플만 다시 그립니다.</span></span><br><span class="line"><span class="comment"># plt.scatter(train_input[indexes], train_target[indexes], marker= &quot;D&quot;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 50cm 농어 데이터</span></span><br><span class="line"><span class="comment"># plt.scatter(50, 1033, marker= &quot;^&quot;)</span></span><br><span class="line"><span class="comment"># plt.xlabel(&quot;length&quot;)</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 50cm 농어의 이웃을 구하기</span></span><br><span class="line">distances, indexes= knr.kneighbors([[<span class="number">50</span>]])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련세트의 산점도를 그리기</span></span><br><span class="line"><span class="comment"># plt.scatter(train_input, train_target)</span></span><br><span class="line">fig, ax = plt.subplots()</span><br><span class="line">ax.scatter(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련 세트 중에서 이웃 샘플만 다시 그립니다.</span></span><br><span class="line">ax.scatter(train_input[indexes], train_target[indexes], marker= <span class="string">&quot;D&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 50cm 농어 데이터</span></span><br><span class="line">ax.scatter(<span class="number">50</span>, <span class="number">1033</span>, marker= <span class="string">&quot;^&quot;</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&quot;length&quot;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&quot;weight&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0328_Regression_02/output_12_0.png" alt="png"></p>
-<ul>
-<li>머신러닝 모델은 주기적으로 훈련해야 합니다.<ul>
-<li>MLOps(Machine Learning &amp; Operations)</li>
-<li>최근에 각광받는 데이터 관련 직업 필수</li>
-<li>입사와 함께 공부시작 (데이터 분석가, 머신러닝 엔지니어, 데이터 싸이언티스트 희망자)</li>
-</ul>
-</li>
-</ul>
-<h1 id="선형회귀-머신러닝"><a href="#선형회귀-머신러닝" class="headerlink" title="선형회귀 (머신러닝)"></a>선형회귀 (머신러닝)</h1><ul>
-<li>평가지표 확이이 더 중요 - R2점수, MAE, MSE, 등등</li>
-</ul>
-<h1 id="선형회귀-통계"><a href="#선형회귀-통계" class="headerlink" title="선형회귀 (통계)"></a>선형회귀 (통계)</h1><ul>
-<li>5가지 가정들<ul>
-<li>장차의 정규성, 등분상성, 다중공선성, 등등…</li>
-<li>종속변수 ~ 독립변수간의 “인과관계”를 찾는 과정</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">lr = LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 선형 회귀 모델 훈련</span></span><br><span class="line">lr.fit(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lr.predict([[<span class="number">50</span>]]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1241.83860323]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax= plt.subplots()</span><br><span class="line">ax.scatter(train_input, train_target)</span><br><span class="line">ax.scatter(train_input[indexes], train_target[indexes], marker= <span class="string">&quot;D&quot;</span>)</span><br><span class="line">ax.scatter(<span class="number">50</span>, <span class="number">1241</span>, marker= <span class="string">&quot;^&quot;</span>)</span><br><span class="line">ax.set_xlabel(<span class="string">&quot;length&quot;</span>)</span><br><span class="line">ax.set_ylabel(<span class="string">&quot;weight&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0328_Regression_02/output_16_0.png" alt="png"></p>
-<pre><code>- 농어무게 = 기울기(a) * 농어 길이 + 절편(b)
-</code></pre>
-<h1 id="회귀식-찾기"><a href="#회귀식-찾기" class="headerlink" title="회귀식 찾기"></a>회귀식 찾기</h1><ul>
-<li>기울기</li>
-<li>절편</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 기울기, 절편</span></span><br><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[39.01714496] -709.0186449535477
-
-
-- 기울기 a: 39.01714496
-- 절편 b: 709.0186449535477
-</code></pre>
-<ul>
-<li><strong>기울기</strong>: 계수 &#x3D; 가중치 (딥러닝)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig, ax= plt.subplots()</span><br><span class="line">ax.scatter(train_input, train_target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 15~50까지의 1차 방정식 그래프</span></span><br><span class="line">ax.plot([<span class="number">15</span>,<span class="number">50</span>],</span><br><span class="line">        [<span class="number">15</span> * lr.coef_ + lr.intercept_,</span><br><span class="line">         <span class="number">50</span> * lr.coef_ + lr.intercept_],)</span><br><span class="line"></span><br><span class="line">plt.scatter(<span class="number">50</span>, <span class="number">1241.8</span>, marker= <span class="string">&quot;^&quot;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0328_Regression_02/output_22_0.png" alt="png"></p>
-<ul>
-<li>모형 평가<ul>
-<li>과대적합 발생</li>
-</ul>
-</li>
-</ul>
-<h1 id="다항회귀"><a href="#다항회귀" class="headerlink" title="다항회귀"></a>다항회귀</h1><ul>
-<li>ax^2 + by + c</li>
-<li>if) 치어 1cm<ul>
-<li>-670g이 나옴</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.predict([[<span class="number">1</span>]]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[-670.00149999]
-</code></pre>
-<ul>
-<li>1차 방정식을 2차 방정식으로 만드는 과정 필요</li>
-<li>넘파이 브로드캐스팅<ul>
-<li>배열의 크기가 동일하면 상관없음</li>
-<li>배열의 크기가 다른데 연산을 할 때 브로드캐스팅 원리가 적용됨.</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_poly = np.column_stack((train_input **<span class="number">2</span>, train_input))</span><br><span class="line">test_poly = np.column_stack((test_input **<span class="number">2</span>, test_input))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_poly.shape, test_poly.shape)</span><br></pre></td></tr></table></figure>
-
-<pre><code>(42, 2) (14, 2)
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lr = LinearRegression()</span><br><span class="line"></span><br><span class="line">lr.fit(train_poly, train_target)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(lr.predict([[<span class="number">50</span>**<span class="number">2</span>,<span class="number">50</span>]]))</span><br></pre></td></tr></table></figure>
-
-<pre><code>[1573.98423528]
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.coef_, lr.intercept_)</span><br></pre></td></tr></table></figure>
-
-<pre><code>[  1.01433211 -21.55792498] 116.0502107827827
-</code></pre>
-<p>-knn의 문제점</p>
-<ul>
-<li>농어의 길이가 커져도 무게가 동일함</li>
-<li>현실성없음</li>
-<li>단순 선형회귀(1차방정식)의 문제점<ul>
-<li>치어(1cm)의 무게가 음수로 나옴</li>
-<li>현실성없음</li>
-</ul>
-</li>
-<li>다항회귀(2차 방정식)로 변경<ul>
-<li>현실성 있음</li>
-</ul>
-</li>
-</ul>
-<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
-<li>키워드<ul>
-<li>선형회귀: 특성과 타깃 사이의 관계를 가장 잘 나타내는 선형 방정식을 찾음. 특성이 하나면 직선 방정식이 됨.</li>
-<li>모델 파라미터: 선형회귀가 찾은 가중치처럼 머신러닝 모델이 특성에서 학습한 파라미터</li>
-<li>다항 회귀: 다항식을 사용하여 특성과 타깃 사이의 관계를 나타냄</li>
-</ul>
-</li>
-<li>Scikit-learn 패키지<ul>
-<li>LinearRegression: 선형 회귀 클래스</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/28/0328_Regression_02/" data-id="cl1as2be00001dknhf34d4q7q" data-title="k-최근접 이웃 회귀 02" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -2626,7 +2602,7 @@ memory usage: 7.6+ KB
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
     </div>
   </div>
 
@@ -2639,6 +2615,14 @@ memory usage: 7.6+ KB
       <ul>
         
           <li>
+            <a href="/2022/04/04/0404_Artificial_Neural_Network/">인공_신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/04/0404_Deep_Neural_Network/">심층_신경망</a>
+          </li>
+        
+          <li>
             <a href="/2022/03/31/0331_Principar_Component_Analysis_01/">주성분_분석_01</a>
           </li>
         
@@ -2648,14 +2632,6 @@ memory usage: 7.6+ KB
         
           <li>
             <a href="/2022/03/31/0331_K_Means_01/">K-평균_01</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/30/0330_Cross_Validation01/">교차검증과_랜덤서치_01</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/30/0330_Decision_Tree_01/">결정_트리_01</a>
           </li>
         
       </ul>
