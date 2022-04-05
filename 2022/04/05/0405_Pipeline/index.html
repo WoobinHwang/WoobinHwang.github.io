@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>파이프_라인_(데이터_전처리) | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="데이터 누수 방지 위한 모델링 기법:파이프라인 구축 수능시험 &#x3D; 최종테스트 데이터 모의고사 or 기출문제 &#x3D; 검증데이터 교과서 문제지 &#x3D; 훈련데이터 머신러닝 엔지니어 : MLOps (선행되어야 하는 코드 조건, Pipeline 형태로 구축) 머신러닝 코드 자동화 가능, 운영 가능 개발 업계의 최상위 연봉자    데이터 불러오기12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="파이프_라인_(데이터_전처리)">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/04/05/0405_Pipeline/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="데이터 누수 방지 위한 모델링 기법:파이프라인 구축 수능시험 &#x3D; 최종테스트 데이터 모의고사 or 기출문제 &#x3D; 검증데이터 교과서 문제지 &#x3D; 훈련데이터 머신러닝 엔지니어 : MLOps (선행되어야 하는 코드 조건, Pipeline 형태로 구축) 머신러닝 코드 자동화 가능, 운영 가능 개발 업계의 최상위 연봉자    데이터 불러오기12">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-04-05T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-05T11:02:40.946Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0405_Pipeline" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/05/0405_Pipeline/" class="article-date">
+  <time class="dt-published" datetime="2022-04-05T00:00:00.000Z" itemprop="datePublished">2022-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      파이프_라인_(데이터_전처리)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="데이터-누수-방지-위한-모델링-기법"><a href="#데이터-누수-방지-위한-모델링-기법" class="headerlink" title="데이터 누수 방지 위한 모델링 기법:"></a>데이터 누수 방지 위한 모델링 기법:</h1><h3 id="파이프라인-구축"><a href="#파이프라인-구축" class="headerlink" title="파이프라인 구축"></a>파이프라인 구축</h3><ul>
+<li>수능시험 &#x3D; 최종테스트 데이터</li>
+<li>모의고사 or 기출문제 &#x3D; 검증데이터</li>
+<li>교과서 문제지 &#x3D; 훈련데이터</li>
+<li>머신러닝 엔지니어 : MLOps (선행되어야 하는 코드 조건, Pipeline 형태로 구축)<ul>
+<li>머신러닝 코드 자동화 가능, 운영 가능</li>
+<li>개발 업계의 최상위 연봉자</li>
+</ul>
+</li>
+</ul>
+<h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/MicrosoftDocs/ml-basics/master/data/daily-bike-share.csv&#x27;</span>)</span><br><span class="line">data.info()</span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 731 entries, 0 to 730
+Data columns (total 14 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   instant     731 non-null    int64  
+ 1   dteday      731 non-null    object 
+ 2   season      731 non-null    int64  
+ 3   yr          731 non-null    int64  
+ 4   mnth        731 non-null    int64  
+ 5   holiday     731 non-null    int64  
+ 6   weekday     731 non-null    int64  
+ 7   workingday  731 non-null    int64  
+ 8   weathersit  731 non-null    int64  
+ 9   temp        731 non-null    float64
+ 10  atemp       731 non-null    float64
+ 11  hum         731 non-null    float64
+ 12  windspeed   731 non-null    float64
+ 13  rentals     731 non-null    int64  
+dtypes: float64(4), int64(9), object(1)
+memory usage: 80.1+ KB
+</code></pre>
+<h1 id="데이터-추출"><a href="#데이터-추출" class="headerlink" title="데이터 추출"></a>데이터 추출</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cols = [<span class="string">&#x27;season&#x27;</span>, <span class="string">&#x27;mnth&#x27;</span>, <span class="string">&#x27;holiday&#x27;</span>, <span class="string">&#x27;weekday&#x27;</span>, <span class="string">&#x27;workingday&#x27;</span>, <span class="string">&#x27;weathersit&#x27;</span>, <span class="string">&#x27;temp&#x27;</span>, <span class="string">&#x27;atemp&#x27;</span>, <span class="string">&#x27;hum&#x27;</span>, <span class="string">&#x27;windspeed&#x27;</span>, <span class="string">&#x27;rentals&#x27;</span>]</span><br><span class="line">data = data[cols]</span><br><span class="line">data.info()</span><br><span class="line"><span class="comment"># data[&#x27;mnth&#x27;].value_counts()</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 731 entries, 0 to 730
+Data columns (total 11 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   season      731 non-null    int64  
+ 1   mnth        731 non-null    int64  
+ 2   holiday     731 non-null    int64  
+ 3   weekday     731 non-null    int64  
+ 4   workingday  731 non-null    int64  
+ 5   weathersit  731 non-null    int64  
+ 6   temp        731 non-null    float64
+ 7   atemp       731 non-null    float64
+ 8   hum         731 non-null    float64
+ 9   windspeed   731 non-null    float64
+ 10  rentals     731 non-null    int64  
+dtypes: float64(4), int64(7)
+memory usage: 62.9 KB
+</code></pre>
+<ul>
+<li><p>기존: 데이터 불러오기 -&gt; 데이터 전처리 -&gt; 피처공학(원핫인코딩) -&gt; 데이터셋 분리 -&gt; 모델링 코드 -&gt; 모델평가</p>
+</li>
+<li><p>파이프라인: 데이터 불러오기 -&gt; 데이터 전처리 -&gt; 데이터셋 분리 -&gt; 파이프라인 구축 (피처공학, 모델링 코드) -&gt; 모델평가</p>
+</li>
+</ul>
+<h1 id="데이터셋-분리"><a href="#데이터셋-분리" class="headerlink" title="데이터셋 분리"></a>데이터셋 분리</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X = data.drop(<span class="string">&#x27;rentals&#x27;</span>,axis=<span class="number">1</span>)</span><br><span class="line">y = data[<span class="string">&#x27;rentals&#x27;</span>]</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Data Prepocessing</p>
+<ul>
+<li>결측치 수동으로 채우거나</li>
+<li>불필요한 변수를 제거하거나</li>
+<li>이상치를 제거하거나</li>
+<li>파생변수를 만들거나 등등</li>
+</ul>
+</li>
+<li><p>Feature Engineering</p>
+<ul>
+<li>기존: 개별적으로 코드 작성</li>
+<li>현재: Pipeline 코드로 추가할것</li>
+</ul>
+</li>
+</ul>
+<h1 id="Pipeline-구축"><a href="#Pipeline-구축" class="headerlink" title="Pipeline 구축"></a>Pipeline 구축</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler, OrdinalEncoder, OneHotEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> ColumnTransformer</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 타입 3가지</span></span><br><span class="line"><span class="comment"># 수치형 데이터, 무자열 데이터</span></span><br><span class="line"><span class="comment"># 문자열 데이터: 범주형(명목형, 서열형 데이터 구분)</span></span><br><span class="line">numeric_transformer = Pipeline(steps=[</span><br><span class="line">       (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;mean&#x27;</span>))</span><br><span class="line">      ,(<span class="string">&#x27;scaler&#x27;</span>, StandardScaler())</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">ordinal_transformer = Pipeline(steps=[</span><br><span class="line">       (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;constant&#x27;</span>))</span><br><span class="line">      ,(<span class="string">&#x27;ordEncoder&#x27;</span>, OrdinalEncoder())</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">onehot_transformer = Pipeline(steps=[</span><br><span class="line">       (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;constant&#x27;</span>))</span><br><span class="line">      ,(<span class="string">&#x27;oheEncoder&#x27;</span>, OneHotEncoder())                                   </span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 수치형 데이터 및 Categorical 데이터 컬럼 분리</span></span><br><span class="line"></span><br><span class="line">numeric_features = [<span class="string">&#x27;temp&#x27;</span>, <span class="string">&#x27;atemp&#x27;</span>, <span class="string">&#x27;hum&#x27;</span>, <span class="string">&#x27;windspeed&#x27;</span>]</span><br><span class="line">ordinal_features = [<span class="string">&#x27;holiday&#x27;</span>, <span class="string">&#x27;weekday&#x27;</span>, <span class="string">&#x27;workingday&#x27;</span>, <span class="string">&#x27;weathersit&#x27;</span>]</span><br><span class="line">onehot_features  = [<span class="string">&#x27;season&#x27;</span>, <span class="string">&#x27;mnth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># numeric_features = data.select_dtypes(include=[&#x27;int64&#x27;, &#x27;float64&#x27;]).columns</span></span><br><span class="line"><span class="comment"># categorical_features = data.select_dtypes(include=[&#x27;object&#x27;]).drop([&#x27;Loan_Status&#x27;], axis=1).columns</span></span><br><span class="line"></span><br><span class="line">preprocessor = ColumnTransformer(</span><br><span class="line">   transformers=[</span><br><span class="line">     (<span class="string">&#x27;numeric&#x27;</span>, numeric_transformer, numeric_features)</span><br><span class="line">   , (<span class="string">&#x27;ord_categorical&#x27;</span>, ordinal_transformer, ordinal_features)</span><br><span class="line">   , (<span class="string">&#x27;ohe_categorical&#x27;</span>, onehot_transformer, onehot_features)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
+
+<h1 id="모델-적용"><a href="#모델-적용" class="headerlink" title="모델 적용"></a>모델 적용</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"></span><br><span class="line">pipeline = Pipeline(steps = [</span><br><span class="line">               (<span class="string">&#x27;preprocessor&#x27;</span>, preprocessor)</span><br><span class="line">              ,(<span class="string">&#x27;regressor&#x27;</span>, RandomForestRegressor())</span><br><span class="line">           ])</span><br><span class="line"></span><br><span class="line">rf_model = pipeline.fit(X_train, y_train)</span><br><span class="line"><span class="built_in">print</span>(rf_model)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Pipeline(steps=[(&#39;preprocessor&#39;,
+                 ColumnTransformer(transformers=[(&#39;numeric&#39;,
+                                                  Pipeline(steps=[(&#39;imputer&#39;,
+                                                                   SimpleImputer()),
+                                                                  (&#39;scaler&#39;,
+                                                                   StandardScaler())]),
+                                                  [&#39;temp&#39;, &#39;atemp&#39;, &#39;hum&#39;,
+                                                   &#39;windspeed&#39;]),
+                                                 (&#39;ord_categorical&#39;,
+                                                  Pipeline(steps=[(&#39;imputer&#39;,
+                                                                   SimpleImputer(strategy=&#39;constant&#39;)),
+                                                                  (&#39;ordEncoder&#39;,
+                                                                   OrdinalEncoder())]),
+                                                  [&#39;holiday&#39;, &#39;weekday&#39;,
+                                                   &#39;workingday&#39;,
+                                                   &#39;weathersit&#39;]),
+                                                 (&#39;ohe_categorical&#39;,
+                                                  Pipeline(steps=[(&#39;imputer&#39;,
+                                                                   SimpleImputer(strategy=&#39;constant&#39;)),
+                                                                  (&#39;oheEncoder&#39;,
+                                                                   OneHotEncoder())]),
+                                                  [&#39;season&#39;, &#39;mnth&#39;])])),
+                (&#39;regressor&#39;, RandomForestRegressor())])
+</code></pre>
+<h1 id="모델-평가"><a href="#모델-평가" class="headerlink" title="모델 평가"></a>모델 평가</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line">predictions = rf_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span> (r2_score(y_test, predictions))</span><br></pre></td></tr></table></figure>
+
+<pre><code>0.7623870644942855
+</code></pre>
+<h1 id="다중모형-개발"><a href="#다중모형-개발" class="headerlink" title="다중모형 개발"></a>다중모형 개발</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"></span><br><span class="line">regressors = [</span><br><span class="line">    RandomForestRegressor()</span><br><span class="line">   ,DecisionTreeRegressor()</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># regressors = [pipe_rf, pipe_dt]</span></span><br><span class="line"><span class="keyword">for</span> regressor <span class="keyword">in</span> regressors:</span><br><span class="line">    pipeline = Pipeline(steps = [</span><br><span class="line">               (<span class="string">&#x27;preprocessor&#x27;</span>, preprocessor)</span><br><span class="line">              ,(<span class="string">&#x27;regressor&#x27;</span>,regressor)</span><br><span class="line">           ])</span><br><span class="line">    model = pipeline.fit(X_train, y_train)</span><br><span class="line">    predictions = model.predict(X_test)</span><br><span class="line">    <span class="built_in">print</span>(regressor)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;Model r2 score:<span class="subst">&#123;r2_score(predictions, y_test)&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>RandomForestRegressor()
+Model r2 score:0.7385832717833691
+DecisionTreeRegressor()
+Model r2 score:0.6033264470675421
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/04/05/0405_Pipeline/" data-id="cl1m1avq00001l8nhd1erhblx" data-title="파이프_라인_(데이터_전처리)" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/04/05/0405_Neural_Network_Model/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          신경망_모델_훈련
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/04/04/0404_Artificial_Neural_Network/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">인공_신경망</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/05/0404_Deep_Neural_Network/">심층_신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/05/0405_Neural_Network_Model/">신경망_모델_훈련</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/05/0405_Pipeline/">파이프_라인_(데이터_전처리)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/04/0404_Artificial_Neural_Network/">인공_신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/03/31/0331_Principar_Component_Analysis_01/">주성분_분석_01</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
