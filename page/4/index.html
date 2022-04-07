@@ -71,6 +71,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-0318_distribute_Github_Upload" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/18/0318_distribute_Github_Upload/" class="article-date">
+  <time class="dt-published" datetime="2022-03-18T00:00:00.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/0318_distribute_Github_Upload/">배포 - 깃허브 올리기</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="깃헙-올리기"><a href="#깃헙-올리기" class="headerlink" title="깃헙 올리기"></a>깃헙 올리기</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git add README.md   (README.md 파일만 올릴 때)</span><br><span class="line">$ git add .   (모든 파일 올릴 때)</span><br><span class="line">$ git commit -m <span class="string">&quot;~~&quot;</span>   (브랜치에 기록)</span><br><span class="line">$ git push  (깃허브에 보내기)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/18/0318_distribute_Github_Upload/" data-id="cl0w5pf4y0000i0nhb2bw4ewb" data-title="배포 - 깃허브 올리기" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0318_distribute_github_blog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/18/0318_distribute_github_blog/" class="article-date">
+  <time class="dt-published" datetime="2022-03-18T00:00:00.000Z" itemprop="datePublished">2022-03-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/18/0318_distribute_github_blog/">배포 - 깃허브 블로그(hexo)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="깃허브-블로그-hexo"><a href="#깃허브-블로그-hexo" class="headerlink" title="깃허브 블로그(hexo)"></a>깃허브 블로그(hexo)</h1><p>ex) 는 형식에 맞춰서  재작성, 없으면 그대로 적으면 됨.</p>
+<h2 id="필수-파일-설치"><a href="#필수-파일-설치" class="headerlink" title="필수 파일 설치"></a>필수 파일 설치</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="http://nodejs.org/">nodejs.org</a> 설치  (16.14.1 LTS 사용)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ node -v   로 버전 확인 가능</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener" href="http://git-scm.com/">git-scm.com</a> 다운로드</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git -version   으로 확인 가능</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>hexo 설치  (npm을 통해서 설치 가능)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="깃허브-설정"><a href="#깃허브-설정" class="headerlink" title="깃허브 설정"></a>깃허브 설정</h2><ul>
+<li><p>Repositories (<strong>이하 Repo</strong>)는 백업용 + 배포용 두가지를 권장</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">배포용 ex)</span><br><span class="line">$ <span class="built_in">echo</span> <span class="string">&quot;# &lt;폴더명&gt;&quot;</span> &gt;&gt; README.md</span><br><span class="line">$ git init   (git 초기화)</span><br><span class="line">$ git add README.md   (모든 파일 올릴땐 git add .)</span><br><span class="line">$ git commit -m <span class="string">&quot;first commit&quot;</span>   (-m <span class="string">&quot;~~&quot;</span>필수)</span><br><span class="line">$ git branch -M main   (브랜치를 main으로 전환)</span><br><span class="line">$ git remote add origin https://github.com/WoobinHwang/&lt;폴더명&gt;.gitgit push -u origin main   </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>백업용 Repo를 git clone을 통해 적당한 경로로 내려받는다.</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ex)  $ git <span class="built_in">clone</span> your_git_repo_address.git</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="블로그-만들기"><a href="#블로그-만들기" class="headerlink" title="블로그 만들기"></a>블로그 만들기</h2><ul>
+<li><p>폴더 만들기</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">mkdir</span> &lt;폴더명&gt;   (<span class="built_in">mkdir</span> == make directory)</span><br><span class="line">$ <span class="built_in">cd</span> &lt;폴더명&gt;   (<span class="built_in">cd</span> == 해당 폴더로 접속)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>폴더의 Hexo를 초기화 후 설치</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex)  $ hexo init &lt;폴더명&gt;</span><br><span class="line">ex)  $ <span class="built_in">cd</span> &lt;폴더명&gt;</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install hexo-server --save</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>_config.yml 파일 설정</p>
+<ul>
+<li>사이트 정보 수정</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex)</span><br><span class="line">title: 제목을 지어주세요</span><br><span class="line">subtitle: 부제목을 지어주세요</span><br><span class="line">description: description을 지어주세요</span><br><span class="line">author: YourName</span><br></pre></td></tr></table></figure>
+<ul>
+<li>블로그 url 설정</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ex)</span><br><span class="line">url: https://유저네임.github.io</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<ul>
+<li>깃허브 연동</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ex)</span><br><span class="line"># Deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https://github.com/유저네임/유저네임.github.io.git</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="깃허브-hexo-에-배포하기"><a href="#깃허브-hexo-에-배포하기" class="headerlink" title="깃허브(hexo)에 배포하기"></a>깃허브(hexo)에 배포하기</h2><p>- </p>
+<pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server  (<span class="built_in">local</span>에서 확인)</span><br><span class="line">$ hexo generate  (수정 파일 확인 가능)</span><br><span class="line">$ hexo deploy   (깃헙 , hexo에 업로드)</span><br><span class="line"><span class="comment"># == hexo generate --deploy (두 작업 동시에 가능)</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<h2 id="테마-적용하기"><a href="#테마-적용하기" class="headerlink" title="테마 적용하기"></a>테마 적용하기</h2><ul>
+<li><p><a target="_blank" rel="noopener" href="https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/#install-npm">https://ppoffice.github.io/hexo-theme-icarus/uncategorized/getting-started-with-icarus/#install-npm</a></p>
+</li>
+<li><p>예시 - 이카루스 적용하기</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -S hexo-theme-icarus</span><br><span class="line">$ hexo config theme icarus</span><br><span class="line">$ npm install --save bulma-stylus@0.8.0 hexo-renderer-inferno@^0.1.3</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/18/0318_distribute_github_blog/" data-id="cl0w5pf5i0001i0nh2cv69im0" data-title="배포 - 깃허브 블로그(hexo)" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-0318_File_Upload(Markdown)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/18/0318_File_Upload(Markdown)/" class="article-date">
@@ -416,7 +540,15 @@
       <ul>
         
           <li>
-            <a href="/2022/04/06/0406_Convolution_Neural_Network/">합성곱 신경망 (CNN)</a>
+            <a href="/2022/04/07/0407_Convolution_Neural_Network_02/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/07/0407_Sequentoal_Data,Recurrent_Neural_Network/">순차 데이터와 순환 신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/06/0406_Convolution_Neural_Network/">합성곱 신경망_01</a>
           </li>
         
           <li>
@@ -425,14 +557,6 @@
         
           <li>
             <a href="/2022/04/05/0404_Deep_Neural_Network/">심층_신경망</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/05/0405_Neural_Network_Model/">신경망_모델_훈련</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/05/0405_Pipeline/">파이프_라인_(데이터_전처리)</a>
           </li>
         
       </ul>
