@@ -4,31 +4,31 @@
   <meta charset="utf-8">
   
   
-  <title>WB&#39;blog</title>
+  <title>합성곱 신경망_02 | WB&#39;blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="합성곱 신경망을 사용한 이미지 분류패션 MNIST 데이터 불러오기 데이터 스케일 0 ~ 255의 데이터를 0 ~ 1로 표준화  훈련 데이터 &#x2F; 검증 데이터 분류  합성곱 신경망은 2차원 이미지를 그대로 사용하기 때문에 일렬로 펼치지 않아도 됨  완전 연결 신경망 (Fully Connected Layer)  2차원 배열을 1차원 배열로 바꿔야함">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WB&#39;blog">
+<meta property="og:title" content="합성곱 신경망_02">
 <meta property="og:url" content="https://woobinhwang.github.io/2022/04/07/0407_Convolution_Neural_Network_02/index.html">
 <meta property="og:site_name" content="WB&#39;blog">
 <meta property="og:description" content="합성곱 신경망을 사용한 이미지 분류패션 MNIST 데이터 불러오기 데이터 스케일 0 ~ 255의 데이터를 0 ~ 1로 표준화  훈련 데이터 &#x2F; 검증 데이터 분류  합성곱 신경망은 2차원 이미지를 그대로 사용하기 때문에 일렬로 펼치지 않아도 됨  완전 연결 신경망 (Fully Connected Layer)  2차원 배열을 1차원 배열로 바꿔야함">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://woobinhwang.github.io/output_9_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_10_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_12_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_19_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_29_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_31_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_36_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_37_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_41_1.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_44_0.png">
-<meta property="og:image" content="https://woobinhwang.github.io/output_45_1.png">
-<meta property="article:published_time" content="2022-04-07T08:15:30.000Z">
-<meta property="article:modified_time" content="2022-04-07T08:39:10.614Z">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_9_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_10_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_12_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_19_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_29_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_31_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_36_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_37_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_41_1.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_44_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_45_1.png">
+<meta property="article:published_time" content="2022-04-07T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-08T05:00:41.400Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://woobinhwang.github.io/output_9_0.png">
+<meta name="twitter:image" content="https://woobinhwang.github.io/Images/0407_Convolution_Neural_Network_02/output_9_0.png">
   
     <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
   
@@ -88,12 +88,22 @@
         <section id="main"><article id="post-0407_Convolution_Neural_Network_02" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/04/07/0407_Convolution_Neural_Network_02/" class="article-date">
-  <time class="dt-published" datetime="2022-04-07T08:15:30.000Z" itemprop="datePublished">2022-04-07</time>
+  <time class="dt-published" datetime="2022-04-07T00:00:00.000Z" itemprop="datePublished">2022-04-07</time>
 </a>
     
   </div>
   <div class="article-inner">
     
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      합성곱 신경망_02
+    </h1>
+  
+
+      </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
       
@@ -112,7 +122,18 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(train_input, train_target), (test_input, test_target) = \</span><br><span class="line">    keras.datasets.fashion_mnist.load_data()</span><br><span class="line"></span><br><span class="line">train_scaled = train_input.reshape(-<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>) / <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line">train_scaled, val_scaled, train_target, val_target = train_test_split(</span><br><span class="line">    train_scaled, train_target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(train_input.shape, train_scaled.shape)</span><br></pre></td></tr></table></figure>
 
-<pre><code>(60000, 28, 28) (48000, 28, 28, 1)
+<pre><code>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-labels-idx1-ubyte.gz
+32768/29515 [=================================] - 0s 0us/step
+40960/29515 [=========================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/train-images-idx3-ubyte.gz
+26427392/26421880 [==============================] - 0s 0us/step
+26435584/26421880 [==============================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-labels-idx1-ubyte.gz
+16384/5148 [===============================================================================================] - 0s 0us/step
+Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/t10k-images-idx3-ubyte.gz
+4423680/4422102 [==============================] - 0s 0us/step
+4431872/4422102 [==============================] - 0s 0us/step
+(60000, 28, 28) (48000, 28, 28, 1)
 
 
 - (60000, 28, 28)크기였던 train_input이 (48000, 28, 28, 1)크기의 train_scaled가 됨.
@@ -125,27 +146,27 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 실험 코드</span></span><br><span class="line">model = keras.Sequential()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 합성곱 층</span></span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">32</span>, kernel_size = <span class="number">3</span>, activation = <span class="string">&#x27;relu&#x27;</span>,</span><br><span class="line">                              padding = <span class="string">&#x27;same&#x27;</span>, input_shape = (<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 풀링층</span></span><br><span class="line"><span class="comment"># 평균 풀링을 사용, 풀링 크기는 (3, 3)로 지정</span></span><br><span class="line"><span class="comment"># # 최대 풀링의 함수: MaxPooling2D()</span></span><br><span class="line"><span class="comment"># # 평균 풀링의 함수: AveragePooling2D()</span></span><br><span class="line">model.add(keras.layers.AveragePooling2D(<span class="number">3</span>))  <span class="comment"># 1/3으로 줄이겠다는 의미</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 합성곱 층</span></span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">32</span>, kernel_size=(<span class="number">3</span>,<span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, </span><br><span class="line">                              padding=<span class="string">&#x27;same&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 풀링층</span></span><br><span class="line">model.add(keras.layers.AveragePooling2D(<span class="number">3</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 완전연결층 (밀집층 = Fully Connected Layer)</span></span><br><span class="line">model.add(keras.layers.Flatten())</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">model.add(keras.layers.Dropout(<span class="number">0.4</span>))</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>))</span><br><span class="line"></span><br><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
 
-<pre><code>Model: &quot;sequential_5&quot;
+<pre><code>Model: &quot;sequential&quot;
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- conv2d_9 (Conv2D)           (None, 28, 28, 32)        320       
+ conv2d (Conv2D)             (None, 28, 28, 32)        320       
                                                                  
- average_pooling2d_4 (Averag  (None, 9, 9, 32)         0         
+ average_pooling2d (AverageP  (None, 9, 9, 32)         0         
+ ooling2D)                                                       
+                                                                 
+ conv2d_1 (Conv2D)           (None, 9, 9, 32)          9248      
+                                                                 
+ average_pooling2d_1 (Averag  (None, 3, 3, 32)         0         
  ePooling2D)                                                     
                                                                  
- conv2d_10 (Conv2D)          (None, 9, 9, 32)          9248      
+ flatten (Flatten)           (None, 288)               0         
                                                                  
- average_pooling2d_5 (Averag  (None, 3, 3, 32)         0         
- ePooling2D)                                                     
+ dense (Dense)               (None, 100)               28900     
                                                                  
- flatten_4 (Flatten)         (None, 288)               0         
+ dropout (Dropout)           (None, 100)               0         
                                                                  
- dense_8 (Dense)             (None, 100)               28900     
-                                                                 
- dropout_4 (Dropout)         (None, 100)               0         
-                                                                 
- dense_9 (Dense)             (None, 10)                1010      
+ dense_1 (Dense)             (None, 10)                1010      
                                                                  
 =================================================================
 Total params: 39,478
@@ -158,27 +179,27 @@ _________________________________________________________________
 </code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">model = keras.Sequential()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 합성곱 층</span></span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">32</span>, kernel_size = <span class="number">3</span>, activation = <span class="string">&#x27;relu&#x27;</span>,</span><br><span class="line">                              padding = <span class="string">&#x27;same&#x27;</span>, input_shape = (<span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 풀링층</span></span><br><span class="line"><span class="comment"># 최대 풀링을 사용, 전형적인 풀링 크기인 (2,2)로 지정</span></span><br><span class="line"><span class="comment"># # 최대 풀링의 함수: MaxPooling2D()</span></span><br><span class="line"><span class="comment"># # 평균 풀링의 함수: AveragePooling2D()</span></span><br><span class="line">model.add(keras.layers.MaxPooling2D(<span class="number">2</span>))  <span class="comment"># 절반으로 줄이겠다는 의미</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 합성곱 층</span></span><br><span class="line">model.add(keras.layers.Conv2D(<span class="number">64</span>, kernel_size=(<span class="number">3</span>,<span class="number">3</span>), activation=<span class="string">&#x27;relu&#x27;</span>, </span><br><span class="line">                              padding=<span class="string">&#x27;same&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 풀링층</span></span><br><span class="line">model.add(keras.layers.MaxPooling2D(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 완전연결층 (밀집층 = Fully Connected Layer)</span></span><br><span class="line">model.add(keras.layers.Flatten())</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">model.add(keras.layers.Dropout(<span class="number">0.4</span>))</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>))</span><br><span class="line"></span><br><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
 
-<pre><code>Model: &quot;sequential_6&quot;
+<pre><code>Model: &quot;sequential_1&quot;
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
 =================================================================
- conv2d_11 (Conv2D)          (None, 28, 28, 32)        320       
+ conv2d_2 (Conv2D)           (None, 28, 28, 32)        320       
                                                                  
- max_pooling2d_4 (MaxPooling  (None, 14, 14, 32)       0         
+ max_pooling2d (MaxPooling2D  (None, 14, 14, 32)       0         
+ )                                                               
+                                                                 
+ conv2d_3 (Conv2D)           (None, 14, 14, 64)        18496     
+                                                                 
+ max_pooling2d_1 (MaxPooling  (None, 7, 7, 64)         0         
  2D)                                                             
                                                                  
- conv2d_12 (Conv2D)          (None, 14, 14, 64)        18496     
+ flatten_1 (Flatten)         (None, 3136)              0         
                                                                  
- max_pooling2d_5 (MaxPooling  (None, 7, 7, 64)         0         
- 2D)                                                             
+ dense_2 (Dense)             (None, 100)               313700    
                                                                  
- flatten_5 (Flatten)         (None, 3136)              0         
+ dropout_1 (Dropout)         (None, 100)               0         
                                                                  
- dense_10 (Dense)            (None, 100)               313700    
-                                                                 
- dropout_5 (Dropout)         (None, 100)               0         
-                                                                 
- dense_11 (Dense)            (None, 10)                1010      
+ dense_3 (Dense)             (None, 10)                1010      
                                                                  
 =================================================================
 Total params: 333,526
@@ -197,13 +218,13 @@ _________________________________________________________________
 
 
 
-<p><img src="/output_9_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_9_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 실험 코드</span></span><br><span class="line">keras.utils.plot_model(model, show_shapes=<span class="literal">True</span>,</span><br><span class="line">                       dpi= <span class="number">50</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># dpi로 크기를 조절 할 수 있음 [default: 96]</span></span><br></pre></td></tr></table></figure>
 
 
 
 
-<p><img src="/output_10_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_10_0.png" alt="png"></p>
 <ul>
 <li>매개변수 show_shapes를 적용하여 입력과 출력의 크기를 표시</li>
 </ul>
@@ -212,7 +233,7 @@ _________________________________________________________________
 
 
 
-<p><img src="/output_12_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_12_0.png" alt="png"></p>
 <pre><code>- 지금까지 한 것은 모델 정의
 </code></pre>
 <ul>
@@ -220,40 +241,33 @@ _________________________________________________________________
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import tensorflow as tf</span></span><br><span class="line"></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, </span><br><span class="line">              metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">checkpoint_cb = keras.callbacks.ModelCheckpoint(<span class="string">&#x27;best-cnn-model.h5&#x27;</span>, </span><br><span class="line">                                                save_best_only=<span class="literal">True</span>)</span><br><span class="line">early_stopping_cb = keras.callbacks.EarlyStopping(patience=<span class="number">2</span>,</span><br><span class="line">                                                  restore_best_weights=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># with tf.device(&#x27;/device:GPU:0&#x27;):</span></span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">10</span>,</span><br><span class="line">                    validation_data=(val_scaled, val_target),</span><br><span class="line">                    callbacks=[checkpoint_cb, early_stopping_cb])</span><br></pre></td></tr></table></figure>
 
-
+<pre><code>Epoch 1/10
+1500/1500 [==============================] - 22s 7ms/step - loss: 0.5226 - accuracy: 0.8148 - val_loss: 0.3283 - val_accuracy: 0.8823
+Epoch 2/10
+1500/1500 [==============================] - 12s 8ms/step - loss: 0.3447 - accuracy: 0.8770 - val_loss: 0.2821 - val_accuracy: 0.8950
+Epoch 3/10
+1500/1500 [==============================] - 11s 7ms/step - loss: 0.2924 - accuracy: 0.8943 - val_loss: 0.2594 - val_accuracy: 0.8985
+Epoch 4/10
+1500/1500 [==============================] - 13s 8ms/step - loss: 0.2618 - accuracy: 0.9046 - val_loss: 0.2387 - val_accuracy: 0.9109
+Epoch 5/10
+1500/1500 [==============================] - 12s 8ms/step - loss: 0.2392 - accuracy: 0.9132 - val_loss: 0.2278 - val_accuracy: 0.9163
+Epoch 6/10
+1500/1500 [==============================] - 10s 7ms/step - loss: 0.2190 - accuracy: 0.9192 - val_loss: 0.2297 - val_accuracy: 0.9172
+Epoch 7/10
+1500/1500 [==============================] - 10s 7ms/step - loss: 0.2006 - accuracy: 0.9255 - val_loss: 0.2286 - val_accuracy: 0.9179
+</code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># import tensorflow as tf</span></span><br><span class="line"><span class="comment"># model.compile(optimizer=&#x27;adam&#x27;, loss=&#x27;sparse_categorical_crossentropy&#x27;, </span></span><br><span class="line"><span class="comment">#               metrics=&#x27;accuracy&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># checkpoint_cb = keras.callbacks.ModelCheckpoint(&#x27;best-cnn-model.h5&#x27;, </span></span><br><span class="line"><span class="comment">#                                                 save_best_only=True)</span></span><br><span class="line"><span class="comment"># early_stopping_cb = keras.callbacks.EarlyStopping(patience=2,</span></span><br><span class="line"><span class="comment">#                                                   restore_best_weights=True)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># with tf.device(&#x27;/device:GPU:0&#x27;):</span></span><br><span class="line"><span class="comment">#   history = model.fit(train_scaled, train_target, epochs=10,</span></span><br><span class="line"><span class="comment">#                       validation_data=(val_scaled, val_target),</span></span><br><span class="line"><span class="comment">#                       callbacks=[checkpoint_cb, early_stopping_cb])</span></span><br></pre></td></tr></table></figure>
 
-<pre><code>Epoch 1/10
-1500/1500 [==============================] - 7s 4ms/step - loss: 0.5228 - accuracy: 0.8134 - val_loss: 0.3351 - val_accuracy: 0.8783
-Epoch 2/10
-1500/1500 [==============================] - 5s 3ms/step - loss: 0.3461 - accuracy: 0.8764 - val_loss: 0.2777 - val_accuracy: 0.8954
-Epoch 3/10
-1500/1500 [==============================] - 5s 3ms/step - loss: 0.2951 - accuracy: 0.8924 - val_loss: 0.2575 - val_accuracy: 0.9026
-Epoch 4/10
-1500/1500 [==============================] - 5s 4ms/step - loss: 0.2621 - accuracy: 0.9051 - val_loss: 0.2330 - val_accuracy: 0.9120
-Epoch 5/10
-1500/1500 [==============================] - 6s 4ms/step - loss: 0.2377 - accuracy: 0.9129 - val_loss: 0.2234 - val_accuracy: 0.9152
-Epoch 6/10
-1500/1500 [==============================] - 6s 4ms/step - loss: 0.2186 - accuracy: 0.9200 - val_loss: 0.2219 - val_accuracy: 0.9162
-Epoch 7/10
-1500/1500 [==============================] - 6s 4ms/step - loss: 0.2023 - accuracy: 0.9264 - val_loss: 0.2159 - val_accuracy: 0.9214
-Epoch 8/10
-1500/1500 [==============================] - 6s 4ms/step - loss: 0.1872 - accuracy: 0.9312 - val_loss: 0.2125 - val_accuracy: 0.9229
-Epoch 9/10
-1500/1500 [==============================] - 6s 4ms/step - loss: 0.1722 - accuracy: 0.9358 - val_loss: 0.2129 - val_accuracy: 0.9258
-Epoch 10/10
-1500/1500 [==============================] - 6s 4ms/step - loss: 0.1611 - accuracy: 0.9376 - val_loss: 0.2283 - val_accuracy: 0.9199
-</code></pre>
 <ul>
 <li>모델 학습 곡선 그리기</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 연습 코드: plotly로 그려보기</span></span><br><span class="line"><span class="keyword">import</span> plotly.express <span class="keyword">as</span> px</span><br><span class="line"><span class="keyword">from</span> plotly.subplots <span class="keyword">import</span> make_subplots</span><br><span class="line"><span class="keyword">import</span> plotly.graph_objects <span class="keyword">as</span> go</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">fig = make_subplots()</span><br><span class="line"></span><br><span class="line">fig.add_trace(go.Bar(y= history.history[<span class="string">&#x27;loss&#x27;</span>]))</span><br><span class="line">fig.add_trace(go.Scatter(y= history.history[<span class="string">&#x27;val_loss&#x27;</span>]))</span><br><span class="line"></span><br><span class="line">fig.show()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # 연습 코드: plotly로 그려보기</span></span><br><span class="line"><span class="comment"># # 아래와 비슷한 결과를 얻었지만 블로그에 올리기 위해 주석 처리</span></span><br><span class="line"><span class="comment"># import plotly.express as px</span></span><br><span class="line"><span class="comment"># from plotly.subplots import make_subplots</span></span><br><span class="line"><span class="comment"># import plotly.graph_objects as go</span></span><br><span class="line"><span class="comment"># import matplotlib.pyplot as plt</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># fig = make_subplots()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># fig.add_trace(go.Bar(y= history.history[&#x27;loss&#x27;]))</span></span><br><span class="line"><span class="comment"># fig.add_trace(go.Scatter(y= history.history[&#x27;val_loss&#x27;]))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># fig.show()</span></span><br></pre></td></tr></table></figure>
 
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_19_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_19_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 그래픽 카드로 돌리는지 확인하는 방법</span></span><br><span class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</span><br><span class="line"></span><br><span class="line">device_name = tf.test.gpu_device_name()</span><br><span class="line"><span class="keyword">if</span> device_name != <span class="string">&#x27;/device:GPU:0&#x27;</span>:</span><br><span class="line">  <span class="keyword">raise</span> SystemError(<span class="string">&#x27;GPU device not found&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;Found GPU at: &#123;&#125;&#x27;</span>.<span class="built_in">format</span>(device_name))</span><br></pre></td></tr></table></figure>
 
 <pre><code>Found GPU at: /device:GPU:0
@@ -266,14 +280,14 @@ Epoch 10/10
 
 
 
-<pre><code>[&lt;keras.layers.convolutional.Conv2D at 0x7f72cec86650&gt;,
- &lt;keras.layers.pooling.MaxPooling2D at 0x7f72cec86b90&gt;,
- &lt;keras.layers.convolutional.Conv2D at 0x7f72cec7ded0&gt;,
- &lt;keras.layers.pooling.MaxPooling2D at 0x7f7394985a90&gt;,
- &lt;keras.layers.core.flatten.Flatten at 0x7f72cec8d250&gt;,
- &lt;keras.layers.core.dense.Dense at 0x7f72cec86a10&gt;,
- &lt;keras.layers.core.dropout.Dropout at 0x7f73949e5cd0&gt;,
- &lt;keras.layers.core.dense.Dense at 0x7f73949cff50&gt;]
+<pre><code>[&lt;keras.layers.convolutional.Conv2D at 0x7fc7d81a7790&gt;,
+ &lt;keras.layers.pooling.MaxPooling2D at 0x7fc8e00bfc10&gt;,
+ &lt;keras.layers.convolutional.Conv2D at 0x7fc7f2f88490&gt;,
+ &lt;keras.layers.pooling.MaxPooling2D at 0x7fc7d710d5d0&gt;,
+ &lt;keras.layers.core.flatten.Flatten at 0x7fc8e023bb10&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x7fc7f3fb5350&gt;,
+ &lt;keras.layers.core.dropout.Dropout at 0x7fc86a7a7050&gt;,
+ &lt;keras.layers.core.dense.Dense at 0x7fc86a793750&gt;]
 
 
 
@@ -294,18 +308,18 @@ Epoch 10/10
 </code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conv_weights = conv.weights[<span class="number">0</span>].numpy()</span><br><span class="line"><span class="built_in">print</span>(conv_weights.mean(), conv_weights.std())  <span class="comment"># 평균(mean), 표준편차(std)</span></span><br></pre></td></tr></table></figure>
 
-<pre><code>-0.054838914 0.28367323
+<pre><code>-0.025856383 0.21591602
 </code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(conv_weights.reshape(-<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">plt.xlabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;count&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_29_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_29_0.png" alt="png"></p>
 <pre><code>- 0을 중심으로 종 모양 분포를 띄고 있음
 </code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">2</span>, <span class="number">16</span>, figsize=(<span class="number">15</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">        axs[i, j].imshow(conv_weights[:,:,<span class="number">0</span>,i*<span class="number">16</span> + j], vmin=-<span class="number">0.5</span>, vmax=<span class="number">0.5</span>)</span><br><span class="line">        axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_31_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_31_0.png" alt="png"></p>
 <ul>
 <li>훈련하지 않은 빈 합성곱 신경망을 작성</li>
 </ul>
@@ -318,16 +332,16 @@ Epoch 10/10
 </code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">no_training_weights = no_training_conv.weights[<span class="number">0</span>].numpy()</span><br><span class="line"><span class="built_in">print</span>(no_training_weights.mean(), no_training_weights.std())</span><br></pre></td></tr></table></figure>
 
-<pre><code>0.0015572025 0.082305014
+<pre><code>0.0065383185 0.081879705
 </code></pre>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.hist(no_training_weights.reshape(-<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">plt.xlabel(<span class="string">&#x27;weight&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;count&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_36_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_36_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">2</span>, <span class="number">16</span>, figsize=(<span class="number">15</span>,<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">16</span>):</span><br><span class="line">        axs[i, j].imshow(no_training_weights[:,:,<span class="number">0</span>,i*<span class="number">16</span> + j], vmin=-<span class="number">0.5</span>, vmax=<span class="number">0.5</span>)</span><br><span class="line">        axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_37_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_37_0.png" alt="png"></p>
 <pre><code>- 히스토그램에서 보앗듯이 전체적으로 가중치가 밋밋하게 초기화됨.
 - 특징이 뚜렷하지 않음.
 </code></pre>
@@ -339,9 +353,9 @@ Epoch 10/10
 </ul>
 <h1 id="특성-맵-시각화"><a href="#특성-맵-시각화" class="headerlink" title="특성 맵 시각화"></a>특성 맵 시각화</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(model.<span class="built_in">input</span>)</span><br><span class="line">conv_acti = keras.Model(model.<span class="built_in">input</span>, model.layers[<span class="number">0</span>].output)</span><br><span class="line">(train_input, train_target), (test_input, test_target) = keras.datasets.fashion_mnist.load_data()</span><br><span class="line">plt.imshow(train_input[<span class="number">0</span>], cmap=<span class="string">&#x27;gray_r&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-<pre><code>KerasTensor(type_spec=TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=&#39;conv2d_11_input&#39;), name=&#39;conv2d_11_input&#39;, description=&quot;created by layer &#39;conv2d_11_input&#39;&quot;)
+<pre><code>KerasTensor(type_spec=TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=&#39;conv2d_2_input&#39;), name=&#39;conv2d_2_input&#39;, description=&quot;created by layer &#39;conv2d_2_input&#39;&quot;)
 </code></pre>
-<p><img src="/output_41_1.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_41_1.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">inputs = train_input[<span class="number">0</span>:<span class="number">1</span>].reshape(-<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)/<span class="number">255.0</span></span><br><span class="line">feature_maps = conv_acti.predict(inputs)</span><br><span class="line"><span class="built_in">print</span>(feature_maps.shape)</span><br></pre></td></tr></table></figure>
 
 <pre><code>(1, 28, 28, 32)
@@ -352,12 +366,12 @@ Epoch 10/10
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fig, axs = plt.subplots(<span class="number">4</span>, <span class="number">8</span>, figsize=(<span class="number">15</span>,<span class="number">8</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">        axs[i, j].imshow(feature_maps[<span class="number">0</span>,:,:,i*<span class="number">8</span> + j])</span><br><span class="line">        axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 
-<p><img src="/output_44_0.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_44_0.png" alt="png"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">conv2_acti = keras.Model(model.<span class="built_in">input</span>, model.layers[<span class="number">2</span>].output)</span><br><span class="line">feature_maps = conv2_acti.predict(train_input[<span class="number">0</span>:<span class="number">1</span>].reshape(-<span class="number">1</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)/<span class="number">255.0</span>)</span><br><span class="line"><span class="built_in">print</span>(feature_maps.shape)</span><br><span class="line"></span><br><span class="line">fig, axs = plt.subplots(<span class="number">8</span>, <span class="number">8</span>, figsize=(<span class="number">12</span>,<span class="number">12</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">8</span>):</span><br><span class="line">        axs[i, j].imshow(feature_maps[<span class="number">0</span>,:,:,i*<span class="number">8</span> + j])</span><br><span class="line">        axs[i, j].axis(<span class="string">&#x27;off&#x27;</span>)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
 <pre><code>(1, 14, 14, 64)
 </code></pre>
-<p><img src="/output_45_1.png" alt="png"></p>
+<p><img src="/Images/0407_Convolution_Neural_Network_02/output_45_1.png" alt="png"></p>
 <ul>
 <li><ul>
 <li>합성곱 신경망의 앞부분에 있는 합성곱 층은 이미지의 시각적인 정보를 감지하고 뒤쪽에 있는 합성곱 층은 앞쪽에서 감지한 시각적인 정보를 바탕으로 추상적인 정보를 학습한다는 추론이 가능.</li>
@@ -386,12 +400,11 @@ Epoch 10/10
 </ul>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/04/07/0407_Convolution_Neural_Network_02/" data-id="cl1oq6dcw0000jonh2p957nxm" data-title="" class="article-share-link">Share</a>
+      <a data-url="https://woobinhwang.github.io/2022/04/07/0407_Convolution_Neural_Network_02/" data-id="cl1oq6dcw0000jonh2p957nxm" data-title="합성곱 신경망_02" class="article-share-link">Share</a>
       
       
       
@@ -401,10 +414,19 @@ Epoch 10/10
     
 <nav id="article-nav">
   
+    <a href="/2022/04/07/0407_Sequentoal_Data,Recurrent_Neural_Network/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          순차 데이터와 순환 신경망
+        
+      </div>
+    </a>
   
-    <a href="/2022/04/07/0407_Sequentoal_Data,Recurrent_Neural_Network/" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2022/04/06/0406_Convolution_Neural_Network/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">순차 데이터와 순환 신경망</div>
+      <div class="article-nav-title">합성곱 신경망_01</div>
     </a>
   
 </nav>
@@ -442,7 +464,11 @@ Epoch 10/10
       <ul>
         
           <li>
-            <a href="/2022/04/07/0407_Convolution_Neural_Network_02/">(no title)</a>
+            <a href="/2022/04/08/0408_LSTM,GRU_Cell/">LSTM과 GRU셀</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/08/0408_IMDB/">IMDB 리뷰</a>
           </li>
         
           <li>
@@ -450,15 +476,11 @@ Epoch 10/10
           </li>
         
           <li>
+            <a href="/2022/04/07/0407_Convolution_Neural_Network_02/">합성곱 신경망_02</a>
+          </li>
+        
+          <li>
             <a href="/2022/04/06/0406_Convolution_Neural_Network/">합성곱 신경망_01</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/06/0406_woob-s/">Kaggle 프로젝트</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/05/0404_Deep_Neural_Network/">심층_신경망</a>
           </li>
         
       </ul>

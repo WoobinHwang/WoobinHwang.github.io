@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>LSTM과 GRU셀 | WB&#39;blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="LSTM과 GPU셀LSTM 신경망 훈련하기 RNN은 실무에서 안씀. LSTM이 나온 배경 RNN -&gt; 문장이 길면, 학습 능력이 떨어지게됨 Long Short-Term Memory   단기 기억을 오래 기억하기 위해 고안됨. 메모장에 적듯이 업무 처리함.    데이터 불러오기12345678from tensorflow.keras.datasets impo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LSTM과 GRU셀">
+<meta property="og:url" content="https://woobinhwang.github.io/2022/04/08/0408_LSTM,GRU_Cell/index.html">
+<meta property="og:site_name" content="WB&#39;blog">
+<meta property="og:description" content="LSTM과 GPU셀LSTM 신경망 훈련하기 RNN은 실무에서 안씀. LSTM이 나온 배경 RNN -&gt; 문장이 길면, 학습 능력이 떨어지게됨 Long Short-Term Memory   단기 기억을 오래 기억하기 위해 고안됨. 메모장에 적듯이 업무 처리함.    데이터 불러오기12345678from tensorflow.keras.datasets impo">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0408_LSTM,GRU_Cell/output_11_0.png">
+<meta property="og:image" content="https://woobinhwang.github.io/Images/0408_LSTM,GRU_Cell/output_13_1.png">
+<meta property="article:published_time" content="2022-04-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2022-04-08T04:54:27.371Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://woobinhwang.github.io/Images/0408_LSTM,GRU_Cell/output_11_0.png">
+  
+    <link rel="alternate" href="/atom.xml" title="WB'blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">WB&#39;blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://woobinhwang.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-0408_LSTM,GRU_Cell" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/08/0408_LSTM,GRU_Cell/" class="article-date">
+  <time class="dt-published" datetime="2022-04-08T00:00:00.000Z" itemprop="datePublished">2022-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LSTM과 GRU셀
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="LSTM과-GPU셀"><a href="#LSTM과-GPU셀" class="headerlink" title="LSTM과 GPU셀"></a>LSTM과 GPU셀</h1><h1 id="LSTM-신경망-훈련하기"><a href="#LSTM-신경망-훈련하기" class="headerlink" title="LSTM 신경망 훈련하기"></a>LSTM 신경망 훈련하기</h1><ul>
+<li>RNN은 실무에서 안씀.</li>
+<li>LSTM이 나온 배경<ul>
+<li>RNN -&gt; 문장이 길면, 학습 능력이 떨어지게됨</li>
+<li>Long Short-Term Memory</li>
+</ul>
+</li>
+<li>단기 기억을 오래 기억하기 위해 고안됨.<ul>
+<li>메모장에 적듯이 업무 처리함.</li>
+</ul>
+</li>
+</ul>
+<h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.keras.datasets <span class="keyword">import</span> imdb</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(train_input, train_target), (test_input, test_target) = imdb.load_data(</span><br><span class="line">    num_words=<span class="number">500</span>)</span><br><span class="line"></span><br><span class="line">train_input, val_input, train_target, val_target = train_test_split(</span><br><span class="line">    train_input, train_target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+
+<pre><code>Downloading data from https://storage.googleapis.com/tensorflow/tf-keras-datasets/imdb.npz
+17465344/17464789 [==============================] - 0s 0us/step
+17473536/17464789 [==============================] - 0s 0us/step
+</code></pre>
+<h2 id="padding"><a href="#padding" class="headerlink" title="padding"></a>padding</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow.keras.preprocessing.sequence <span class="keyword">import</span> pad_sequences</span><br><span class="line"></span><br><span class="line">train_seq = pad_sequences(train_input, maxlen=<span class="number">100</span>)</span><br><span class="line">val_seq = pad_sequences(val_input, maxlen=<span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="모형-만들기"><a href="#모형-만들기" class="headerlink" title="모형 만들기"></a>모형 만들기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line">model = keras.Sequential()</span><br><span class="line">model.add(keras.layers.Embedding(<span class="number">500</span>, <span class="number">16</span>, input_length= <span class="number">100</span>))</span><br><span class="line">model.add(keras.layers.LSTM(<span class="number">8</span>))</span><br><span class="line">model.add(keras.layers.Dense(<span class="number">1</span>, activation= <span class="string">&#x27;sigmoid&#x27;</span>))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Model: &quot;sequential&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ embedding (Embedding)       (None, 100, 16)           8000      
+                                                                 
+ lstm (LSTM)                 (None, 8)                 800       
+                                                                 
+ dense (Dense)               (None, 1)                 9         
+                                                                 
+=================================================================
+Total params: 8,809
+Trainable params: 8,809
+Non-trainable params: 0
+_________________________________________________________________
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rmsprop = keras.optimizers.RMSprop(learning_rate=<span class="number">1e-4</span>)</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=rmsprop, loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>, </span><br><span class="line">              metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line"></span><br><span class="line">checkpoint_cb = keras.callbacks.ModelCheckpoint(<span class="string">&#x27;best-lstm-model.h5&#x27;</span>, </span><br><span class="line">                                                save_best_only=<span class="literal">True</span>)</span><br><span class="line">early_stopping_cb = keras.callbacks.EarlyStopping(patience=<span class="number">3</span>,</span><br><span class="line">                                                  restore_best_weights=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 원본 epochs = 100</span></span><br><span class="line">history = model.fit(train_seq, train_target, epochs=<span class="number">10</span>, batch_size=<span class="number">64</span>,</span><br><span class="line">                    validation_data=(val_seq, val_target),</span><br><span class="line">                    callbacks=[checkpoint_cb, early_stopping_cb])</span><br></pre></td></tr></table></figure>
+
+<pre><code>Epoch 1/10
+313/313 [==============================] - 20s 57ms/step - loss: 0.6929 - accuracy: 0.5167 - val_loss: 0.6923 - val_accuracy: 0.5706
+Epoch 2/10
+313/313 [==============================] - 15s 46ms/step - loss: 0.6914 - accuracy: 0.6021 - val_loss: 0.6902 - val_accuracy: 0.6312
+Epoch 3/10
+313/313 [==============================] - 16s 51ms/step - loss: 0.6869 - accuracy: 0.6435 - val_loss: 0.6816 - val_accuracy: 0.5628
+Epoch 4/10
+313/313 [==============================] - 14s 45ms/step - loss: 0.6530 - accuracy: 0.6578 - val_loss: 0.6313 - val_accuracy: 0.7128
+Epoch 5/10
+313/313 [==============================] - 13s 42ms/step - loss: 0.6149 - accuracy: 0.7222 - val_loss: 0.6105 - val_accuracy: 0.7282
+Epoch 6/10
+313/313 [==============================] - 13s 42ms/step - loss: 0.5949 - accuracy: 0.7358 - val_loss: 0.5939 - val_accuracy: 0.7382
+Epoch 7/10
+313/313 [==============================] - 13s 42ms/step - loss: 0.5780 - accuracy: 0.7503 - val_loss: 0.5786 - val_accuracy: 0.7452
+Epoch 8/10
+313/313 [==============================] - 13s 43ms/step - loss: 0.5623 - accuracy: 0.7577 - val_loss: 0.5654 - val_accuracy: 0.7466
+Epoch 9/10
+313/313 [==============================] - 13s 42ms/step - loss: 0.5480 - accuracy: 0.7663 - val_loss: 0.5516 - val_accuracy: 0.7574
+Epoch 10/10
+313/313 [==============================] - 13s 42ms/step - loss: 0.5343 - accuracy: 0.7711 - val_loss: 0.5400 - val_accuracy: 0.7602
+</code></pre>
+<h2 id="손실-곡선-추가"><a href="#손실-곡선-추가" class="headerlink" title="손실 곡선 추가"></a>손실 곡선 추가</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0408_LSTM,GRU_Cell/output_11_0.png" alt="png"></p>
+<h2 id="순환층에-드롭아웃-적용하기"><a href="#순환층에-드롭아웃-적용하기" class="headerlink" title="순환층에 드롭아웃 적용하기"></a>순환층에 드롭아웃 적용하기</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">model2 = keras.Sequential()</span><br><span class="line"></span><br><span class="line">model2.add(keras.layers.Embedding(<span class="number">500</span>, <span class="number">16</span>, input_length=<span class="number">100</span>))</span><br><span class="line"><span class="comment"># 드롭아웃 추가</span></span><br><span class="line">model2.add(keras.layers.LSTM(<span class="number">8</span>, dropout=<span class="number">0.3</span>))</span><br><span class="line">model2.add(keras.layers.Dense(<span class="number">1</span>, activation=<span class="string">&#x27;sigmoid&#x27;</span>))</span><br><span class="line"></span><br><span class="line">rmsprop = keras.optimizers.RMSprop(learning_rate=<span class="number">1e-4</span>)</span><br><span class="line">model2.<span class="built_in">compile</span>(optimizer=rmsprop, loss=<span class="string">&#x27;binary_crossentropy&#x27;</span>, </span><br><span class="line">               metrics=[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line"></span><br><span class="line">checkpoint_cb = keras.callbacks.ModelCheckpoint(<span class="string">&#x27;best-dropout-model.h5&#x27;</span>, </span><br><span class="line">                                                save_best_only=<span class="literal">True</span>)</span><br><span class="line">early_stopping_cb = keras.callbacks.EarlyStopping(patience=<span class="number">3</span>,</span><br><span class="line">                                                  restore_best_weights=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># epcohs = 100</span></span><br><span class="line">history = model2.fit(train_seq, train_target, epochs=<span class="number">5</span>, batch_size=<span class="number">64</span>,</span><br><span class="line">                     validation_data=(val_seq, val_target),</span><br><span class="line">                     callbacks=[checkpoint_cb, early_stopping_cb])</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<pre><code>Epoch 1/5
+313/313 [==============================] - 26s 74ms/step - loss: 0.6925 - accuracy: 0.5351 - val_loss: 0.6917 - val_accuracy: 0.5744
+Epoch 2/5
+313/313 [==============================] - 14s 44ms/step - loss: 0.6902 - accuracy: 0.5934 - val_loss: 0.6881 - val_accuracy: 0.6306
+Epoch 3/5
+313/313 [==============================] - 14s 45ms/step - loss: 0.6817 - accuracy: 0.6486 - val_loss: 0.6711 - val_accuracy: 0.6736
+Epoch 4/5
+313/313 [==============================] - 14s 44ms/step - loss: 0.6357 - accuracy: 0.6889 - val_loss: 0.6024 - val_accuracy: 0.6984
+Epoch 5/5
+313/313 [==============================] - 14s 45ms/step - loss: 0.5847 - accuracy: 0.7155 - val_loss: 0.5686 - val_accuracy: 0.7286
+</code></pre>
+<p><img src="/Images/0408_LSTM,GRU_Cell/output_13_1.png" alt="png"></p>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>키워드<ul>
+<li><strong>LSTM</strong>: 타임스텝이 긴 데이터를 효과적으로 학습하기 위해 고안된 순환층.</li>
+<li><strong>셀 상태</strong>: LSTM셀은 은닉 상태 외에 셀상태를 출력. 셀 상태는 다음 층으로 전달되지 않으며 현재 셀에서만 순환됨.</li>
+<li><strong>GPU</strong>: LSTM셀의 간소화 버전으로 생각 할 수 있지만 LSTM셀에 못지않는 성능을 냅니다.</li>
+</ul>
+</li>
+<li><strong>TensorFlow 패키지</strong><ul>
+<li><strong>LSTM</strong>: LSTM셀을 사용한 순환층 클래스</li>
+<li><strong>GRU</strong>: GRU셀을 사용한 순환층 클래스</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/04/08/0408_LSTM,GRU_Cell/" data-id="cl1pyeuzv0000ngnha03k6e2x" data-title="LSTM과 GRU셀" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/08/0408_IMDB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">IMDB 리뷰</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/03/">March 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/08/0408_LSTM,GRU_Cell/">LSTM과 GRU셀</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/08/0408_IMDB/">IMDB 리뷰</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/07/0407_Sequentoal_Data,Recurrent_Neural_Network/">순차 데이터와 순환 신경망</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/07/0407_Convolution_Neural_Network_02/">합성곱 신경망_02</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/06/0406_Convolution_Neural_Network/">합성곱 신경망_01</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

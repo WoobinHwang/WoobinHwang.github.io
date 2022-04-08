@@ -71,6 +71,471 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-0328_Regression_03" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/28/0328_Regression_03/" class="article-date">
+  <time class="dt-published" datetime="2022-03-28T00:00:00.000Z" itemprop="datePublished">2022-03-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/28/0328_Regression_03/">k-최근접 이웃 회귀 03</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="특성-공학과-규제"><a href="#특성-공학과-규제" class="headerlink" title="특성 공학과 규제"></a>특성 공학과 규제</h1><ul>
+<li>다중회귀:<ul>
+<li>여러가지 특성을 사용한 선형회귀</li>
+</ul>
+</li>
+<li>특성공학:<ul>
+<li>기존의 특성을 사용해 새로운 특성을 뽑아내는 작업</li>
+</ul>
+</li>
+</ul>
+<h1 id="데이터-준비"><a href="#데이터-준비" class="headerlink" title="데이터 준비"></a>데이터 준비</h1><ul>
+<li>판다스: 유명한 데이터 분석 라이브러리<ul>
+<li>데이터프레임: 판다스의 핵심 데이터 구조</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="comment"># pd.__version__</span></span><br><span class="line">df = pd.read_csv(<span class="string">&quot;https://bit.ly/perch_csv_data&quot;</span>)</span><br><span class="line">perch_full = df.to_numpy()</span><br><span class="line"><span class="comment"># print(perch_full)</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://gist.github.com/rickiepark/2cd82455e985001542047d7d55d50630</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">perch_weight = np.array([<span class="number">5.9</span>, <span class="number">32.0</span>, <span class="number">40.0</span>, <span class="number">51.5</span>, <span class="number">70.0</span>, <span class="number">100.0</span>, <span class="number">78.0</span>, <span class="number">80.0</span>, <span class="number">85.0</span>, <span class="number">85.0</span>, <span class="number">110.0</span>,</span><br><span class="line">       <span class="number">115.0</span>, <span class="number">125.0</span>, <span class="number">130.0</span>, <span class="number">120.0</span>, <span class="number">120.0</span>, <span class="number">130.0</span>, <span class="number">135.0</span>, <span class="number">110.0</span>, <span class="number">130.0</span>,</span><br><span class="line">       <span class="number">150.0</span>, <span class="number">145.0</span>, <span class="number">150.0</span>, <span class="number">170.0</span>, <span class="number">225.0</span>, <span class="number">145.0</span>, <span class="number">188.0</span>, <span class="number">180.0</span>, <span class="number">197.0</span>,</span><br><span class="line">       <span class="number">218.0</span>, <span class="number">300.0</span>, <span class="number">260.0</span>, <span class="number">265.0</span>, <span class="number">250.0</span>, <span class="number">250.0</span>, <span class="number">300.0</span>, <span class="number">320.0</span>, <span class="number">514.0</span>,</span><br><span class="line">       <span class="number">556.0</span>, <span class="number">840.0</span>, <span class="number">685.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">690.0</span>, <span class="number">900.0</span>, <span class="number">650.0</span>, <span class="number">820.0</span>,</span><br><span class="line">       <span class="number">850.0</span>, <span class="number">900.0</span>, <span class="number">1015.0</span>, <span class="number">820.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>, <span class="number">1100.0</span>, <span class="number">1000.0</span>,</span><br><span class="line">       <span class="number">1000.0</span>])</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>perch_full과 perch_weight를 훈련세트와 테스트 세트로 나눔</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_input, test_input, train_target, test_target = train_test_split(perch_full, perch_weight, random_state= <span class="number">42</span>)</span><br><span class="line"><span class="built_in">print</span>(train_target)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[  85.  135.   78.   70.  700.  180.  850.  820. 1000.  120.   85.  130.
+  225.  260. 1100.  900.  145.  115.  265. 1015.  514.  218.  685.   32.
+  145.   40.  690.  840.  300.  170.  650.  110.  150.  110. 1000.  150.
+   80.  700.  120.  197. 1100.  556.]
+</code></pre>
+<h1 id="사이킷런의-변환기"><a href="#사이킷런의-변환기" class="headerlink" title="사이킷런의 변환기"></a>사이킷런의 변환기</h1><ul>
+<li>변환기: 특성을 만들거나 전처리하기 위한 다양한 클래스들<ul>
+<li>fit(), score(), predict(), transform(), 등등…</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"></span><br><span class="line">poly = PolynomialFeatures()</span><br><span class="line">poly.fit([[<span class="number">2</span>,<span class="number">3</span>]])  <span class="comment"># 변환 전 학습시키기</span></span><br><span class="line"><span class="built_in">print</span>(poly.transform([[<span class="number">2</span>,<span class="number">3</span>]]))  <span class="comment"># 2,3의 특성을 변환시킨것</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>[[1. 2. 3. 4. 6. 9.]]
+
+
+  - 2와 3을 곱한 6, 각각 제곱한 4, 9, 절편인 1이 추가되었다.
+</code></pre>
+<ul>
+<li>사이킷런 특성상 절편을 자동으로 추가하므로 1은 필요 없음.<ul>
+<li>include_bias&#x3D; False로 제거</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures(include_bias= <span class="literal">False</span>)</span><br><span class="line">poly.fit([[<span class="number">2</span>,<span class="number">3</span>]])</span><br><span class="line"><span class="built_in">print</span>(poly.transform([[<span class="number">2</span>, <span class="number">3</span>]]))</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[2. 3. 4. 6. 9.]]
+</code></pre>
+<ul>
+<li>train_input에 적용</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures(include_bias= <span class="literal">False</span>)  <span class="comment"># 1은 제외</span></span><br><span class="line">poly.fit(train_input)  <span class="comment"># 변환 전 학습시키기</span></span><br><span class="line">train_poly = poly.transform(train_input)  <span class="comment"># 변환</span></span><br><span class="line"><span class="built_in">print</span>(train_poly.shape)</span><br><span class="line"><span class="comment"># print(train_poly)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 9)
+</code></pre>
+<ul>
+<li>PolynomiaFeatures클래스의 get_feature_names_&#x2F;Images&#x2F;0328_Regression_03&#x2F;out()의 메서드로 9개의 특성이 각각 어떤 입력의 조합으로 만들어졌는지 알 수 있다.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">poly.get_feature_names_/Images/0328_Regression_03/out()</span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([&#39;x0&#39;, &#39;x1&#39;, &#39;x2&#39;, &#39;x0^2&#39;, &#39;x0 x1&#39;, &#39;x0 x2&#39;, &#39;x1^2&#39;, &#39;x1 x2&#39;,
+       &#39;x2^2&#39;], dtype=object)
+
+
+
+  각각 x0, x1, x2에서 파생된 값들
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_poly= poly.transform(test_input)  <span class="comment"># test_input 을 변환</span></span><br><span class="line"><span class="comment"># print(test_poly)</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>  poly: 2,3을 transform한 값
+  train_poly: train_input을 transform한 값
+  test_poly: test_input을 transform한 값
+</code></pre>
+<h1 id="다중회귀-모델-훈련"><a href="#다중회귀-모델-훈련" class="headerlink" title="다중회귀 모델 훈련"></a>다중회귀 모델 훈련</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line">lr = LinearRegression()</span><br><span class="line">lr.fit(train_poly, train_target)  <span class="comment"># fit(): 훈련시키기</span></span><br><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))  <span class="comment"># 정답률 99퍼센트</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9903183436982124
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))  <span class="comment"># 정답률 97퍼센트</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9714559911594134
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">poly = PolynomialFeatures(degree= <span class="number">5</span>, include_bias= <span class="literal">False</span>)  <span class="comment"># 5제곱까지 특성을 만들어 출력, 1은 제외</span></span><br><span class="line">poly.fit(train_input)  <span class="comment"># 변환 전 학습시키기</span></span><br><span class="line">train_poly = poly.transform(train_input)  <span class="comment"># 변환시키기</span></span><br><span class="line">test_poly = poly.transform(test_input)  <span class="comment"># 변환시키기</span></span><br><span class="line"><span class="built_in">print</span>(train_poly.shape)</span><br></pre></td></tr></table></figure>
+
+<pre><code>(42, 55)
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lr.fit(train_poly, train_target)  <span class="comment"># fit(): 훈련시키기</span></span><br><span class="line"><span class="built_in">print</span>(lr.score(train_poly, train_target))  <span class="comment"># 정답률 100퍼센트에 가까움</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9999999999991097
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(lr.score(test_poly, test_target))  <span class="comment"># 점수가 음수로 나옴</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>-144.40579242684848
+
+
+  144로 음수가 나와 과대적합이 되었음.
+  특성을 줄일 필요가 있음.
+</code></pre>
+<h1 id="규제-Regularization"><a href="#규제-Regularization" class="headerlink" title="규제(Regularization)"></a>규제(Regularization)</h1><ul>
+<li>머신러닝 모델이 훈련세트를 너무 과도하게 학습하지 못하도록 훼방하는 것</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 정규화 우선</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">ss = StandardScaler()</span><br><span class="line">ss.fit(train_poly)  <span class="comment"># 변환 전 학습시키기 </span></span><br><span class="line">train_scaled = ss.transform(train_poly)  <span class="comment"># 정규화</span></span><br><span class="line">test_scaled = ss.transform(test_poly)  <span class="comment"># 정규화</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="릿지-Ridge-와-라쏘-Lasso"><a href="#릿지-Ridge-와-라쏘-Lasso" class="headerlink" title="릿지(Ridge)와 라쏘(Lasso)"></a>릿지(Ridge)와 라쏘(Lasso)</h1><ul>
+<li>선형 회귀모델에 규제를 추가한 모델</li>
+</ul>
+<h2 id="릿지-회귀-Ridge"><a href="#릿지-회귀-Ridge" class="headerlink" title="릿지 회귀 (Ridge)"></a>릿지 회귀 (Ridge)</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Ridge</span><br><span class="line">ridge = Ridge()</span><br><span class="line">ridge.fit(train_scaled, train_target)  <span class="comment"># fit()로 학습시키기</span></span><br><span class="line"><span class="built_in">print</span>(ridge.score(train_scaled, train_target))  <span class="comment"># 0.99의 점수가 나옴</span></span><br><span class="line"><span class="built_in">print</span>(ridge.score(test_scaled, test_target))  <span class="comment"># 점수가 정상으로 돌아옴</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9896101671037343
+0.9790693977615397
+</code></pre>
+<ul>
+<li><p>릿지와 라쏘 모델을 사용 할 때 alpha매개변수로 규제의 강도를 조절 가능</p>
+<ul>
+<li>alpha값이 크면 규제강도가 세지므로 과소적합되도록 유도</li>
+<li>alpha값이 작으면 규제강도가 세지므로 과대적합되도록 유도</li>
+</ul>
+</li>
+<li><p>적절한 alpha값을 찾는 방법중 하나로는 alpha값에 대한 R^2값의 그래프를 그려보는것.</p>
+<ul>
+<li>훈련세트와 테스트 세트의 점수가 가장 가까운 지점이 최적의 alpha값</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">train_score = []</span><br><span class="line">test_score = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># alpha값을 0.001~100까지 10배씩 늘리며 회귀모델을 훈련</span></span><br><span class="line">alpha_list = [<span class="number">0.001</span>, <span class="number">0.01</span>, <span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alpha_list:</span><br><span class="line">  <span class="comment"># 릿지모델을 만듬</span></span><br><span class="line">  ridge = Ridge(alpha=alpha)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 릿지모델을 훈련</span></span><br><span class="line">  ridge.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 훈련 점수와 테스트 점수를 저장</span></span><br><span class="line">  train_score.append(ridge.score(train_scaled, train_target))</span><br><span class="line">  test_score.append(ridge.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 로그함수로 나타내어 그래프 그리기</span></span><br><span class="line"><span class="comment"># 객체지향 함수로 진행</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax= plt.subplots()</span><br><span class="line">ax.plot(np.log10(alpha_list), train_score)  <span class="comment"># 위에 그려질 그래프</span></span><br><span class="line">ax.plot(np.log10(alpha_list), test_score)  <span class="comment"># 아래에 그려질 그래프</span></span><br><span class="line">ax.set_xlabel(<span class="string">&quot;alpha&quot;</span>)  <span class="comment"># x축은 지수를 나타냄</span></span><br><span class="line">ax.set_ylabel(<span class="string">&quot;R^2&quot;</span>)  <span class="comment"># == score의 점수</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0328_Regression_03/output_34_0.png" alt="png"></p>
+<pre><code>  0.1인 -1에서 가장 가깝고 결정계수가 가장 높기때문에 alpha로 선정
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ridge = Ridge(alpha=<span class="number">0.1</span>)</span><br><span class="line">ridge.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(ridge.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(ridge.score(test_scaled, test_target))  <span class="comment"># 둘이 비슷하게 높은 점수가 나옴.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.9903815817570366
+0.9827976465386926
+</code></pre>
+<h1 id="라쏘-Lasso"><a href="#라쏘-Lasso" class="headerlink" title="라쏘 (Lasso)"></a>라쏘 (Lasso)</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> Lasso</span><br><span class="line">lasso = Lasso()</span><br><span class="line">lasso.fit(train_scaled, train_target)  <span class="comment"># fit()로 학습시키기</span></span><br><span class="line"><span class="built_in">print</span>(lasso.score(train_scaled, train_target))  <span class="comment"># 0.99의 점수가 나옴</span></span><br><span class="line"><span class="built_in">print</span>(lasso.score(test_scaled, test_target))  <span class="comment"># 점수가 정상으로 돌아옴</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.989789897208096
+0.9800593698421883
+</code></pre>
+<ul>
+<li>적절한 alpha 값 찾기</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">train_score = []</span><br><span class="line">test_score = []</span><br><span class="line"></span><br><span class="line"><span class="comment"># alpha값을 0.001~100까지 10배씩 늘리며 회귀모델을 훈련</span></span><br><span class="line">alpha_list = [<span class="number">0.001</span>, <span class="number">0.01</span>, <span class="number">0.1</span>, <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>]</span><br><span class="line"><span class="keyword">for</span> alpha <span class="keyword">in</span> alpha_list:</span><br><span class="line">  <span class="comment"># 라쏘모델을 만듬</span></span><br><span class="line">  lasso = Lasso(alpha=alpha, max_iter=<span class="number">10000</span>)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 라쏘모델을 훈련</span></span><br><span class="line">  lasso.fit(train_scaled, train_target)</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 훈련 점수와 테스트 점수를 저장</span></span><br><span class="line">  train_score.append(lasso.score(train_scaled, train_target))</span><br><span class="line">  test_score.append(lasso.score(test_scaled, test_target))</span><br></pre></td></tr></table></figure>
+
+<pre><code>/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.878e+04, tolerance: 5.183e+02
+  coef_, l1_reg, l2_reg, X, y, max_iter, tol, rng, random, positive
+/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 1.297e+04, tolerance: 5.183e+02
+  coef_, l1_reg, l2_reg, X, y, max_iter, tol, rng, random, positive
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 로그함수로 나타내어 그래프 그리기</span></span><br><span class="line"><span class="comment"># 객체지향 함수로 진행</span></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">fig, ax= plt.subplots()</span><br><span class="line">ax.plot(np.log10(alpha_list), train_score)  <span class="comment"># 위에 그려질 그래프</span></span><br><span class="line">ax.plot(np.log10(alpha_list), test_score)  <span class="comment"># 아래에 그려질 그래프</span></span><br><span class="line">ax.set_xlabel(<span class="string">&quot;alpha&quot;</span>)  <span class="comment"># x축은 지수를 나타냄</span></span><br><span class="line">ax.set_ylabel(<span class="string">&quot;R^2&quot;</span>)  <span class="comment"># == score의 점수</span></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0328_Regression_03/output_41_0.png" alt="png"></p>
+<pre><code>  alpha가 2인 값은 훈련세트와 테스트세트의 점수가 좁음
+  하지만 결정계수가 낮기때문에 10을 의미하는 1이 최적의 alpha값임. 
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">lasso = Lasso(alpha=<span class="number">0.1</span>)</span><br><span class="line">lasso.fit(train_scaled, train_target)</span><br><span class="line"><span class="built_in">print</span>(lasso.score(train_scaled, train_target))</span><br><span class="line"><span class="built_in">print</span>(lasso.score(test_scaled, test_target))  <span class="comment"># 라쏘 또한 둘이 비슷하게 높은 점수가 나옴.</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>0.990137631128448
+0.9819405116249363
+
+
+/usr/local/lib/python3.7/dist-packages/sklearn/linear_model/_coordinate_descent.py:648: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations, check the scale of the features or consider increasing regularisation. Duality gap: 8.062e+02, tolerance: 5.183e+02
+  coef_, l1_reg, l2_reg, X, y, max_iter, tol, rng, random, positive
+</code></pre>
+<ul>
+<li>라쏘모델의 계수값을 아예 0으로 만들 수 있음.</li>
+<li>라쏘 모델의 계수는 coef_ 속성에 저장되어 있음.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(np.<span class="built_in">sum</span>(lasso.coef_ == <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+
+<pre><code>52
+</code></pre>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li><p>키워드</p>
+<ul>
+<li>다중회귀: 여러개의 특성을 사용하는 회귀모델</li>
+<li>특성공학: 주어진 특성을 조합하여 새로운 특성을 만드는 일련의 작업과정</li>
+<li>릿지: 규제가 있는 선형 회귀모델중 하나이며 선형 모델의 계수를 작게 만들어 과대적합을 완화시킴</li>
+<li>라쏘: 또 다른 규제가 있는 선형회귀 모델. 릿지와 달리 계수값을 0으로 만들 수 있음.</li>
+<li>하이퍼파라미터: 머신러닝 알고리즘이 학습하지 않는 파라미터. 사람이 지정해야함. 대표적으로 릿지와 라쏘의 규제 강도 alpha파라미터가 있음.</li>
+</ul>
+</li>
+<li><p>Pandas 패키지</p>
+<ul>
+<li>유명한 데이터 분석 라이브러리</li>
+<li>read_csv(): 로컬 컴퓨터나 인터넷에 있는 csv파일을 읽어 판다스 데이터프레임으로 변환하는 함수</li>
+</ul>
+</li>
+<li><p>Scikit-learn 패키지</p>
+<ul>
+<li>PolynomialFeatures: 주어진 특성을 조합하여 새로운 특성을 만듬<ul>
+<li>degree: 최고 차수를 지정함. [default: 2]</li>
+<li>interactopm_only: True이면 거듭제곱항은 제외되고 특성간의 곱셈항만 추가됨. [default: False]</li>
+<li>include_bias: False이면 절편을 위한 특성을 추가하지 않음. [default: True]</li>
+</ul>
+</li>
+<li>Ridge: 규제가 있는 회귀 알고리즘인 릿지 회귀모델을 훈련함.<ul>
+<li>alpha: 매개변수로 규제의 강도를 조절함. 값이 클수록 규제가 강함. [default: 1]</li>
+</ul>
+</li>
+<li>Lasso: 규제가 있는 회귀 알고리즘인 라쏘 회귀모델을 훈련함. 최적의 모델을 찾기 위해 좌표축을 따라 최적화를 수행해가는 좌표 하강법을 사용<ul>
+<li>alpha와 random_state매개변수는 Ridge클래스와 동일</li>
+<li>max_iter: 알고리즘의 수행 반복 횟수를 지정함. [default: 1000]</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/28/0328_Regression_03/" data-id="cl1as2bec0002dknhbc968uhc" data-title="k-최근접 이웃 회귀 03" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-0326_Machine_Learning" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/26/0326_Machine_Learning/" class="article-date">
+  <time class="dt-published" datetime="2022-03-26T00:00:00.000Z" itemprop="datePublished">2022-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2022/03/26/0326_Machine_Learning/">머신러닝 교재 실습 01</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><ul>
+<li>kaggle 데이터를 구글drive에 저장 후 연동해서 불러옴</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> google.colab <span class="keyword">import</span> drive</span><br><span class="line">drive.mount(<span class="string">&quot;/content/drive&quot;</span>)</span><br><span class="line"></span><br><span class="line">DATA = <span class="string">&quot;/content/drive/MyDrive/Colab Notebooks/data/Fish.csv&quot;</span></span><br><span class="line">fish = pd.read_csv(DATA)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(fish)</span><br><span class="line"><span class="comment"># Series01 = fish.iloc[:,0]</span></span><br><span class="line"><span class="built_in">print</span>(fish[<span class="string">&quot;Species&quot;</span>].value_counts())</span><br><span class="line"><span class="built_in">print</span>(fish.describe())</span><br></pre></td></tr></table></figure>
+
+<pre><code>Drive already mounted at /content/drive; to attempt to forcibly remount, call drive.mount(&quot;/content/drive&quot;, force_remount=True).
+    Species  Weight  Length1  Length2  Length3   Height   Width
+0     Bream   242.0     23.2     25.4     30.0  11.5200  4.0200
+1     Bream   290.0     24.0     26.3     31.2  12.4800  4.3056
+2     Bream   340.0     23.9     26.5     31.1  12.3778  4.6961
+3     Bream   363.0     26.3     29.0     33.5  12.7300  4.4555
+4     Bream   430.0     26.5     29.0     34.0  12.4440  5.1340
+..      ...     ...      ...      ...      ...      ...     ...
+154   Smelt    12.2     11.5     12.2     13.4   2.0904  1.3936
+155   Smelt    13.4     11.7     12.4     13.5   2.4300  1.2690
+156   Smelt    12.2     12.1     13.0     13.8   2.2770  1.2558
+157   Smelt    19.7     13.2     14.3     15.2   2.8728  2.0672
+158   Smelt    19.9     13.8     15.0     16.2   2.9322  1.8792
+
+[159 rows x 7 columns]
+Perch        56
+Bream        35
+Roach        20
+Pike         17
+Smelt        14
+Parkki       11
+Whitefish     6
+Name: Species, dtype: int64
+            Weight     Length1     Length2     Length3      Height       Width
+count   159.000000  159.000000  159.000000  159.000000  159.000000  159.000000
+mean    398.326415   26.247170   28.415723   31.227044    8.970994    4.417486
+std     357.978317    9.996441   10.716328   11.610246    4.286208    1.685804
+min       0.000000    7.500000    8.400000    8.800000    1.728400    1.047600
+25%     120.000000   19.050000   21.000000   23.150000    5.944800    3.385650
+50%     273.000000   25.200000   27.300000   29.400000    7.786000    4.248500
+75%     650.000000   32.700000   35.500000   39.650000   12.365900    5.584500
+max    1650.000000   59.000000   63.400000   68.000000   18.957000    8.142000
+</code></pre>
+<h1 id="도미와-빙어-분류하기"><a href="#도미와-빙어-분류하기" class="headerlink" title="도미와 빙어 분류하기"></a>도미와 빙어 분류하기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">bream_length = [<span class="number">25.4</span>, <span class="number">26.3</span>, <span class="number">26.5</span>, <span class="number">29.0</span>, <span class="number">29.0</span>, <span class="number">29.7</span>, <span class="number">29.7</span>, <span class="number">30.0</span>, <span class="number">30.0</span>, <span class="number">30.7</span>, <span class="number">31.0</span>, <span class="number">31.0</span>, </span><br><span class="line">                <span class="number">31.5</span>, <span class="number">32.0</span>, <span class="number">32.0</span>, <span class="number">32.0</span>, <span class="number">33.0</span>, <span class="number">33.0</span>, <span class="number">33.5</span>, <span class="number">33.5</span>, <span class="number">34.0</span>, <span class="number">34.0</span>, <span class="number">34.5</span>, <span class="number">35.0</span>, </span><br><span class="line">                <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">35.0</span>, <span class="number">36.0</span>, <span class="number">36.0</span>, <span class="number">37.0</span>, <span class="number">38.5</span>, <span class="number">38.5</span>, <span class="number">39.5</span>, <span class="number">41.0</span>, <span class="number">41.0</span>]</span><br><span class="line">bream_weight = [<span class="number">242.0</span>, <span class="number">290.0</span>, <span class="number">340.0</span>, <span class="number">363.0</span>, <span class="number">430.0</span>, <span class="number">450.0</span>, <span class="number">500.0</span>, <span class="number">390.0</span>, <span class="number">450.0</span>, <span class="number">500.0</span>, <span class="number">475.0</span>, <span class="number">500.0</span>, </span><br><span class="line">                <span class="number">500.0</span>, <span class="number">340.0</span>, <span class="number">600.0</span>, <span class="number">600.0</span>, <span class="number">700.0</span>, <span class="number">700.0</span>, <span class="number">610.0</span>, <span class="number">650.0</span>, <span class="number">575.0</span>, <span class="number">685.0</span>, <span class="number">620.0</span>, <span class="number">680.0</span>, </span><br><span class="line">                <span class="number">700.0</span>, <span class="number">725.0</span>, <span class="number">720.0</span>, <span class="number">714.0</span>, <span class="number">850.0</span>, <span class="number">1000.0</span>, <span class="number">920.0</span>, <span class="number">955.0</span>, <span class="number">925.0</span>, <span class="number">975.0</span>, <span class="number">950.0</span>]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(bream_length)</span><br><span class="line"><span class="built_in">print</span>(bream_weight)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[25.4, 26.3, 26.5, 29.0, 29.0, 29.7, 29.7, 30.0, 30.0, 30.7, 31.0, 31.0, 31.5, 32.0, 32.0, 32.0, 33.0, 33.0, 33.5, 33.5, 34.0, 34.0, 34.5, 35.0, 35.0, 35.0, 35.0, 36.0, 36.0, 37.0, 38.5, 38.5, 39.5, 41.0, 41.0]
+[242.0, 290.0, 340.0, 363.0, 430.0, 450.0, 500.0, 390.0, 450.0, 500.0, 475.0, 500.0, 500.0, 340.0, 600.0, 600.0, 700.0, 700.0, 610.0, 650.0, 575.0, 685.0, 620.0, 680.0, 700.0, 725.0, 720.0, 714.0, 850.0, 1000.0, 920.0, 955.0, 925.0, 975.0, 950.0]
+</code></pre>
+<h2 id="도미의-데이터를-산점도로-표현"><a href="#도미의-데이터를-산점도로-표현" class="headerlink" title="도미의 데이터를 산점도로 표현."></a>도미의 데이터를 산점도로 표현.</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.scatter(bream_length, bream_weight)  <span class="comment"># scatter() : 산점도</span></span><br><span class="line">plt.xlabel(<span class="string">&quot;weight&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;length&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0326_Machine_Learning/output_5_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">smelt_length = [<span class="number">9.8</span>, <span class="number">10.5</span>, <span class="number">10.6</span>, <span class="number">11.0</span>, <span class="number">11.2</span>, <span class="number">11.3</span>, <span class="number">11.8</span>, <span class="number">11.8</span>, <span class="number">12.0</span>, <span class="number">12.2</span>, <span class="number">12.4</span>, <span class="number">13.0</span>, <span class="number">14.3</span>, <span class="number">15.0</span>]</span><br><span class="line">smelt_weight = [<span class="number">6.7</span>, <span class="number">7.5</span>, <span class="number">7.0</span>, <span class="number">9.7</span>, <span class="number">9.8</span>, <span class="number">8.7</span>, <span class="number">10.0</span>, <span class="number">9.9</span>, <span class="number">9.8</span>, <span class="number">12.2</span>, <span class="number">13.4</span>, <span class="number">12.2</span>, <span class="number">19.7</span>, <span class="number">19.9</span>]</span><br><span class="line"><span class="built_in">print</span>(smelt_length)</span><br><span class="line"><span class="built_in">print</span>(smelt_weight)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[9.8, 10.5, 10.6, 11.0, 11.2, 11.3, 11.8, 11.8, 12.0, 12.2, 12.4, 13.0, 14.3, 15.0]
+[6.7, 7.5, 7.0, 9.7, 9.8, 8.7, 10.0, 9.9, 9.8, 12.2, 13.4, 12.2, 19.7, 19.9]
+</code></pre>
+<h2 id="빙어의-데이터를-산점도로-표현"><a href="#빙어의-데이터를-산점도로-표현" class="headerlink" title="빙어의 데이터를 산점도로 표현."></a>빙어의 데이터를 산점도로 표현.</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.scatter(smelt_length, smelt_weight)</span><br><span class="line">plt.xlabel(<span class="string">&quot;weight&quot;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&quot;length&quot;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="/Images/0326_Machine_Learning/output_8_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">length = bream_length + smelt_length</span><br><span class="line">weight = bream_weight + smelt_weight</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># print(type(length))</span></span><br><span class="line">fish_data = [[l,w]<span class="keyword">for</span> l, w <span class="keyword">in</span> <span class="built_in">zip</span>(length, weight)]</span><br><span class="line"><span class="built_in">print</span>(fish_data)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[25.4, 242.0], [26.3, 290.0], [26.5, 340.0], [29.0, 363.0], [29.0, 430.0], [29.7, 450.0], [29.7, 500.0], [30.0, 390.0], [30.0, 450.0], [30.7, 500.0], [31.0, 475.0], [31.0, 500.0], [31.5, 500.0], [32.0, 340.0], [32.0, 600.0], [32.0, 600.0], [33.0, 700.0], [33.0, 700.0], [33.5, 610.0], [33.5, 650.0], [34.0, 575.0], [34.0, 685.0], [34.5, 620.0], [35.0, 680.0], [35.0, 700.0], [35.0, 725.0], [35.0, 720.0], [36.0, 714.0], [36.0, 850.0], [37.0, 1000.0], [38.5, 920.0], [38.5, 955.0], [39.5, 925.0], [41.0, 975.0], [41.0, 950.0], [9.8, 6.7], [10.5, 7.5], [10.6, 7.0], [11.0, 9.7], [11.2, 9.8], [11.3, 8.7], [11.8, 10.0], [11.8, 9.9], [12.0, 9.8], [12.2, 12.2], [12.4, 13.4], [13.0, 12.2], [14.3, 19.7], [15.0, 19.9]]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 도미는 1, 빙어는 0으로 표현</span></span><br><span class="line">fish_target = [<span class="number">1</span>] * <span class="number">35</span> + [<span class="number">0</span>] * <span class="number">14</span></span><br><span class="line"><span class="built_in">print</span>(fish_target)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+</code></pre>
+<h2 id="머신러닝"><a href="#머신러닝" class="headerlink" title="머신러닝"></a>머신러닝</h2><ul>
+<li>사이킷런 패키지<ul>
+<li>k-최근접 이웃 ( k- Nearest Neighbors)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="comment"># sklearn : 패키지 , # neighbors ,  KNeighborsClassifier : 클래스</span></span><br><span class="line">kn = KNeighborsClassifier()</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kn.fit(fish_data, fish_target)  <span class="comment"># fit() : 주어진 데이터로 알고리즘 훈련</span></span><br><span class="line">kn.score(fish_data, fish_target)  <span class="comment"># scroe() : 0~1 (&quot;kn이 맞춘 비율&quot;) 의 값을 반환함</span></span><br><span class="line"><span class="comment"># 1은 모든 데이터를 맞췄다는 의미</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.0
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">kn.predict([[<span class="number">30</span>, <span class="number">600</span>]])</span><br><span class="line"><span class="comment">## (30과 600)를 가진 데이터는 도미로 규정한 1이 출력됨을 볼 수 있음.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>array([1])
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(kn._fit_X)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; &quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(kn._y)</span><br></pre></td></tr></table></figure>
+
+<pre><code>[[  25.4  242. ]
+ [  26.3  290. ]
+ [  26.5  340. ]
+ [  29.   363. ]
+ [  29.   430. ]
+ [  29.7  450. ]
+ [  29.7  500. ]
+ [  30.   390. ]
+ [  30.   450. ]
+ [  30.7  500. ]
+ [  31.   475. ]
+ [  31.   500. ]
+ [  31.5  500. ]
+ [  32.   340. ]
+ [  32.   600. ]
+ [  32.   600. ]
+ [  33.   700. ]
+ [  33.   700. ]
+ [  33.5  610. ]
+ [  33.5  650. ]
+ [  34.   575. ]
+ [  34.   685. ]
+ [  34.5  620. ]
+ [  35.   680. ]
+ [  35.   700. ]
+ [  35.   725. ]
+ [  35.   720. ]
+ [  36.   714. ]
+ [  36.   850. ]
+ [  37.  1000. ]
+ [  38.5  920. ]
+ [  38.5  955. ]
+ [  39.5  925. ]
+ [  41.   975. ]
+ [  41.   950. ]
+ [   9.8    6.7]
+ [  10.5    7.5]
+ [  10.6    7. ]
+ [  11.     9.7]
+ [  11.2    9.8]
+ [  11.3    8.7]
+ [  11.8   10. ]
+ [  11.8    9.9]
+ [  12.     9.8]
+ [  12.2   12.2]
+ [  12.4   13.4]
+ [  13.    12.2]
+ [  14.3   19.7]
+ [  15.    19.9]]
+ 
+[1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0
+ 0 0 0 0 0 0 0 0 0 0 0 0]
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 참고 데이터를 49개로 한 kn49모델</span></span><br><span class="line">kn49 = KNeighborsClassifier(n_neighbors=<span class="number">49</span>)</span><br><span class="line">kn49.fit(fish_data, fish_target)</span><br><span class="line">kn49.score(fish_data, fish_target)</span><br><span class="line"><span class="comment">## 49개의 데이터중 도미인 35개만 맞춘 결과를 보여줌</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>0.7142857142857143
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 참고 데이터를 5개로 한 kn49모델</span></span><br><span class="line">kn50 = KNeighborsClassifier(n_neighbors=<span class="number">5</span>)</span><br><span class="line">kn50.fit(fish_data, fish_target)</span><br><span class="line">kn50.score(fish_data, fish_target)</span><br><span class="line"><span class="comment">## n_neighbors 의 데이터가 17 이하일때까지 1의 결과를 출력함.</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<pre><code>1.0
+</code></pre>
+<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
+<li>사이킷런 ( scikit-learn ) 패키지<ul>
+<li>KNeighborsClassfier() : k-최근접 이웃 분류 모델을 만듬, n_neighbors 매개변수로 이웃의 개수를 지정함. [default : 5]</li>
+<li>fit() : 사이킷런을 훈련 할 때 사용함, 처음 두 매개변수로 훈련에 사용 할특성과 정답데이터를 전달</li>
+<li>predict() : 사이킷런 모델을 훈련하고 예측할 때 사용, 특성 데이터만 매개변수로 받음.</li>
+<li>score(): 훈련된 사이킷런 모델의 성능을 측정</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://woobinhwang.github.io/2022/03/26/0326_Machine_Learning/" data-id="cl17lmk000000fwnhd032fqdl" data-title="머신러닝 교재 실습 01" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-0324_Pandas_Tutorial_02" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2022/03/24/0324_Pandas_Tutorial_02/" class="article-date">
@@ -13185,175 +13650,6 @@ a#b#c#d
 
 
   
-    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/18/hello-world/" class="article-date">
-  <time class="dt-published" datetime="2022-03-18T04:23:42.480Z" itemprop="datePublished">2022-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/18/hello-world/">핵소 사용법</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-<h2 id="어서오세요"><a href="#어서오세요" class="headerlink" title="어서오세요"></a>어서오세요</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/18/hello-world/" data-id="cl0vx5jg70000pgnhdo5yhm5p" data-title="핵소 사용법" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-0315_statistics" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2022/03/18/0315_statistics/" class="article-date">
-  <time class="dt-published" datetime="2022-03-18T00:00:00.000Z" itemprop="datePublished">2022-03-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/18/0315_statistics/">분석방법</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h3 id="기술통계"><a href="#기술통계" class="headerlink" title="기술통계"></a>기술통계</h3><ul>
-<li>평균, 최솟값, 최댓값, 중앙값과같이 데이터의 특징을 알려주는 값.</li>
-<li>기술통계(descriptive statistics)라고 함.</li>
-</ul>
-<h3 id="추론통계"><a href="#추론통계" class="headerlink" title="추론통계"></a>추론통계</h3><ul>
-<li>변수간의 관계를 파악, 변수간의 인과관계 또는 새로운 사실 밝혀냄</li>
-<li>평균 차이 검정, 교차분석, 상관관계분석, 회귀분석</li>
-<li>귀무가설: 두 집단의 평균 차이가 없다. (현상황을 유지 할 필요가 있음)</li>
-<li>대립가설: 두 집단의 평균 차이가 있다. (현상황을 바꿀 필요가 있음)</li>
-</ul>
-<h2 id="평균차이검정"><a href="#평균차이검정" class="headerlink" title="평균차이검정"></a>평균차이검정</h2><ul>
-<li>집단별로 평균의 차이가 실제로 있는가 검정</li>
-<li>독립표본 t 검정</li>
-<li>방법1 : t.test(data&#x3D; 데이터세트, 종속변수(비교값)~독립변수(비교대상))</li>
-<li>방법2 : t.test(데이터세트$종속변수(비교값)~데이터세트$독립변수(비교대상))</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">t.test<span class="punctuation">(</span>data <span class="operator">=</span> mpg1<span class="punctuation">,</span> cty<span class="operator">~</span> trans<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Welch Two Sample t-test</span><br><span class="line">## </span><br><span class="line">## data:  cty by trans</span><br><span class="line">## t = -4.5375, df = 132.32, p-value = 1.263e-05</span><br><span class="line">## alternative hypothesis: true difference in means between group auto and group manual is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  -3.887311 -1.527033</span><br><span class="line">## sample estimates:</span><br><span class="line">##   mean in group auto mean in group manual </span><br><span class="line">##             15.96815             18.67532</span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value &#x3D; 1.263e-05로 0.05보다 작으므로 평균차이가 있는 대립가설을 채택</p>
-<h2 id="교차분석"><a href="#교차분석" class="headerlink" title="교차분석"></a>교차분석</h2><ul>
-<li>범주형 변수로 구성된 집단들의 관련성을 검정하는 통계 분석.</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span>  <span class="comment">#trans, drv의 교차분석</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##           4  f  r</span><br><span class="line">##   auto   75 65 17</span><br><span class="line">##   manual 28 41  8</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">prop.table<span class="punctuation">(</span>table<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span><span class="punctuation">,</span> <span class="number">1</span><span class="punctuation">)</span>  <span class="comment">#auto, manual의 비율분석</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">##         </span><br><span class="line">##                  4         f         r</span><br><span class="line">##   auto   0.4777070 0.4140127 0.1082803</span><br><span class="line">##   manual 0.3636364 0.5324675 0.1038961</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">chisq.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>trans<span class="punctuation">,</span> mpg1<span class="operator">$</span>drv<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s Chi-squared test</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$trans and mpg1$drv</span><br><span class="line">## X-squared = 3.1368, df = 2, p-value = 0.2084</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># == chisq.test(table(mpg1$trans, mpg1$drv))</span></span><br><span class="line"><span class="comment"># == summary(table(mpg1$trans, mpg1$drv))  </span></span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value &#x3D; 0.2084로 0.05보다 크므로 귀무가설을 채택</p>
-<h2 id="상관관계분석"><a href="#상관관계분석" class="headerlink" title="상관관계분석"></a>상관관계분석</h2><ul>
-<li>변수간의 상관관계를 알아보는것</li>
-<li>방법 : cor.test(데이터세트$ 비교변수1, 데이터세트$비교변수2)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mpg1 <span class="operator">=</span> read.csv<span class="punctuation">(</span><span class="string">&quot;source_2021/1_day_eda/solution/data/public_dataset/mpg1.csv&quot;</span><span class="punctuation">,</span> stringsAsFactors <span class="operator">=</span> <span class="built_in">F</span><span class="punctuation">)</span></span><br><span class="line">cor.test<span class="punctuation">(</span>mpg1<span class="operator">$</span>cty<span class="punctuation">,</span> mpg1<span class="operator">$</span>hwy<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## 	Pearson&#x27;s product-moment correlation</span><br><span class="line">## </span><br><span class="line">## data:  mpg1$cty and mpg1$hwy</span><br><span class="line">## t = 49.585, df = 232, p-value &lt; 2.2e-16</span><br><span class="line">## alternative hypothesis: true correlation is not equal to 0</span><br><span class="line">## 95 percent confidence interval:</span><br><span class="line">##  0.9433129 0.9657663</span><br><span class="line">## sample estimates:</span><br><span class="line">##       cor </span><br><span class="line">## 0.9559159</span><br></pre></td></tr></table></figure>
-<p>p-value &lt; 2.2e-16로 0.05보다 작으므로 대립가설을 채택</p>
-<h2 id="회귀분석"><a href="#회귀분석" class="headerlink" title="회귀분석"></a>회귀분석</h2><ul>
-<li>한 변수가 다른 변수에 영향을 주는것</li>
-</ul>
-<h1 id="단순회귀분석"><a href="#단순회귀분석" class="headerlink" title="단순회귀분석"></a>단순회귀분석</h1><ul>
-<li>독립변수가 1개, 종속변수가 1개</li>
-<li>변수는 독립변수와 종속변수가 모두 등간척도 또는 비율척도이어야합니다.</li>
-<li>방법 1 : lm(dat&#x3D; 데이터세트, 종속변수 ~ 독립변수)</li>
-<li>방법 2 : lm(종속변수 ~ 독립변수, data &#x3D; 데이터세트)</li>
-<li>방법 3 : lm(데이터세트$종속변수~ 데이터세트$독립변수)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span>disp<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">## (Intercept)         disp  </span><br><span class="line">##    29.59985     -0.04122</span><br></pre></td></tr></table></figure>
-<p>-&gt; 29.59985 - 0.04122 * disp 라는 식이 도출됨.</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">=</span> lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span>disp<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##     Min      1Q  Median      3Q     Max </span><br><span class="line">## -4.8922 -2.2022 -0.9631  1.6272  7.2305 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 29.599855   1.229720  24.070  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.041215   0.004712  -8.747 9.38e-10 ***</span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 3.251 on 30 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.7183,	Adjusted R-squared:  0.709 </span><br><span class="line">## F-statistic: 76.51 on 1 and 30 DF,  p-value: 9.38e-10</span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value: 9.38e-10로 0.05보다 작으므로 회귀모형이 적합<br>-&gt; 회귀식으로 mpg&#x3D; -0.04122 * disp + 29.59985 라는 식이 도출됨.</p>
-<h1 id="다중회귀분석"><a href="#다중회귀분석" class="headerlink" title="다중회귀분석"></a>다중회귀분석</h1><ul>
-<li>종속변수에 영향을 주는 독립변수가 복수일때 분석하는 방식</li>
-<li>방법 1 : lm(data &#x3D; 데이터세트, 종속변수~ 독립변수1 + 독립변수2 + …)</li>
-<li>방법 2 : lm(종족변수~ 독립변수1+ 독립변수2+ … , data &#x3D; 데이터세트)</li>
-<li>방법 3 : lm(데이터세트$종속변수~ 데이터세트$독립변수1+ 데이터세트$독립변수2+ …)</li>
-</ul>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span> disp<span class="operator">+</span> hp<span class="operator">+</span> wt<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">## (Intercept)         disp           hp           wt  </span><br><span class="line">##   37.105505    -0.000937    -0.031157    -3.800891</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># == lm(mpg~ disp+ hp+ wt, data= mtcars)</span></span><br><span class="line"><span class="comment"># ==lm(mtcars$mpg~ mtcars$disp+ mtcars$hp+ mtcars$wt)</span></span><br></pre></td></tr></table></figure>
-<p>-&gt; mpg &#x3D; 37.105505 - (0.000937 * disp) - (0.031157 * hp) - (3.800891 * wt) 라는 다중 회귀식이 도출됨.<br>-&gt; 하지만, summary() 함수로 유의수준을 확인 할 필요가 있음</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RA <span class="operator">=</span> lm<span class="punctuation">(</span>data<span class="operator">=</span> mtcars<span class="punctuation">,</span> mpg<span class="operator">~</span> disp<span class="operator">+</span> hp<span class="operator">+</span> wt<span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">summary<span class="punctuation">(</span>RA<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">## </span><br><span class="line">## Call:</span><br><span class="line">## lm(formula = mpg ~ disp + hp + wt, data = mtcars)</span><br><span class="line">## </span><br><span class="line">## Residuals:</span><br><span class="line">##    Min     1Q Median     3Q    Max </span><br><span class="line">## -3.891 -1.640 -0.172  1.061  5.861 </span><br><span class="line">## </span><br><span class="line">## Coefficients:</span><br><span class="line">##              Estimate Std. Error t value Pr(&gt;|t|)    </span><br><span class="line">## (Intercept) 37.105505   2.110815  17.579  &lt; 2e-16 ***</span><br><span class="line">## disp        -0.000937   0.010350  -0.091  0.92851    </span><br><span class="line">## hp          -0.031157   0.011436  -2.724  0.01097 *  </span><br><span class="line">## wt          -3.800891   1.066191  -3.565  0.00133 ** </span><br><span class="line">## ---</span><br><span class="line">## Signif. codes:  0 &#x27;***&#x27; 0.001 &#x27;**&#x27; 0.01 &#x27;*&#x27; 0.05 &#x27;.&#x27; 0.1 &#x27; &#x27; 1</span><br><span class="line">## </span><br><span class="line">## Residual standard error: 2.639 on 28 degrees of freedom</span><br><span class="line">## Multiple R-squared:  0.8268,	Adjusted R-squared:  0.8083 </span><br><span class="line">## F-statistic: 44.57 on 3 and 28 DF,  p-value: 8.65e-11</span><br></pre></td></tr></table></figure>
-<p>-&gt; p-value: 8.65e-11로 0.001보다 작으므로 회귀모형이 적합<br>-&gt; disp의 Pr(&gt;|t|)값이 0.92851로 0.05보다 높으므로 <em>유의수준 부적합</em><br>-&gt; mpg는 disp에 영향을 받지 않고 hp, wt의 영향을 받음.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://woobinhwang.github.io/2022/03/18/0315_statistics/" data-id="cl0vzchhq0003iwnhb9di4t8z" data-title="분석방법" class="article-share-link">Share</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -13390,7 +13686,11 @@ a#b#c#d
       <ul>
         
           <li>
-            <a href="/2022/04/07/0407_Convolution_Neural_Network_02/">(no title)</a>
+            <a href="/2022/04/08/0408_LSTM,GRU_Cell/">LSTM과 GRU셀</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/08/0408_IMDB/">IMDB 리뷰</a>
           </li>
         
           <li>
@@ -13398,15 +13698,11 @@ a#b#c#d
           </li>
         
           <li>
+            <a href="/2022/04/07/0407_Convolution_Neural_Network_02/">합성곱 신경망_02</a>
+          </li>
+        
+          <li>
             <a href="/2022/04/06/0406_Convolution_Neural_Network/">합성곱 신경망_01</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/06/0406_woob-s/">Kaggle 프로젝트</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/05/0404_Deep_Neural_Network/">심층_신경망</a>
           </li>
         
       </ul>
