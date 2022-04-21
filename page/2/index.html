@@ -1,5 +1,127 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-13T00:00:00.000Z" title="2022. 4. 13. 오전 9:00:00">2022-04-13</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-13T10:54:02.680Z" title="2022. 4. 13. 오후 7:54:02">2022-04-13</time></span><span class="level-item"> woobin </span><span class="level-item">a few seconds read (About 111 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/13/0413_Kibana_Install/">Kibana 설치</a></h1><div class="content"><h1 id="kibana-설치"><a href="#kibana-설치" class="headerlink" title="kibana 설치"></a>kibana 설치</h1><ul>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-17T00:00:00.000Z" title="2022. 4. 17. 오전 9:00:00">2022-04-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-17T11:36:29.153Z" title="2022. 4. 17. 오후 8:36:29">2022-04-17</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 254 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/17/0417_PostgreSQL(pgAdmin)_insert/">PostgreSQL 설치</a></h1><div class="content"><h1 id="0417-PostgreSQL-pgAdmin-insert"><a href="#0417-PostgreSQL-pgAdmin-insert" class="headerlink" title="0417_PostgreSQL(pgAdmin)_insert"></a>0417_PostgreSQL(pgAdmin)_insert</h1><ul>
+<li><p>설명: 확장 가능성 및 표준 준수를 강조하는 객체-관계형 데이터베이스 관리 시스템의 하나</p>
+</li>
+<li><p>PostgreSQL 서비스를 실행, 상태 확인</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service postgresql strat</span><br><span class="line">$ sudo service postgresql status</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>PostgreSQL 아이디 비밀번호 설정</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -u postgres psql -c “ALTER USER postgres PASSWORD ‘postgres’;”</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>General탭에서 ‘Name’에 users를 입력(필자는 users2로 작성)</li>
+</ul>
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>Column탭에는 아래의 테이블을 추가 (Save)</li>
+</ul>
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>wsl에서 제대로 저장이 되었는지 확인하러 갑니다.<br>(l: List 로 추측됨)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -u postgres psql</span><br><span class="line"></span><br><span class="line">$ \l</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>dataengineering으로 접속<br>(c: connect 로 추측됨)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \c dataengineering</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>데이터 테이블을 확인<br>(dt: datatable 로 추측됨)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \dt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li>제대로 확인이 된다면 빠져나옴.<br>(q: quit 로 추측됨)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ \q</span><br><span class="line"></span><br><span class="line">$ sudo service postgresql stop</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%206.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-17T00:00:00.000Z" title="2022. 4. 17. 오전 9:00:00">2022-04-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-18T07:17:59.623Z" title="2022. 4. 18. 오후 4:17:59">2022-04-18</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 303 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/17/0417_Apache_Airflow_install/">Apache Airflow 설치</a></h1><div class="content"><h1 id="0417-Apache-Airflow-install"><a href="#0417-Apache-Airflow-install" class="headerlink" title="0417_Apache_Airflow_install"></a>0417_Apache_Airflow_install</h1><ul>
+<li>airflow를 설치하기 위해 pip를 설치</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install python3-pip</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>라이브러리 설치</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip3 install virtualenv</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>가상환경 생성</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv venv</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>가상환경 접속</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>bashrc 설정 (아래 두줄이 같은 결과가 나오게 해야함)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.bashrc</span><br><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="comment"># $ source venv/bin/activate</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$AIRFLOW_HOME</span></span><br><span class="line">$ <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>가상환경 취소 &#x2F; 적용하는 방법</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ deactive</span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>PostgreSQL, Slack, Celery 패키지 설치 (진행중인 상황)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install ‘apache-airflow[postgres, slack, celery]’</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>DB 초기화</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow db init</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%203.png" alt="Untitled"></p>
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>username 설정</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow <span class="built_in">users</span> create --username airflow --password airflow --firstname name --lastname airflow --role Admin --email my@email.com</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li>webserver를 실행</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow webserver -p 8081</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>정상적으로 작동 되는지  <a target="_blank" rel="noopener" href="http://localhost:8081/login/">http://localhost:8081/login/</a> 에 접속</li>
+</ul>
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>airflow.cfg 파일에 들어가서 load_examples 부분이 True이면 False로 바꾸고 저장.</li>
+</ul>
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%207.png" alt="Untitled"></p>
+<ul>
+<li>DB 초기화</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow db reset</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%208.png" alt="Untitled"></p>
+<ul>
+<li>웹서버 실행 (DB가 비어있는것을 확인)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow webserver</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0417_Apache_Airflow_install/Untitled%209.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-13T00:00:00.000Z" title="2022. 4. 13. 오전 9:00:00">2022-04-13</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-13T10:54:02.680Z" title="2022. 4. 13. 오후 7:54:02">2022-04-13</time></span><span class="level-item"> woobin </span><span class="level-item">a few seconds read (About 111 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/13/0413_Kibana_Install/">Kibana 설치</a></h1><div class="content"><h1 id="kibana-설치"><a href="#kibana-설치" class="headerlink" title="kibana 설치"></a>kibana 설치</h1><ul>
 <li>설명: Elasticsearch 데이터를 시각화하고 Elastic Stack을 탐색하게 해주는 무료 오픈소스 인터페이스</li>
 <li>kibana 설치</li>
 </ul>
@@ -1326,474 +1448,7 @@ Epoch 7/10
 </ul>
 </li>
 </ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-05T00:00:00.000Z" title="2022. 4. 5. 오전 9:00:00">2022-04-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-05T11:04:20.049Z" title="2022. 4. 5. 오후 8:04:20">2022-04-05</time></span><span class="level-item"> woobin </span><span class="level-item">14 minutes read (About 2104 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/05/0405_Neural_Network_Model/">신경망_모델_훈련</a></h1><div class="content"><h1 id="신경망-모델-훈련"><a href="#신경망-모델-훈련" class="headerlink" title="신경망 모델 훈련"></a>신경망 모델 훈련</h1><h1 id="손실곡선"><a href="#손실곡선" class="headerlink" title="손실곡선"></a>손실곡선</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorflow <span class="keyword">import</span> keras</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line">(train_input, train_target), (test_input, test_target) = \</span><br><span class="line">    keras.datasets.fashion_mnist.load_data()</span><br><span class="line"></span><br><span class="line">train_scaled = train_input / <span class="number">255.0</span></span><br><span class="line"></span><br><span class="line">train_scaled, val_scaled, train_target, val_target = train_test_split(</span><br><span class="line">    train_scaled, train_target, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>사용자 정의 함수를 작성</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">model_fn</span>(<span class="params">a_layer=<span class="literal">None</span></span>):</span><br><span class="line">  model = keras.Sequential()</span><br><span class="line">  model.add(keras.layers.Flatten(input_shape=(<span class="number">28</span>, <span class="number">28</span>)))</span><br><span class="line">  model.add(keras.layers.Dense(<span class="number">100</span>, activation=<span class="string">&#x27;relu&#x27;</span>))</span><br><span class="line">  <span class="keyword">if</span> a_layer:</span><br><span class="line">    model.add(a_layer)</span><br><span class="line">  model.add(keras.layers.Dense(<span class="number">10</span>, activation=<span class="string">&#x27;softmax&#x27;</span>))</span><br><span class="line">  <span class="keyword">return</span> model</span><br><span class="line"></span><br><span class="line">model = model_fn()</span><br><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
-
-<pre><code>Model: &quot;sequential&quot;
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- flatten (Flatten)           (None, 784)               0         
-                                                                 
- dense (Dense)               (None, 100)               78500     
-                                                                 
- dense_1 (Dense)             (None, 10)                1010      
-                                                                 
-=================================================================
-Total params: 79,510
-Trainable params: 79,510
-Non-trainable params: 0
-_________________________________________________________________
-</code></pre>
-<ul>
-<li>모델 정의 후, 학습</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.<span class="built_in">compile</span>(loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics= <span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">5</span>, verbose= <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Epoch 1/5
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3084 - accuracy: 0.8907
-Epoch 2/5
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2963 - accuracy: 0.8947
-Epoch 3/5
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2866 - accuracy: 0.8985
-Epoch 4/5
-1500/1500 [==============================] - 4s 3ms/step - loss: 0.2826 - accuracy: 0.9015
-Epoch 5/5
-1500/1500 [==============================] - 4s 3ms/step - loss: 0.2754 - accuracy: 0.9037
-</code></pre>
-<ul>
-<li>history 객체 무슨 값이 있나??</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(history.history.keys())</span><br></pre></td></tr></table></figure>
-
-<pre><code>dict_keys([&#39;loss&#39;, &#39;accuracy&#39;])
-</code></pre>
-<ul>
-<li>그래프 작성</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0405_Neural_Network_Model/output_10_0.png" alt="png"></p>
-<ul>
-<li>정확도 출력</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(history.history[<span class="string">&#x27;accuracy&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0405_Neural_Network_Model/output_12_0.png" alt="png"></p>
-<ul>
-<li>손실그래프</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">model = model_fn()</span><br><span class="line">model.<span class="built_in">compile</span>(loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">20</span>, verbose=<span class="number">0</span>)</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0405_Neural_Network_Model/output_14_0.png" alt="png"></p>
-<ul>
-<li>검증 손실</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># # 중요</span></span><br><span class="line"><span class="comment"># history = model.fit(train_scaled, train_target, epochs=10, verbose=1, </span></span><br><span class="line"><span class="comment">#                     validation_data=(val_scaled, val_target))</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(history.history[&#x27;loss&#x27;])</span></span><br><span class="line"><span class="comment"># plt.plot(history.history[&#x27;val_loss&#x27;])</span></span><br><span class="line"><span class="comment"># plt.xlabel(&#x27;epoch&#x27;)</span></span><br><span class="line"><span class="comment"># plt.ylabel(&#x27;loss&#x27;)</span></span><br><span class="line"><span class="comment"># plt.legend([&#x27;train&#x27;, &#x27;val&#x27;])</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">model = model_fn()</span><br><span class="line">model.<span class="built_in">compile</span>(loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">10</span>, verbose=<span class="number">1</span>, </span><br><span class="line">                    validation_data=(val_scaled, val_target))</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<pre><code>Epoch 1/10
-1500/1500 [==============================] - 4s 2ms/step - loss: 0.5272 - accuracy: 0.8130 - val_loss: 0.4003 - val_accuracy: 0.8572
-Epoch 2/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3944 - accuracy: 0.8576 - val_loss: 0.3871 - val_accuracy: 0.8617
-Epoch 3/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3568 - accuracy: 0.8729 - val_loss: 0.3542 - val_accuracy: 0.8726
-Epoch 4/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3324 - accuracy: 0.8805 - val_loss: 0.3576 - val_accuracy: 0.8765
-Epoch 5/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3198 - accuracy: 0.8861 - val_loss: 0.3562 - val_accuracy: 0.8795
-Epoch 6/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3072 - accuracy: 0.8910 - val_loss: 0.3875 - val_accuracy: 0.8758
-Epoch 7/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2966 - accuracy: 0.8956 - val_loss: 0.3722 - val_accuracy: 0.8764
-Epoch 8/10
-1500/1500 [==============================] - 4s 2ms/step - loss: 0.2872 - accuracy: 0.8982 - val_loss: 0.3690 - val_accuracy: 0.8783
-Epoch 9/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2840 - accuracy: 0.8990 - val_loss: 0.3649 - val_accuracy: 0.8838
-Epoch 10/10
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2745 - accuracy: 0.9041 - val_loss: 0.4154 - val_accuracy: 0.8708
-</code></pre>
-<p><img src="/Images/0405_Neural_Network_Model/output_17_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 에포크 20으로 늘림</span></span><br><span class="line">model = model_fn()</span><br><span class="line">model.<span class="built_in">compile</span>(loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">20</span>, verbose=<span class="number">1</span>, </span><br><span class="line">                    validation_data=(val_scaled, val_target))</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<pre><code>Epoch 1/20
-1500/1500 [==============================] - 4s 2ms/step - loss: 0.5319 - accuracy: 0.8131 - val_loss: 0.4284 - val_accuracy: 0.8492
-Epoch 2/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3936 - accuracy: 0.8571 - val_loss: 0.3844 - val_accuracy: 0.8645
-Epoch 3/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3560 - accuracy: 0.8704 - val_loss: 0.3669 - val_accuracy: 0.8715
-Epoch 4/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3353 - accuracy: 0.8792 - val_loss: 0.3503 - val_accuracy: 0.8792
-Epoch 5/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3200 - accuracy: 0.8857 - val_loss: 0.3798 - val_accuracy: 0.8707
-Epoch 6/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3089 - accuracy: 0.8902 - val_loss: 0.3681 - val_accuracy: 0.8759
-Epoch 7/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2984 - accuracy: 0.8945 - val_loss: 0.4130 - val_accuracy: 0.8653
-Epoch 8/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2925 - accuracy: 0.8955 - val_loss: 0.3637 - val_accuracy: 0.8847
-Epoch 9/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2822 - accuracy: 0.9012 - val_loss: 0.3923 - val_accuracy: 0.8762
-Epoch 10/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2762 - accuracy: 0.9031 - val_loss: 0.3755 - val_accuracy: 0.8808
-Epoch 11/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2726 - accuracy: 0.9040 - val_loss: 0.3748 - val_accuracy: 0.8794
-Epoch 12/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2631 - accuracy: 0.9085 - val_loss: 0.3988 - val_accuracy: 0.8809
-Epoch 13/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2600 - accuracy: 0.9087 - val_loss: 0.4310 - val_accuracy: 0.8813
-Epoch 14/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2549 - accuracy: 0.9116 - val_loss: 0.4131 - val_accuracy: 0.8844
-Epoch 15/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2533 - accuracy: 0.9139 - val_loss: 0.4343 - val_accuracy: 0.8820
-Epoch 16/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2479 - accuracy: 0.9151 - val_loss: 0.4254 - val_accuracy: 0.8862
-Epoch 17/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2406 - accuracy: 0.9166 - val_loss: 0.4298 - val_accuracy: 0.8858
-Epoch 18/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2369 - accuracy: 0.9176 - val_loss: 0.4401 - val_accuracy: 0.8852
-Epoch 19/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2347 - accuracy: 0.9192 - val_loss: 0.4332 - val_accuracy: 0.8883
-Epoch 20/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2316 - accuracy: 0.9211 - val_loss: 0.4471 - val_accuracy: 0.8796
-</code></pre>
-<p><img src="/Images/0405_Neural_Network_Model/output_18_1.png" alt="png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 옵티마이저 적용</span></span><br><span class="line">model = model_fn()</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer= <span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">20</span>, verbose=<span class="number">1</span>, </span><br><span class="line">                    validation_data=(val_scaled, val_target))</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<pre><code>Epoch 1/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.5265 - accuracy: 0.8185 - val_loss: 0.4242 - val_accuracy: 0.8491
-Epoch 2/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3969 - accuracy: 0.8575 - val_loss: 0.3747 - val_accuracy: 0.8667
-Epoch 3/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3550 - accuracy: 0.8715 - val_loss: 0.3502 - val_accuracy: 0.8747
-Epoch 4/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3292 - accuracy: 0.8795 - val_loss: 0.3671 - val_accuracy: 0.8695
-Epoch 5/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3079 - accuracy: 0.8876 - val_loss: 0.3563 - val_accuracy: 0.8748
-Epoch 6/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2941 - accuracy: 0.8918 - val_loss: 0.3482 - val_accuracy: 0.8759
-Epoch 7/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2816 - accuracy: 0.8972 - val_loss: 0.3568 - val_accuracy: 0.8693
-Epoch 8/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2702 - accuracy: 0.9002 - val_loss: 0.3165 - val_accuracy: 0.8883
-Epoch 9/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2575 - accuracy: 0.9045 - val_loss: 0.3286 - val_accuracy: 0.8808
-Epoch 10/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2501 - accuracy: 0.9072 - val_loss: 0.3677 - val_accuracy: 0.8698
-Epoch 11/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2387 - accuracy: 0.9115 - val_loss: 0.3232 - val_accuracy: 0.8850
-Epoch 12/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2338 - accuracy: 0.9126 - val_loss: 0.3256 - val_accuracy: 0.8865
-Epoch 13/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2259 - accuracy: 0.9145 - val_loss: 0.3364 - val_accuracy: 0.8852
-Epoch 14/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2178 - accuracy: 0.9184 - val_loss: 0.3426 - val_accuracy: 0.8797
-Epoch 15/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2121 - accuracy: 0.9204 - val_loss: 0.3343 - val_accuracy: 0.8855
-Epoch 16/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2076 - accuracy: 0.9230 - val_loss: 0.3224 - val_accuracy: 0.8903
-Epoch 17/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2025 - accuracy: 0.9222 - val_loss: 0.3432 - val_accuracy: 0.8807
-Epoch 18/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.1963 - accuracy: 0.9260 - val_loss: 0.3421 - val_accuracy: 0.8889
-Epoch 19/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.1904 - accuracy: 0.9277 - val_loss: 0.3387 - val_accuracy: 0.8859
-Epoch 20/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.1869 - accuracy: 0.9308 - val_loss: 0.3481 - val_accuracy: 0.8863
-</code></pre>
-<p><img src="/Images/0405_Neural_Network_Model/output_19_1.png" alt="png"></p>
-<h1 id="드롭아웃"><a href="#드롭아웃" class="headerlink" title="드롭아웃"></a>드롭아웃</h1><ul>
-<li>제프리 힌턴</li>
-<li>기본적으로 모든 파라미터를 연산하는것이 원칙<ul>
-<li>but. 일부 뉴런에서 출력이 없는 뉴런 발생</li>
-<li>–&gt; 기존 일부 뉴런은 계산에서 제외 시킴</li>
-</ul>
-</li>
-<li>인공신경망 (뇌과학)<ul>
-<li>값이 쏠림 현상이 발생 %&#x3D; 뇌에 피가 고인 현상 %&#x3D; 뇌출혈</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = model_fn(keras.layers.Dropout(<span class="number">0.3</span>))</span><br><span class="line">model.summary()</span><br></pre></td></tr></table></figure>
-
-<pre><code>Model: &quot;sequential_6&quot;
-_________________________________________________________________
- Layer (type)                Output Shape              Param #   
-=================================================================
- flatten_6 (Flatten)         (None, 784)               0         
-                                                                 
- dense_12 (Dense)            (None, 100)               78500     
-                                                                 
- dropout (Dropout)           (None, 100)               0         
-                                                                 
- dense_13 (Dense)            (None, 10)                1010      
-                                                                 
-=================================================================
-Total params: 79,510
-Trainable params: 79,510
-Non-trainable params: 0
-_________________________________________________________________
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 드롭아웃 적용</span></span><br><span class="line">model.<span class="built_in">compile</span>(optimizer= <span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">20</span>, verbose=<span class="number">1</span>, </span><br><span class="line">                    validation_data=(val_scaled, val_target))</span><br><span class="line"></span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<pre><code>Epoch 1/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.5938 - accuracy: 0.7927 - val_loss: 0.4280 - val_accuracy: 0.8453
-Epoch 2/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.4419 - accuracy: 0.8411 - val_loss: 0.4036 - val_accuracy: 0.8522
-Epoch 3/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.4047 - accuracy: 0.8537 - val_loss: 0.3683 - val_accuracy: 0.8670
-Epoch 4/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3828 - accuracy: 0.8608 - val_loss: 0.3504 - val_accuracy: 0.8707
-Epoch 5/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3714 - accuracy: 0.8635 - val_loss: 0.3404 - val_accuracy: 0.8767
-Epoch 6/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3539 - accuracy: 0.8703 - val_loss: 0.3410 - val_accuracy: 0.8760
-Epoch 7/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3483 - accuracy: 0.8721 - val_loss: 0.3377 - val_accuracy: 0.8776
-Epoch 8/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3357 - accuracy: 0.8763 - val_loss: 0.3315 - val_accuracy: 0.8807
-Epoch 9/20
-1500/1500 [==============================] - 4s 3ms/step - loss: 0.3314 - accuracy: 0.8773 - val_loss: 0.3301 - val_accuracy: 0.8771
-Epoch 10/20
-1500/1500 [==============================] - 4s 2ms/step - loss: 0.3214 - accuracy: 0.8812 - val_loss: 0.3274 - val_accuracy: 0.8787
-Epoch 11/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3180 - accuracy: 0.8831 - val_loss: 0.3325 - val_accuracy: 0.8813
-Epoch 12/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.3121 - accuracy: 0.8852 - val_loss: 0.3194 - val_accuracy: 0.8821
-Epoch 13/20
-1500/1500 [==============================] - 4s 2ms/step - loss: 0.3078 - accuracy: 0.8860 - val_loss: 0.3408 - val_accuracy: 0.8773
-Epoch 14/20
-1500/1500 [==============================] - 4s 3ms/step - loss: 0.3026 - accuracy: 0.8865 - val_loss: 0.3316 - val_accuracy: 0.8817
-Epoch 15/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2940 - accuracy: 0.8890 - val_loss: 0.3322 - val_accuracy: 0.8831
-Epoch 16/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2955 - accuracy: 0.8900 - val_loss: 0.3196 - val_accuracy: 0.8870
-Epoch 17/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2919 - accuracy: 0.8908 - val_loss: 0.3243 - val_accuracy: 0.8853
-Epoch 18/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2835 - accuracy: 0.8925 - val_loss: 0.3362 - val_accuracy: 0.8830
-Epoch 19/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2844 - accuracy: 0.8926 - val_loss: 0.3243 - val_accuracy: 0.8819
-Epoch 20/20
-1500/1500 [==============================] - 3s 2ms/step - loss: 0.2812 - accuracy: 0.8943 - val_loss: 0.3184 - val_accuracy: 0.8881
-</code></pre>
-<p><img src="/Images/0405_Neural_Network_Model/output_22_1.png" alt="png"></p>
-<pre><code>- 드롭아웃을 적용했더니 과대적합 되던 모형이 많이 완화됨.
-</code></pre>
-<h1 id="모댈-저장과-복원"><a href="#모댈-저장과-복원" class="headerlink" title="모댈 저장과 복원"></a>모댈 저장과 복원</h1><ul>
-<li>개발자: 정확도는 중요하지 않음<ul>
-<li>딥러닝 모델 활용해서 웹앱을 개발하는게 목적</li>
-</ul>
-</li>
-<li>분석가 &amp; 머신러닝 엔지니어: 캐글 대회 (정확도 검증 필수)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.save_weights(<span class="string">&#x27;model-weights.h5&#x27;</span>)</span><br><span class="line">model.save(<span class="string">&#x27;model-whole.h5&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>모델 불러오기</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = model_fn(keras.layers.Dropout(<span class="number">0.3</span>))</span><br><span class="line">model.load_weights(<span class="string">&#x27;model-weights.h5&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">val_labels = np.argmax(model.predict(val_scaled), axis=-<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(np.mean(val_labels == val_target))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.8810833333333333
-</code></pre>
-<h1 id="콜백"><a href="#콜백" class="headerlink" title="콜백"></a>콜백</h1><ul>
-<li>model.checkpoint(): 체크포인트를 기록</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">model = model_fn(keras.layers.Dropout(<span class="number">0.3</span>))</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, </span><br><span class="line">              metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">checkpoint_cb = keras.callbacks.ModelCheckpoint(<span class="string">&#x27;best-model.h5&#x27;</span>, </span><br><span class="line">                                                save_best_only=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">model.fit(train_scaled, train_target, epochs=<span class="number">20</span>, verbose=<span class="number">0</span>, </span><br><span class="line">          validation_data=(val_scaled, val_target),</span><br><span class="line">          callbacks=[checkpoint_cb])</span><br></pre></td></tr></table></figure>
-
-
-
-
-<pre><code>&lt;keras.callbacks.History at 0x7f673a848ad0&gt;
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model = keras.models.load_model(<span class="string">&#x27;best-model.h5&#x27;</span>)</span><br><span class="line">model.evaluate(val_scaled, val_target)</span><br></pre></td></tr></table></figure>
-
-<pre><code>375/375 [==============================] - 1s 1ms/step - loss: 0.3137 - accuracy: 0.8893
-
-
-
-
-
-[0.31372642517089844, 0.8893333077430725]
-</code></pre>
-<ul>
-<li>Early Stopping<ul>
-<li>조기 종료</li>
-<li>에포크를 많이 주면 많이 줄수록 성능이 좋아야 하는 것이 원리 (가중치 업데이트 &#x2F; 기울기가 계속 미분)</li>
-<li>if) 에포크 100 &#x2F; 50 에포크 시점과 90에포크 시점 성능 차이 없음</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">model = model_fn(keras.layers.Dropout(<span class="number">0.3</span>))</span><br><span class="line">model.<span class="built_in">compile</span>(optimizer=<span class="string">&#x27;adam&#x27;</span>, loss=<span class="string">&#x27;sparse_categorical_crossentropy&#x27;</span>, </span><br><span class="line">              metrics=<span class="string">&#x27;accuracy&#x27;</span>)</span><br><span class="line"></span><br><span class="line">checkpoint_cb = keras.callbacks.ModelCheckpoint(<span class="string">&#x27;best-model.h5&#x27;</span>, </span><br><span class="line">                                                save_best_only=<span class="literal">True</span>)</span><br><span class="line">early_stopping_cb = keras.callbacks.EarlyStopping(patience=<span class="number">2</span>,</span><br><span class="line">                                                  restore_best_weights=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">history = model.fit(train_scaled, train_target, epochs=<span class="number">20</span>, verbose=<span class="number">0</span>, </span><br><span class="line">                    validation_data=(val_scaled, val_target),</span><br><span class="line">                    callbacks=[checkpoint_cb, early_stopping_cb])</span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(early_stopping_cb.stopped_epoch)</span><br></pre></td></tr></table></figure>
-
-<pre><code>14
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(history.history[<span class="string">&#x27;loss&#x27;</span>])</span><br><span class="line">plt.plot(history.history[<span class="string">&#x27;val_loss&#x27;</span>])</span><br><span class="line">plt.xlabel(<span class="string">&#x27;epoch&#x27;</span>)</span><br><span class="line">plt.ylabel(<span class="string">&#x27;loss&#x27;</span>)</span><br><span class="line">plt.legend([<span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;val&#x27;</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="/Images/0405_Neural_Network_Model/output_35_0.png" alt="png"></p>
-<h1 id="마무리-정리"><a href="#마무리-정리" class="headerlink" title="마무리 정리"></a>마무리 정리</h1><ul>
-<li><p>키워드:</p>
-<ul>
-<li>드롭아웃: 은닉층에 있는 뉴런의 출력을 랜덤하게 꺼서 과대적합을 막는 기법</li>
-<li>콜백: 케라스 모델을 훈련하는 도중에 어떤 작업을 수행 할 수 있도록 도와주는 도구</li>
-<li>조기종료: 검증점수가 더 이상 감소하지 않고 상승하여 과대적합이 일어나면 훈련을 계속 진행하지 않고 멈추는 기법</li>
-</ul>
-</li>
-<li><p>TensorFlow 패키지</p>
-<ul>
-<li>Dropout: 드롭아웃 층</li>
-<li>save_weights(): 모든 층의 가중치와 절편을 파일에 저장</li>
-<li>load_weights(): 모든 층의 가중치와 절편을 파일에 읽음</li>
-<li>save(): 모델 구조와 모든 가중치와 절편을 파일에 저장</li>
-<li>load_model(): model.save()로 저장된 모델을 로드</li>
-<li>ModelCheckpoint: 케라스 모델과 가중치를 일정 간격으로 저장</li>
-<li>EarlyStopping: 관심지표가 더이상 향상하지 않으면 훈련을 중지</li>
-</ul>
-</li>
-<li><p>NumPy 패키지</p>
-<ul>
-<li>argmax: 배열에서 축을 따라 최댓값의 인덱스 반환<ul>
-<li>매개변수 axis: 어떤축을 따라 최댓값을 찾을지 지정 [default: None] (전체 배열에서 최댓값)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-05T00:00:00.000Z" title="2022. 4. 5. 오전 9:00:00">2022-04-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-05T11:02:40.946Z" title="2022. 4. 5. 오후 8:02:40">2022-04-05</time></span><span class="level-item"> woobin </span><span class="level-item">6 minutes read (About 830 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/05/0405_Pipeline/">파이프_라인_(데이터_전처리)</a></h1><div class="content"><h1 id="데이터-누수-방지-위한-모델링-기법"><a href="#데이터-누수-방지-위한-모델링-기법" class="headerlink" title="데이터 누수 방지 위한 모델링 기법:"></a>데이터 누수 방지 위한 모델링 기법:</h1><h3 id="파이프라인-구축"><a href="#파이프라인-구축" class="headerlink" title="파이프라인 구축"></a>파이프라인 구축</h3><ul>
-<li>수능시험 &#x3D; 최종테스트 데이터</li>
-<li>모의고사 or 기출문제 &#x3D; 검증데이터</li>
-<li>교과서 문제지 &#x3D; 훈련데이터</li>
-<li>머신러닝 엔지니어 : MLOps (선행되어야 하는 코드 조건, Pipeline 형태로 구축)<ul>
-<li>머신러닝 코드 자동화 가능, 운영 가능</li>
-<li>개발 업계의 최상위 연봉자</li>
-</ul>
-</li>
-</ul>
-<h1 id="데이터-불러오기"><a href="#데이터-불러오기" class="headerlink" title="데이터 불러오기"></a>데이터 불러오기</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">data = pd.read_csv(<span class="string">&#x27;https://raw.githubusercontent.com/MicrosoftDocs/ml-basics/master/data/daily-bike-share.csv&#x27;</span>)</span><br><span class="line">data.info()</span><br></pre></td></tr></table></figure>
-
-<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 731 entries, 0 to 730
-Data columns (total 14 columns):
- #   Column      Non-Null Count  Dtype  
----  ------      --------------  -----  
- 0   instant     731 non-null    int64  
- 1   dteday      731 non-null    object 
- 2   season      731 non-null    int64  
- 3   yr          731 non-null    int64  
- 4   mnth        731 non-null    int64  
- 5   holiday     731 non-null    int64  
- 6   weekday     731 non-null    int64  
- 7   workingday  731 non-null    int64  
- 8   weathersit  731 non-null    int64  
- 9   temp        731 non-null    float64
- 10  atemp       731 non-null    float64
- 11  hum         731 non-null    float64
- 12  windspeed   731 non-null    float64
- 13  rentals     731 non-null    int64  
-dtypes: float64(4), int64(9), object(1)
-memory usage: 80.1+ KB
-</code></pre>
-<h1 id="데이터-추출"><a href="#데이터-추출" class="headerlink" title="데이터 추출"></a>데이터 추출</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cols = [<span class="string">&#x27;season&#x27;</span>, <span class="string">&#x27;mnth&#x27;</span>, <span class="string">&#x27;holiday&#x27;</span>, <span class="string">&#x27;weekday&#x27;</span>, <span class="string">&#x27;workingday&#x27;</span>, <span class="string">&#x27;weathersit&#x27;</span>, <span class="string">&#x27;temp&#x27;</span>, <span class="string">&#x27;atemp&#x27;</span>, <span class="string">&#x27;hum&#x27;</span>, <span class="string">&#x27;windspeed&#x27;</span>, <span class="string">&#x27;rentals&#x27;</span>]</span><br><span class="line">data = data[cols]</span><br><span class="line">data.info()</span><br><span class="line"><span class="comment"># data[&#x27;mnth&#x27;].value_counts()</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 731 entries, 0 to 730
-Data columns (total 11 columns):
- #   Column      Non-Null Count  Dtype  
----  ------      --------------  -----  
- 0   season      731 non-null    int64  
- 1   mnth        731 non-null    int64  
- 2   holiday     731 non-null    int64  
- 3   weekday     731 non-null    int64  
- 4   workingday  731 non-null    int64  
- 5   weathersit  731 non-null    int64  
- 6   temp        731 non-null    float64
- 7   atemp       731 non-null    float64
- 8   hum         731 non-null    float64
- 9   windspeed   731 non-null    float64
- 10  rentals     731 non-null    int64  
-dtypes: float64(4), int64(7)
-memory usage: 62.9 KB
-</code></pre>
-<ul>
-<li><p>기존: 데이터 불러오기 -&gt; 데이터 전처리 -&gt; 피처공학(원핫인코딩) -&gt; 데이터셋 분리 -&gt; 모델링 코드 -&gt; 모델평가</p>
-</li>
-<li><p>파이프라인: 데이터 불러오기 -&gt; 데이터 전처리 -&gt; 데이터셋 분리 -&gt; 파이프라인 구축 (피처공학, 모델링 코드) -&gt; 모델평가</p>
-</li>
-</ul>
-<h1 id="데이터셋-분리"><a href="#데이터셋-분리" class="headerlink" title="데이터셋 분리"></a>데이터셋 분리</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">X = data.drop(<span class="string">&#x27;rentals&#x27;</span>,axis=<span class="number">1</span>)</span><br><span class="line">y = data[<span class="string">&#x27;rentals&#x27;</span>]</span><br><span class="line"></span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.2</span>, random_state=<span class="number">123</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>Data Prepocessing</p>
-<ul>
-<li>결측치 수동으로 채우거나</li>
-<li>불필요한 변수를 제거하거나</li>
-<li>이상치를 제거하거나</li>
-<li>파생변수를 만들거나 등등</li>
-</ul>
-</li>
-<li><p>Feature Engineering</p>
-<ul>
-<li>기존: 개별적으로 코드 작성</li>
-<li>현재: Pipeline 코드로 추가할것</li>
-</ul>
-</li>
-</ul>
-<h1 id="Pipeline-구축"><a href="#Pipeline-구축" class="headerlink" title="Pipeline 구축"></a>Pipeline 구축</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler, OrdinalEncoder, OneHotEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.impute <span class="keyword">import</span> SimpleImputer</span><br><span class="line"><span class="keyword">from</span> sklearn.compose <span class="keyword">import</span> ColumnTransformer</span><br><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 데이터 타입 3가지</span></span><br><span class="line"><span class="comment"># 수치형 데이터, 무자열 데이터</span></span><br><span class="line"><span class="comment"># 문자열 데이터: 범주형(명목형, 서열형 데이터 구분)</span></span><br><span class="line">numeric_transformer = Pipeline(steps=[</span><br><span class="line">       (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;mean&#x27;</span>))</span><br><span class="line">      ,(<span class="string">&#x27;scaler&#x27;</span>, StandardScaler())</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">ordinal_transformer = Pipeline(steps=[</span><br><span class="line">       (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;constant&#x27;</span>))</span><br><span class="line">      ,(<span class="string">&#x27;ordEncoder&#x27;</span>, OrdinalEncoder())</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">onehot_transformer = Pipeline(steps=[</span><br><span class="line">       (<span class="string">&#x27;imputer&#x27;</span>, SimpleImputer(strategy=<span class="string">&#x27;constant&#x27;</span>))</span><br><span class="line">      ,(<span class="string">&#x27;oheEncoder&#x27;</span>, OneHotEncoder())                                   </span><br><span class="line">])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 수치형 데이터 및 Categorical 데이터 컬럼 분리</span></span><br><span class="line"></span><br><span class="line">numeric_features = [<span class="string">&#x27;temp&#x27;</span>, <span class="string">&#x27;atemp&#x27;</span>, <span class="string">&#x27;hum&#x27;</span>, <span class="string">&#x27;windspeed&#x27;</span>]</span><br><span class="line">ordinal_features = [<span class="string">&#x27;holiday&#x27;</span>, <span class="string">&#x27;weekday&#x27;</span>, <span class="string">&#x27;workingday&#x27;</span>, <span class="string">&#x27;weathersit&#x27;</span>]</span><br><span class="line">onehot_features  = [<span class="string">&#x27;season&#x27;</span>, <span class="string">&#x27;mnth&#x27;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># numeric_features = data.select_dtypes(include=[&#x27;int64&#x27;, &#x27;float64&#x27;]).columns</span></span><br><span class="line"><span class="comment"># categorical_features = data.select_dtypes(include=[&#x27;object&#x27;]).drop([&#x27;Loan_Status&#x27;], axis=1).columns</span></span><br><span class="line"></span><br><span class="line">preprocessor = ColumnTransformer(</span><br><span class="line">   transformers=[</span><br><span class="line">     (<span class="string">&#x27;numeric&#x27;</span>, numeric_transformer, numeric_features)</span><br><span class="line">   , (<span class="string">&#x27;ord_categorical&#x27;</span>, ordinal_transformer, ordinal_features)</span><br><span class="line">   , (<span class="string">&#x27;ohe_categorical&#x27;</span>, onehot_transformer, onehot_features)</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-
-<h1 id="모델-적용"><a href="#모델-적용" class="headerlink" title="모델 적용"></a>모델 적용</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"></span><br><span class="line">pipeline = Pipeline(steps = [</span><br><span class="line">               (<span class="string">&#x27;preprocessor&#x27;</span>, preprocessor)</span><br><span class="line">              ,(<span class="string">&#x27;regressor&#x27;</span>, RandomForestRegressor())</span><br><span class="line">           ])</span><br><span class="line"></span><br><span class="line">rf_model = pipeline.fit(X_train, y_train)</span><br><span class="line"><span class="built_in">print</span>(rf_model)</span><br></pre></td></tr></table></figure>
-
-<pre><code>Pipeline(steps=[(&#39;preprocessor&#39;,
-                 ColumnTransformer(transformers=[(&#39;numeric&#39;,
-                                                  Pipeline(steps=[(&#39;imputer&#39;,
-                                                                   SimpleImputer()),
-                                                                  (&#39;scaler&#39;,
-                                                                   StandardScaler())]),
-                                                  [&#39;temp&#39;, &#39;atemp&#39;, &#39;hum&#39;,
-                                                   &#39;windspeed&#39;]),
-                                                 (&#39;ord_categorical&#39;,
-                                                  Pipeline(steps=[(&#39;imputer&#39;,
-                                                                   SimpleImputer(strategy=&#39;constant&#39;)),
-                                                                  (&#39;ordEncoder&#39;,
-                                                                   OrdinalEncoder())]),
-                                                  [&#39;holiday&#39;, &#39;weekday&#39;,
-                                                   &#39;workingday&#39;,
-                                                   &#39;weathersit&#39;]),
-                                                 (&#39;ohe_categorical&#39;,
-                                                  Pipeline(steps=[(&#39;imputer&#39;,
-                                                                   SimpleImputer(strategy=&#39;constant&#39;)),
-                                                                  (&#39;oheEncoder&#39;,
-                                                                   OneHotEncoder())]),
-                                                  [&#39;season&#39;, &#39;mnth&#39;])])),
-                (&#39;regressor&#39;, RandomForestRegressor())])
-</code></pre>
-<h1 id="모델-평가"><a href="#모델-평가" class="headerlink" title="모델 평가"></a>모델 평가</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> r2_score</span><br><span class="line">predictions = rf_model.predict(X_test)</span><br><span class="line"><span class="built_in">print</span> (r2_score(y_test, predictions))</span><br></pre></td></tr></table></figure>
-
-<pre><code>0.7623870644942855
-</code></pre>
-<h1 id="다중모형-개발"><a href="#다중모형-개발" class="headerlink" title="다중모형 개발"></a>다중모형 개발</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"></span><br><span class="line">regressors = [</span><br><span class="line">    RandomForestRegressor()</span><br><span class="line">   ,DecisionTreeRegressor()</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line"><span class="comment"># regressors = [pipe_rf, pipe_dt]</span></span><br><span class="line"><span class="keyword">for</span> regressor <span class="keyword">in</span> regressors:</span><br><span class="line">    pipeline = Pipeline(steps = [</span><br><span class="line">               (<span class="string">&#x27;preprocessor&#x27;</span>, preprocessor)</span><br><span class="line">              ,(<span class="string">&#x27;regressor&#x27;</span>,regressor)</span><br><span class="line">           ])</span><br><span class="line">    model = pipeline.fit(X_train, y_train)</span><br><span class="line">    predictions = model.predict(X_test)</span><br><span class="line">    <span class="built_in">print</span>(regressor)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&#x27;Model r2 score:<span class="subst">&#123;r2_score(predictions, y_test)&#125;</span>&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<pre><code>RandomForestRegressor()
-Model r2 score:0.7385832717833691
-DecisionTreeRegressor()
-Model r2 score:0.6033264470675421
-</code></pre>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li><li><a class="pagination-link" href="/page/4/">4</a></li><li><a class="pagination-link" href="/page/5/">5</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">50</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-19T00:00:00.000Z">2022-04-19</time></p><p class="title"><a href="/2022/04/19/0419_Apache_Spark_install/">Apache Spark 설치</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-19T00:00:00.000Z">2022-04-19</time></p><p class="title"><a href="/2022/04/19/0419_Java_install/">Java 설치</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-18T00:00:00.000Z">2022-04-18</time></p><p class="title"><a href="/2022/04/18/0418_kibana_install/">Kibana 설치</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-18T00:00:00.000Z">2022-04-18</time></p><p class="title"><a href="/2022/04/18/0418_Elasticsearch_install/">Elasticsearch 설치</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-18T00:00:00.000Z">2022-04-18</time></p><p class="title"><a href="/2022/04/18/0418_Ubuntu_install/">Ubuntu 설치</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">22</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/6/">6</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">52</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-20T00:00:00.000Z">2022-04-20</time></p><p class="title"><a href="/2022/04/20/0420_Apache_Spark_install_on_WSL/">PySpark 설치 WSL환경</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-20T00:00:00.000Z">2022-04-20</time></p><p class="title"><a href="/2022/04/20/0420_Pyspark_tutorial/">Pyspark 연습</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-19T00:00:00.000Z">2022-04-19</time></p><p class="title"><a href="/2022/04/19/0419_Apache_Spark_install/">Apache Spark 설치</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-19T00:00:00.000Z">2022-04-19</time></p><p class="title"><a href="/2022/04/19/0419_Java_install/">Java 설치</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-18T00:00:00.000Z">2022-04-18</time></p><p class="title"><a href="/2022/04/18/0418_kibana_install/">Kibana 설치</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">24</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
