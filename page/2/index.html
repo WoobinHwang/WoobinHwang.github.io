@@ -1,5 +1,321 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-19T00:00:00.000Z" title="2022. 4. 19. 오전 9:00:00">2022-04-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-19T03:30:47.592Z" title="2022. 4. 19. 오후 12:30:47">2022-04-19</time></span><span class="level-item"> woobin </span><span class="level-item">5 minutes read (About 797 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/19/0419_Apache_Spark_install/">Apache Spark 설치</a></h1><div class="content"><h1 id="0419-Apache-Spark-install"><a href="#0419-Apache-Spark-install" class="headerlink" title="0419_Apache_Spark_install"></a>0419_Apache_Spark_install</h1><ul>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-25T00:00:00.000Z" title="2022. 4. 25. 오전 9:00:00">2022-04-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-25T10:33:29.974Z" title="2022. 4. 25. 오후 7:33:29">2022-04-25</time></span><span class="level-item"> woobin </span><span class="level-item">6 minutes read (About 855 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/25/0425_Oracle_SQL_install_on_window/">Oracle SQL 설치</a></h1><div class="content"><h1 id="0425-Oracle-SQL-install-on-window"><a href="#0425-Oracle-SQL-install-on-window" class="headerlink" title="0425_Oracle_SQL_install_on_window"></a>0425_Oracle_SQL_install_on_window</h1><h1 id="Oracle-SQL-설치"><a href="#Oracle-SQL-설치" class="headerlink" title="Oracle SQL 설치"></a>Oracle SQL 설치</h1><ul>
+<li>구글 oracle database 19c download 검색</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>오라클 로그인 후 다운로드하기</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>db_home이라는 폴더에 압축 풀어둠.<br>setup파일 관리자권한으로 실행</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>단일 인스턴스 데이터베이스 생성 및 구성 (default)</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>데스크탑 클래스 (default)</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>가상계정 사용 (default)</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li>컨테이너 데이터베이스 설정 (해제)<br>데이터베이스 명: myoracle<br>비밀번호: 1234</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>바로 설치 (default)</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%207.png" alt="Untitled"></p>
+<ul>
+<li>설치 진행중</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%208.png" alt="Untitled"></p>
+<h3 id="세팅하기"><a href="#세팅하기" class="headerlink" title="세팅하기"></a>세팅하기</h3><ul>
+<li>설치가 끝났다면, SQL Plus 관리자 권한으로 실행</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%209.png" alt="Untitled"></p>
+<ul>
+<li>실행시 사용자명과 비밀번호 설정 해야함.<br>사용자명은 system<br>비밀번호는 1234로 지정</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2010.png" alt="Untitled"></p>
+<ul>
+<li>테이블 스페이스를 myts라는 이름으로 100MB 크기로 생성<br>데이터가 증가하면 5MB씩 자동 증가 옵션 추가</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CREATE TABLESPACE myts DATAFINE <span class="string">&#x27;C:\sql_lecture\db_homes\oradata\MYORACLE\myts.dbf&#x27;</span> SIZE 100M AUTOEXTEND ON NEXT 5M;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2011.png" alt="Untitled"></p>
+<ul>
+<li>사용자 생성하고 권한 부여<br>사용자명 ora_user<br>비밀번호 evan</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER ora_user IDENTIFIED BY evan DEFAULT TABLESPACE MYTS TEMPORARY TABLESPACE TEMP;</span><br><span class="line"><span class="comment"># 사용자가 생성되었습니다.</span></span><br><span class="line"></span><br><span class="line">GRANT DBA TO ora_user;</span><br><span class="line"><span class="comment"># 권한이 부여되었습니다.</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2012.png" alt="Untitled"></p>
+<ul>
+<li>사용자 계정으로 DB에 접속</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connect ora_user/evan</span><br><span class="line"></span><br><span class="line">selcet user from dual;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2013.png" alt="Untitled"></p>
+<hr>
+<h1 id="Oracle-Develop-설치"><a href="#Oracle-Develop-설치" class="headerlink" title="Oracle Develop 설치"></a>Oracle Develop 설치</h1><ul>
+<li>구글에 sql developer download 검색</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2014.png" alt="Untitled"></p>
+<ul>
+<li>로그인 후 설치</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2015.png" alt="Untitled"></p>
+<h3 id="세팅하기-1"><a href="#세팅하기-1" class="headerlink" title="세팅하기"></a>세팅하기</h3><ul>
+<li>도구 - 환경설정 - 데이터베이스 - NLS<br>시간기록 TZ형식을 복사하여 시간기록형식에 붙여넣음</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2016.png" alt="Untitled"></p>
+<ul>
+<li>코드를 입력하고 실행(F5)</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2017.png" alt="Untitled"></p>
+<ul>
+<li>아래 두개 프로그램 다운로드<br><a target="_blank" rel="noopener" href="https://github.com/gilbutITbook/006696/tree/master/01%EC%9E%A5%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">https://github.com/gilbutITbook/006696/tree/master/01장 환경설정</a></li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2018.png" alt="Untitled"></p>
+<ul>
+<li>c드라이브 아래에 백업 폴더 만들고 방금 다운한 두개의 파일을 옮김.</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2019.png" alt="Untitled"></p>
+<ul>
+<li>명령프롬프트(cmd)창에서 설치</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">imp ora_user/evan file=expall.dmp <span class="built_in">log</span>=empall.log ignore=y grants=y rows=y indexes=y full=y</span><br><span class="line"></span><br><span class="line"> imp ora_user/evan file=expcust.dmp <span class="built_in">log</span>=expcust.log ignore=y grants=y rows=y indexes=y full=y</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2020.png" alt="Untitled"></p>
+<ul>
+<li>sql developer에서 명령어 입력 후 실행</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECt table_name FROM user_tables;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2021.png" alt="Untitled"></p>
+<h2 id="연습"><a href="#연습" class="headerlink" title="연습"></a>연습</h2><ul>
+<li><p>SQL Plus를 실행</p>
+</li>
+<li><p>로그인하기<br>사용자명 : system<br>비밀번호 : 1234</p>
+</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2022.png" alt="Untitled"></p>
+<ul>
+<li>연결하기</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect ora_user/evan</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2023.png" alt="Untitled"></p>
+<ul>
+<li>확인하기</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show user</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2024.png" alt="Untitled"></p>
+<ul>
+<li>테이블 생성해보기</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2025.png" alt="Untitled"></p>
+<ul>
+<li>사이드바에서도 생성된걸 확인 가능 가능</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2026.png" alt="Untitled"></p>
+<ul>
+<li>상단에 SQL탭을 누르면 코드가 나온다.</li>
+</ul>
+<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2027.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-22T00:00:00.000Z" title="2022. 4. 22. 오전 9:00:00">2022-04-22</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-22T10:17:44.788Z" title="2022. 4. 22. 오후 7:17:44">2022-04-22</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 489 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/22/0422_Crawling_Selenium_on_gitbash/">Selenium 연습</a></h1><div class="content"><h1 id="0422-Crawling-Selenium-on-gitbash"><a href="#0422-Crawling-Selenium-on-gitbash" class="headerlink" title="0422_Crawling_Selenium_on_gitbash"></a>0422_Crawling_Selenium_on_gitbash</h1><ul>
+<li>가상환경 만들고 적용</li>
+</ul>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>패키지 설치</li>
+</ul>
+<p>$ pip install selenium</p>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>크롬 버전 확인</li>
+</ul>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>크롬 드라이버 다운로드<br>크롬에 chrome driver 검색하고 홈페이지 들어가기<br><a target="_blank" rel="noopener" href="https://chromedriver.chromium.org/downloads">https://chromedriver.chromium.org/downloads</a></li>
+</ul>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>맞는 버전과 운영체제로 다운받음.</li>
+</ul>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>드라이버를 내가 사용할 폴더로 옮김</li>
+</ul>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://temp.py/">temp.py</a> 작성</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver.common.keys import Keys</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">&quot;https://www.google.com/&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>실행</li>
+</ul>
+<p>$ python temp.py</p>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>입력창에 리그 오브 레전드를 입력</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">elem= driver.find_element_by_name(<span class="string">&quot;q&quot;</span>)</span><br><span class="line">elem.send_keys(<span class="string">&quot;python&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%207.png" alt="Untitled"></p>
+<ul>
+<li>검색버튼 누르기</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem.send_keys(Keys.RETURN)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%208.png" alt="Untitled"></p>
+<ul>
+<li>클래스 이름으로 조회 찾으려고 했더니 다수의 동일한 클래스 이름들이 조회됨.</li>
+</ul>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%209.png" alt="Untitled"></p>
+<ul>
+<li>0번째의 text를 target 객체로 만들어 출력</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ target= driver.find_elements_by_css_selector(<span class="string">&quot;.LC20lb.MBeuO.DKV0Md&quot;</span>)[0].text</span><br><span class="line">$ driver.close()</span><br><span class="line">$ <span class="built_in">print</span>(target)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%2010.png" alt="Untitled"></p>
+<ul>
+<li><p>연습 끝!</p>
+</li>
+<li><p>여러 시행착오 끝에 네이버같은 링크를 들어갈 때 새로운 탭이 열리는 경우엔 셀레니움이 인식을 못하는 것을 알아냄!</p>
+</li>
+<li><p>계속 실패하던 더보기 버튼 누르는것까지 구현함.</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ from selenium import webdriver</span><br><span class="line">$ from selenium.webdriver.common.keys import Keys</span><br><span class="line">$ import time</span><br><span class="line"></span><br><span class="line">$ driver = webdriver.Chrome()</span><br><span class="line">$ driver.get(<span class="string">&quot;https://game.naver.com/lounge/League_of_Legends/db/champion&quot;</span>)</span><br><span class="line">$ time.sleep(5)</span><br><span class="line"></span><br><span class="line"><span class="comment"># # 1번째 챔피언 이름 추출</span></span><br><span class="line">$ fir= <span class="string">&quot;.card_content-header__title__oJkdR&quot;</span></span><br><span class="line">$ target= driver.find_elements_by_css_selector(fir)[0].text</span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">&quot;--------------&quot;</span>)</span><br><span class="line">$ <span class="built_in">print</span>(target)</span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">&quot;--------------&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># # 더보기 버튼 클릭</span></span><br><span class="line">$ sec= <span class="string">&quot;.gamedb_icon__1jSHy&quot;</span></span><br><span class="line">$ driver.find_element_by_css_selector(sec).click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 종료 단계</span></span><br><span class="line"><span class="comment"># driver.close()</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">&quot;good&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%2011.png" alt="Untitled"></p>
+<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%2012.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-20T00:00:00.000Z" title="2022. 4. 20. 오전 9:00:00">2022-04-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-21T00:16:17.711Z" title="2022. 4. 21. 오전 9:16:17">2022-04-21</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 245 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/20/0420_Apache_Spark_install_on_WSL/">PySpark 설치 WSL환경</a></h1><div class="content"><h1 id="0420-Spark-install-on-WSL"><a href="#0420-Spark-install-on-WSL" class="headerlink" title="0420_Spark_install_on_WSL"></a>0420_Spark_install_on_WSL</h1><ul>
+<li><p>java 8버전이나 11버전 설치 선행 필요<br>spark홈페이지에서 다운받고 spark라는 폴더에 설치 선행 필요</p>
+</li>
+<li><p>환경변수 세팅</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>아래 문구를 추가</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64</span><br><span class="line">$ <span class="built_in">export</span> SPARK_HOME=/mnt/c/spark</span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$SPARK_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">$ <span class="built_in">export</span> PYSPARK_PYTHON=/usr/bin/python3</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%201.png" alt="Untitled"></p>
+<ol>
+<li>→ JAVA_HOME에는 아래 경로를 입력</li>
+</ol>
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%202.png" alt="Untitled"></p>
+<ol>
+<li>→ SPARK_HOME에는 아래 경로를 입력</li>
+</ol>
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>bashrc파일 업데이트하고 제대로 설정이 되었는지 확인</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$SPARK_HOME</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>pyspark 실행</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pyspark</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li>아래 코드가 실행되는지 확인</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rd = sc.textFile(<span class="string">&quot;README.md&quot;</span>)</span><br><span class="line">$ rd.count()</span><br><span class="line"><span class="comment"># 109</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>종료</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ quit()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%207.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-20T00:00:00.000Z" title="2022. 4. 20. 오전 9:00:00">2022-04-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-21T00:11:48.877Z" title="2022. 4. 21. 오전 9:11:48">2022-04-21</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 504 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/20/0420_Pyspark_tutorial/">Pyspark 연습</a></h1><div class="content"><h1 id="0420-Pyspark-tutorial"><a href="#0420-Pyspark-tutorial" class="headerlink" title="0420_Pyspark_tutorial"></a>0420_Pyspark_tutorial</h1><p>spark홈페이지<br><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/quick-start.html">https://spark.apache.org/docs/latest/quick-start.html</a></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://simpleapp.py/">SimpleApp.py</a> 작성<br>(홈페이지에서 볼 수 있는 예제문에서 input()을 추가함)</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pyspark.sql import SparkSession</span><br><span class="line"></span><br><span class="line">logFile = &quot;README.md&quot;  # Should be some file on your system</span><br><span class="line">spark = SparkSession.builder.appName(&quot;SimpleApp&quot;).getOrCreate()</span><br><span class="line">logData = spark.read.text(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(logData.value.contains(&#x27;a&#x27;)).count()</span><br><span class="line">numBs = logData.filter(logData.value.contains(&#x27;b&#x27;)).count()</span><br><span class="line"></span><br><span class="line">print(&quot;Lines with a: %i, lines with b: %i&quot; % (numAs, numBs))</span><br><span class="line"></span><br><span class="line">input(&quot;Typing....&quot;)</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled.png" alt="Untitled"></p>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://readme.md/">README.md</a> 작성</li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>README.md파일 내용</li>
+</ul>
+<p>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file. Note that you’ll need to replace YOUR_SPARK_HOME with the location where Spark is installed. As with the Scala and Java examples, we use a SparkSession to create Datasets. For applications that use custom classes or third-party libraries, we can also add code dependencies to spark-submit through its –py-files argument by packaging them into a .zip file (see spark-submit –help for details). SimpleApp is simple enough that we do not need to specify any code dependencies.</p>
+<p>We can run this application using the <code>bin/spark-submit</code> script:</p>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>제대로 작성 됐는지 cat 명령어로도 확인가능</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> README.md</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%204.png" alt="Untitled"></p>
+<ul>
+<li>스파크 홈페이지에 연동하여 실행</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="variable">$SPARK_HOME</span>/bin/spark-submit --master <span class="built_in">local</span>[4] [SimpleApp.py](http://simpleapp.py/)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li>&#x3D;⇒</li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>윈도우에서 확인</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://localhost:4040/">http://localhost:4040/</a></p>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%207.png" alt="Untitled"></p>
+<ul>
+<li><strong><em>배포</em><br>&#x3D;⇒ spark-submit</strong></li>
+</ul>
+<h3 id="예제-1"><a href="#예제-1" class="headerlink" title="예제 1."></a>예제 1.</h3><ul>
+<li>data 폴더와 <a target="_blank" rel="noopener" href="http://friends-by-age.py/">friends-by-age.py</a> 작성</li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%208.png" alt="Untitled"></p>
+<ul>
+<li>spark 실행 후 <a target="_blank" rel="noopener" href="http://172.22.156.103:4040/environment/">http://172.22.156.103:4040</a> 접속</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="variable">$SPARK_HOME</span>/bin/spark-submit --master <span class="built_in">local</span>[4] [friends-by-age.py](http://friends-by-age.py)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%209.png" alt="Untitled"></p>
+<ul>
+<li>&#x3D;⇒</li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2010.png" alt="Untitled"></p>
+<p> ——&gt; 500개의 record가 있는것을 확인</p>
+<h3 id="예제-2"><a href="#예제-2" class="headerlink" title="예제 2."></a>예제 2.</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://titalspent.py/">titalspent.py</a> 작성<br>(main함수 삭제)<br>(input이라는 객체를 생성했어서 input을 inputs로 변경)</li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2011.png" alt="Untitled"></p>
+<ul>
+<li>실행하고 UI로 확인<br><a target="_blank" rel="noopener" href="http://172.22.156.103:4040/">http://172.22.156.103:4040/</a></li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2012.png" alt="Untitled"></p>
+<ul>
+<li>&#x3D;⇒</li>
+</ul>
+<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2013.png" alt="Untitled"></p>
+<p> ——&gt; 10000개의 record가 있다는것을 확인 가능</p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-19T00:00:00.000Z" title="2022. 4. 19. 오전 9:00:00">2022-04-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-19T03:30:47.592Z" title="2022. 4. 19. 오후 12:30:47">2022-04-19</time></span><span class="level-item"> woobin </span><span class="level-item">5 minutes read (About 797 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/19/0419_Apache_Spark_install/">Apache Spark 설치</a></h1><div class="content"><h1 id="0419-Apache-Spark-install"><a href="#0419-Apache-Spark-install" class="headerlink" title="0419_Apache_Spark_install"></a>0419_Apache_Spark_install</h1><ul>
 <li>spark 설치 <strong>(자바 설치가 선행되어야 함)</strong></li>
 <li><a target="_blank" rel="noopener" href="https://www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz">https://www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz</a> 홈페이지 들어가서</li>
 <li><a target="_blank" rel="noopener" href="https://archive.apache.org/dist/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz">https://archive.apache.org/dist/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz</a> 링크를 클릭해서 설치</li>
@@ -326,193 +642,7 @@
 <li><a target="_blank" rel="noopener" href="https://127.0.0.1:8443/nifi/login">https://127.0.0.1:8443/nifi</a> 접속 ( 시간이 많이 소요됨. )</li>
 </ul>
 <p><img src="/Images/0418_Apache_NiFi_install/Untitled%202.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-17T00:00:00.000Z" title="2022. 4. 17. 오전 9:00:00">2022-04-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-17T11:13:09.712Z" title="2022. 4. 17. 오후 8:13:09">2022-04-17</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 315 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/17/0417_Library_venv_pip3/">라이브러리 / 가상 환경 / pip, pip3 기능</a></h1><div class="content"><h1 id="라이브러리-x2F-가상-환경-x2F-pip-pip3-기능"><a href="#라이브러리-x2F-가상-환경-x2F-pip-pip3-기능" class="headerlink" title="라이브러리 &#x2F; 가상 환경 &#x2F; pip, pip3 기능"></a>라이브러리 &#x2F; 가상 환경 &#x2F; pip, pip3 기능</h1><h3 id="라이브러리-Library"><a href="#라이브러리-Library" class="headerlink" title="라이브러리 (Library):"></a>라이브러리 (Library):</h3><ul>
-<li>소프트웨어 개발 시 자주 쓰거나 특정한 기능을 모듈로 만들어 사용자들이 사용 할 수 있게 만들어둔것.</li>
-</ul>
-<h3 id="가상-환경-virtual-environment"><a href="#가상-환경-virtual-environment" class="headerlink" title="가상 환경 (virtual environment):"></a>가상 환경 (virtual environment):</h3><ul>
-<li>작업하는 프로젝트마다 같은 라이브러리를 사용하더라도 쓸 때 마다 버전이 달라지곤 하는데, 이를 해결하기 위해 가상 환경이라는 독립적인 공간을 만들어 해결 할 수 있다.</li>
-<li>WSL(Windows Subsystem for Linux)에서 가상 환경을 만들고 적용 (예시)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip3 install virtualenv <span class="comment"># 패키지가 없다면 설치</span></span><br><span class="line">$ virtualenv venv</span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-
-<h3 id="pip-pip3"><a href="#pip-pip3" class="headerlink" title="pip, pip3:"></a>pip, pip3:</h3><ul>
-<li><p>pip: python2 버전의 패키지를 설치하는 기능<br>pip3: python3 버전의 패키지를 설치하는 기능<br>—&gt; 파이썬 버전에 맞게 사용</p>
-</li>
-<li><p>WSL에서 python3 패키지를 패키지를 설치 (예시)</p>
-</li>
-</ul>
-<p>$ pip3 install elasticsearch</p>
-<ul>
-<li>버전을 확인하는 temp.py를 작성</li>
-</ul>
-<p><img src="/Images/0417_Library_venv_pip3/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>버전 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 temp.py</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Library_venv_pip3/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>WSL에서 다운그레이드 하고 버전 확인</li>
-</ul>
-<p>$ pip3 install elasticsearch&#x3D;&#x3D;7.6.0</p>
-<p>$ python3 temp.py</p>
-<p><img src="/Images/0417_Library_venv_pip3/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>설치한 패키지 목록</li>
-<li>$ pip3 list</li>
-</ul>
-<p><img src="/Images/0417_Library_venv_pip3/Untitled%203.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-17T00:00:00.000Z" title="2022. 4. 17. 오전 9:00:00">2022-04-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-17T11:17:20.683Z" title="2022. 4. 17. 오후 8:17:20">2022-04-17</time></span><span class="level-item"> woobin </span><span class="level-item">a minute read (About 153 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/17/0417_VSCode_Remote_function/">VSCode Remote 기능 연동하기</a></h1><div class="content"><h1 id="0417-VSCode-Remote-function"><a href="#0417-VSCode-Remote-function" class="headerlink" title="0417_VSCode_Remote_function"></a>0417_VSCode_Remote_function</h1><p>VSCode에서 remote를 검색하여 설치</p>
-<p><img src="/Images/0417_VSCode_Remote_function/Remote.jpg" alt="Untitled"></p>
-<ul>
-<li>터미널을 켜고 WSL이 있는지 확인</li>
-</ul>
-<p><img src="/Images/0417_VSCode_Remote_function/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>WSL에서 가상환경으로 설정</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_VSCode_Remote_function/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>Chapter03 파일 속 <a target="_blank" rel="noopener" href="http://hello.py/">hello.py</a> 파일을 만들고 저장</li>
-</ul>
-<p><img src="/Images/0417_VSCode_Remote_function/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>vscode의 wsl터미널에서 <a target="_blank" rel="noopener" href="http://hello.py/">hello.py</a> 파이썬 파일 실행</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ python3 hello.py</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_VSCode_Remote_function/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://hello.py/">hello.py</a> 를 수정하고 다시 실행</li>
-</ul>
-<p><img src="/Images/0417_VSCode_Remote_function/Untitled%204.png" alt="Untitled"></p>
-<p><img src="/Images/0417_VSCode_Remote_function/Untitled%205.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-17T00:00:00.000Z" title="2022. 4. 17. 오전 9:00:00">2022-04-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-17T11:36:29.153Z" title="2022. 4. 17. 오후 8:36:29">2022-04-17</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 254 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/17/0417_PostgreSQL(pgAdmin)_insert/">PostgreSQL 설치</a></h1><div class="content"><h1 id="0417-PostgreSQL-pgAdmin-insert"><a href="#0417-PostgreSQL-pgAdmin-insert" class="headerlink" title="0417_PostgreSQL(pgAdmin)_insert"></a>0417_PostgreSQL(pgAdmin)_insert</h1><ul>
-<li><p>설명: 확장 가능성 및 표준 준수를 강조하는 객체-관계형 데이터베이스 관리 시스템의 하나</p>
-</li>
-<li><p>PostgreSQL 서비스를 실행, 상태 확인</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service postgresql strat</span><br><span class="line">$ sudo service postgresql status</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>PostgreSQL 아이디 비밀번호 설정</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -u postgres psql -c “ALTER USER postgres PASSWORD ‘postgres’;”</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>General탭에서 ‘Name’에 users를 입력(필자는 users2로 작성)</li>
-</ul>
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>Column탭에는 아래의 테이블을 추가 (Save)</li>
-</ul>
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>wsl에서 제대로 저장이 되었는지 확인하러 갑니다.<br>(l: List 로 추측됨)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -u postgres psql</span><br><span class="line"></span><br><span class="line">$ \l</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>dataengineering으로 접속<br>(c: connect 로 추측됨)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \c dataengineering</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>데이터 테이블을 확인<br>(dt: datatable 로 추측됨)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ \dt</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>제대로 확인이 된다면 빠져나옴.<br>(q: quit 로 추측됨)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ \q</span><br><span class="line"></span><br><span class="line">$ sudo service postgresql stop</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_PostgreSQL(pgAdmin)_insert/Untitled%206.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-17T00:00:00.000Z" title="2022. 4. 17. 오전 9:00:00">2022-04-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-18T07:17:59.623Z" title="2022. 4. 18. 오후 4:17:59">2022-04-18</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 303 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/17/0417_Apache_Airflow_install/">Apache Airflow 설치</a></h1><div class="content"><h1 id="0417-Apache-Airflow-install"><a href="#0417-Apache-Airflow-install" class="headerlink" title="0417_Apache_Airflow_install"></a>0417_Apache_Airflow_install</h1><ul>
-<li>airflow를 설치하기 위해 pip를 설치</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install python3-pip</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>라이브러리 설치</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip3 install virtualenv</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>가상환경 생성</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ virtualenv venv</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>가상환경 접속</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$  <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>bashrc 설정 (아래 두줄이 같은 결과가 나오게 해야함)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.bashrc</span><br><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="comment"># $ source venv/bin/activate</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$AIRFLOW_HOME</span></span><br><span class="line">$ <span class="built_in">pwd</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>가상환경 취소 &#x2F; 적용하는 방법</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ deactive</span><br><span class="line">$ <span class="built_in">source</span> venv/bin/activate</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>PostgreSQL, Slack, Celery 패키지 설치 (진행중인 상황)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pip3 install ‘apache-airflow[postgres, slack, celery]’</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>DB 초기화</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow db init</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%203.png" alt="Untitled"></p>
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>username 설정</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow <span class="built_in">users</span> create --username airflow --password airflow --firstname name --lastname airflow --role Admin --email my@email.com</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>webserver를 실행</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow webserver -p 8081</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>정상적으로 작동 되는지  <a target="_blank" rel="noopener" href="http://localhost:8081/login/">http://localhost:8081/login/</a> 에 접속</li>
-</ul>
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>airflow.cfg 파일에 들어가서 load_examples 부분이 True이면 False로 바꾸고 저장.</li>
-</ul>
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li>DB 초기화</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow db reset</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%208.png" alt="Untitled"></p>
-<ul>
-<li>웹서버 실행 (DB가 비어있는것을 확인)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ airflow webserver</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0417_Apache_Airflow_install/Untitled%209.png" alt="Untitled"></p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/6/">6</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">60</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-26T00:00:00.000Z">2022-04-26</time></p><p class="title"><a href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-26T00:00:00.000Z">2022-04-26</time></p><p class="title"><a href="/2022/04/26/0426_Database_Object_02/">데이터베이스의 객체 2</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-25T00:00:00.000Z">2022-04-25</time></p><p class="title"><a href="/2022/04/25/0425_DataBase_Object/">데이터베이스의 객체</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-25T00:00:00.000Z">2022-04-25</time></p><p class="title"><a href="/2022/04/25/0425_Exception_Handling/">예외 처리</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-25T00:00:00.000Z">2022-04-25</time></p><p class="title"><a href="/2022/04/25/0425_Oracle_SQL_deinsert/">Oracle SQL 삭제</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/7/">7</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">64</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_Join_and_Sub_Query/">조인과 서브쿼리</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_Group_Query_and_SET_Operator/">GROUP 쿼리, 집합 연산자</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_SQL_Function/">SQL 함수</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_SQL_Query_02/">SQL Query문 2</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-26T00:00:00.000Z">2022-04-26</time></p><p class="title"><a href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">36</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,

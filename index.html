@@ -1,5 +1,180 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-26T00:00:00.000Z" title="2022. 4. 26. 오전 9:00:00">2022-04-26</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-26T12:18:56.371Z" title="2022. 4. 26. 오후 9:18:56">2022-04-26</time></span><span class="level-item"> woobin </span><span class="level-item">4 minutes read (About 634 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></h1><div class="content"><h1 id="0426-SQL-Query"><a href="#0426-SQL-Query" class="headerlink" title="0426_SQL_Query"></a>0426_SQL_Query</h1><h2 id="SELECT문"><a href="#SELECT문" class="headerlink" title="SELECT문"></a>SELECT문</h2><p>: 테이블이나 뷰에 있는 데이터를 조회 할 때 사용하는 명령문</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item is-active" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-28T00:00:00.000Z" title="2022. 4. 28. 오전 9:00:00">2022-04-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-28T11:30:55.450Z" title="2022. 4. 28. 오후 8:30:55">2022-04-28</time></span><span class="level-item"> woobin </span><span class="level-item">4 minutes read (About 610 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/28/0428_Join_and_Sub_Query/">조인과 서브쿼리</a></h1><div class="content"><h1 id="0428-Join-and-Sub-Query"><a href="#0428-Join-and-Sub-Query" class="headerlink" title="0428_Join_and_Sub_Query"></a>0428_Join_and_Sub_Query</h1><h3 id="ERD-Entity-Relationship-Diagram"><a href="#ERD-Entity-Relationship-Diagram" class="headerlink" title="ERD(Entity Relationship Diagram)"></a>ERD(Entity Relationship Diagram)</h3><p>: 테이블끼리의 관계를 표현한 도표</p>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled.png" alt="Untitled"></p>
+<h2 id="내부-조인-외부-조인"><a href="#내부-조인-외부-조인" class="headerlink" title="내부 조인, 외부 조인"></a>내부 조인, 외부 조인</h2><ul>
+<li>동등 조인<br>: WHERE 절에서 등호를 사용하여 2개 이상의 테이블이나 뷰를 연결하는 것</li>
+</ul>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li><dl><dt>세미 조인</dt><dd>서브쿼리를 이용하여 서브쿼리에 존재하는 데이터를 메인 쿼리에서 추출하는 것 (IN과 EXISTS가 있음)</dd></dl><ul>
+<li>IN 사용 예시)</li>
+</ul>
+<p>  <img src="/Images/0428_Join_and_Sub_Query/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>EXISTS 사용 예시)</li>
+</ul>
+<p>  <img src="/Images/0428_Join_and_Sub_Query/Untitled%203.png" alt="Untitled">
+  </p>
+</li>
+<li><dl><dt>안티 조인</dt><dd>세미조인 개념의 반대. NOT IN이나 NOT EXISTS를 사용</dd></dl></li>
+<li><dl><dt>셀프 조인</dt><dd>동일한 한 테이블을 사용하여 조인하는 방법</dd></dl><ul>
+<li>예시)</li>
+</ul>
+<p>  <img src="/Images/0428_Join_and_Sub_Query/Untitled%204.png" alt="Untitled"></p>
+</li>
+<li><dl><dt>외부 조인<br>: (+)를 사용하며 사용하며, 조건에 만족하지 않더라도 데이터를 모두 추출.</dt><dd>(+)를 붙여주면 해당 테이블을 기준으로 조건에 맞는게 없다면 NULL값으로 반환.</dd></dl></li>
+</ul>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%205.png" alt="Untitled"></p>
+<ul>
+<li>카타시안 조인<br>: WHERE절에 조인 조건이 없는 조인을 말하며, 결과 건수는 테이블들의 곱으로 나온다.</li>
+</ul>
+<h3 id="ANSI조인"><a href="#ANSI조인" class="headerlink" title="ANSI조인"></a>ANSI조인</h3><ul>
+<li>ANSI 조인<br>: ANSI SQL문법을 사용한 조인이며,  WHERE절이 아닌 FROM절에 들어간다.</li>
+<li>내부 조인의 예시)</li>
+</ul>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>외부조인의 예시)</li>
+</ul>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%207.png" alt="Untitled"></p>
+<ul>
+<li><dl><dt>CROSS 조인</dt><dd>조인 조건을 명시하지 않는 CROSS조인<br>(테이블들의 곱만큼의 결과 건수가 나옴.)</dd></dl></li>
+<li><dl><dt>FULL OUTER 조인</dt><dd>외부 조인의 하나로 ANSI조인에서만 제공하는 기능</dd></dl><ul>
+<li>다음과 같은 결과를 조회 할 수 있음.</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%208.png" alt="Untitled"></p>
+<h2 id="서브쿼리"><a href="#서브쿼리" class="headerlink" title="서브쿼리"></a>서브쿼리</h2><ul>
+<li>SQL문장 안에서 보조로 사용되는 또 다른 SELECT문</li>
+</ul>
+<h3 id="메인-쿼리와-연관성-없는-서브쿼리"><a href="#메인-쿼리와-연관성-없는-서브쿼리" class="headerlink" title="메인 쿼리와 연관성 없는 서브쿼리"></a>메인 쿼리와 연관성 없는 서브쿼리</h3><p>: 메인 테이블과 조인 조건이 걸리지 않는 서브쿼리</p>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%209.png" alt="Untitled"></p>
+<h3 id="메인-쿼리와-연관성이-있는-서브쿼리"><a href="#메인-쿼리와-연관성이-있는-서브쿼리" class="headerlink" title="메인 쿼리와 연관성이 있는 서브쿼리"></a>메인 쿼리와 연관성이 있는 서브쿼리</h3><p>: 메인 테이블과 조인 조건이 걸린 서브 쿼리</p>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%2010.png" alt="Untitled"></p>
+<h3 id="인라인-뷰"><a href="#인라인-뷰" class="headerlink" title="인라인 뷰"></a>인라인 뷰</h3><p>: FROM 절에 사용하는 서브쿼리</p>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%2011.png" alt="Untitled"></p>
+<ul>
+<li>퀴즈</li>
+<li>101번 사원의 정보를 조회하기(정답 참고)<ul>
+<li>(각 테이블 연결하여 마무리)</li>
+</ul>
+</li>
+</ul>
+<p><img src="/Images/0428_Join_and_Sub_Query/Untitled%2012.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-28T00:00:00.000Z" title="2022. 4. 28. 오전 9:00:00">2022-04-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-28T11:30:55.460Z" title="2022. 4. 28. 오후 8:30:55">2022-04-28</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 390 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/28/0428_Group_Query_and_SET_Operator/">GROUP 쿼리, 집합 연산자</a></h1><div class="content"><h1 id="0428-Group-Query-and-SET-Operator"><a href="#0428-Group-Query-and-SET-Operator" class="headerlink" title="0428_Group_Query_and_SET_Operator"></a>0428_Group_Query_and_SET_Operator</h1><h2 id="기본-집계-함수"><a href="#기본-집계-함수" class="headerlink" title="기본 집계 함수"></a>기본 집계 함수</h2><ol>
+<li>COUNT(expr)<br>: 행 개수를 반환 (NULL값은 계산 안됨.)</li>
+</ol>
+<p>1-1. DISTINCT<br>      : 해당 컬럼을 유일한 값으로 조회</p>
+<ol>
+<li>SUM(exopr)<br>: 전체 합계를 반환</li>
+<li>AVG(expr)<br>: 평균값을 반환</li>
+<li>MIN(expr), MAX(expr)<br>: 최소값과 최대값을 반환</li>
+<li>VARIANCE(expr), STDDEV(expr)<br>: 분산과 표준편차를 반환</li>
+</ol>
+<h3 id="GROUP-BY절-HAVING절"><a href="#GROUP-BY절-HAVING절" class="headerlink" title="GROUP BY절, HAVING절"></a>GROUP BY절, HAVING절</h3><ol>
+<li>GROUP BY<br>: 해당 컬럼의 값이 같은 것 끼리 묶어서 반환<br>—&gt; 참고) SELECT문에서 선언 된 컬럼명이나 표현식 중 집계함수를 제외하고는 모두 GROUP BY절에서 선언해야 한다!!</li>
+</ol>
+<p><img src="/Images/0428_Group_Query_and_SET_Operator/Untitled.png" alt="Untitled"></p>
+<ol>
+<li>HAVING 절<br>: GROUP BY절 뒤에 위치하며, GROUP BY 한 결과에 조건을 제시하여 해당하는 데이터를 반환</li>
+</ol>
+<p><img src="/Images/0428_Group_Query_and_SET_Operator/Untitled%201.png" alt="Untitled"></p>
+<h3 id="ROLLUP절-CUBE절"><a href="#ROLLUP절-CUBE절" class="headerlink" title="ROLLUP절, CUBE절"></a>ROLLUP절, CUBE절</h3><p>: 소그룹간의 합계를 계산</p>
+<ol>
+<li>ROLLUP절<br>: 합계 결과를 아래에 붙여 출력</li>
+<li>CUBE절<br>: 합계 결과를 위에 붙여 출력</li>
+</ol>
+<h3 id="집합-SET-연산자"><a href="#집합-SET-연산자" class="headerlink" title="집합(SET) 연산자"></a>집합(SET) 연산자</h3><ol>
+<li>UNION, INTERSECT<br>: 합집합과 교집합의 역할</li>
+<li>MINUS<br>: 차집합을 의미 (앞의 데이터에서 뒤의 데이터를 뺀 나머지)</li>
+</ol>
+<ul>
+<li>집합 연산자 사용시 유의 사항</li>
+</ul>
+<ol>
+<li>SELECT리스트의 개수와 데이터 타입이 일치해야한다.</li>
+<li>집합 연산자로 SELECT문을 연결할 때 ORDER BY절은 맨 마지막에서만 사용 가능</li>
+<li>BLOB, CLOB, BfILE타입의 컬럼에 대해서는 집합 연산자를 사용 할 수 없다.</li>
+<li>UNION, INTERSECT, MINUS 연산자는 LONG형 컬럼에는 사용 할 수 없다.</li>
+</ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-28T00:00:00.000Z" title="2022. 4. 28. 오전 9:00:00">2022-04-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-28T11:30:55.455Z" title="2022. 4. 28. 오후 8:30:55">2022-04-28</time></span><span class="level-item"> woobin </span><span class="level-item">6 minutes read (About 872 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/28/0428_SQL_Function/">SQL 함수</a></h1><div class="content"><h1 id="0428-SQL-Function"><a href="#0428-SQL-Function" class="headerlink" title="0428_SQL_Function"></a>0428_SQL_Function</h1><h3 id="숫자-함수"><a href="#숫자-함수" class="headerlink" title="숫자 함수"></a>숫자 함수</h3><ol>
+<li>ABS(n)<br>: 절대값을 반환</li>
+<li>CEIL(n), FLOOR(n)<br>: FLOOR는 가우스의 개념으로 n과 같거나 n보다 작은 정수중에 가장 큰 정수를 뜻함. ( CEIL은 반대의 의미)</li>
+<li>ROUND(n, i), TRUNC(n1, i)<br>: ROUND는 n의 소수점 (i + 1)번째의 자리에서 반올림.<br>: TRUNC는 n의 소수점 i번째의 자리에서 뒷부분을 다 0으로 변환</li>
+<li>POWER(n1, n2), SQRT(n)<br>:  제곱과 제곱근을 반환</li>
+<li>MOD(n1, n2), REMAINDER(n1, n2)<br>: MOD는 n1에서 n2를 나눈 나머지 값<br>: REMAINDER는 그 나머지에서 n2를 뺀 음수의 값을 반환</li>
+<li>EXP(n), LN(n), LOG(n2, n1)<br>: EXP는 지수 함수 e(2.718…)의 n제곱의 값<br>: LN은 밑수를 e로 하여 n의 로그 값<br>: LOG는 밑수를 n2로 하여 n1의 로그 값을 반환</li>
+</ol>
+<h3 id="문자-함수"><a href="#문자-함수" class="headerlink" title="문자 함수"></a>문자 함수</h3><ol>
+<li>INITCAP(char), LOWER(char), UPPER(char)<br>: INITCAP은 각 영단어의 첫번째를 대문자로 나머지는 소문자로 변환<br>: LOWER, UPPER는 문자열을 소문자, 대문자로 변환</li>
+<li>CONCAT(char1, char2), <strong>SUBSTR</strong>(char, n, len)<br>: CONCAT은 문자열을 붙여 반환<br>: <strong>SUBSTR</strong>은 문자열의 n번째 문자부터 len개의 문자를 반환</li>
+<li>LTRIM(char, set), RTRIM(char, set)<br>: 문자열의 왼쪽 &#x2F; 오른쪽에서 set를 제거하고 반환</li>
+<li>LPAD(name, n, set), RPAD(name, n, set)<br>: name이라는 컬럼에서 문자열의 길이가 n이 될 때 까지 set를 왼쪽 &#x2F; 오른쪽에 입력</li>
+<li>REPLACE(char, search, change), TRANSLATE(char, search, change)<br>: char 문자열에서 search 문자열을 찾아 change 문자열로 바꿈. TRANSLATE는 문자 하나씩 찾아 바꾸므로 권하지는 않음</li>
+<li>INSTR(char, search, start, n), LENGTH(char)<br>: INSTR은 char 문자열에서 start번째의 문자에서 출발하여 n번째 search 문자열이 몇 번째 자리에 위치 해 있는지 반환<br>: LENGTH는 char문자열의 길이(문자의 개수)를 반환</li>
+</ol>
+<h3 id="날짜-함수"><a href="#날짜-함수" class="headerlink" title="날짜 함수"></a>날짜 함수</h3><ol>
+<li>SYSDATE, SYSTIMESTAMP<br>: 현재 날짜와 시간을 반환</li>
+<li>ADD_MONTHS(date, n)<br>: date날짜에 n달을 더한 후 반환</li>
+<li>MONTHS_BETWEEN(date1, date2)<br>: date1의 달에서 date2의 달을 뺀 개월 수를 반환</li>
+<li>LAST_DAY(date)<br>: 그 달의 마지막 일자를 반환</li>
+<li>ROUND(date, format), TRUNC(date, format)<br>: ROUND는 format에 따라 반올림 한 날짜<br>TRUNC는 format을 기준으로 뒷자리를 잘라낸 날짜를 반환</li>
+<li>NEXT_DAY(date, char)<br>: date날짜부터 char 날짜가 되는 날짜를 반환</li>
+</ol>
+<h3 id="변환-함수"><a href="#변환-함수" class="headerlink" title="변환 함수"></a>변환 함수</h3><ul>
+<li>형변환</li>
+</ul>
+<ol>
+<li>TO_CHAR (data, format)<br>: data를 format의 형태에 맞게 반환</li>
+<li>TO_NUMBER (data)<br>: data를 NUMBER 형태로 반환</li>
+<li>TO_DATE(data, format), TO_TIMESTAMP(data, format)<br>: data를 format형태로 반환</li>
+</ol>
+<h3 id="NULL관련-함수"><a href="#NULL관련-함수" class="headerlink" title="NULL관련 함수"></a>NULL관련 함수</h3><ol>
+<li>NVL(expr1, expr2) WHERE expr1 IS NULL<br>: expr1의 컬럼이 null일때 expr2의 컬럼을 반환</li>
+<li>NVL2(expr1, expr2, expr3)<br>: expr1이 null이 아니면 expr2 실행, expr1이 null이면 expr3을 실행</li>
+<li>COALESCE(expr1, expr2, …)<br>: expr중에 처음으로 null이 안되는 조건의 값으로 반환</li>
+<li>LNNVL(조건식)<br>: 조건식이 NULL이나 부정문이 나올 때, TRUE를 반환, 조건식이 참 값이 나오면 FALSE를 반환한다.</li>
+<li>NULLIF(expr1, expr2)<br>: expr1과 expr2를 비교해 같으면 NULL을 같지 않으면 expr1을 반환</li>
+</ol>
+<h3 id="기타-함수"><a href="#기타-함수" class="headerlink" title="기타 함수"></a>기타 함수</h3><ol>
+<li>GREATEST(data1, data2, …), LEAST(data1, data2, …)<br>: 데이터 값 중에서 가장 큰 값과 가장 작은 값을 반환</li>
+<li>DECODE(expr, search1, result1, search2, result2, … , default)<br>: expr과 search1을 비교해 두 값이 같으면 result1을 반환 같지 않으면 search2와 비교해 값이 같으면 result2를 반환을 반복하여 같은 값이 없으면 default로 값을 반환</li>
+</ol>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-28T00:00:00.000Z" title="2022. 4. 28. 오전 9:00:00">2022-04-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-28T11:30:55.465Z" title="2022. 4. 28. 오후 8:30:55">2022-04-28</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 348 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/28/0428_SQL_Query_02/">SQL Query문 2</a></h1><div class="content"><h1 id="0428-SQL-Query-02"><a href="#0428-SQL-Query-02" class="headerlink" title="0428_SQL_Query_02"></a>0428_SQL_Query_02</h1><h2 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h2><h3 id="수식-연산자"><a href="#수식-연산자" class="headerlink" title="수식 연산자"></a>수식 연산자</h3><p>: +, - , *, &#x2F;</p>
+<h3 id="문자-연산자"><a href="#문자-연산자" class="headerlink" title="문자 연산자"></a>문자 연산자</h3><p>: ‘ || ’</p>
+<p>예시) 두 개의 컬럼을 사이에 ‘-’를 붙여 하나의 컬럼으로 출력</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled.png" alt="Untitled"></p>
+<h3 id="논리-연산자"><a href="#논리-연산자" class="headerlink" title="논리 연산자"></a>논리 연산자</h3><p>: &lt;, &lt;&#x3D;, !&#x3D;, 등등이 있음.</p>
+<hr>
+<h2 id="표현식"><a href="#표현식" class="headerlink" title="표현식"></a>표현식</h2><p>: CASE WHEN 조건 THEN … ELSE … END</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%201.png" alt="Untitled"></p>
+<h2 id="조건식"><a href="#조건식" class="headerlink" title="조건식"></a>조건식</h2><h3 id="비교-조건식"><a href="#비교-조건식" class="headerlink" title="비교 조건식"></a>비교 조건식</h3><p>ANY, SOME : OR연산자와 같은 개념<br>ALL : AND연산자와 같은 개념</p>
+<ul>
+<li>대표적으로 ANY 를 사용한 예시)</li>
+</ul>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%202.png" alt="Untitled"></p>
+<h3 id="논리-조건식"><a href="#논리-조건식" class="headerlink" title="논리 조건식"></a>논리 조건식</h3><p>: AND, OR, NOT을 이용하여 조건을 TRUE &#x2F; FALSE로 반환</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%203.png" alt="Untitled"></p>
+<h3 id="NULL-조건식"><a href="#NULL-조건식" class="headerlink" title="NULL 조건식"></a>NULL 조건식</h3><p>: IS NULL, IS NOT NULL을 이용하여 특정 값이 NULL인지 여부를 체크</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 해당 코드</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> test2</span><br><span class="line"><span class="keyword">WHERE</span> col2 <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0428_SQL_Query_02/Untitled%204.png" alt="Untitled"></p>
+<h3 id="BETWEEN-AND-조건식"><a href="#BETWEEN-AND-조건식" class="headerlink" title="BETWEEN AND 조건식"></a>BETWEEN AND 조건식</h3><p>: 크거나 같고 작거나 같은 값을 찾음.</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%205.png" alt="Untitled"></p>
+<h3 id="IN-NOT-IN-조건식"><a href="#IN-NOT-IN-조건식" class="headerlink" title="IN, NOT IN 조건식"></a>IN, NOT IN 조건식</h3><p>: ANY와 비슷하지만 ANY는 등호나 논리 연산자와도 함께 사용 가능</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%206.png" alt="Untitled"></p>
+<h3 id="EXISTS-조건식"><a href="#EXISTS-조건식" class="headerlink" title="EXISTS 조건식"></a>EXISTS 조건식</h3><p>: IN과 비슷하지만 서브쿼리 절에서만 사용 가능</p>
+<ul>
+<li>서브쿼리 : SQL문 속에 포함되어 있는 또 다른 SQL문</li>
+</ul>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%207.png" alt="Untitled"></p>
+<h3 id="LIKE-조건식"><a href="#LIKE-조건식" class="headerlink" title="LIKE 조건식"></a>LIKE 조건식</h3><p>: 문자열의 패턴을 검색하여 데이터를 찾음.</p>
+<ul>
+<li>밑줄 ( _ )을 이용하여 문자열의 위치 지정도 가능</li>
+</ul>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%208.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-26T00:00:00.000Z" title="2022. 4. 26. 오전 9:00:00">2022-04-26</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-26T12:18:56.371Z" title="2022. 4. 26. 오후 9:18:56">2022-04-26</time></span><span class="level-item"> woobin </span><span class="level-item">4 minutes read (About 634 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></h1><div class="content"><h1 id="0426-SQL-Query"><a href="#0426-SQL-Query" class="headerlink" title="0426_SQL_Query"></a>0426_SQL_Query</h1><h2 id="SELECT문"><a href="#SELECT문" class="headerlink" title="SELECT문"></a>SELECT문</h2><p>: 테이블이나 뷰에 있는 데이터를 조회 할 때 사용하는 명령문</p>
 <ul>
 <li><p>SELECT * 혹은 컬럼<br>FROM * 테이블 또는 VIEW<br>WHERE 조건<br>ORDER BY 컬럼</p>
 </li>
@@ -298,323 +473,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.keys <span class="keyword">import</span> Keys</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">&quot;https://game.naver.com/lounge/League_of_Legends/db/champion&quot;</span>)</span><br><span class="line"><span class="comment"># 로딩시간 필요하여 3초간 쉬기</span></span><br><span class="line">time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">fir= <span class="string">&quot;.card_content-header__title__oJkdR&quot;</span></span><br><span class="line"><span class="comment"># target : 챔피언 박스 list</span></span><br><span class="line">target= driver.find_elements_by_css_selector(fir)</span><br><span class="line"></span><br><span class="line">sec= <span class="string">&quot;.gamedb_icon__1jSHy&quot;</span></span><br><span class="line"><span class="comment"># more : 더보기 버튼</span></span><br><span class="line">more= driver.find_element_by_css_selector(sec)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 더보기 누를때 continue 출력</span></span><br><span class="line"><span class="comment"># 더보기 없을때 break 출력</span></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        more.click()</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        more= driver.find_element_by_css_selector(sec)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;continue&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">        </span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;break&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(error)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;step&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"><span class="comment"># 더보기 버튼 끝까지 클릭하기</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 이름 출력</span></span><br><span class="line">names= []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> target:    </span><br><span class="line">    names.append(i.text)</span><br><span class="line"><span class="built_in">print</span>(names)</span><br><span class="line"></span><br><span class="line">thi = <span class="string">&quot;.card_thumbnail__image__2xUgG&quot;</span></span><br><span class="line">img= driver.find_elements_by_css_selector(thi)</span><br><span class="line">images= []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> img:</span><br><span class="line">    images.append(i.get_attribute(<span class="string">&#x27;src&#x27;</span>))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">len</span>(images))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 종료 단계</span></span><br><span class="line">driver.close()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;end...&quot;</span>)</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Images/0425_Sellenium_LOLchampions_name/Untitled%206.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-25T00:00:00.000Z" title="2022. 4. 25. 오전 9:00:00">2022-04-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-25T10:33:29.974Z" title="2022. 4. 25. 오후 7:33:29">2022-04-25</time></span><span class="level-item"> woobin </span><span class="level-item">6 minutes read (About 855 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/25/0425_Oracle_SQL_install_on_window/">Oracle SQL 설치</a></h1><div class="content"><h1 id="0425-Oracle-SQL-install-on-window"><a href="#0425-Oracle-SQL-install-on-window" class="headerlink" title="0425_Oracle_SQL_install_on_window"></a>0425_Oracle_SQL_install_on_window</h1><h1 id="Oracle-SQL-설치"><a href="#Oracle-SQL-설치" class="headerlink" title="Oracle SQL 설치"></a>Oracle SQL 설치</h1><ul>
-<li>구글 oracle database 19c download 검색</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>오라클 로그인 후 다운로드하기</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>db_home이라는 폴더에 압축 풀어둠.<br>setup파일 관리자권한으로 실행</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>단일 인스턴스 데이터베이스 생성 및 구성 (default)</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>데스크탑 클래스 (default)</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>가상계정 사용 (default)</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>컨테이너 데이터베이스 설정 (해제)<br>데이터베이스 명: myoracle<br>비밀번호: 1234</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>바로 설치 (default)</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li>설치 진행중</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%208.png" alt="Untitled"></p>
-<h3 id="세팅하기"><a href="#세팅하기" class="headerlink" title="세팅하기"></a>세팅하기</h3><ul>
-<li>설치가 끝났다면, SQL Plus 관리자 권한으로 실행</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%209.png" alt="Untitled"></p>
-<ul>
-<li>실행시 사용자명과 비밀번호 설정 해야함.<br>사용자명은 system<br>비밀번호는 1234로 지정</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2010.png" alt="Untitled"></p>
-<ul>
-<li>테이블 스페이스를 myts라는 이름으로 100MB 크기로 생성<br>데이터가 증가하면 5MB씩 자동 증가 옵션 추가</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ CREATE TABLESPACE myts DATAFINE <span class="string">&#x27;C:\sql_lecture\db_homes\oradata\MYORACLE\myts.dbf&#x27;</span> SIZE 100M AUTOEXTEND ON NEXT 5M;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2011.png" alt="Untitled"></p>
-<ul>
-<li>사용자 생성하고 권한 부여<br>사용자명 ora_user<br>비밀번호 evan</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER ora_user IDENTIFIED BY evan DEFAULT TABLESPACE MYTS TEMPORARY TABLESPACE TEMP;</span><br><span class="line"><span class="comment"># 사용자가 생성되었습니다.</span></span><br><span class="line"></span><br><span class="line">GRANT DBA TO ora_user;</span><br><span class="line"><span class="comment"># 권한이 부여되었습니다.</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2012.png" alt="Untitled"></p>
-<ul>
-<li>사용자 계정으로 DB에 접속</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">connect ora_user/evan</span><br><span class="line"></span><br><span class="line">selcet user from dual;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2013.png" alt="Untitled"></p>
-<hr>
-<h1 id="Oracle-Develop-설치"><a href="#Oracle-Develop-설치" class="headerlink" title="Oracle Develop 설치"></a>Oracle Develop 설치</h1><ul>
-<li>구글에 sql developer download 검색</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2014.png" alt="Untitled"></p>
-<ul>
-<li>로그인 후 설치</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2015.png" alt="Untitled"></p>
-<h3 id="세팅하기-1"><a href="#세팅하기-1" class="headerlink" title="세팅하기"></a>세팅하기</h3><ul>
-<li>도구 - 환경설정 - 데이터베이스 - NLS<br>시간기록 TZ형식을 복사하여 시간기록형식에 붙여넣음</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2016.png" alt="Untitled"></p>
-<ul>
-<li>코드를 입력하고 실행(F5)</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2017.png" alt="Untitled"></p>
-<ul>
-<li>아래 두개 프로그램 다운로드<br><a target="_blank" rel="noopener" href="https://github.com/gilbutITbook/006696/tree/master/01%EC%9E%A5%20%ED%99%98%EA%B2%BD%EC%84%A4%EC%A0%95">https://github.com/gilbutITbook/006696/tree/master/01장 환경설정</a></li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2018.png" alt="Untitled"></p>
-<ul>
-<li>c드라이브 아래에 백업 폴더 만들고 방금 다운한 두개의 파일을 옮김.</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2019.png" alt="Untitled"></p>
-<ul>
-<li>명령프롬프트(cmd)창에서 설치</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">imp ora_user/evan file=expall.dmp <span class="built_in">log</span>=empall.log ignore=y grants=y rows=y indexes=y full=y</span><br><span class="line"></span><br><span class="line"> imp ora_user/evan file=expcust.dmp <span class="built_in">log</span>=expcust.log ignore=y grants=y rows=y indexes=y full=y</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2020.png" alt="Untitled"></p>
-<ul>
-<li>sql developer에서 명령어 입력 후 실행</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECt table_name FROM user_tables;</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2021.png" alt="Untitled"></p>
-<h2 id="연습"><a href="#연습" class="headerlink" title="연습"></a>연습</h2><ul>
-<li><p>SQL Plus를 실행</p>
-</li>
-<li><p>로그인하기<br>사용자명 : system<br>비밀번호 : 1234</p>
-</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2022.png" alt="Untitled"></p>
-<ul>
-<li>연결하기</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect ora_user/evan</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2023.png" alt="Untitled"></p>
-<ul>
-<li>확인하기</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show user</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2024.png" alt="Untitled"></p>
-<ul>
-<li>테이블 생성해보기</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2025.png" alt="Untitled"></p>
-<ul>
-<li>사이드바에서도 생성된걸 확인 가능 가능</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2026.png" alt="Untitled"></p>
-<ul>
-<li>상단에 SQL탭을 누르면 코드가 나온다.</li>
-</ul>
-<p><img src="/Images/0425_Oracle_SQL_install_on_window/Untitled%2027.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-22T00:00:00.000Z" title="2022. 4. 22. 오전 9:00:00">2022-04-22</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-22T10:17:44.788Z" title="2022. 4. 22. 오후 7:17:44">2022-04-22</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 489 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/22/0422_Crawling_Selenium_on_gitbash/">Selenium 연습</a></h1><div class="content"><h1 id="0422-Crawling-Selenium-on-gitbash"><a href="#0422-Crawling-Selenium-on-gitbash" class="headerlink" title="0422_Crawling_Selenium_on_gitbash"></a>0422_Crawling_Selenium_on_gitbash</h1><ul>
-<li>가상환경 만들고 적용</li>
-</ul>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>패키지 설치</li>
-</ul>
-<p>$ pip install selenium</p>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>크롬 버전 확인</li>
-</ul>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>크롬 드라이버 다운로드<br>크롬에 chrome driver 검색하고 홈페이지 들어가기<br><a target="_blank" rel="noopener" href="https://chromedriver.chromium.org/downloads">https://chromedriver.chromium.org/downloads</a></li>
-</ul>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>맞는 버전과 운영체제로 다운받음.</li>
-</ul>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>드라이버를 내가 사용할 폴더로 옮김</li>
-</ul>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://temp.py/">temp.py</a> 작성</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver.common.keys import Keys</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()</span><br><span class="line">driver.get(<span class="string">&quot;https://www.google.com/&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>실행</li>
-</ul>
-<p>$ python temp.py</p>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>입력창에 리그 오브 레전드를 입력</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">elem= driver.find_element_by_name(<span class="string">&quot;q&quot;</span>)</span><br><span class="line">elem.send_keys(<span class="string">&quot;python&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li>검색버튼 누르기</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">elem.send_keys(Keys.RETURN)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%208.png" alt="Untitled"></p>
-<ul>
-<li>클래스 이름으로 조회 찾으려고 했더니 다수의 동일한 클래스 이름들이 조회됨.</li>
-</ul>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%209.png" alt="Untitled"></p>
-<ul>
-<li>0번째의 text를 target 객체로 만들어 출력</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ target= driver.find_elements_by_css_selector(<span class="string">&quot;.LC20lb.MBeuO.DKV0Md&quot;</span>)[0].text</span><br><span class="line">$ driver.close()</span><br><span class="line">$ <span class="built_in">print</span>(target)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%2010.png" alt="Untitled"></p>
-<ul>
-<li><p>연습 끝!</p>
-</li>
-<li><p>여러 시행착오 끝에 네이버같은 링크를 들어갈 때 새로운 탭이 열리는 경우엔 셀레니움이 인식을 못하는 것을 알아냄!</p>
-</li>
-<li><p>계속 실패하던 더보기 버튼 누르는것까지 구현함.</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ from selenium import webdriver</span><br><span class="line">$ from selenium.webdriver.common.keys import Keys</span><br><span class="line">$ import time</span><br><span class="line"></span><br><span class="line">$ driver = webdriver.Chrome()</span><br><span class="line">$ driver.get(<span class="string">&quot;https://game.naver.com/lounge/League_of_Legends/db/champion&quot;</span>)</span><br><span class="line">$ time.sleep(5)</span><br><span class="line"></span><br><span class="line"><span class="comment"># # 1번째 챔피언 이름 추출</span></span><br><span class="line">$ fir= <span class="string">&quot;.card_content-header__title__oJkdR&quot;</span></span><br><span class="line">$ target= driver.find_elements_by_css_selector(fir)[0].text</span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">&quot;--------------&quot;</span>)</span><br><span class="line">$ <span class="built_in">print</span>(target)</span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">&quot;--------------&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># # 더보기 버튼 클릭</span></span><br><span class="line">$ sec= <span class="string">&quot;.gamedb_icon__1jSHy&quot;</span></span><br><span class="line">$ driver.find_element_by_css_selector(sec).click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 종료 단계</span></span><br><span class="line"><span class="comment"># driver.close()</span></span><br><span class="line">$ <span class="built_in">print</span>(<span class="string">&quot;good&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%2011.png" alt="Untitled"></p>
-<p><img src="/Images/0422_Crawling_Selenium_on_gitbash/Untitled%2012.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-20T00:00:00.000Z" title="2022. 4. 20. 오전 9:00:00">2022-04-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-21T00:16:17.711Z" title="2022. 4. 21. 오전 9:16:17">2022-04-21</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 245 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/20/0420_Apache_Spark_install_on_WSL/">PySpark 설치 WSL환경</a></h1><div class="content"><h1 id="0420-Spark-install-on-WSL"><a href="#0420-Spark-install-on-WSL" class="headerlink" title="0420_Spark_install_on_WSL"></a>0420_Spark_install_on_WSL</h1><ul>
-<li><p>java 8버전이나 11버전 설치 선행 필요<br>spark홈페이지에서 다운받고 spark라는 폴더에 설치 선행 필요</p>
-</li>
-<li><p>환경변수 세팅</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi ~/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>아래 문구를 추가</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64</span><br><span class="line">$ <span class="built_in">export</span> SPARK_HOME=/mnt/c/spark</span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$JAVA_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$SPARK_HOME</span>/bin:<span class="variable">$PATH</span></span><br><span class="line">$ <span class="built_in">export</span> PYSPARK_PYTHON=/usr/bin/python3</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%201.png" alt="Untitled"></p>
-<ol>
-<li>→ JAVA_HOME에는 아래 경로를 입력</li>
-</ol>
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%202.png" alt="Untitled"></p>
-<ol>
-<li>→ SPARK_HOME에는 아래 경로를 입력</li>
-</ol>
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>bashrc파일 업데이트하고 제대로 설정이 되었는지 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> ~/.bashrc</span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br><span class="line">$ <span class="built_in">echo</span> <span class="variable">$SPARK_HOME</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>pyspark 실행</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pyspark</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>아래 코드가 실행되는지 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rd = sc.textFile(<span class="string">&quot;README.md&quot;</span>)</span><br><span class="line">$ rd.count()</span><br><span class="line"><span class="comment"># 109</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>종료</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ quit()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%207.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-20T00:00:00.000Z" title="2022. 4. 20. 오전 9:00:00">2022-04-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-21T00:11:48.877Z" title="2022. 4. 21. 오전 9:11:48">2022-04-21</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 504 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/20/0420_Pyspark_tutorial/">Pyspark 연습</a></h1><div class="content"><h1 id="0420-Pyspark-tutorial"><a href="#0420-Pyspark-tutorial" class="headerlink" title="0420_Pyspark_tutorial"></a>0420_Pyspark_tutorial</h1><p>spark홈페이지<br><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/quick-start.html">https://spark.apache.org/docs/latest/quick-start.html</a></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://simpleapp.py/">SimpleApp.py</a> 작성<br>(홈페이지에서 볼 수 있는 예제문에서 input()을 추가함)</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pyspark.sql import SparkSession</span><br><span class="line"></span><br><span class="line">logFile = &quot;README.md&quot;  # Should be some file on your system</span><br><span class="line">spark = SparkSession.builder.appName(&quot;SimpleApp&quot;).getOrCreate()</span><br><span class="line">logData = spark.read.text(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(logData.value.contains(&#x27;a&#x27;)).count()</span><br><span class="line">numBs = logData.filter(logData.value.contains(&#x27;b&#x27;)).count()</span><br><span class="line"></span><br><span class="line">print(&quot;Lines with a: %i, lines with b: %i&quot; % (numAs, numBs))</span><br><span class="line"></span><br><span class="line">input(&quot;Typing....&quot;)</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled.png" alt="Untitled"></p>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://readme.md/">README.md</a> 작성</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>README.md파일 내용</li>
-</ul>
-<p>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file. Note that you’ll need to replace YOUR_SPARK_HOME with the location where Spark is installed. As with the Scala and Java examples, we use a SparkSession to create Datasets. For applications that use custom classes or third-party libraries, we can also add code dependencies to spark-submit through its –py-files argument by packaging them into a .zip file (see spark-submit –help for details). SimpleApp is simple enough that we do not need to specify any code dependencies.</p>
-<p>We can run this application using the <code>bin/spark-submit</code> script:</p>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>제대로 작성 됐는지 cat 명령어로도 확인가능</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> README.md</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>스파크 홈페이지에 연동하여 실행</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="variable">$SPARK_HOME</span>/bin/spark-submit --master <span class="built_in">local</span>[4] [SimpleApp.py](http://simpleapp.py/)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>&#x3D;⇒</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>윈도우에서 확인</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://localhost:4040/">http://localhost:4040/</a></p>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li><strong><em>배포</em><br>&#x3D;⇒ spark-submit</strong></li>
-</ul>
-<h3 id="예제-1"><a href="#예제-1" class="headerlink" title="예제 1."></a>예제 1.</h3><ul>
-<li>data 폴더와 <a target="_blank" rel="noopener" href="http://friends-by-age.py/">friends-by-age.py</a> 작성</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%208.png" alt="Untitled"></p>
-<ul>
-<li>spark 실행 후 <a target="_blank" rel="noopener" href="http://172.22.156.103:4040/environment/">http://172.22.156.103:4040</a> 접속</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="variable">$SPARK_HOME</span>/bin/spark-submit --master <span class="built_in">local</span>[4] [friends-by-age.py](http://friends-by-age.py)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%209.png" alt="Untitled"></p>
-<ul>
-<li>&#x3D;⇒</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2010.png" alt="Untitled"></p>
-<p> ——&gt; 500개의 record가 있는것을 확인</p>
-<h3 id="예제-2"><a href="#예제-2" class="headerlink" title="예제 2."></a>예제 2.</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://titalspent.py/">titalspent.py</a> 작성<br>(main함수 삭제)<br>(input이라는 객체를 생성했어서 input을 inputs로 변경)</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2011.png" alt="Untitled"></p>
-<ul>
-<li>실행하고 UI로 확인<br><a target="_blank" rel="noopener" href="http://172.22.156.103:4040/">http://172.22.156.103:4040/</a></li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2012.png" alt="Untitled"></p>
-<ul>
-<li>&#x3D;⇒</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2013.png" alt="Untitled"></p>
-<p> ——&gt; 10000개의 record가 있다는것을 확인 가능</p>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/6/">6</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">60</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-26T00:00:00.000Z">2022-04-26</time></p><p class="title"><a href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-26T00:00:00.000Z">2022-04-26</time></p><p class="title"><a href="/2022/04/26/0426_Database_Object_02/">데이터베이스의 객체 2</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-25T00:00:00.000Z">2022-04-25</time></p><p class="title"><a href="/2022/04/25/0425_DataBase_Object/">데이터베이스의 객체</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-25T00:00:00.000Z">2022-04-25</time></p><p class="title"><a href="/2022/04/25/0425_Exception_Handling/">예외 처리</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-25T00:00:00.000Z">2022-04-25</time></p><p class="title"><a href="/2022/04/25/0425_Oracle_SQL_deinsert/">Oracle SQL 삭제</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">32</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous is-invisible is-hidden-mobile"><a href="/page/0/">Previous</a></div><div class="pagination-next"><a href="/page/2/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link is-current" href="/">1</a></li><li><a class="pagination-link" href="/page/2/">2</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/7/">7</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">64</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_Join_and_Sub_Query/">조인과 서브쿼리</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_Group_Query_and_SET_Operator/">GROUP 쿼리, 집합 연산자</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_SQL_Function/">SQL 함수</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_SQL_Query_02/">SQL Query문 2</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-26T00:00:00.000Z">2022-04-26</time></p><p class="title"><a href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">36</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
