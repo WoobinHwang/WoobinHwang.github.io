@@ -1,5 +1,252 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-25T00:00:00.000Z" title="2022. 4. 25. 오전 9:00:00">2022-04-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-25T10:33:29.957Z" title="2022. 4. 25. 오후 7:33:29">2022-04-25</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 338 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/25/0425_Oracle_SQL_deinsert/">Oracle SQL 삭제</a></h1><div class="content"><h1 id="0425-Oracle-SQL-deinsert"><a href="#0425-Oracle-SQL-deinsert" class="headerlink" title="0425_Oracle_SQL_deinsert"></a>0425_Oracle_SQL_deinsert</h1><ul>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>WB&#039;blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="WB&#039;blog"><meta name="msapplication-TileImage" content="/img/favicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="WB&#039;blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta property="og:type" content="blog"><meta property="og:title" content="WB&#039;blog"><meta property="og:url" content="https://woobinhwang.github.io/"><meta property="og:site_name" content="WB&#039;blog"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://woobinhwang.github.io/img/og_image.png"><meta property="article:author" content="John Doe"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://woobinhwang.github.io"},"headline":"WB'blog","image":["https://woobinhwang.github.io/img/og_image.png"],"author":{"@type":"Person","name":"John Doe"},"publisher":{"@type":"Organization","name":"WB'blog","logo":{"@type":"ImageObject","url":"https://woobinhwang.github.io/img/logo.svg"}},"description":""}</script><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-28T00:00:00.000Z" title="2022. 4. 28. 오전 9:00:00">2022-04-28</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-28T11:30:55.465Z" title="2022. 4. 28. 오후 8:30:55">2022-04-28</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 348 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/28/0428_SQL_Query_02/">SQL Query문 2</a></h1><div class="content"><h1 id="0428-SQL-Query-02"><a href="#0428-SQL-Query-02" class="headerlink" title="0428_SQL_Query_02"></a>0428_SQL_Query_02</h1><h2 id="연산자"><a href="#연산자" class="headerlink" title="연산자"></a>연산자</h2><h3 id="수식-연산자"><a href="#수식-연산자" class="headerlink" title="수식 연산자"></a>수식 연산자</h3><p>: +, - , *, &#x2F;</p>
+<h3 id="문자-연산자"><a href="#문자-연산자" class="headerlink" title="문자 연산자"></a>문자 연산자</h3><p>: ‘ || ’</p>
+<p>예시) 두 개의 컬럼을 사이에 ‘-’를 붙여 하나의 컬럼으로 출력</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled.png" alt="Untitled"></p>
+<h3 id="논리-연산자"><a href="#논리-연산자" class="headerlink" title="논리 연산자"></a>논리 연산자</h3><p>: &lt;, &lt;&#x3D;, !&#x3D;, 등등이 있음.</p>
+<hr>
+<h2 id="표현식"><a href="#표현식" class="headerlink" title="표현식"></a>표현식</h2><p>: CASE WHEN 조건 THEN … ELSE … END</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%201.png" alt="Untitled"></p>
+<h2 id="조건식"><a href="#조건식" class="headerlink" title="조건식"></a>조건식</h2><h3 id="비교-조건식"><a href="#비교-조건식" class="headerlink" title="비교 조건식"></a>비교 조건식</h3><p>ANY, SOME : OR연산자와 같은 개념<br>ALL : AND연산자와 같은 개념</p>
+<ul>
+<li>대표적으로 ANY 를 사용한 예시)</li>
+</ul>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%202.png" alt="Untitled"></p>
+<h3 id="논리-조건식"><a href="#논리-조건식" class="headerlink" title="논리 조건식"></a>논리 조건식</h3><p>: AND, OR, NOT을 이용하여 조건을 TRUE &#x2F; FALSE로 반환</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%203.png" alt="Untitled"></p>
+<h3 id="NULL-조건식"><a href="#NULL-조건식" class="headerlink" title="NULL 조건식"></a>NULL 조건식</h3><p>: IS NULL, IS NOT NULL을 이용하여 특정 값이 NULL인지 여부를 체크</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- 해당 코드</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> test2</span><br><span class="line"><span class="keyword">WHERE</span> col2 <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/Images/0428_SQL_Query_02/Untitled%204.png" alt="Untitled"></p>
+<h3 id="BETWEEN-AND-조건식"><a href="#BETWEEN-AND-조건식" class="headerlink" title="BETWEEN AND 조건식"></a>BETWEEN AND 조건식</h3><p>: 크거나 같고 작거나 같은 값을 찾음.</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%205.png" alt="Untitled"></p>
+<h3 id="IN-NOT-IN-조건식"><a href="#IN-NOT-IN-조건식" class="headerlink" title="IN, NOT IN 조건식"></a>IN, NOT IN 조건식</h3><p>: ANY와 비슷하지만 ANY는 등호나 논리 연산자와도 함께 사용 가능</p>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%206.png" alt="Untitled"></p>
+<h3 id="EXISTS-조건식"><a href="#EXISTS-조건식" class="headerlink" title="EXISTS 조건식"></a>EXISTS 조건식</h3><p>: IN과 비슷하지만 서브쿼리 절에서만 사용 가능</p>
+<ul>
+<li>서브쿼리 : SQL문 속에 포함되어 있는 또 다른 SQL문</li>
+</ul>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%207.png" alt="Untitled"></p>
+<h3 id="LIKE-조건식"><a href="#LIKE-조건식" class="headerlink" title="LIKE 조건식"></a>LIKE 조건식</h3><p>: 문자열의 패턴을 검색하여 데이터를 찾음.</p>
+<ul>
+<li>밑줄 ( _ )을 이용하여 문자열의 위치 지정도 가능</li>
+</ul>
+<p><img src="/Images/0428_SQL_Query_02/Untitled%208.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-26T00:00:00.000Z" title="2022. 4. 26. 오전 9:00:00">2022-04-26</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-26T12:18:56.371Z" title="2022. 4. 26. 오후 9:18:56">2022-04-26</time></span><span class="level-item"> woobin </span><span class="level-item">4 minutes read (About 634 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/26/0426_SQL_Query/">SQL Query문</a></h1><div class="content"><h1 id="0426-SQL-Query"><a href="#0426-SQL-Query" class="headerlink" title="0426_SQL_Query"></a>0426_SQL_Query</h1><h2 id="SELECT문"><a href="#SELECT문" class="headerlink" title="SELECT문"></a>SELECT문</h2><p>: 테이블이나 뷰에 있는 데이터를 조회 할 때 사용하는 명령문</p>
+<ul>
+<li><p>SELECT * 혹은 컬럼<br>FROM * 테이블 또는 VIEW<br>WHERE 조건<br>ORDER BY 컬럼</p>
+</li>
+<li><p>어디서 가져올 것인지 -&gt; FROM<br>무엇을 가져올 것인지 -&gt; SELECT<br>어떻게 가져올 것인지 -&gt; WHERE</p>
+</li>
+<li><p>자주 쓰이며 설명할게 없어서 예시로 대체<br>예시)</p>
+</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled.png" alt="Untitled"></p>
+<h2 id="INSERT문"><a href="#INSERT문" class="headerlink" title="INSERT문"></a>INSERT문</h2><p>: 데이터를 입력하여 삽입 할 때 사용하는 명령문</p>
+<ul>
+<li>자주 쓰이며 설명할게 없어서 예시로 대체<br>예시)</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>VALUES 대신에 SELECT구문을 이용하여 입력 해 넣는것도 가능</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%202.png" alt="Untitled"></p>
+<h2 id="UPDATE문"><a href="#UPDATE문" class="headerlink" title="UPDATE문"></a>UPDATE문</h2><p>: 기존 데이터를 수정 할 때 사용하는 명령문</p>
+<ul>
+<li>아래의 형태를 띄며 대체 할 데이터를 SET 라는 문구로 가져가야 한다는 게 포인트</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> 테이블명</span><br><span class="line"><span class="keyword">SET</span> 컬럼<span class="number">1</span> <span class="operator">=</span> 변경 할 값 <span class="number">1</span>,</span><br><span class="line">		컬럼<span class="number">2</span> <span class="operator">=</span> 변경 할 값 <span class="number">2</span>, ...</span><br><span class="line"><span class="keyword">WHERE</span> 조건;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>예시)</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%203.png" alt="Untitled"></p>
+<h2 id="MERGE문-병합"><a href="#MERGE문-병합" class="headerlink" title="MERGE문 (병합)"></a>MERGE문 (병합)</h2><p>: 조건을 비교하여 테이블에 해당 조건에 맞는 데이터가 없으면 insert, 있으면 update하는 명령문</p>
+<ul>
+<li>아래의 형태를 띄며 굉장히 복잡하다;</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">MERGE</span> <span class="keyword">INTO</span> 테이블명</span><br><span class="line">	<span class="keyword">USING</span> (<span class="keyword">update</span>)나 <span class="keyword">insert</span> 될 데이터의 원천)</span><br><span class="line">		<span class="keyword">ON</span> (<span class="keyword">update</span> 될 조건)</span><br><span class="line"><span class="keyword">WHEN</span> MATCHED <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">SET</span> 컬럼<span class="number">1</span> <span class="operator">=</span> 값<span class="number">1</span>, ...</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">update</span> 조건</span><br><span class="line">	<span class="keyword">DELETE</span> <span class="keyword">WHERE</span> update_delete 조건</span><br><span class="line"><span class="keyword">WHEN</span> <span class="keyword">NOT</span> MATCHED <span class="keyword">THEN</span></span><br><span class="line">	<span class="keyword">INSERT</span> (컬럼<span class="number">1</span>, ...) <span class="keyword">VALUES</span> (값<span class="number">1</span>, ...)</span><br><span class="line">	<span class="keyword">WHERE</span> <span class="keyword">insert</span> 조건;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>예시)</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%204.png" alt="Untitled"></p>
+<h2 id="DELETE문"><a href="#DELETE문" class="headerlink" title="DELETE문"></a>DELETE문</h2><p>: 데이터를 삭제 할 때 사용하는 명령문</p>
+<ul>
+<li>설명할게 없어서 예시로 대체<br>예시)</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%205.png" alt="Untitled"></p>
+<h2 id="COMMIT-ROLLBACK-TRUNCATE"><a href="#COMMIT-ROLLBACK-TRUNCATE" class="headerlink" title="COMMIT, ROLLBACK, TRUNCATE"></a>COMMIT, ROLLBACK, TRUNCATE</h2><ul>
+<li><p>COMMIT : 변경한 데이터를 DB에 마지막으로 반영<br>ROLLBACK : 반대로 변경한 데이터를 변경하기 이전 상태로 되돌림<br>TRUNCATE: 한번 실행 시 데이터 바로 삭제, rollback으로 적용 안됨</p>
+</li>
+<li><p>ex3_5 테이블 생성</p>
+</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%206.png" alt="Untitled"></p>
+<ul>
+<li>명령프롬프트에서 DB로 조회</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%207.png" alt="Untitled"></p>
+<ul>
+<li>commit 하기</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%208.png" alt="Untitled"></p>
+<ul>
+<li>다시 명령프롬프트에서 DB로 조회</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%209.png" alt="Untitled"></p>
+<h2 id="의사컬럼"><a href="#의사컬럼" class="headerlink" title="의사컬럼"></a>의사컬럼</h2><p>: 테이블의 컬럼처럼 동작하지만 실제로 테이블에 저장되지 않는 컬럼</p>
+<ul>
+<li>컬럼중 ROWNUM과 ROWID를 이용해봄.</li>
+<li>ROWNUM로 조회가 가능하다, 행의 번호 정도로 인식 됨.<br>예시)</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%2010.png" alt="Untitled"></p>
+<ul>
+<li>테이블 생성시 각자 다른 ROWID가 생성되어 그걸로 조회도 가능하다!<br>예시)</li>
+</ul>
+<p><img src="/Images/0426_SQL_Query/Untitled%2011.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-26T00:00:00.000Z" title="2022. 4. 26. 오전 9:00:00">2022-04-26</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-26T12:18:56.386Z" title="2022. 4. 26. 오후 9:18:56">2022-04-26</time></span><span class="level-item"> woobin </span><span class="level-item">5 minutes read (About 735 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/26/0426_Database_Object_02/">데이터베이스의 객체 2</a></h1><div class="content"><h1 id="0426-Database-Object-02"><a href="#0426-Database-Object-02" class="headerlink" title="0426_Database_Object_02"></a>0426_Database_Object_02</h1><h3 id="제약-조건"><a href="#제약-조건" class="headerlink" title="제약 조건"></a>제약 조건</h3><ol>
+<li><p>NOT NULL : 해당 칼럼에는 NULL값을 입력 할 수 없음.</p>
+<p> <img src="/Images/0426_Database_Object_02/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>NOT NULL 조건을 걸었더니 에러가 뜨는것이 확인됨.</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>USER_CONSTRAINTS 명령어로 계약조건을 확인 할 수 있다.<br>type이 c로 나오는 모습</li>
+</ul>
+<p><img src="/Images/0426_Database_Object_02/Untitled%201.png" alt="Untitled"></p>
+<ol>
+<li>UNIQUE : 중복되는 값을 입력 할 수 없음</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>하지만 NUll값에 의한건 해당안됨.</li>
+</ul>
+<p><img src="/Images/0426_Database_Object_02/Untitled%203.png" alt="Untitled"></p>
+<ol>
+<li>기본키 : 기본키의 예시중 하나로 PRIMARY는 NOTNULL과 UNIQUE의 특성을 반영한 KEY이다.<ul>
+<li>constraint를 찍어본 결과 type이 p로 찍히는 모습.</li>
+</ul>
+</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%204.png" alt="Untitled"></p>
+<p><img src="/Images/0426_Database_Object_02/Untitled%205.png" alt="Untitled"></p>
+<ol>
+<li><p>외래키 : 테이블간의 참조 데이터 무결성을 위한 제약조건<br>ex) table1의 컬럼1과 table2의 컬럼1을 연결하는식의 방식</p>
+</li>
+<li><p>CHECK : 컬럼에 입력되는 데이터를 체크해 특정 조건에 맞는 데이터만 입력 받고 그렇지 않으면 오류를 출력</p>
+</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%206.png" alt="Untitled"></p>
+<p>—— 조건에 맞지 않기에 오류가 발생하고 조건에 맞춰 데이터를 입력하는 모습</p>
+<ol>
+<li>DEFAULT : 따로 입력하지 않아도 기본적으로 출력되게 하는 값들<br>값을 넣으려면 형식에 맞춰 입력시켜줘야함.<br>ex) 날짜 형식 ‘22&#x2F;04&#x2F;23’ , 숫자 형식 ‘1’ or 1</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%207.png" alt="Untitled"></p>
+<hr>
+<h3 id="테이블-변경"><a href="#테이블-변경" class="headerlink" title="테이블 변경"></a>테이블 변경</h3><ol>
+<li>컬럼명 변경</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%208.png" alt="Untitled"></p>
+<ol>
+<li>컬럼 타입 변경</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%209.png" alt="Untitled"></p>
+<ol>
+<li>컬럼 추가</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2010.png" alt="Untitled"></p>
+<ol>
+<li>컬럼 삭제</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2011.png" alt="Untitled"></p>
+<ol>
+<li>계약조건 추가</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2012.png" alt="Untitled"></p>
+<ol>
+<li>계약조건 삭제</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2013.png" alt="Untitled"></p>
+<ol>
+<li>테이블 복사</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2014.png" alt="Untitled"></p>
+<h3 id="뷰-view-하나-이상의-테이블이나-다른-뷰의-데이터를-볼-수-있게-하는-데이터베이스-객체"><a href="#뷰-view-하나-이상의-테이블이나-다른-뷰의-데이터를-볼-수-있게-하는-데이터베이스-객체" class="headerlink" title="뷰(view) : 하나 이상의 테이블이나 다른 뷰의 데이터를 볼 수 있게 하는 데이터베이스 객체"></a>뷰(view) : 하나 이상의 테이블이나 다른 뷰의 데이터를 볼 수 있게 하는 데이터베이스 객체</h3><p>&#x3D;⇒ 테이블과 비슷</p>
+<ol>
+<li>뷰 생성</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2015.png" alt="Untitled"></p>
+<ol>
+<li>뷰 삭제</li>
+</ol>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2016.png" alt="Untitled"></p>
+<h3 id="인덱스-테이블에-있는-데이터를-빨리-찾기-위한-용도의-데이터베이스객체"><a href="#인덱스-테이블에-있는-데이터를-빨리-찾기-위한-용도의-데이터베이스객체" class="headerlink" title="인덱스 : 테이블에 있는 데이터를 빨리 찾기 위한 용도의 데이터베이스객체"></a>인덱스 : 테이블에 있는 데이터를 빨리 찾기 위한 용도의 데이터베이스객체</h3><ul>
+<li>인덱스를 분류하면 다음과 같이 분류 할 수 있다.</li>
+</ul>
+<ol>
+<li>인덱스 구성 컬럼 개수에 따른 분류 : 단일 인덱스와 결합 인덱스</li>
+<li>유일성 여부에 따른 분류: unique 인덱스, non-unique 인덱스</li>
+<li><strong>인덱스 내부 구조에 따른 분류</strong>: <strong>B-tree 인덱스, 비트맵 인덱스, 함수 기반 인덱스</strong></li>
+</ol>
+<ul>
+<li>예시) unique 인덱스를 만들고,<br>ex2_10에 적용한 모습</li>
+</ul>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2017.png" alt="Untitled"></p>
+<p> —— 앞서 제약조건에서 언급한 unique와 같은 성질을 띔</p>
+<ul>
+<li>제약조건을 걸어두고 특징을 본 모습</li>
+</ul>
+<p><img src="/Images/0426_Database_Object_02/Untitled%2018.png" alt="Untitled"></p>
+<h3 id="마치며"><a href="#마치며" class="headerlink" title="마치며"></a>마치며</h3><ul>
+<li>컬럼명이나 테이블명은 대부분 대문자로 들어가기때문에 가급적 대문자로 적어두는게 문제가 덜 발생할것같다.</li>
+</ul>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-25T00:00:00.000Z" title="2022. 4. 25. 오전 9:00:00">2022-04-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-25T10:33:30.007Z" title="2022. 4. 25. 오후 7:33:30">2022-04-25</time></span><span class="level-item"> woobin </span><span class="level-item">a minute read (About 136 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/25/0425_DataBase_Object/">데이터베이스의 객체</a></h1><div class="content"><h1 id="0425-DataBase-Object"><a href="#0425-DataBase-Object" class="headerlink" title="0425_DataBase_Object"></a>0425_DataBase_Object</h1><ul>
+<li>문자열 (영어)크기</li>
+</ul>
+<p><img src="/Images/0425_DataBase_Object/Untitled.png" alt="Untitled"></p>
+<ul>
+<li>문자열 (한글) 크기<br>한글자당 3byte를 차지하기에 column의 크기를 명시해뒀다면 크기를 유념해서 입력해야한다.</li>
+</ul>
+<p><img src="/Images/0425_DataBase_Object/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>숫자열 크기</li>
+</ul>
+<p><img src="/Images/0425_DataBase_Object/Untitled%202.png" alt="Untitled"></p>
+<ul>
+<li>FLOAT형의 특징때문에 뒤는 0으로 잘려서 나오는 현상<br>FLOAT[(p)] : NUMBER의 하위 타입, p는 1~128, 디폴트 값은 128, 이진수 기준 최대 22byte</li>
+</ul>
+<p><img src="/Images/0425_DataBase_Object/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>날짜 데이터 타입</li>
+</ul>
+<p><img src="/Images/0425_DataBase_Object/Untitled%204.png" alt="Untitled"></p>
+</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-25T00:00:00.000Z" title="2022. 4. 25. 오전 9:00:00">2022-04-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-25T10:33:29.989Z" title="2022. 4. 25. 오후 7:33:29">2022-04-25</time></span><span class="level-item"> woobin </span><span class="level-item">a minute read (About 155 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/25/0425_Exception_Handling/">예외 처리</a></h1><div class="content"><h1 id="0425-Exception-Handling"><a href="#0425-Exception-Handling" class="headerlink" title="0425_Exception_Handling"></a>0425_Exception_Handling</h1><ul>
+<li>에러가 나올 때 처리하는 코드를 찾아냄</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">except</span> (에러 이름):</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>예시 코드</li>
+</ul>
+<p><img src="/Images/0425_Exception_Handling/Untitled.png" alt="Untitled"></p>
+<p><img src="/Images/0425_Exception_Handling/Untitled%201.png" alt="Untitled"></p>
+<ul>
+<li>에러 메세지도 형식에 맞춰서 넣어야하는데,<br>에러 메세지는 터미널에서 찾아 넣으면 된다.</li>
+</ul>
+<p><img src="/Images/0425_Exception_Handling/Untitled%202.png" alt="Untitled"></p>
+<p><img src="/Images/0425_Exception_Handling/Untitled%203.png" alt="Untitled"></p>
+<ul>
+<li>최종 코드</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a_li = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>]</span><br><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="built_in">print</span>(a_li[<span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="keyword">except</span> IndexError:</span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;no!&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;end...&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>——&gt;셀레니움에 적용시킬 코드</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        more.click()</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line">        more= driver.find_element_by_css_selector(sec)</span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> error:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;Here!&quot;</span>)</span><br><span class="line">        i= <span class="string">&quot;break&quot;</span></span><br><span class="line">        <span class="built_in">print</span>(i)</span><br><span class="line">        <span class="built_in">print</span>(error)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;step&quot;</span>)</span><br><span class="line">        <span class="keyword">break</span></span><br></pre></td></tr></table></figure></div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-25T00:00:00.000Z" title="2022. 4. 25. 오전 9:00:00">2022-04-25</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-25T10:33:29.957Z" title="2022. 4. 25. 오후 7:33:29">2022-04-25</time></span><span class="level-item"> woobin </span><span class="level-item">2 minutes read (About 338 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/25/0425_Oracle_SQL_deinsert/">Oracle SQL 삭제</a></h1><div class="content"><h1 id="0425-Oracle-SQL-deinsert"><a href="#0425-Oracle-SQL-deinsert" class="headerlink" title="0425_Oracle_SQL_deinsert"></a>0425_Oracle_SQL_deinsert</h1><ul>
 <li><p>오라클 설치중에 중지 시켜 전부 다 삭제하고 다시 설치를 시작해야 하는 상황인데 그냥 삭제하려니까 삭제가 안됨.</p>
 </li>
 <li><p>제어판에서 관리도구 선택</p>
@@ -330,337 +577,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ quit()</span><br></pre></td></tr></table></figure>
 
 <p><img src="/Images/0420_Apache_Spark_install_on_WSL/Untitled%207.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-20T00:00:00.000Z" title="2022. 4. 20. 오전 9:00:00">2022-04-20</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-21T00:11:48.877Z" title="2022. 4. 21. 오전 9:11:48">2022-04-21</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 504 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/20/0420_Pyspark_tutorial/">Pyspark 연습</a></h1><div class="content"><h1 id="0420-Pyspark-tutorial"><a href="#0420-Pyspark-tutorial" class="headerlink" title="0420_Pyspark_tutorial"></a>0420_Pyspark_tutorial</h1><p>spark홈페이지<br><a target="_blank" rel="noopener" href="https://spark.apache.org/docs/latest/quick-start.html">https://spark.apache.org/docs/latest/quick-start.html</a></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://simpleapp.py/">SimpleApp.py</a> 작성<br>(홈페이지에서 볼 수 있는 예제문에서 input()을 추가함)</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">from pyspark.sql import SparkSession</span><br><span class="line"></span><br><span class="line">logFile = &quot;README.md&quot;  # Should be some file on your system</span><br><span class="line">spark = SparkSession.builder.appName(&quot;SimpleApp&quot;).getOrCreate()</span><br><span class="line">logData = spark.read.text(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(logData.value.contains(&#x27;a&#x27;)).count()</span><br><span class="line">numBs = logData.filter(logData.value.contains(&#x27;b&#x27;)).count()</span><br><span class="line"></span><br><span class="line">print(&quot;Lines with a: %i, lines with b: %i&quot; % (numAs, numBs))</span><br><span class="line"></span><br><span class="line">input(&quot;Typing....&quot;)</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled.png" alt="Untitled"></p>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://readme.md/">README.md</a> 작성</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>README.md파일 내용</li>
-</ul>
-<p>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file. Note that you’ll need to replace YOUR_SPARK_HOME with the location where Spark is installed. As with the Scala and Java examples, we use a SparkSession to create Datasets. For applications that use custom classes or third-party libraries, we can also add code dependencies to spark-submit through its –py-files argument by packaging them into a .zip file (see spark-submit –help for details). SimpleApp is simple enough that we do not need to specify any code dependencies.</p>
-<p>We can run this application using the <code>bin/spark-submit</code> script:</p>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>제대로 작성 됐는지 cat 명령어로도 확인가능</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cat</span> README.md</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>스파크 홈페이지에 연동하여 실행</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="variable">$SPARK_HOME</span>/bin/spark-submit --master <span class="built_in">local</span>[4] [SimpleApp.py](http://simpleapp.py/)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>&#x3D;⇒</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>윈도우에서 확인</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="http://localhost:4040/">http://localhost:4040/</a></p>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li><strong><em>배포</em><br>&#x3D;⇒ spark-submit</strong></li>
-</ul>
-<h3 id="예제-1"><a href="#예제-1" class="headerlink" title="예제 1."></a>예제 1.</h3><ul>
-<li>data 폴더와 <a target="_blank" rel="noopener" href="http://friends-by-age.py/">friends-by-age.py</a> 작성</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%208.png" alt="Untitled"></p>
-<ul>
-<li>spark 실행 후 <a target="_blank" rel="noopener" href="http://172.22.156.103:4040/environment/">http://172.22.156.103:4040</a> 접속</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="variable">$SPARK_HOME</span>/bin/spark-submit --master <span class="built_in">local</span>[4] [friends-by-age.py](http://friends-by-age.py)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%209.png" alt="Untitled"></p>
-<ul>
-<li>&#x3D;⇒</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2010.png" alt="Untitled"></p>
-<p> ——&gt; 500개의 record가 있는것을 확인</p>
-<h3 id="예제-2"><a href="#예제-2" class="headerlink" title="예제 2."></a>예제 2.</h3><ul>
-<li><a target="_blank" rel="noopener" href="http://titalspent.py/">titalspent.py</a> 작성<br>(main함수 삭제)<br>(input이라는 객체를 생성했어서 input을 inputs로 변경)</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2011.png" alt="Untitled"></p>
-<ul>
-<li>실행하고 UI로 확인<br><a target="_blank" rel="noopener" href="http://172.22.156.103:4040/">http://172.22.156.103:4040/</a></li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2012.png" alt="Untitled"></p>
-<ul>
-<li>&#x3D;⇒</li>
-</ul>
-<p><img src="/Images/0420_Pyspark_tutorial/Untitled%2013.png" alt="Untitled"></p>
-<p> ——&gt; 10000개의 record가 있다는것을 확인 가능</p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-19T00:00:00.000Z" title="2022. 4. 19. 오전 9:00:00">2022-04-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-19T03:30:47.592Z" title="2022. 4. 19. 오후 12:30:47">2022-04-19</time></span><span class="level-item"> woobin </span><span class="level-item">5 minutes read (About 797 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/19/0419_Apache_Spark_install/">Apache Spark 설치</a></h1><div class="content"><h1 id="0419-Apache-Spark-install"><a href="#0419-Apache-Spark-install" class="headerlink" title="0419_Apache_Spark_install"></a>0419_Apache_Spark_install</h1><ul>
-<li>spark 설치 <strong>(자바 설치가 선행되어야 함)</strong></li>
-<li><a target="_blank" rel="noopener" href="https://www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz">https://www.apache.org/dyn/closer.lua/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz</a> 홈페이지 들어가서</li>
-<li><a target="_blank" rel="noopener" href="https://archive.apache.org/dist/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz">https://archive.apache.org/dist/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz</a> 링크를 클릭해서 설치</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>tgz 압축을 풀기 위한 WinRAR archiver 설치</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/cdarlint/winutils">https://github.com/cdarlint/winutils</a> 링크 들어가서 spark의 버전과 맞는 폴더의 winutlis.exe 파일 설치(download)</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li><p>설치한 프로그램들을 hadoop폴더로 모아서 정리</p>
-</li>
-<li><p>winrar 설치 ( 자바 설치를 선행 )</p>
-</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>스파크를 Extract to “spark-3.2.0-bin-hadoop3.2\” 클릭해서 설치</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%204.png" alt="Untitled"></p>
-<ul>
-<li>spark 폴더가 생성됨</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li><p>spark 폴더를 c드라이브로 옮김</p>
-</li>
-<li><p>conf 폴더(설정 폴더)의 log4j.properties 를 메모장으로 열고,<br>log4j.rootCategory&#x3D;INFO, console 부분을<br>log4j.rootCategory&#x3D;ERROR, console 로 수정</p>
-</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>c드라이브에 winutils 폴더 내부에 bin 폴더 만듦</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li>c드라이브에 tmp 폴더 내부에 hive 폴더 만듦</li>
-<li>폴더가 없을 경우 <em><strong>ChangeFileModeByMask error (3)</strong></em> 의 **에러가 나올 수 있음.</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%208.png" alt="Untitled"></p>
-<ul>
-<li><p>winutils.exe 파일을 hadoop에서 hive폴더 내부로 옮김</p>
-</li>
-<li><p>cmd(명령 프롬프트)에서 명령어 작성</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ winutils.exe <span class="built_in">chmod</span> 777 \tmp\hive</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%209.png" alt="Untitled"></p>
-<p><strong>-&gt; chmod</strong>: 파일들이나 디렉토리의 파일 시스템 모드들을 바꿈. 그 모드들은 허가나 특별한 모드들을 포함.</p>
-<p>—&gt;1&#x3D; 실행 권한, 2&#x3D; 쓰기 권한, 4&#x3D; 읽기 권한<br>—&gt; chmod 777: 모든 사용자들에게 모든 권한을 허용 (권장되지 않음) ——&gt; 따라서 user권한(1+2+4) group권한(1+2+4) other권한(1+2+4) </p>
-<p>⇒ 1(읽기 됨) + 2(쓰기 됨) + 3(실행 됨) 을 뜻함.</p>
-<ul>
-<li>시스템 환경변수 편집 실행</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2010.png" alt="Untitled"></p>
-<ul>
-<li>환경 변수(N)… 클릭</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2011.png" alt="Untitled"></p>
-<ul>
-<li><p>‘사용자 변수’ 탭의 새로 만들기 클릭</p>
-</li>
-<li><p>SPARK_HOME 환경변수 설정</p>
-</li>
-</ul>
-<p>SPARK_HOME<br>C:\spark</p>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2012.png" alt="Untitled"></p>
-<ul>
-<li>JAVA_HOME 환경변수 설정</li>
-</ul>
-<p>JAVA_HOME</p>
-<p>C:\jdk</p>
-<ul>
-<li>HADOOP_HOME 환경변수 설정</li>
-</ul>
-<p>HADOOP_HOME</p>
-<p>C:\winutils</p>
-<ul>
-<li>파이썬 환경 설정</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2013.png" alt="Untitled"></p>
-<ul>
-<li>끝나면 4개 항목이 추가된 것을 확인</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2014.png" alt="Untitled"></p>
-<ul>
-<li>사용자 변수 중에 Path를 찾아서 아래의 코드를 추가<br>%SPARK_HOME<br>%\bin%JAVA_HOME%\bin</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2015.png" alt="Untitled"></p>
-<ul>
-<li>cmd(명령 프롬프트) 켜고 spark폴더로 접속</li>
-</ul>
-<p>$ cd c:\spark</p>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2016.png" alt="Untitled"></p>
-<ul>
-<li>pyspark 실행</li>
-</ul>
-<p>$ pyspark</p>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2017.png" alt="Untitled"></p>
-<ul>
-<li>http:README.md파일을 불러와서 아래 코드가 실행되는지 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ rd= sc.textFile(”README.md”)</span><br><span class="line">$ rd.count()</span><br><span class="line"><span class="comment"># 109</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2018.png" alt="Untitled"></p>
-<hr>
-<ul>
-<li>주피터노트북에서 사용 할 때는 아래 설정을 추가해야 함.<br>PYSPARK_DRIVER_PYTHON<br>jupyter<br>PYSPARK_DRIVER_PYTHON_OPTS<br>notebook</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2019.png" alt="Untitled"></p>
-<ul>
-<li>추가된 것을 확인</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2020.png" alt="Untitled"></p>
-<ul>
-<li>C드라이브에 추가한 폴더:<br>jdk, jre hadoop, spark, tmp, winutils</li>
-</ul>
-<p><img src="/Images/0419_Apache_Spark_install/Untitled%2021.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-19T00:00:00.000Z" title="2022. 4. 19. 오전 9:00:00">2022-04-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-19T03:30:03.033Z" title="2022. 4. 19. 오후 12:30:03">2022-04-19</time></span><span class="level-item"> woobin </span><span class="level-item">a few seconds read (About 103 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/19/0419_Java_install/">Java 설치</a></h1><div class="content"><h1 id="0419-Java-install"><a href="#0419-Java-install" class="headerlink" title="0419_Java_install"></a>0419_Java_install</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html">https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html</a> 홈페이지 접속해서 oracle 로그인</li>
-</ul>
-<p><img src="/Images/0419_Java_install/Untitled.png" alt="Untitled"></p>
-<ul>
-<li><p>Windows x64 installer 설치</p>
-</li>
-<li><p>설치 경로에 공백이 있으면 문제가 생길 수 있으니 공백이 없는 경로를 지정해주는게 중요하다</p>
-</li>
-</ul>
-<p>— C:\jdk</p>
-<p>— C:\jdr</p>
-<ul>
-<li>예시</li>
-</ul>
-<p><img src="/Images/0419_Java_install/Untitled%201.png" alt="Untitled"></p>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-18T00:00:00.000Z" title="2022. 4. 18. 오전 9:00:00">2022-04-18</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-18T04:39:16.228Z" title="2022. 4. 18. 오후 1:39:16">2022-04-18</time></span><span class="level-item"> woobin </span><span class="level-item">a minute read (About 128 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/18/0418_kibana_install/">Kibana 설치</a></h1><div class="content"><h1 id="0417-kibana-install"><a href="#0417-kibana-install" class="headerlink" title="0417_kibana_install"></a>0417_kibana_install</h1><ul>
-<li><p>설명: Elasticsearch 데이터를 시각화하고 Elastic Stack을 탐색하게 해주는 무료 오픈소스 인터페이스</p>
-</li>
-<li><p>kibana 설치</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install kibana</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_kibana_install/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>kibana 서비스를 활성화</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl <span class="built_in">enable</span> kibana</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_kibana_install/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>서비스를 시작하고, 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start kibana</span><br><span class="line">$ sudo systemctl status kibana</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_kibana_install/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>로컬에서 확인</li>
-</ul>
-<p><strong><a target="_blank" rel="noopener" href="http://localhost:5601/">http://localhost:5601/</a></strong></p>
-<p><img src="/Images/0418_kibana_install/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>끝났으면 서비스를 중지한다.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl stop kibana</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>끝</li>
-</ul>
-</div></article></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-18T00:00:00.000Z" title="2022. 4. 18. 오전 9:00:00">2022-04-18</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-18T04:39:16.244Z" title="2022. 4. 18. 오후 1:39:16">2022-04-18</time></span><span class="level-item"> woobin </span><span class="level-item">3 minutes read (About 453 words)</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/2022/04/18/0418_Elasticsearch_install/">Elasticsearch 설치</a></h1><div class="content"><h1 id="0418-Elasticsearch-install"><a href="#0418-Elasticsearch-install" class="headerlink" title="0418_Elasticsearch_install"></a>0418_Elasticsearch_install</h1><ul>
-<li><p>설명: HTTP웹 인터페이스와 스키마에서 자유로운 JSON문서와 함께 분산 멀티테넌트 지원 전문 검색 엔진을 제공</p>
-</li>
-<li><p>시스템 업데이트 및 업그레이드</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt upgrade</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled.png" alt="Untitled"></p>
-<ul>
-<li>HTTPS관련 패키지 설치, 자바 설치 (설치중인 모습)</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt install apt-transport-https</span><br><span class="line">$ sudo apt install openjdk-11-jdk <span class="comment"># Y</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%201.png" alt="Untitled"></p>
-<ul>
-<li>설치한 버전 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ java -version</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%202.png" alt="Untitled"></p>
-<ul>
-<li>환경변수 설정하기 위해 아래 문구를 입력</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vi /etc/environment</span><br></pre></td></tr></table></figure>
-
-<p>JAVA_HOME&#x3D;”&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-11-openjdk-amd64</p>
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%203.png" alt="Untitled"></p>
-<ul>
-<li>환경변수 업데이트</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">source</span> /etc/environment</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>적용 되었는지 확인</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="variable">$JAVA_HOME</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%204.png" alt="Untitled"></p>
-<h3 id="Elasticsearch-설치"><a href="#Elasticsearch-설치" class="headerlink" title="Elasticsearch 설치"></a>Elasticsearch 설치</h3><ul>
-<li>GPG keys를 확인하여 설치, 라이브러리 설치</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -</span><br><span class="line">$ sudo sh -c <span class="string">&#x27;echo &quot;deb https://artifacts.elastic.co/packages/7.x/apt stable main&quot; &gt; /etc/apt/sources.list.d/elastic-7.x.list&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%205.png" alt="Untitled"></p>
-<ul>
-<li>elasticsearch 설치</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line"></span><br><span class="line">$ sudo apt-get install elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%206.png" alt="Untitled"></p>
-<ul>
-<li>elasticsearch 서비스를 시작</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start elasticsearch</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>실행 시켰을 때 아래의 에러가 뜬다면 다음 코드를 입력해야한다.</li>
-</ul>
-<p>System has not been booted with systemd as init system (PID 1).<br>Can’t operate. Failed to connect to bus: Host is down</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo -b unshare --pid --fork --mount-proc /lib/systemd/systemd --system-unit=basic.target</span><br><span class="line">$ sudo -E nsenter --all -t $(pgrep -xo systemd) runuser -P -l <span class="variable">$USER</span> -c <span class="string">&quot;exec <span class="variable">$SHELL</span>&quot;</span></span><br><span class="line">$ sudo systemctl <span class="built_in">enable</span> elasticsearch</span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%207.png" alt="Untitled"></p>
-<ul>
-<li>다시 서비스를 실행시켜본다.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl start elasticsearch</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>실제로 작동하는지 확인해본다.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X GET <span class="string">&quot;localhost:9200/&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%208.png" alt="Untitled"></p>
-<ul>
-<li>인터넷 환경에서도 확인해본다<br><a target="_blank" rel="noopener" href="http://localhost:9200/">http://localhost:9200/</a></li>
-</ul>
-<p><img src="/Images/0418_Elasticsearch_install/Untitled%209.png" alt="Untitled"></p>
-<ul>
-<li>끝났으면 서비스를 중지한다.</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl stop elasticsearch</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>끝</li>
-</ul>
-</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/7/">7</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">66</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-02T00:00:00.000Z">2022-05-02</time></p><p class="title"><a href="/2022/05/02/0502_Make_TrumpCard_Deck/">트럼프카드 덱 만들기</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-02T00:00:00.000Z">2022-05-02</time></p><p class="title"><a href="/2022/05/02/0502_Python_pip_Upgrade/">pip Library Update</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_Join_and_Sub_Query/">조인과 서브쿼리</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_Group_Query_and_SET_Operator/">GROUP 쿼리, 집합 연산자</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-04-28T00:00:00.000Z">2022-04-28</time></p><p class="title"><a href="/2022/04/28/0428_SQL_Function/">SQL 함수</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">May 2022</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">36</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+</div></article></div><nav class="pagination" role="navigation" aria-label="pagination"><div class="pagination-previous"><a href="/">Previous</a></div><div class="pagination-next"><a href="/page/3/">Next</a></div><ul class="pagination-list is-hidden-mobile"><li><a class="pagination-link" href="/">1</a></li><li><a class="pagination-link is-current" href="/page/2/">2</a></li><li><a class="pagination-link" href="/page/3/">3</a></li><li><span class="pagination-ellipsis">&hellip;</span></li><li><a class="pagination-link" href="/page/8/">8</a></li></ul></nav></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Your name"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Your name</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Your location</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">71</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">0</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/ppoffice" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/ppoffice"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Facebook" href="https://facebook.com"><i class="fab fa-facebook"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Twitter" href="https://twitter.com"><i class="fab fa-twitter"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Dribbble" href="https://dribbble.com"><i class="fab fa-dribbble"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget" data-type="links"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile" href="https://hexo.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">hexo.io</span></span></a></li><li><a class="level is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">Recents</h3><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-03T00:00:00.000Z">2022-05-03</time></p><p class="title"><a href="/2022/05/03/0503_Chapter06,07_test/">Chapter6,7 Test</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-03T00:00:00.000Z">2022-05-03</time></p><p class="title"><a href="/2022/05/03/0503_Advenced_Query/">고급 쿼리</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-03T00:00:00.000Z">2022-05-03</time></p><p class="title"><a href="/2022/05/03/0503_Chapter06,07_test_02/">Chapter6,7 Test02</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-03T00:00:00.000Z">2022-05-03</time></p><p class="title"><a href="/2022/05/03/0503_PL_SQL_Control,Function,Procedure/">PL/SQL 제어문, 함수, 프로시져</a></p></div></article><article class="media"><div class="media-content"><p class="date"><time dateTime="2022-05-03T00:00:00.000Z">2022-05-03</time></p><p class="title"><a href="/2022/05/03/0503_PL_SQL_base/">PL/SQL 구성요소</a></p></div></article></div></div><div class="card widget" data-type="archives"><div class="card-content"><div class="menu"><h3 class="menu-label">Archives</h3><ul class="menu-list"><li><a class="level is-mobile" href="/archives/2022/05/"><span class="level-start"><span class="level-item">May 2022</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/04/"><span class="level-start"><span class="level-item">April 2022</span></span><span class="level-end"><span class="level-item tag">36</span></span></a></li><li><a class="level is-mobile" href="/archives/2022/03/"><span class="level-start"><span class="level-item">March 2022</span></span><span class="level-end"><span class="level-item tag">28</span></span></a></li></ul></div></div></div><!--!--><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">Subscribe for updates</h3><form action="https://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open(&#039;https://feedburner.google.com/fb/a/mailverify?uri=&#039;,&#039;popupwindow&#039;,&#039;scrollbars=yes,width=550,height=520&#039;);return true"><input type="hidden" value="" name="uri"><input type="hidden" name="loc" value="en_US"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div><div class="card widget"><div class="card-content"><div class="notification is-danger">You need to set <code>client_id</code> and <code>slot_id</code> to show this AD unit. Please set it in <code>_config.yml</code>.</div></div></div><div class="card widget" data-type="subscribe-email"><div class="card-content"><div class="menu"><h3 class="menu-label">follow.it</h3><form action="" method="post" target="_blank"><div class="field has-addons"><div class="control has-icons-left is-expanded"><input class="input" name="email" type="email" placeholder="Email"><span class="icon is-small is-left"><i class="fas fa-envelope"></i></span></div><div class="control"><input class="button" type="submit" value="Subscribe"></div></div></form></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="WB&#039;blog" height="28"></a><p class="is-size-7"><span>&copy; 2022 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
             article: {
                 highlight: {
                     clipboard: true,
